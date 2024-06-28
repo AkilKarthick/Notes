@@ -1,10 +1,6 @@
-1.what is String
-
-we use String in java to make more memory
-efficient bcz no new obj is created if it is 
-already in the String Constant Pool.
-        in java String is basically an object that represent the 
-        sequence of character value
+##1.what is String
+we use String in java to make more memory efficient bcz no new obj is created if it is  already in the String Constant Pool.
+in java String is basically an object that represent the sequence of character value
 
 String are immutable in nature
 it cnnt be changed
