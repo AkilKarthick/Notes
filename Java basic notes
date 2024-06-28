@@ -1,17 +1,15 @@
-##1.what is String
+1.what is String
+
 we use String in java to make more memory efficient bcz no new obj is created if it is  already in the String Constant Pool.
 in java String is basically an object that represent the sequence of character value
 
-String are immutable in nature
-it cnnt be changed
+String are immutable in nature it cannot be changed
 for muttable we use {StringBuffer,StringBuilder}
 
 in java we can create String by
-  Literal
-      new keyword
-the Jvm checks the String Constant Pool if 
-the String already present it use the reference
-instead creating a new object for it
+  1.Literal &
+  2.new keyword
+the Jvm checks the String Constant Pool if the String already present it use the reference instead creating a new object for it
 
 2.Java String Compare
 
