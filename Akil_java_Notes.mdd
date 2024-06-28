@@ -1,4 +1,4 @@
-# Java Notes
+###Java Notes
 
 1.what is String
 we use String in java to make more memory efficient bcz no new obj is created if it is  already in the String Constant Pool.
