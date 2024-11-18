@@ -43,5 +43,24 @@ hashcode() return hascode value for the oject
 getClass()
 
 7.what is singleton class in java? how can we make a class singleton??
+ only one instance is created at any givenn time in one JVM
 
 
+public class Animal{
+private static Animal single_instance = null;
+private Animal(){
+}
+
+public static Animal getIntance(){
+ if(single_instance ==null)
+   single_instance = new Animal();
+}
+ return single_insatnce;
+}
+
+1st make sure make your constructo as private to make sure nobody can create any
+then to create one oject, we have to crearte one
+
+2nd,  public static Animal single_instance= null;
+
+3rd we have to create a static block for the same which will return the same class oject
