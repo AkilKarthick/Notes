@@ -1,0 +1,14 @@
+
+ 1.why pointer is not used in java
+ 
+ we know jvm is responsbile for mremeory allocation in java, to stop direct access to memory in java pointer is discourged
+ and they are unsafe
+ 
+ 2.what is jit compiler?
+ 
+ from --scr code to (jdk for conversion) --byte code
+ from --byte code to (jvm for conversion (insidee jvm we have[jit compiler and interpreter])) --machine code
+ 
+ 3.what is marker interface?
+ 
+ an interface which has no
