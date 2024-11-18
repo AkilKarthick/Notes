@@ -48,6 +48,7 @@ getClass()
 
 public class Animal{
 private static Animal single_instance = null;
+
 private Animal(){
 }
 
