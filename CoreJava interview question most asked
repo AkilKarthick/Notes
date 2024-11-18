@@ -1,7 +1,7 @@
 
  1.why pointer is not used in java
  
- we know jvm is responsbile for mremeory allocation in java, to stop direct access to memory in java pointer is discourged
+ we know jvm is responsbile for memory allocation in java, to stop direct access to memory in java pointer is discourged
  and they are unsafe
  
  2.what is jit compiler?
@@ -11,4 +11,20 @@
  
  3.what is marker interface?
  
- an interface which has no
+ an interface which has no data member and member fucntions 
+simply an empty interface eg serializable , cloneable etc
+then why dont we have it, means it tells the compiler that someting to do with it
+particular thing to do to for jdk and compiler
+
+ hint ctrl shift t
+ public interfcae Cloneable{
+ }
+
+4. can we override private or static method in java??
+
+we cannot overrid privat method- we can only create another private methid
+with same name in the child class
+
+for static method if you override then it will hide the supercalss method
+known as method hidding...
+
