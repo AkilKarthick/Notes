@@ -66,4 +66,11 @@ then to create one oject, we have to crearte one
 
 3rd we have to create a static block for the same which will return the same class oject
 
+-----
+
+is java is pass by value or pass by reference??
+
+pass by value-- sending memory address of the value
+pass by reference-- reather than passing real memory address, 
+                     it send the copy in another mem location
 
