@@ -65,3 +65,5 @@ then to create one oject, we have to crearte one
 2nd,  public static Animal single_instance= null;
 
 3rd we have to create a static block for the same which will return the same class oject
+
+
