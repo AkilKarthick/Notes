@@ -5,4 +5,15 @@ num.stream().findFirst().ifPresent(System.out::println);
 
 2. given a list of integer, find the total number of elements present in the list??
 
+System.out.println(num.stream().count); // 5
+
+3.given a list of integer, find out all the even and odd numbers that exist
+in the list using stream functin??
+
+predicate function 
+
+nums.stream().filter(num -> num%2 == 0).forEach(System.out.println);
+nums.stream().filter(num -> num%2 != 0).forEach(System.out.println);
+
+
 
