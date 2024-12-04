@@ -1,19 +1,21 @@
 1. given the list of integer find the first element of the list using stream function?
 
-List<Integer> num = Arrays.asList(1,2,3,4,5);
-num.stream().findFirst().ifPresent(System.out::println);
+List<Integer> nums = Arrays.asList(1,2,3,4,5);
+nums.stream().findFirst().ifPresent(System.out::println);
 
 2. given a list of integer, find the total number of elements present in the list??
 
-System.out.println(num.stream().count); // 5
+System.out.println(nums.stream().count); // 5
 
 3.given a list of integer, find out all the even and odd numbers that exist
 in the list using stream functin??
 
 predicate function 
 
-nums.stream().filter(num -> num%2 == 0).forEach(System.out.println);
-nums.stream().filter(num -> num%2 != 0).forEach(System.out.println);
+      nums.stream().filter(n -> n%2 == 0).forEach(System.out.println);
+      nums.stream().filter(n -> n%2 != 0).forEach(System.out.println);
 
-
+4. given a  list of integer, find out all the numbers starting with 5 using stream function??
+      List<Integer> nums = Arrays.asList(1,52,3,4,55);
+      nums.stream().filter(n-> n.toString().startswith("5")).forEach(System.out::println);
 
