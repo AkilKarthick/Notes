@@ -51,5 +51,19 @@ List<Integer> l1 = Arrays.asList(1,2,3,4,5);
 l1.stream().map(n->n*n)
             .filter(n->n>50)
             .forEach(System.out::println);
+
+11. java 8 prgm to sort an array and then convert the sorted array into stream?
+
+int[] arr = {1,2,3,4,5,6}
+Arrays.sort(arr);
+Arrays.stream(arr).forEach(System.out::println);
+------- 
+medium level
+
+12. how to use map to convert words into uppercase in java8?
+      List<String> words = Arrays.asList("Dec,"nov");
+      words.stream().map(w -> w.toUpperCase()).forEach(System.out::println);
+
+
       
 
