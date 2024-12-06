@@ -45,6 +45,11 @@ nums.stream().sorted().forEach(System.out::println);
       } else{
       System.out.println("it contain unique valu:")  
       }
+10. java 8 pgm to preform square on list elements and filter numbers greated than 50?
 
+List<Integer> l1 = Arrays.asList(1,2,3,4,5);
+l1.stream().map(n->n*n)
+            .filter(n->n>50)
+            .forEach(System.out::println);
       
 
