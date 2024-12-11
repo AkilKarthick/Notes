@@ -85,6 +85,14 @@ Stream.concat(s1,s2).forEach(System.out::println);
 
 16.to give sum of salary of the employee?
 
-l
+l7. print date and time using java 8
+
+      localDateTime ldt = localDateTime.now();
+      system.out.println(ldt);
+
+18.format it in dd-mm-yyyy format?
+      DateTimeFormatter dateTimeFormatter = 
+                  DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
       
 
