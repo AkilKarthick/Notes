@@ -94,5 +94,23 @@ l7. print date and time using java 8
       DateTimeFormatter dateTimeFormatter = 
                   DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
+19. given the arrya {110,1,20,2,100,100} using jav streams to determine 
+the numbers of ccurrences of a particular value in hashmap?
+
+int[] values = {12,1,20,2,100,100};
+int number = 100;
+long result = Arrays.stream(values).filter(value -> value == number).count();
+System.out.println(result);
+
+20. how to find only duplicate elements with its count from the string ArrayList in java 8
+
+List<String> words = Arrays.asList("dev","qa","dev");
+Map<String,Long> map = words.stream()
+                        .collect(Collectors
+                        .groupingBy(s->s,Collectors.counting()));
+map.entrySet().stream().filter(m->m.getValue()>1.forEach(m-> System.out.println(m.getKey() +" : " +m.getValue())));
+
+
+
       
 
