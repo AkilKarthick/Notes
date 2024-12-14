@@ -1,7 +1,17 @@
 1. given the list of integer find the first element of the list using stream function?
 
-      List<Integer> nums = Arrays.asList(1,2,3,4,5);
-      nums.stream().findFirst().ifPresent(System.out::println);
+      List<Integer> nums = Arrays.asList(1,2,3,4,5);  // to create a list from array of elements                        
+      nums.stream()
+             .findFirst()                             // this will find the first element
+             .ifPresent(System.out::println);
+
+theory ::
+
+List : an interface have stack,
+Stream :
+method referencing :
+
+
 
 2. given a list of integer, find the total number of elements present in the list??
     
