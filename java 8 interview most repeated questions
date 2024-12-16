@@ -38,7 +38,8 @@ predicate function
 
 6.find the maximum and min value element present in it using stream fucntion?
 
-Optional<Integer> max = nums.stream().max(Integer::compareTo);
+Optional<Integer> max = nums.stream().max(Integer::compareTo); or
+int max = nums.stream().max(Comparator.naturalOrder()).get()
 System.out.println(max.orElse(null));  //5
 
 7.given a list of integer, sort all the value present in the stream?
@@ -119,6 +120,27 @@ Map<String,Long> map = words.stream()
                         .collect(Collectors
                         .groupingBy(s->s,Collectors.counting()));
 map.entrySet().stream().filter(m->m.getValue()>1.forEach(m-> System.out.println(m.getKey() +" : " +m.getValue())));
+
+----top 10 stream java 8 coding interview question !!
+
+find the sum of all elements in a list using stream?
+
+List<Integer> numss = Arrays.asList(2,3,4,5,6,7,8,9);
+//maptoINT - AN intermeidate operation, mapping in simple word is transformation
+//converting to primitive int
+int sum = nums.stream().mapToInt(Integer::intValue).sum();
+System.out.println(sum);
+
+2.find max using stream()?
+int max = nums.stream().max(Comparator.naturalOrder()).get()
+System.out.println(max);
+
+3.list of string, find count ot the num of string that starts with special characters?
+List<String> fru = Arrays.asList("bann","strabery","bann");
+int count = fru.stream().filter(f->f.startsWith("c")).count();
+System.out.println(count)
+
+
 
 
 
