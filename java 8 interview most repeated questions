@@ -168,8 +168,23 @@ String conc = s1.stream().collect(Collector.joining(""))
 System.out.println(conc);  //devqasuppinfra 
 
 8.remove dupliate elements from a list of string?
-List<String> s1 = Arrays.asList("dev","qa"."supp","infra");
-s1.stream().
+	List<String> s1 = Arrays.asList("dev","dev","qa"."supp","infra");
+	s1.stream().distinct().forEach(System.out::println);
+9.given a list of objects, writh pgm to sort the object based on a specific
+attribute using stream?
+1.using implmenet a comparable interface and write loginc in comapreTo (or)
+
+List<Person> p = Arrays.asList(
+			new Person("akil",21),
+			new Person("lk",22),
+			new Person("karthick",26),);
+Collections.sort(p,Comparator.comparing(Person::getAge));
+System.out.println(p); // compare with ascending order of age
+//stream
+p.stream().sorted(Comparator.comparing(Person::getName))
+		.forEach(System.out::println);
+
+
 
 
 
