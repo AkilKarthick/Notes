@@ -137,9 +137,24 @@ System.out.println(max);
 
 3.list of string, find count ot the num of string that starts with special characters?
 List<String> fru = Arrays.asList("bann","strabery","bann");
-int count = fru.stream().filter(f->f.startsWith("c")).count();
+int count = fru.stream()
+                  .filter(f->f.startsWith("c")).count();
 System.out.println(count)
 
+4.convert a list of string to uppercase using streams?
+fru.stream().map(String::toUpperCase).forEach(System.out::println); or
+fru.stream().map(f->f.toUpperCase).forEach(System.out::println);
+
+5.filter out even number using stream/ also count the nu in the list 
+List<Integer> l1 = arrays.asList(1,2,3,4,5);
+l1.stream().filter(n-n%2==0).count().forEach(System.out::println)
+
+	    List<Integer> l1 = Arrays.asList(1,2,3,4,5,6);
+//	    l1.stream().filter(n->n/2 ==0).count().forEach(System.out::println);
+	  l1.stream().filter(s -> s%2 == 0).collect(Collectors.toList()).forEach(System.out::println);
+7. find the average of a list of floating point number using stream?
+List<Double> floatNums = Arrays.asList(1.1,2.2,3.3);
+floatNums.stream().avg() // we cannot do directly average so
 
 
 
