@@ -183,6 +183,14 @@ System.out.println(p); // compare with ascending order of age
 //stream
 p.stream().sorted(Comparator.comparing(Person::getName))
 		.forEach(System.out::println);
+Intermediate level---
+
+given a sentence, find and print the frequecny of each word?
+String sentence ="java is a piece of shit";
+Map<String,Long> wordFrequency =Arrays.stream(sentence.split("\\s+")).collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
+System.out.println(wordFrequency);
+
+
 
 
 
