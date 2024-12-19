@@ -190,6 +190,15 @@ String sentence ="java is a piece of shit";
 Map<String,Long> wordFrequency =Arrays.stream(sentence.split("\\s+")).collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
 System.out.println(wordFrequency);
 
+2//given a list of integer, findout all the number Starting with 1
+			List<Integer> listInt = Arrays.asList(1,2,11,2,3,4,5,6,7,78,13);
+			listInt.stream()
+					.filter(s->s.toString()
+					.startsWith("1")).forEach(System.out::println);
+3//given a list of names, group them by first letter and then count the number of names in
+each group?
+String[] names={"alice", "Bob","Charlie","amy","bill"};
+
 
 
 
