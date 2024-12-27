@@ -1,1 +1,57 @@
-Springboot interview questions
+1.What is Spring Boot?
+  Spring Boot is built on top of the Spring framework to create stand-alone 
+  RESTful web applications with very minimal configuration and there is no need of external servers to run the application
+  because it has embedded servers like Tomcat and Jetty etc.
+  
+  Spring Boot framework is independent.
+  It creates executable spring applications that are production-grade.
+
+2.features?
+
+a.Auto-configuration – 
+      Spring Boot automatically configures dependencies by using 
+      @EnableAutoconfiguration annotation and reduces boilerplate code.
+
+b.Spring Boot Starter POM – (project object model.xml)
+      These Starter POMs are pre-configured dependencies for functions 
+      like database, security, maven configuration etc.
+
+c.Spring Boot CLI (Command Line Interface) –
+    This command line tool is generally for managing dependencies,
+    creating projects and running the applications.
+
+d.Actuator –
+    Spring Boot Actuator provides health check,
+    metrics and monitors the endpoints of the application.
+    It also simplifies the troubleshooting management.
+
+e.Embedded Servers – 
+    Spring Boot contains embedded servers like Tomcat and Jetty 
+    for quick application run. No need of external servers.
+
+3.Advantages of using springboot?
+
+Easy to use: The majority of the boilerplate code required to create a Spring application
+    is reduced by Spring Boot.
+Rapid Development: Spring Boot’s opinionated approach and auto-configuration enable developers 
+    to quickly develop apps without the need for time-consuming setup, cutting down on development time.
+Scalable: Spring Boot apps are intended to be scalable.
+    This implies they may be simply scaled up or down to match your application’s needs.
+Production-ready: Metrics, health checks, and externalized configuration 
+    are just a few of the features that Spring Boot includes and are designed for use in production environments.
+
+4. Define the Key Components of Spring Boot.
+The key components of Spring Boot are listed below:
+
+Spring Boot starters
+Auto-configuration
+Spring Boot Actuator
+Spring Boot CLI
+Embedded Servers
+
+5. Why do we prefer Spring Boot over Spring?
+
+Feature   --   Spring  --  Spring Boot
+Ease of use --  More complex --  Easier
+Production readiness -- Less production-ready -- More production-ready
+Scalability --Less scalable --More scalable
