@@ -34,6 +34,23 @@ class circle extends Shape{
        System.out.println(drawing a cirvle);
    }
 }
+what is an interface?
+
+here every method is by default abstract
+interface are used to solve the problem of multipl inhertance in java
+multipel inheritacn is not possible in java so interface takes place
+
+what is package in java?
+
+buit in package - predefined classes and interccae like java.util etc 
+user defined package - to keet our poject structured & manageble
+             to  organized the code 
+
+what is the used of this keyword in java?
+
+to refer the curretn instance
+also used to call another constructro within the same class
+
 
 
  1.why pointer is not used in java
@@ -61,8 +78,18 @@ jvm- java virtual machine
  key component - memory management = allo/deallo memory for the applcation
  -garbage collection = automatically  cleans up unused memory
  -security = 
- 
 
+
+what are access modifier?
+
+public if a class, method or variable is public is can be access anywhere
+private - elements is accessible within the class 
+protected- accessible within same package and by sub class
+         use this when you want to give access to the sub class, even they are ins
+differnet package
+default - when nothing is specifed java applies default
+      no modifier when you want to limit access to class within the same package
+but keep members hidden from classes in other package
 
 
  
