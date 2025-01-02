@@ -5,9 +5,29 @@
  and they are unsafe
  
  2.what is jit compiler?
- 
+
+---------concluseion------------
+so jdk is for developer to create java applications
+jre is for used to run java application
+------------
  from --scr code to (jdk for conversion) --byte code
  from --byte code to (jvm for conversion (insidee jvm we have[jit compiler and interpreter])) --machine code
+
+jdk--java development kit that provide all the tools required to
+ develop,complile and run the java app
+ jdk we have
+ compiler - 
+ debugger
+ jre - bunch of libraries
+
+jvm- java virtual machine
+ key component - memory management = allo/deallo memory for the applcation
+ -garbage collection = automatically  cleans up unused memory
+ -security = 
+ 
+
+
+
  
  3.what is marker interface?
  
