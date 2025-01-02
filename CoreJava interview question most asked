@@ -1,4 +1,41 @@
 
+what is java main() method?
+when we execute our java pgm the jvm will looks for main method to begin 
+and only one main metho
+public static void main(String[] args)
+
+a. String[] args
+   a parameter passes command line argument into java applcation
+extracting values from the command line in string format ie
+ String[] args = {"1","2"}; these stored in args[0], args[1]
+later be stored in args array
+
+b. static keyword? in main method?
+
+to make it as globally access across the class
+
+static variable - a public access eg publlic summing pool
+static method - are like shared serverice eg secuity gurad 
+               any body can access
+
+what is abstract class in java?
+
+abstract class shape {
+  public abstrat void draw();
+  public void erase   // a concrete method ie non abstract method
+   System.out.println("a"); 
+  }
+}
+if a subc/ child clas inhert  the shape class
+class circle extends Shape{
+// the abstract method must be defined here 
+   @Override
+   public void draw(){
+       System.out.println(drawing a cirvle);
+   }
+}
+
+
  1.why pointer is not used in java
  
  we know jvm is responsbile for memory allocation in java, to stop direct access to memory in java pointer is discourged
