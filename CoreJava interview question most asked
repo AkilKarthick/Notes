@@ -226,7 +226,23 @@ HOW DOES GARBAGE COLLECTION WORK IN JAVA?
    3.MARK & SWEEP PROCESS: MARK marks the objects as "in use" which is actively referenced.
                            unmarked objects are eventully deleted.
 
+23.WHAT IS LAMBDA EXPRESSION AND HOW IT IS USED IN JAVA?
 
+it is a consious way to represent an anonymous function
+Syntax: (parameters)-> expression
+(int a ,int b)-> a+b
+
+public static void main(String[] args){
+   new Thread(new Runnable(){
+   @Override
+   public void run(){
+      System.out.println("Thread is running")
+   }
+   }).start();
+
+//using lambda
+new Thread(()-> Ssytem.out.println("Thread is running")).start();
+}
 
 
 
