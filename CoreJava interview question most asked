@@ -20,25 +20,25 @@ static method - are like shared serverice eg secuity gurad
 
 what is abstract class in java?
 
-abstract class shape {
-  public abstrat void draw();
-  public void erase   // a concrete method ie non abstract method
-   System.out.println("a"); 
-  }
-}
-if a subc/ child clas inhert  the shape class
-class circle extends Shape{
-// the abstract method must be defined here 
-   @Override
-   public void draw(){
-       System.out.println(drawing a cirvle);
-   }
-}
+            abstract class shape {
+              public abstrat void draw();
+              public void erase   // a concrete method ie non abstract method
+               System.out.println("a"); 
+              }
+            }
+            if a subc/ child clas inhert  the shape class
+            class circle extends Shape{
+            // the abstract method must be defined here 
+               @Override
+               public void draw(){
+                   System.out.println(drawing a cirvle);
+               }
+      }
 what is an interface?
 
-here every method is by default abstract
-interface are used to solve the problem of multipl inhertance in java
-multipel inheritacn is not possible in java so interface takes place
+   Here every method is by default abstract method
+   interface are used to solve the problem of multiple inhertance in java
+   multipel inheritace is not possible in java so interface takes place
 
 what is package in java?
 
@@ -51,8 +51,99 @@ what is the used of this keyword in java?
 to refer the curretn instance
 also used to call another constructro within the same class
 
+constructor in java?
+when you want to initializes the value that are declared in the class
+it doesn't have a return type 
+always named as the class name
+types
+default  construcotr
+parameterized constructor
+
+how is method overloading is different from method overriding?
+
+a.method overloading -
+   same method name, different parameters, determined at compile time
+b.method overriding-
+   same methodname, and same parameters but implmented in subclass, runtime determination.
+
+epalin the different between final & finally keyword?
+
+final--keyword
+   in variable- once assigned their value cannot be changed
+   in method- which cannot be overriden by sub class
+   in class- cannot be subclassed
+
+finally ?
+eg 
+         try{
+            int sum = 10/0;
+            System.out.println(sum);
+         }catch(ArithmeticException e){
+            e.printStackTrace();
+         }finally{
+         System.out.println("this will be executed regardless")
+         } // whatever happen this finally block will executed
+
+what are java collections and why are they importatnt?
+
+list-
+set-
+map-
+queue-
+
+   List<Integer> student = new ArrayList<>();
+   student.add(1);
+   student.add(1);
+   student.add(2);
+   student.add(2);
+   for(integer x : student) System.out.println(x);
+
+everything get printed here 1 1 2 2
+list allows duplicate values
+
+//HashSet
+
+   Set<Integer> student = new HashSet<>();
+   student.add(1);
+   student.add(1);
+   student.add(2);
+   student.add(2);
+   for(Integer x: student)Systtem.out.println(x);
+
+here in set, only 1 and 2 get printed bcz of unique value get stored in set
+
+//HashMap
+
+Map<String, Integer> students = new HashMap<>();
+student.put("alice",1);
+student.put("alice",1);
+student.put("alice",2);
+student.put("alice",2);
+for( Map.Entry<String,Integer> entry:students.entrySet()){
+System.out.println(entry.getKey() + " : " + entry.getValue());k
+}
+in map 
+the key should be unique
+the values should be duplicated
+
+//LinkedList
+
+Queue<String> students = new LinkedList<>();
+   student.add("alice");
+   student.add("B");
+   student.add("c");
+   student.add("d");
+System.out.println("current" students.poll)
+System.out.println("next" students.peack)
+----------------------------------------------------------------------
+List- that allows duplicate value
+Set - doesn't allow duplicate value
+Map- stored key value and each key should be unique
+Queue- ordered collection that follows fifo or priority based ordering
+------------------------------------------------------------------------
 
 
+----------------------------------------------------------------------------------
  1.why pointer is not used in java
  
  we know jvm is responsbile for memory allocation in java, to stop direct access to memory in java pointer is discourged
