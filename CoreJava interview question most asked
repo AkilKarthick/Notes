@@ -196,6 +196,31 @@ system.out.println(a==b); it is true
 so Equality operator (==)
 check two refernce variable point to the same memory location
 
+for .equals()
+it will check if two objects have the same data. specific for strings
+
+21.Describe java memory model and how memory is allocated?
+
+in java memory is allocated in two types
+a.Heap - 
+large memory space used for storing object, instance, varible and class variables
+objects that are no longer available or recheable are managed by jvm'S garbage collector
+b.Stack
+each thread in java has its own stack memory.
+Stack memory is generally limited and temporary.
+
+hOW MEMORY IS ALLOCATEDD?
+   1. object creation: the jvm first determine the size of the object based on its fields.
+   2. heap allocation: then jvm allocated a stack of memory from the heap.
+   3. initialization: the ojects fields are initialized to their default values.
+   4. Reference assignment: a reference is the newly created obj is assigned to a variable
+   5.Garbage collection: it periodically scan the heap for objects that are no longer
+                        recheable by any active threads
+
+HOW DOES GARBAGE COLLECTION WORK IN JAVA?
+
+
+
 
 
 
