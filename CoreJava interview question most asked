@@ -175,9 +175,9 @@ public static void main(String[] args){
 }
 
 explain try catch and finally block?
-try block- the code that might throws an arror is kept inside the try block
-catch block- for handling the exceptions
-finally block- it executes regardless whateve hadpn in try-catch it execute anyways
+   try block- the code that might throws an arror is kept inside the try block
+   catch block- for handling the exceptions
+   finally block- it executes regardless whateve happn in try-catch it execute anyways
 
 20.describe == and .equlas() in java?
 
@@ -185,29 +185,29 @@ finally block- it executes regardless whateve hadpn in try-catch it execute anyw
    String b = new String("hello"); //point to a memory location
    System.out.println(a==b); //false
 even thought the content is same but a and b point to differnt-
--memory location so techincally it's different
-   System.out.println(a.equals(b));
+      -memory location so techincally it's different
+      System.out.println(a.equals(b));
 
 but for other primitive data types
-int a=10;
-int b=10;
-system.out.println(a==b); it is true 
+   int a=10;
+   int b=10;
+   system.out.println(a==b); it is true 
 
 so Equality operator (==)
-check two refernce variable point to the same memory location
+   check two refernce variable point to the same memory location
 
 for .equals()
-it will check if two objects have the same data. specific for strings
+   it will check if two objects have the same data. specific for strings
 
 21.Describe java memory model and how memory is allocated?
 
 in java memory is allocated in two types
-a.Heap - 
-large memory space used for storing object, instance, varible and class variables
-objects that are no longer available or recheable are managed by jvm'S garbage collector
-b.Stack
-each thread in java has its own stack memory.
-Stack memory is generally limited and temporary.
+   a.Heap - 
+      large memory space used for storing object, instance, varible and class variables
+      objects that are no longer available or recheable are managed by jvm'S garbage collector
+   b.Stack
+      each thread in java has its own stack memory.
+      Stack memory is generally limited and temporary.
 
 hOW MEMORY IS ALLOCATEDD?
    1. object creation: the jvm first determine the size of the object based on its fields.
@@ -218,6 +218,13 @@ hOW MEMORY IS ALLOCATEDD?
                         recheable by any active threads
 
 HOW DOES GARBAGE COLLECTION WORK IN JAVA?
+      It is the automated process that frees up memory by removing objects that are no longer
+   in use or is being accessible by the program
+   1.AUTOMATIC MEMORY MANAGEMENT: garbage collectors which operates inside the Jvm MANAGES garbage
+                                 collection
+   2.HEAP MEMORY: as long as oject is referenced by other objects or variable, it remains active
+   3.MARK & SWEEP PROCESS: MARK marks the objects as "in use" which is actively referenced.
+                           unmarked objects are eventully deleted.
 
 
 
