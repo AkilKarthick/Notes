@@ -300,6 +300,56 @@ Syste.out.println(counter.getCount());
    }
 }
 
+EXPALIN THE VOLATILE KEYWORD IN JAVA?
+
+    when the varilable is marked as volatile, cjhanges made to the variable by 
+   one thread are immiediatly visible to other threads
+   volatile also ensures that the varlues of the variable is always fetced
+   from the main memory and not from the thread local cahce
+main memory - means heap memory
+stack memory - is temporary .
+
+class Counter{
+   private Volatile boolean flag = false;
+   public void toggleFlag(){
+      flag = !flag;
+   }
+   public boolean getFlag(){
+      return flag;
+   }
+}
+public class demo{
+   public static void main(String[] args){
+      Counter couner = new Counter();
+      Thread t1= new Thread(()->{
+         counter.toggleFlag();
+         System.out.println("Thread 01: Flag toggled to " + counter.getFlag());
+      });
+   }
+}
+
+
+WHAT ARE STREAMS IN JAVA AND HOW ARE THEY USED?
+   streams in java is a pipeline that makes it easier to filter, tranform &
+   collect data from collections.
+   streams can process parallel, achieving multi core processors for performance
+
+For Eg:
+public class demo{
+   public static void main(String[] args){}
+      List<String> names= Arrays.asList("aa","b","ac","d");
+      List<String> modifiedList = 
+               names.stream().filer(x->x.startsWith("a"))
+                     .map(String::toUpperCase)
+                     .collect(Collectors.toList());
+      modifiedList.forEach(System.out::println);
+}
+
+27.WHAT ARE JAVA ANNOTATION AND HOW DO THEY WORK?
+
+
+
+
 
 
 
