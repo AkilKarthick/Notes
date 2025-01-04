@@ -244,6 +244,62 @@ public static void main(String[] args){
 new Thread(()-> Ssytem.out.println("Thread is running")).start();
 }
 
+EXPLAIN THE IMPORTANCE OF SYNCHRONIZED KEYWORD?
+
+Ensures that only one thread can access the synchronized session of the code
+at a time, blocking other threads until the lock is released.
+
+for eg:
+deadlock..
+
+class counter{
+   //if ? a global variable ie anybody can access it right??
+      so here synchornized help us
+
+      private int count = 0;
+      public synchronized void increment(){
+         count++;
+      }
+      public int getCount(){
+         return count++;
+      }
+}   
+public class demo{
+   public static void main(String[] args){
+         Counter counter = new Counter();
+         //creating  a new thred
+
+         Thread t1= new Thread(()->{
+            for(int i=0; i< 100: i++){
+               counter.increment();
+            }                     
+         });
+//thread 2
+         Thread t2= new Thread(()->{
+            for(int i=0; i< 100: i++){
+               counter.increment();
+            }                     
+         });
+t1.start();  // we start the thread
+t2.start();
+
+try{
+   t1.join();
+}catch(Exception e){
+      e.printStackTrace();
+}
+
+try{
+   t2.join();
+}catch(Exception e){
+      e.printStackTrace();
+}
+Syste.out.println(counter.getCount());  
+// multipel thread increases counter twice so parallel
+//we used snchornized should be 200
+   }
+}
+
 
 
 
