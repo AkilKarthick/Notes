@@ -347,10 +347,64 @@ public class demo{
 
 27.WHAT ARE JAVA ANNOTATION AND HOW DO THEY WORK?
 
+   the metadata tags added to code elements like classes, method & fields
+to provide additional information.l
+eg @Override
+@Depreciated - 
+@SuppresWarnings("unchecked" rawtypes etc...)- to avoid unnecessary waring
+@FunctionalInterface- only one method should be there in an interface
+
+28.AUTOBOXIG AND UNBOXING
+   AUTOBOXING: the automatic conversion of primitive types into
+               corresponding wrapper class (eg int to Integer)
+   UNBOXING: converts an object of a wrapper classs back into its
+               corresponding primitive class
+
+eg int num=5;
+   Integer numOjbect = num;  
+
+   System.out.println(num)    //5
+   System.out.println(numOjbect) //5
+   System.out.println(numOjbect.getClass()); /class java.lang.Integer
 
 
+28. WHAT IS THE PURPOSE OF TRANSIETN KEYWORD IN SERIALIZATION?
+   serialization is the process of converting an objects state into
+a byte stream, allowing it to be saved to a file, sent over a n/w, etc.
+
+eg serailaiztino    || a|| ---> ||b||  here data being transfered by broken down into small perice 
+
+Transietn keyword
+ tellls the jvm to ignore a field when serializing an object
 
 
+for eg
+
+class user implements Serializable{  // which means it can be broken down
+      private String username;
+      private transient String passoword; // which cannot be broken down so 
+                                       // we are using transient 
+public user(String username, String passord){}
+      this.userame= username;
+      ..
+}
+
+WHAT IS THE DIFFERENCE BETWN STRING AND STRINGBUILDER?
+
+String- once a sting object is created, its values cannot be changed
+ie immutable one
+also when you try to modify a sting a completly new obj is create that the 
+drawback of String
+StringBuilder- value can change the values of the object after it's created 
+ie mutable one
+
+String name= "Akil";
+Ssytem.out.println(name);
+name = name+ "is a goodboy";
+System.out.println(name); here concatend and new object is created!!\
+
+StringBuilder sb = new StringBuilder("Hello");
+sb.append("workd"); // here no new object is created we are jsut modify existing
 
 
 ----------------------------------------------------------------------------------
