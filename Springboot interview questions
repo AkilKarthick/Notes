@@ -1,3 +1,38 @@
+1. WHAT IS SPRINGBOOT? YOUR UNDERSTANDING?
+
+    a java based spring fm used for rapid appli development to build standalone
+    microservice. it has extrea support of auto configuration and embedded app
+    server like tomcat, jetty etc.
+
+2.DIFFFERENCE BTWN SPRING AND SPRINGBOOT?
+ Spring:
+a. a wevpplication fm baed on java
+b.provide tools and libraries to create customized web application
+c.spring is more complex thatn springboot
+d.takes an unopionated view
+-------------------
+springboot:
+a.a module of spring
+b.used to create a spring app project which can just run/eecute
+c.is less comples that spring
+d.takes an optinated view of a platofrm
+
+3.FEATURE OF SPRINGBOOT?
+  autoconfiguration
+  springboot starter pom
+  cli
+  actuator
+  Embeded Servers
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
 1.What is Spring Boot?
   Spring Boot is built on top of the Spring framework to create stand-alone 
   RESTful web applications with very minimal configuration and there is no need of external servers to run the application
