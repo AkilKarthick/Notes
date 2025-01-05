@@ -18,11 +18,88 @@ c.is less comples that spring
 d.takes an optinated view of a platofrm
 
 3.FEATURE OF SPRINGBOOT?
-  autoconfiguration
-  springboot starter pom
-  cli
-  actuator
-  Embeded Servers
+  autoconfiguration - 
+  springboot starter pom - project object model a dependency management 
+                            making setup easier
+  cli - you can create sprgin app using command line
+  actuator - to monitor and manage your applications
+  Embeded Servers - like tomacet and many more no need to install any other server
+advantage of using springboot:
+    we don;t need to write any xml configuration, only few annotation are 
+required to do the configurations
+
+-------------------
+
+5. WHAT DOES THE -- @SpringBootApplication --annoation do internally?
+
+it is  a combinatino of 3 annotations
+@configuration,@EnableAutoConfiguration & @ComponentScan
+    1.EnableAutoConfiguration: configure beans in the class path & scan the dependencies
+                            acccording to the application need.
+    2.ComponentScan: this scan the components(@Service, @Component etc) inthe
+                        package of annotated class and it's sublclass
+    3.CONFIGURATION: used to configure the bean and
+                    -- packages -- in the class path
+
+6.WHAT ARE SPRINGBOOT STARTERS?
+6. what is springboot dependecny management?
+it will configure automatically without specifying the version
+for any of that dependencies.
+
+7.it is possible to change of the embedded tomcat server in springboot?
+    yes we can, change the server.port= properties in app.prop files
+
+8. what is spring initializer?
+to create a initial springboot prject structure, and provide a
+maven on graddle file to build your code. setting up our project from scratch
+
+9. how do you secure a springboot application?
+    use @EnableWebSecurity
+    using spring security. add spring-boot-starter-sercuurity dependncy
+    and configure security settings using websecurity configure adapter.
+
+10. what is starter dependencies?
+     it is a maven template that contain collection of all the relevant
+    transitive dependencies needed to start a particulare functionalities. like
+    we need to import springbo0t-starter web dependncy for creating a web application
+
+11. what is the main class in springboot?
+
+    springboot has a main class which starts up the springappplicationcontext
+
+12. latest version of springboot is 2.6.0 java 15 onwards it support and much more
+
+13. spring bean?
+        it is an object that is managed by the spring ioc (inversion of control)
+    ioc container . Beans are created configured and managed by Spring.
+
+how do you define a spring bean in a springboot application?
+        using annotation like @Component, @Service @Repository
+    or by using the @Bean annotaion in a configuraion class
+
+14. what is the use of @RestController annotaion in springboot?
+
+    @Controller- that handle web request and return view names
+        it is the combination of @Controller & @ResponseBody
+    this will return data directly usally in json/xml response
+
+23. what is @RequestMapping used for?
+    used to map web requesrt to specific handler method in a controller
+
+24. use of SpringbootDev tools>
+
+    provide fearures to make development faster, automatic restart, live reloads & 
+    configurations for imporved experince
+
+15. what is spring data jpa?
+         java persistence api- it helps you create repositories that handle CRUD
+    Operations automaticlaly.
+
+
+
+
+
+
 
 
 
