@@ -1,1 +1,85 @@
 Spring data jpa_ code Snipp e& interview 
+
+           ---DTO     Utility    Entity       config ------------
+          |                                                      |
+client -->| control layer --> service Layer --> repository_layer |-->Database
+---------springboot applicaton--------------------------------------------
+
+when your repos layer talking to database - there should be some connectivity 
+btwn java and database.(h2 any database)
+
+traditional way to connect to database
+using JDBC java database connection
+connect to DB in & steps
+      1.load the jdbc driver
+      2.establish a connection
+      3.create a sql query inside your java application
+      4.prepare the statements accroding to your user case
+      5.set parameters (entity or objedct shoudl be mapped to query)
+      6.Execute the query
+where-- spring jdbc-- will automate lot of these things but it is stil not JPA
+
+orm --object relational mapping
+java object ---id|name (columsn)
+entity to object mapping with relation mapping
+
+orm mapping
+  1.Hibernate framework --famous one
+  2.Eclipse Link
+  3.Open JPA
+
+jpa- java persistance api= it is not a framework it is a specification 
+provided by java inorder to manage relation data in spring app
+jpa internally use hibernate and jdbc
+hibernate is a implementation of java persistance api.
+
+---spring Boot application-----
+          ||
+      Spring-Data-JPA  ---> [layer of abstraction on top of api, make our CRUD opertion easy]
+      java persistance API     
+      hibernate 
+      jdbc
+          ||
+---Database-------------------
+
+PART-2
+JPA ARCHITECTUER & ENTITY LIFE CYCLE | SPRING DATA JPA DEEP DRIVE
+Archiecture of Jpa
+
+1.Entity [java_object]
+2.Entity Manager  -- an interface inside java responsible for managing entity(like save, remove, merge etc)
+3.Entity Manager_Factory --  this will create entity manager
+4.Persistance context- em will interact with entity manager
+5.Entity manager - creates - entity transcation & query 
+                 - interacts - persistance context.
+
+whenver you create a new entity 
+the moment we create a entity it will inside the - (1)transient state-
+the moment you call persist() then entity (2)manager will manage it
+
+Transient --persist()-----> managed
+
+--------- life cycle of your entity-----
+Transient -> persitent. By calling persist() or save() method
+Persistent - detched By calling detach() or when the Entity manage close
+Persistent- Removed by Calling remove()
+Detached -> persisten By calling merge().
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
