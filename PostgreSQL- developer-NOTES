@@ -204,6 +204,10 @@ eg: DROP TABLE IF EXISTS job_titles;
 
 --------------INTRODUCTION TO DML STATMENTS------------------
 
+DATA MANIPULATION LANGURAGE : TO INSERT, UPDATE(MODIFY) OR DELETE DATA ALREADY
+INSERTED INTO THE TABLE.
+1.INSERT: postgree allows to insert multiple records at a time.
+2.UPDATE: to modify existing data in the table
 
 
 
