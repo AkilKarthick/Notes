@@ -239,10 +239,80 @@ SELECT employee_id, name, department_id
 FROM new_employees
 WHERE hire_date > '2023-01-01';
 
-----UPDATE COMMAND---
+----UPDATE COMMAND--- 
+to manipulate existing data in a table
+set keyword is used to update statment
 
-                
+  UPDATE table_name
+  SET column1 = value1, column2 = value2
+  [WHERE condition];
+  
+  eg: UPDATE employees
+  SET salary = salary + (salary * 0.1)
+  WHERE department_id = 30;
 
+DELETE command--------------
+  to remove all the recordsor specific records from a table
+  syntax: DELETE FROM table_name [WHERE condition];
+  eg:   DELETE FROM employees
+        WHERE employee_id = 717746;
+----------------------------------------------
+  RETRIEVE DATA USING SELECT STATEMENT: 
+
+a.SELECT statement:
+
+SELECT: SELECT * from employees;
+SELECT employee_id, first_name, email_id, salary FROM employees;
+
+Select statement can be used with the following clauses:
+DISTINCT
+WHERE  clause
+ORDER BY clause
+Operators like BETWEEN, IN and LIKE
+GROUP BY  clause
+HAVING clause
+INNER JOIN, LEFT JOIN, FULL OUTER JOIN, CROSS JOIN clauses
+--------------------------------------------------
+a. DISTINCT operator:
+eg:
+SELECT DISTINCT department_id FROM employees;
+
+b.DISTINCT ON:
+
+SELECT statement fetch the records in random order so 
+PostgreSQL supports DISTINCT ON (expression)
+to fetch the first row from every group of duplicates.
+
+eg:
+SELECT DISTINCT ON (department_id) 
+department_id, employee_id, first_name, last_name, job_id FROM employees;
+
+The SELECT statement retrieves data in random order.
+Hence to retrieve the exact records,
+we shall use the ORDER BY clause along with the SELECT statement
+
+ORDER BY CLAUSE:
+  if no order is specified in order by clase the postgres sort the data in 
+  ascending order by default
+
+SYNTAX: 
+SELECT column1,column2
+FROM table_name
+ORDER BY column1,column2 ASC/DESC;
+
+eg:
+SELECT employee_id, first_name, salary
+FROM employees
+ORDER BY salary desc;                 
+
+implementing ORDER BY Clause
+eg2:
+SELECT department_id, first_name, salary
+FROM employees
+ORDER BY department_id ASC, salary DESC;
+
+eg3; SELECT * FROM employee LIMIT 3 OFFSET 2;
+PICKUP 3 RECORDS STARTING FROM 2ND POSITION.
 
 
 
