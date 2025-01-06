@@ -1,1 +1,142 @@
 PostgreSQL- developer-NOTES
+
+introduction of PostgreSQL
+  introduced in 1996 aslo knwn as Postgres
+  it is an Object relation database managment system ORDBMS
+  lightweight and open source & support multiple OS support
+  support Large and Complex database's & support Critical applicatins
+FEATURES OF POSTGRESQL:
+  support various datatypes
+  an open sources so low maintenance cost
+  support a wide variety of Native library Interfaces
+  also support obect-oriented features like inheritance/abstractions
+  Extensible- 
+  multi-vesion concurrency control (MVCC)
+
+Features of Postgres:
+
+Use of PostgreSQL for very large datasets.
+Support for multiple operating systems including Windows, Linux, MacOS, Solaris and others.
+Reduced cost of maintenance because of its stability.
+Provides native library interfaces so it can easily be integrated with popular programming languages such as C/C++, Java, DotNet, Perl and Python.
+Supports various data types to represent numeric values, strings, date types and BLOBs(Binary Large Objects) such as audio, video and images.
+Can be used to implement object-oriented features such as inheritance, polymorphism and so on which other relational databases do not have.
+It is extensible thereby allowing users to create their own user-defined datatypes (UDTs).
+Support for Multi-Version Concurrency Control (MVCC) mechanism in order to manage consistency with concurrent access provided to various users.
+ 
+
+HOW TO INSTALL POSTGRESQL & USE OF PGADMIN4 TOOL
+IMPLEMETATION OF QUERIES
+
+RDBMS CONCEPT!!! PREREQUISITIES:
+
+PostgreSQL is a very powerful, Open Source (ORDBMS). With more than 20 years of active development 
+and a proven architecture, IT has been known for its reliability, data integrity
+and correctness. It is highly scalable and can be used to manage 
+several terabytes of data. 
+
+In production environments, Active PostgreSQL systems can be used to 
+accommodate number of concurrent users due to a policy it follows
+wherein writes never block reads and vice-versa. 
+This is achieved through Multi Version Concurrency Control (MVCC)
+mechanism that makes PostgreSQL different from other related databases. \
+
+--INTRODUCTION TO DDL STATEMENT--
+
+>CREATE DATABASE DATABASE_NAME
+eg: CREATE DATABASE BrandBucket;
+
+  CREATE-CREATE THE TABLES OR VIEW SEQUENCE INDEX OTHER DATABASE OBJECTS
+  ALTER- CHANGE THE STRUCTURE OF THE TABLE LIKE ADDING NEW COLUMN OR DROPPING IT SO ON
+  DROP-REMOVE THE DATABASE OBJECT FROM THE D
+
+CREATE TABLE: 
+---------------------------------------------
+CREATE TABLE table_name
+(col_name datatype [column constraint],
+ [table_constraint table constraint]
+)[INHERITS (existing_table_name)];
+---------------------------------------------
+Syntax enclosed in a [ ] bracket is optional. Also, the INHERITS clause
+is used to create a new table by reusing the structure of an existing table
+
+PostgreSQL supports the following datatypes:
+
+1.Boolean : T/F or null -- When there is no value assigned to a column, it is represented as null.
+2.Character type: String values
+    Text datatype: used to store characters of unlimited length
+3.Numeric type: Integer-it store whole number 4byte
+                Numeric-to store floating point number 
+                Serial-auto incrementing integer
+4.Temporal type-to store time based data.
+               a. Timestamp[p] with time zone - both date and time with zone
+               b. Date - Date(no time of day)
+               c. time[(p)] with time zone - time of day only, with time zone
+               d. interval[fields][(p)] - 12bytes
+Array type
+-----------------------------------------------
+CONSTRAINTS: to ensure only valid values are stored into the table for a given 
+              column
+
+PostgreSQL supports these constraints:
+NOTNULL, UNIQUE, PRIMARYKEY, DEFAULT, CHECK & FOREIGN KEY
+
+  a.NOTNULL- does not allow null value to be inserted,
+              can be applied as a column level constraint
+  b.UNIQUE- does not allow duplicate values into the column eg email id
+  c.PRIMARY KEY- combination of not null & unique
+                  we can have only one primary key in a table eg: empid
+  d.DEFAULT-  can be assigned default value using the DEFAULT option.
+             eg:the hire date of the employee is treated as the current date 
+                while storing details in the employee table if no value is
+                provided explicitly.
+  e.CHECK- check condition before inserting or updating data for a givn column
+          eg: need to check the sarlary of evey employee is within a particul
+              range of values.
+d.Foreign key:  a table can have multiple foreign key constraints.
+
+CREATE TABLE
+
+CREATE TABLE departments
+( department_id NUMERIC PRIMARY KEY,
+  department_name VARCHAR(20));
+
+CREATE TABLE employees
+ ( employee_id NUMERIC PRIMARY KEY,  #
+   first_name VARCHAR(20) NOT NULL,  #ensure not be e,pty
+   last_name VARCHAR(20) NOT NULL,
+   email_id VARCHAR(20) UNIQUE, #unique emailid
+   phonenumber VARCHAR(20), 
+   hire_date DATE DEFAULT CURRENT_DATE, # if no value is set for hiredate it is et to current date by default
+   job_id VARCHAR(20),
+   salary NUMERIC CHECK (salary > 0 ),  #check sal is greater than zero
+   manager_id NUMERIC REFERENCES employees, # #managerid is a foreignkey that refer to employeeid of the sametable
+   ON DELETE SET NULL ON UPDATE SET NULL, #If an employee_id which is referred in the manager_id column is removed or updated then the corresponding manager_id will be set to null.
+   commission_pct numeric(2,2)
+);
+
+CREATE TABLE job_history
+( employee_id NUMERIC,
+  start_date DATE,
+  end_date DATE,
+  job_id VARCHAR(20),
+  department_id NUMERIC REFERENCES departments 
+  ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT emp_date PRIMARY KEY (employee_id,start_date),
+  CONSTRAINT empid_fk foreign key (employee_id) references employees 
+  ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT job_hist_date CHECK (start_date < end_date)
+);
+
+
+                
+                
+
+
+
+
+
+
+
+
+
