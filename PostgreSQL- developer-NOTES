@@ -73,7 +73,7 @@ PostgreSQL supports the following datatypes:
                b. Date - Date(no time of day)
                c. time[(p)] with time zone - time of day only, with time zone
                d. interval[fields][(p)] - 12bytes
-Array type
+5.Array type
 -----------------------------------------------
 CONSTRAINTS: to ensure only valid values are stored into the table for a given 
               column
@@ -93,7 +93,7 @@ NOTNULL, UNIQUE, PRIMARYKEY, DEFAULT, CHECK & FOREIGN KEY
   e.CHECK- check condition before inserting or updating data for a givn column
           eg: need to check the sarlary of evey employee is within a particul
               range of values.
-d.Foreign key:  a table can have multiple foreign key constraints.
+  d.Foreign key: A table can have multiple foreign key constraints.
 
 CREATE TABLE
 
@@ -103,7 +103,7 @@ CREATE TABLE departments
 
 CREATE TABLE employees
  ( employee_id NUMERIC PRIMARY KEY,  #
-   first_name VARCHAR(20) NOT NULL,  #ensure not be e,pty
+   first_name VARCHAR(20) NOT NULL,  #ensure not be empty
    last_name VARCHAR(20) NOT NULL,
    email_id VARCHAR(20) UNIQUE, #unique emailid
    phonenumber VARCHAR(20), 
@@ -127,6 +127,19 @@ CREATE TABLE job_history
   ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT job_hist_date CHECK (start_date < end_date)
 );
+
+COMMIT:
+  used to save the changes made to data in the tables. commit the transcation 
+while we are processing it to avoid warnings.
+
+In Postgres, none of the SQL commands are auto-comitted
+(unless the autocommit option is set to ON) in contrast to other 
+databases where DDL commands do not need to commit explicitly.
+
+In Postgres, after every SQL command, a COMMIT should be issued even 
+if it is a DDL or any DML command.
+
+
 
 
                 
