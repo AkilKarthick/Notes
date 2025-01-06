@@ -127,7 +127,7 @@ CREATE TABLE job_history
   ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT job_hist_date CHECK (start_date < end_date)
 );
-
+-------------------------------------------------------
 COMMIT:
   used to save the changes made to data in the tables. commit the transcation 
 while we are processing it to avoid warnings.
@@ -138,6 +138,74 @@ databases where DDL commands do not need to commit explicitly.
 
 In Postgres, after every SQL command, a COMMIT should be issued even 
 if it is a DDL or any DML command.
+
+ROLLBACK:
+ To undo the transction that are not committed or saved.
+will abort all the ongoing transactions
+-------------------------------------------------------------------
+ALTER:
+  We can add, remove or make any changs to the columns in the table
+  syntax : ALTER TABLE table_name <alter_action>;
+note: modifying constraint is not possible with alter command.
+
+ADDING A NEW COLUMN:
+        ALTER TABLE employees
+        ADD department_id NUMERIC REFERENCES departments 
+        ON DELETE SET NULL ON UPDATE SET NULL;
+
+DROPING THE COLUMN:
+        syntax: ALTER TABLE table_name DROP COLUMN column_name;
+        eg: ALTER TABLE employees DROP COLUMN commission_pct;
+
+RENAMING THE COLUMN:
+        syntax: ALTER TABLE table_name 
+                RENAME COLUMN column_name TO new_column_name;
+
+CHANGING/DROPING THE COLUMN'S DATATYPE:
+        ALTER TABLE table_name ALTER COLUMN [SET NOT NULL| DROP NOT NULL];
+eg: To add a NOT NULL constraint to a column
+      >ALTER TABLE employees ALTER COLUMN department_id SET NOT NULL;
+  To remove a NOT NULL constraint from a column
+     > ALTER TABLE employees ALTER COLUMN department_id DROP NOT NULL;
+
+ASSIGNING/DROPOING THE DEFAULT VALUE:
+
+ALTER TABLE table_name ALTER COLUMN [SET DEFAULT value | DROP DEFAULT];
+
+EG: 1.To set a default value for a column:
+    >ALTER TABLE employees ALTER COLUMN department_id SET DEFAULT 1;
+    2.To remove the default value from a column:\
+    >ALTER TABLE employees ALTER COLUMN department_id DROP DEFAULT;
+
+ADding a constraint:
+      ALTER TABLE table_name 
+      ADD CONSTRAINT constraint_name constraint_definition;
+
+eg: ALTER TABLE employees ADD CONSTRAINT 
+    employees_salary_check CHECK (salary > 0);
+
+Renaming a table:
+      ALTER TABLE table_name RENAME TO new_table_name;
+-------------------------------------------------------------------
+DROP COMMAND: to remove an exisiting table form the database.
+
+syntax: DROP TABLE [IF EXISTS]  table_name [CASCADE| RESTRICT];
+
+CASCADE: hint remove the dependency 
+If the table you are trying to drop is having any foreign key
+constraints referenced by child tables, then CASCADE option removes
+all the other dependent objects automatically.
+
+RESTRICT: This option refuses to drop the objects if there are
+any dependent objects on it. When nothing is specified, by default
+RESTRICT is used
+
+eg: DROP TABLE IF EXISTS job_titles;
+
+--------------INTRODUCTION TO DML STATMENTS------------------
+
+
+
 
 
 
