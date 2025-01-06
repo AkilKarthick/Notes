@@ -208,13 +208,39 @@ DATA MANIPULATION LANGURAGE : TO INSERT, UPDATE(MODIFY) OR DELETE DATA ALREADY
 INSERTED INTO THE TABLE.
 1.INSERT: postgree allows to insert multiple records at a time.
 2.UPDATE: to modify existing data in the table
+3.DELETE: delete existing records from the table
 
+INSERT: 
+INSERT INTO departments (department_id, department_name) 
+            VALUES(10,'Administration');
+ 
+INSERT INTO departments 
+(department_id, department_name) VALUES(10,'Administration');
+-without specifying columnnames
+INSERT INTO employees 
+  VALUES(100,'Steven','King','SKING@gmail.com','515.123.4567','06/17/2023','Administration',26400,null,null,10);
 
+Adding multiple records: {rounded braces, separated by comma}
 
+INSERT INTO job_history 
+values
+(101, '2017-09-09', '2022-04-14', 'HR', 11), 
+(102, '2016-06-05', '2021-08-09', 'Admin', 10);
 
+--Postgree alos support inserting values from another table 
 
+  INSERT INTO tablename(value1,value2,...)
+SELECT column1,column2,...
+FROM another_table
+WHERE condition;
 
-                
+eg: INSERT INTO employees(employee_id, name, department_id)
+SELECT employee_id, name, department_id
+FROM new_employees
+WHERE hire_date > '2023-01-01';
+
+----UPDATE COMMAND---
+
                 
 
 
