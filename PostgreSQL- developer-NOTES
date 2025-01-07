@@ -1,28 +1,27 @@
 PostgreSQL- developer-NOTES
 
-introduction of PostgreSQL
-  introduced in 1996 aslo knwn as Postgres
-  it is an Object relation database managment system ORDBMS
-  lightweight and open source & support multiple OS support
-  support Large and Complex database's & support Critical applicatins
-FEATURES OF POSTGRESQL:
-  support various datatypes
-  an open sources so low maintenance cost
-  support a wide variety of Native library Interfaces
-  also support obect-oriented features like inheritance/abstractions
-  Extensible- 
-  multi-vesion concurrency control (MVCC)
+Introduction of PostgreSQL--
+    Introduced in 1996 aslo knwn as Postgres
+    it is an Object relation database managment system ORDBMS
+    lightweight and open source & support multiple OS support
+    support Large and Complex database's & support Critical applications.
+FEATURES OF POSTGRESQL--
+    support various datatypes
+    an open sources so low maintenance cost
+    support a wide variety of Native library Interfaces
+    also support obect-oriented features like inheritance/abstractions
+    Extensible- 
+    multi-vesion concurrency control (MVCC)
 
-Features of Postgres:
-
-Use of PostgreSQL for very large datasets.
-Support for multiple operating systems including Windows, Linux, MacOS, Solaris and others.
-Reduced cost of maintenance because of its stability.
-Provides native library interfaces so it can easily be integrated with popular programming languages such as C/C++, Java, DotNet, Perl and Python.
-Supports various data types to represent numeric values, strings, date types and BLOBs(Binary Large Objects) such as audio, video and images.
-Can be used to implement object-oriented features such as inheritance, polymorphism and so on which other relational databases do not have.
-It is extensible thereby allowing users to create their own user-defined datatypes (UDTs).
-Support for Multi-Version Concurrency Control (MVCC) mechanism in order to manage consistency with concurrent access provided to various users.
+Features of Postgres--
+  Use of PostgreSQL for very large datasets.
+  Support for multiple operating systems including Windows, Linux, MacOS, Solaris and others.
+  Reduced cost of maintenance because of its stability.
+  Provides native library interfaces so it can easily be integrated with popular programming languages such as C/C++, Java, DotNet, Perl and Python.
+  Supports various data types to represent numeric values, strings, date types and BLOBs(Binary Large Objects) such as audio, video and images.
+  Can be used to implement object-oriented features such as inheritance, polymorphism and so on which other relational databases do not have.
+  It is extensible thereby allowing users to create their own user-defined datatypes (UDTs).
+  Support for Multi-Version Concurrency Control (MVCC) mechanism in order to manage consistency with concurrent access provided to various users.
  
 
 HOW TO INSTALL POSTGRESQL & USE OF PGADMIN4 TOOL
@@ -301,20 +300,41 @@ FROM table_name
 ORDER BY column1,column2 ASC/DESC;
 
 eg:
-SELECT employee_id, first_name, salary
-FROM employees
-ORDER BY salary desc;                 
+    SELECT employee_id, first_name, salary
+    FROM employees
+    ORDER BY salary desc;                 
 
 implementing ORDER BY Clause
 eg2:
-SELECT department_id, first_name, salary
-FROM employees
-ORDER BY department_id ASC, salary DESC;
+  SELECT department_id, first_name, salary
+  FROM employees
+  ORDER BY department_id ASC, salary DESC;
 
 eg3; SELECT * FROM employee LIMIT 3 OFFSET 2;
-PICKUP 3 RECORDS STARTING FROM 2ND POSITION.
+  PICKUP 3 RECORDS STARTING FROM 2ND POSITION.
 
+WHERE CLAUSE: filter the fetch data from the table
 
+Syntax:
+    SELECT column1, column2,...
+    FROM table_name
+    WHERE condition;
+
+Postgree supports opertions:
+mathematical Operation
+AND, OR, IN| NOT IN, BETWEEN, LIKE- for pattern matching.
+PostgreSQL also supports few operators
+1.IS NULL | IS NOT NULL
+2.LIMIT
+3.OFFSET 
+
+EG: select salary FROM employees
+    limit 1 offset 2 order by salar desc - this willl display 3rd highest salar 
+
+Functions:
+a.String concatenation  eg: SELECT 'Post||grSQL'
+b.Char_length(String)   eg: SELECG char_length('jose');
+c.Position(substr in string) eg:SELE
 
 
 
