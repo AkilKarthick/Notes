@@ -332,9 +332,119 @@ EG: select salary FROM employees
     limit 1 offset 2 order by salar desc - this willl display 3rd highest salar 
 
 Functions:
+String function--
 a.String concatenation  eg: SELECT 'Post||grSQL'
-b.Char_length(String)   eg: SELECG char_length('jose');
-c.Position(substr in string) eg:SELE
+b.Char_length(String)   eg: SELECT char_length('jose');
+c.Position(substr in string) eg:SELECT position('om' in thomas) #3
+
+Number Function--
+> SELECT |/(25) - squre root of the give number
+> SEELCT power(9,3) - return a^b , power(a,b)
+> SELECT mod(25,5) - returns 0 the remainder after dividing y/x 
+
+DATE FUNCTION--
+syntax: now        eg: SELECT now()
+    justify_days(interval)  egz: SELECT justify_days(interval '35 days')  output 1month 5 dyas
+    Extract(field from source)    eg:select extract(year from hire_date) from employees   output: 1 years
+
+SELECT first_name,salary, hire_date 
+FROM employees
+WHERE EXTRACT (YEAR FROM hire_date) = 2003;
+
+GROUP BY CLAUSE:
+
+SELECT department_id, job_id, sum(salary)
+FROM employees
+GROUP BY department_id,job_id;
+
+HAVING CLAUSE:
+ to filter the values based on the condition. 
+having clause is used for grouping
+this works with GROUP_BY statement.
+
+eg:
+SELECT count(employee_id), department_id
+FROM employees
+GROUP BY department_id
+HAVING count(employee_id) > 3;
+
+Difference between the WHERE and HAVING clause
+---------------
+HAVING CLAUSE 
+    will work on the grouped data values generated after
+    implementing the GROUP BY clause.
+WHERE clause 
+    will perform the filter operation based on the condition 
+    for individual rows before GROUP BY clause.
+
+SELECT count(employee_id), department_id
+FROM employees
+GROUP BY department_id
+HAVING count(employee_id) > 3;
+-----------
+
+SELECT column1, aggregate(column2) 
+FROM table_name
+WHERE condition
+GROUP BY columnname
+HAVING condition;
+
+EG:
+SELECT department_id, count(employee_id) 
+FROM employees 
+WHERE department_id > 10
+GROUP BY department_id 
+HAVING count(employee_id) < 3;
+
+GROUPING SET:
+GROUPING SET works with the single or multiple fields
+given in the GROUP BY clause
+
+eg:
+
+SELECT department_id, job_id, COUNT(employee_id)
+FROM employees
+GROUP BY GROUPING SETS (department_id, job_id);
+
+ROLL UP:
+PostgreSQL also supports ROLLUP to calculate subtotals on
+grouped values as well as the grand total of all the values
+in the column. Extra column will be added to the table to display
+the subtotal and the grand total
+
+SELECT column1, column2, aggregate_function(column)
+FROM table_name
+GROUP BY ROLLUP(column1,column2);
+
+CUBE: 
+
+ROLLUP is used to calculate the grand total and subtotal of 
+the first column specified. In addition to that CUBE calculates
+the grand total and subtotal for all the column values specified.
+
+SELECT department_id, job_id,count(employee_id)
+FROM employees
+GROUP BY CUBE(department_id, job_id);
+
+introduction to set operators-------
+ set operators which works on multiple queries and 
+provide the single output.
+UNION-        ALL distinct rows selected by either query
+UNION ALL-     all rows slsected by either query, icluding all duplicates
+INTERSECT-    all distince row selected by both queries
+EXCEPT-       all distinct row that are selected by the first select statment
+                are not selected in the second SELECT statmenet.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
