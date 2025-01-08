@@ -476,11 +476,157 @@ but not availbrl in job_historytable
 SELECT employee_id, job_id FROM employees
 EXCEPT
 SELECT employee_id, job_id FROM job_history;
-
+--------------------------------------------------------
 introduction to joins--
 
-a.INNER JOIN - COMMON VALUE FROM BOTH THE TABELS BASED ON CONDITION
-B.OUTER JOIN - 
+a.INNER JOIN - COMMON VALUE FROM BOTH THE TABLES BASED ON CONDITION
+SYNTAX:
+SELECT column1, column2..
+FROM table_name1 t1  [INNER] JOIN table_name2 t2
+ON t1.columnname = t2.columnname;
+
+EG: 
+SELECT first_name, department_name, e.department_id
+FROM employees e JOIN departments d
+ON e.department_id = d.department_id;
+-------------
+OUTER JOIN:
+LEFT OUTER JOIN - FETCH  common data from both the table along with left table
+RIGHT OUTER JOIN - Fetch commn data from both the table along with right table
+FULL OUTER JOIN- all the values from both the table will be fetched
+
+syntax:
+SELECT column1, column2, ...
+FROM table_name1 t1  LEFT OUTER JOIN table_name2 t2
+ON t1.column_name = t2.column_name;
+eg:
+SELECT first_name,department_name, e.department_id 
+FROM departments d LEFT OUTER JOIN employees e
+ON e.department_id = d.department_id;
+------------------
+SELF JOIN: TO RETRIEVE DATA FROM SAME TABLE
+           SELF JOIN IS USED WITH IN INNER JOIN & OUTER JOIN
+            SELF JOIN USES UNARY RELATIONSHIP
+SYNTAX:
+SELECT t1.column_name, t2.column_name ...
+FROM table_name1 t1 JOIN table_name t2
+ON t1.column_name = t2.column_name;
+
+EG:
+SELECT e.first_name as "EmployeeNames", m.first_name as "ManagerNames"
+FROM employees e JOIN employees m
+ON e.manager_id = m.employee_id;
+
+CROSS JOIN: USED TO RETURN ALL THE RECORDS FROM BOTH THE TABLES 
+            CARTESIAN PRODUCT OF THE RECORDS PERSENT IN BOTH THE
+            TABLES
+If both the table has 10 records available in each, then we get 10 X 10 = 100 
+100 records in the result.
+
+sYNTAX:
+SELECT col_name, col_name1
+FROM table_name1 CROSS JOIN table_name2;
+EG:
+SELECT  ProductName, SubProductName, (Cost + Amount) as TotalCost
+FROM product CROSS JOIN subproduct;
+
+INTRODUCATION TO SUB QUERIES::
+
+Embedding two or more queries together is known as a subquery.
+
+SYNTAX:
+    SELECT column1, column2, ......  FROM table_name
+    WHERE EXPR_OPERATOR ( SELECT column1,.. FROM table_ name);
+
+SUB QUEIRES  TYPESARE 
+    CORRELATED - depends on other query 
+    NON CORELATED  - THAT works independently
+
+single row subquery:
+    if the inner query return only one records
+
+eg:
+    SELECT first_name FROM employees WHERE manager_id = 
+    (SELECT manager_id FROM employees WHERE first_name = 'Maria');
+
+multiple row subquery;
+    if an inner qury return more than one record then we call it as multiple row
+    subquery.
+    (in any all)
+
+eg:
+    SELECT first_name, salary FROM employees
+    WHERE salary < ALL 
+    (SELECT salary FROM employees WHERE job_id = 'Administration');
+
+Correlated subqueries:
+THE INNER QUERY DEPENDS UP ON THE COLUMN OF THE OUTER QUERY
+EG:
+    SELECT first_name,salary FROM employees e1
+    WHERE salary = 
+    (SELECT max(salary) FROM employees e2
+    WHERE e2.department_id = e1.department_id);                          
+
+
+EXIT OPERATOR: reurn boolean values depending upon the no of records returned
+                by the inner query
+The EXISTS operator will test if the record is available or not in a query
+EG:
+SELECT first_name FROM employees e1
+WHERE EXISTS 
+(SELECT 'X' FROM employees e2 WHERE e2.manager_id = e1.employee_id);   
+
+NOT EXISTS
+The NOT EXISTS operator is a negation to the EXISTS operator.
+If the inner query returns zero records then this operator returns TRUE
+else it returns FALSE
+
+EG:
+SELECT department_names FROM departments d1
+WHERE NOT EXISTS 
+(SELECT 'X' FROM employees e1 WHERE e1.department_id = d1.department_id);
+
+INTRODUCTION TO DATABASE OBJECTS:
+1.VIEW: A LOGICAL SUBSE OF A GIVEN TABLE
+    create view can improve query respose time
+    view are virtual table that are complied at run time
+    views could be looked as an additional layeron a table which
+    enable us to protect intricate sensitive data based upon our needs
+
+SYNTAX:
+    CREATE OR REPLACE VIEW  view_name
+    AS subquery;
+    WITH CHECK OPTION;
+
+with check option: is used to restrict the modification to simple view 
+through where cluase
+
+eg:
+CREATE OR REPLACE VIEW emp_view
+AS
+SELECT employee_id, first_name,department_id FROM employees
+WHERE department_id = 10 WITH CHECK OPTION;
+OUTPUT:
+CREATE VIEW
+QUERY RETURNED SUCCESSFULLY IN 243 MSEC.
+
+INDEX:
+which is used for random access.
+Rather than doing a sequential search on a table
+can be created on multiple columns
+unique index is created on the columns having unique or primary key constrainst
+
+eg:
+CREATE INDEX indx1
+ON employees(first_name);
+
+SEQUENCES:
+
+WHICH GENERATE UNIQUE INTEGER VALUES AUTOMATICALLY. IT WORKS WITH PRIMARY KEY
+COLUMN IN THE TABLE
+
+THE CYCLE CLAUSE IS SPECIFY THAT THE OBJECT should restart from the minimum
+value when its maximum value is exceeded.
 
 
 
