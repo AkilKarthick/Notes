@@ -429,13 +429,58 @@ GROUP BY CUBE(department_id, job_id);
 introduction to set operators-------
  set operators which works on multiple queries and 
 provide the single output.
-UNION-        ALL distinct rows selected by either query
-UNION ALL-     all rows slsected by either query, icluding all duplicates
+UNION-        ALL distinct/unique recrods/rows  from the table ,selected by either query
+UNION ALL-    All rows selected by either query, icluding all duplicates
 INTERSECT-    all distince row selected by both queries
 EXCEPT-       all distinct row that are selected by the first select statment
                 are not selected in the second SELECT statmenet.
+--------------------------
 
+A.UNION: TO FETCH THE UNIQUE RECORD FROM THE TABLE
+& combine data from tables
+SYNTAX:
+SELECT column1, column2, .... FROM table1
+UNION
+SELECT column1, column2, .... FROM table2;
 
+EG:
+SELECT employee_id,job_id FROM employees 
+UNION
+SELECT employee_id,job_id FROM job_history;
+
+B.INTERSECT: TO FETCH THE COMMON VALUES FROM BOTH THE TABLES SPECIFIED
+ SYNTAX: 
+
+SELECT column1, column2, .... FROM table1
+INTERSECT
+SELECT column1, column2, .... FROM table2;
+
+EG:
+SELECT employee_id,job_id FROM employees
+INTERSECT 
+SELECT employee_id,job_id FROM job_history;
+
+EXCEPT:
+to find the difference among the tables also called difference operator
+compare two tables and fetch unique values from the 1st table avoid the common
+values and the unique value of 2nd table
+
+Synatx:
+SELECT column1, column2, .... FROM table1
+EXCEPT
+SELECT column1, column2, .... FROM table2; 
+
+eg:
+this wil retrieved the employeeid and job if available from employe teble
+but not availbrl in job_historytable
+SELECT employee_id, job_id FROM employees
+EXCEPT
+SELECT employee_id, job_id FROM job_history;
+
+introduction to joins--
+
+a.INNER JOIN - COMMON VALUE FROM BOTH THE TABELS BASED ON CONDITION
+B.OUTER JOIN - 
 
 
 
