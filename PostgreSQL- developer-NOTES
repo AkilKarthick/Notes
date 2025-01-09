@@ -13,7 +13,10 @@ FEATURES OF POSTGRESQL--
     Extensible- 
     multi-vesion concurrency control (MVCC)
 
+Default postgreSQL sever number is 5432
+
 Features of Postgres--
+
   Use of PostgreSQL for very large datasets.
   Support for multiple operating systems including Windows, Linux, MacOS, Solaris and others.
   Reduced cost of maintenance because of its stability.
@@ -40,10 +43,10 @@ wherein writes never block reads and vice-versa.
 This is achieved through Multi Version Concurrency Control (MVCC)
 mechanism that makes PostgreSQL different from other related databases. \
 
---INTRODUCTION TO DDL STATEMENT--
+-INTRODUCTION TO DDL STATEMENT--
 
 >CREATE DATABASE DATABASE_NAME
-eg: CREATE DATABASE BrandBucket;
+    eg: CREATE DATABASE BrandBucket;
 
   CREATE-CREATE THE TABLES OR VIEW SEQUENCE INDEX OTHER DATABASE OBJECTS
   ALTER- CHANGE THE STRUCTURE OF THE TABLE LIKE ADDING NEW COLUMN OR DROPPING IT SO ON
@@ -627,6 +630,25 @@ COLUMN IN THE TABLE
 
 THE CYCLE CLAUSE IS SPECIFY THAT THE OBJECT should restart from the minimum
 value when its maximum value is exceeded.
+
+------------------
+pg_hba: host-based authenctication file is used for client authenctication
+pg_indnt is used for mapping
+Postgresql.conf file is used to store the configuration values/option
+postmaster.pid store information related to server process
+
+
+Tools & utilities::
+
+query tree- output of rewritter in query processing.
+pg_basebackup- is used for file system backup.
+pg_ctl - utility that can be used to initialise an new database cluster
+dtemplate0 - efault database which is unmodifiable
+\dt - meta command you will use to list table in postgreSQL
+
+client application/utlities:
+
+
 
 
 
