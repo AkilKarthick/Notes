@@ -649,6 +649,130 @@ dtemplate0 - efault database which is unmodifiable
 client application/utlities:
 
 
+--------------PostgreSQL admininstration essetntials_-----
+
+intitalizing PGDATA:
+
+ database clustoer- a single direcoty under which all data 
+                        will be stored
+initdb - intializ data direcot for a datbase clustoer
+        and instruct postmaster to startup using that data clustoer
+
+pg_controldata[datadire] display control informationof a postgresql database
+                            clustor
+
+Starting and Stopping PostgreSQL:
+
+pg_ctl application:
+ to be run by the used who runs the application backend 
+can be used to start,stop,restart or check on the status of  postgreSQL
+--------------------------------
+Sys V-style script
+    run by the root user
+    strting,stopping and status checking of postgresql
+     known to work with most Red Hat based versions of Linux.
+using sys v-style script instead of manually invoking pg_ctl is advantageous
+it simplifies system starup and shutdown procedure
+-------------------------------
+System Architecture:
+processs per used - client server model
+every user conssist of :
+    postmaster- a supervisor daemon proces
+    use front end applcation eg psql prgm
+    onr or more backend database servers (the postgres process itself)
+------------------------------
+the client process
+         two parts: client application & client interface library
+        prostgre comes prepacked with CLI called " psql "
+
+client interface library
+        is the way that eaach of those applicaion
+        can talk to postgres server & convert sql querie 
+------------------
+
+PostgreSQL clients:
+use inteerface
+command line driven --psql  : installed by default
+            syntax to install: psql dbname usedname
+graphical alternative --pgAccess
+
+---------
+server processes
+1. postmaster
+    a thread run constaly
+    all calls to db
+    when it receive a call from client it creates a backend process
+once the process is created it link the postgres client and postgres process
+so that they are no longer have to communicate through the postmaster
+
+postgreSQL instance: consist of set of process & memory
+    process: uuse backend process
+    memory: buffer
+---------------
+configuration files
+default copy is installed when db cluster dirctory is instaleld
+a.show config_file: will locate config file
+b.prostgresql.config: loads the config variable 
+c.pg_hba.config: host based access file
+d.pg_ident.config: os used mappig file
+
+a.initdb - intilaz the db directory
+b.pg_ctl - controlling the db server mainly starting & stopping
+c.postmaster - db server itslef
+d.pg_hba.config - host based authentication configuration
+psql - sql command line client
+
+----------------
+connections:
+
+local- unix, domain socket
+host - tcp/ip both ssl or no ssl
+hostssl - only ssl
+hostnossl - server ssl
+------------
+
+Authentication:
+trust
+reject
+md5: require client to supply an md5 encrypted pwd for authenti
+peer: 
+ident:ident server obtain the os user name of the client
+--------------
+
+Login to postgresql:
+peer authenctication:  a local connection
+                    client os user name from kernal and used it as db name
+                    for mapping
+password authencation: are md5 pwd, pwd is sent across the connecions
+namely md5 hased and clear test 
+-----------------
+creating a database:
+postgresql install 2 defalut template db template0 and template1
+a new db is cloned form on of these templates
+2 methods for creating a new db
+the CREATE DATABASE SQL COMMAND
+CREAETEDB COMMAND LIND EXECUTABLE
+-----------
+removing a database:
+the DROP DATABASE SQL COMMAND
+THE dropdb command line executable
+---------------------
+maintenaing a dtabse
+physical maintenance
+analytical maintenance- to incre perfromacne
+database object documentation
+to add to the maintainability and clarity of the schema
+
+VACCUM SQL COMMAND for maintenanve 
+postgresql offer COMMENT allow documentaion of any db object
+
+till pag no 40
+
+
+                    
+
+
+
 
 
 
