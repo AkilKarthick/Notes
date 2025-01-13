@@ -54,10 +54,10 @@ mechanism that makes PostgreSQL different from other related databases. \
 
 CREATE TABLE: 
 ---------------------------------------------
-CREATE TABLE table_name
-(col_name datatype [column constraint],
- [table_constraint table constraint]
-)[INHERITS (existing_table_name)];
+    CREATE TABLE table_name
+    (col_name datatype [column constraint],
+     [table_constraint table constraint]
+    )[INHERITS (existing_table_name)];
 ---------------------------------------------
 Syntax enclosed in a [ ] bracket is optional. Also, the INHERITS clause
 is used to create a new table by reusing the structure of an existing table
