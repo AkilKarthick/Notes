@@ -1,0 +1,118 @@
+Java Spring Boot Microservices Tutorial with MySQL | Backend E-commerce App | API Gateway & Eureka
+-----------------------------
+demo E-commerce microservice architecture
+
+there are two micro service
+microservice1     microservice2
+product service & order service
+product db         order db
+
+postman client for testing http methods(get post put delet)
+step1 postman request --> api gateway(common URL FOR ALL MIRCSERVICE)
+--> LOADBALANCER--> WILL ROUTE THE MICROSEVICE'S
+--WE ARE going to used eureka server (spring cloud server)
+for service discovery and registration
+
+api gateway for common url for all microservie
+no need to specific local.portno:8081 or 8082
+--------------------------------------------
+what is mircro service?
+it is a desin apporocah where an application is divided into
+small independent services, each focused on a single business 
+capability.
+for eg: in an e-commercce system
+product service.mamnage product details
+order service: handler order
+each service can run independely and communcate with other via 
+api's
+------------------------------------------------------
+Technologies used:
+  springboot 3+
+  spring data jpa - for database communcation purposel
+  spring cloud eureka server - for spring cloud
+  spring cloud gateway  -- for routing
+  spring cloud netflix eureka client
+  mySQL database
+  eclise ide
+  maven 
+  postman client
+------------------------------------------------------
+  product service
+  order service
+  discovery server: acts as the service registry(Eureka)
+  api gateway: routes requrest to the appropriate microservice
+---------------------
+step2:
+create a discvoery server | an eureka server project
+
+------------------------
+add dependice:
+  eureka server -- ie spring cloud discovery  netlix server
+  springboot dev tools -- for automatic restarting the application
+-------------------------------
+configure appication.propeties file
+
+  spring.applicaiton.name= eureka-server
+  server.port=8761  // eureka default server
+  eureka.client.register-with-eureka=false //
+  eureka.client.fetch-registry=false
+  eureka.instance.prefer-ip-address=true // 
+----------------------------
+
+add @EnableEurekaServer anntation in main class
+to start the server 
+
+localhost:8761 in browser to see the eureka server dashboard
+http://localhost:8761/  
+
+system status and instanve curretnly registerd with eureka
+applicaaton status up or down
+prefer ip address also we give in prop file
+-----------
+create database in mySQL
+
+
+create database product_db_m;
+create database order_db_m
+
+----
+create another springboot proj product service
+
+<dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+</dependency>
+
+
+now in applicatin.pro
+
+	spring.application.name=product-service
+
+	spring.datasource.url=jdbc:mysql://localhost:3306/product_db_m
+	spring.datasource.username=root
+	spring.datasource.password=MADgod[0]
+spring.datasource.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+orelse give this -------------------------------------------
+
+spring.datasource.username=root
+	spring.datasource.password=MADgod[0]
+	spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+	
+	## JPA & Hibernate properties
+	spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+	spring.jpa.hibernate.ddl-auto=update
+	spring.jpa.show-sql=true
+	
+	## Additional properties to ensure proper dialect configuration
+	hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+#eureka configuration
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+eureka.client.register-with-eureka=true
+eureka.client.fetch-register=true
+eureka.instance.prefer-ip-address=true
+	
+
