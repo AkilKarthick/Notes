@@ -1,0 +1,37 @@
+sql interview quetions - top 15 
+
+1. what is diff btwn dbms and rdbms?
+  dbms - database management system - basic way to store data in files
+  rdbms- Relational dbms eg mysql interconnected data's
+          faster retrival & reduce redundancy support multiple users
+2. what is primary key & forign key?
+    primay key is unique one
+    foreign key is to connect two tables link two tables
+    helps you to connect data across tables, ensureing that records in one table
+    can reference related informatino in another
+3.what are constraints and their types?
+    sql is like rules you setup for the data in your tables
+        types:---
+        1.NOT NULL - a column can't be empty
+        2.UNIQUE - shouldhave distint data
+        3.PRIMARY KEY-  it combine not null & unique constraint
+        4.foreign key- links table together
+        5.Check - helps you to set a condition eg age>18
+        6.Default- take default value when on value is mentioned
+4.explain DDL & DML command?
+
+DDL: define the structre of the database. not with the actual data
+  Creating, altering & deleting
+        create table employee
+        alter table employee
+        drop table employee - even deleting a whole table is possible by drop
+
+DML: working with the actual data
+      INSERT   insert into tablename(name,emil) Values ('lk','lkajd@dk') 
+      UPDATE   update tablename
+      DELETE    delete from tablename
+
+5.Difference between DELETE & DROP & TRUNCATE statements?
+DELETE - removing a specific based on certain condition 
+DROP
+TRUNCATE
