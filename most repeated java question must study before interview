@@ -238,7 +238,7 @@ System.out.println("next" students.peack)
       for .equals()
          it will check if two objects have the same data. specific for strings
 
-21.Describe java memory model and how memory is allocated?
+14.Describe java memory model and how memory is allocated?
 
 in java memory is allocated in two types
    a.Heap - 
@@ -248,7 +248,7 @@ in java memory is allocated in two types
       each thread in java has its own stack memory.
       Stack memory is generally limited and temporary.
 
-hOW MEMORY IS ALLOCATEDD?
+15.hOW MEMORY IS ALLOCATEDD?
    1. object creation: the jvm first determine the size of the object based on its fields.
    2. heap allocation: then jvm allocated a stack of memory from the heap.
    3. initialization: the ojects fields are initialized to their default values.
@@ -256,7 +256,7 @@ hOW MEMORY IS ALLOCATEDD?
    5.Garbage collection: it periodically scan the heap for objects that are no longer
                         recheable by any active threads
 
-HOW DOES GARBAGE COLLECTION WORK IN JAVA?
+16.HOW DOES GARBAGE COLLECTION WORK IN JAVA?
       It is the automated process that frees up memory by removing objects that are no longer
    in use or is being accessible by the program
    1.AUTOMATIC MEMORY MANAGEMENT: garbage collectors which operates inside the Jvm MANAGES garbage
@@ -265,31 +265,30 @@ HOW DOES GARBAGE COLLECTION WORK IN JAVA?
    3.MARK & SWEEP PROCESS: MARK marks the objects as "in use" which is actively referenced.
                            unmarked objects are eventully deleted.
 
-23.WHAT IS LAMBDA EXPRESSION AND HOW IT IS USED IN JAVA?
+17.WHAT IS LAMBDA EXPRESSION AND HOW IT IS USED IN JAVA?
 
-it is a consious way to represent an anonymous function
-Syntax: (parameters)-> expression
-(int a ,int b)-> a+b
+      it is a consious way to represent an anonymous function
+      Syntax: (parameters)-> expression
+      (int a ,int b)-> a+b
+      
+      public static void main(String[] args){
+         new Thread(new Runnable(){
+         @Override
+         public void run(){
+            System.out.println("Thread is running")
+         }
+         }).start();
+      
+      //using lambda
+      new Thread(()-> Ssytem.out.println("Thread is running")).start();
+      }
+-------------------------------------------------
+18.EXPLAIN THE IMPORTANCE OF SYNCHRONIZED KEYWORD?
 
-public static void main(String[] args){
-   new Thread(new Runnable(){
-   @Override
-   public void run(){
-      System.out.println("Thread is running")
-   }
-   }).start();
-
-//using lambda
-new Thread(()-> Ssytem.out.println("Thread is running")).start();
-}
-
-EXPLAIN THE IMPORTANCE OF SYNCHRONIZED KEYWORD?
-
-Ensures that only one thread can access the synchronized session of the code
-at a time, blocking other threads until the lock is released.
-
-for eg:
-deadlock..
+      Ensures that only one thread can access the synchronized session of the code
+      at a time, blocking other threads until the lock is released.
+      for eg:
+      deadlock..
 
 class counter{
    //if ? a global variable ie anybody can access it right??
@@ -338,16 +337,17 @@ Syste.out.println(counter.getCount());
 //we used snchornized should be 200
    }
 }
-
-EXPALIN THE VOLATILE KEYWORD IN JAVA?
+-------------------------------------
+19.EXPALIN THE VOLATILE KEYWORD IN JAVA?
 
     when the varilable is marked as volatile, cjhanges made to the variable by 
    one thread are immiediatly visible to other threads
    volatile also ensures that the varlues of the variable is always fetced
    from the main memory and not from the thread local cahce
+
 main memory - means heap memory
 stack memory - is temporary .
-
+--------------Example
 class Counter{
    private Volatile boolean flag = false;
    public void toggleFlag(){
@@ -367,11 +367,12 @@ public class demo{
    }
 }
 
+----------------------------------------------
+20.WHAT ARE STREAMS IN JAVA AND HOW ARE THEY USED?
 
-WHAT ARE STREAMS IN JAVA AND HOW ARE THEY USED?
-   streams in java is a pipeline that makes it easier to filter, tranform &
-   collect data from collections.
-   streams can process parallel, achieving multi core processors for performance
+         streams in java is a pipeline that makes it easier to filter, tranform &
+         collect data from collections.
+         streams can process parallel, achieving multi core processors for performance
 
 For Eg:
 public class demo{
@@ -384,7 +385,7 @@ public class demo{
       modifiedList.forEach(System.out::println);
 }
 
-27.WHAT ARE JAVA ANNOTATION AND HOW DO THEY WORK?
+21.WHAT ARE JAVA ANNOTATION AND HOW DO THEY WORK?
 
    the metadata tags added to code elements like classes, method & fields
 to provide additional information.l
@@ -393,7 +394,7 @@ eg @Override
 @SuppresWarnings("unchecked" rawtypes etc...)- to avoid unnecessary waring
 @FunctionalInterface- only one method should be there in an interface
 
-28.AUTOBOXIG AND UNBOXING
+22.AUTOBOXIG AND UNBOXING
    AUTOBOXING: the automatic conversion of primitive types into
                corresponding wrapper class (eg int to Integer)
    UNBOXING: converts an object of a wrapper classs back into its
@@ -407,9 +408,9 @@ eg int num=5;
    System.out.println(numOjbect.getClass()); /class java.lang.Integer
 
 
-28. WHAT IS THE PURPOSE OF TRANSIETN KEYWORD IN SERIALIZATION?
-   serialization is the process of converting an objects state into
-a byte stream, allowing it to be saved to a file, sent over a n/w, etc.
+23. WHAT IS THE PURPOSE OF TRANSIETN KEYWORD IN SERIALIZATION?
+         serialization is the process of converting an objects state into
+      a byte stream, allowing it to be saved to a file, sent over a n/w, etc.
 
 eg serailaiztino    || a|| ---> ||b||  here data being transfered by broken down into small perice 
 
@@ -419,136 +420,162 @@ Transietn keyword
 
 for eg
 
-class user implements Serializable{  // which means it can be broken down
-      private String username;
-      private transient String passoword; // which cannot be broken down so 
-                                       // we are using transient 
-public user(String username, String passord){}
-      this.userame= username;
-      ..
-}
+      class user implements Serializable{  // which means it can be broken down
+            private String username;
+            private transient String passoword; // which cannot be broken down so 
+                                             // we are using transient 
+      public user(String username, String passord){}
+            this.userame= username;
+            ..
+      }
+--------------------------------------------------------
+24.WHAT IS THE DIFFERENCE BETWN STRING AND STRINGBUILDER?
 
-WHAT IS THE DIFFERENCE BETWN STRING AND STRINGBUILDER?
+      String- once a sting object is created, its values cannot be changed
+              ie immutable one
+               also when you try to modify a String a completly new obj is create that the 
+                drawback of String
+     
+      StringBuilder- value can change the values of the object after it's created 
+                        ie mutable one
 
-String- once a sting object is created, its values cannot be changed
-ie immutable one
-also when you try to modify a sting a completly new obj is create that the 
-drawback of String
-StringBuilder- value can change the values of the object after it's created 
-ie mutable one
+      String name= "Akil";
+      Ssytem.out.println(name);
+      name = name+ "is a goodboy";
+      System.out.println(name); here concatend and new object is created!!\
 
-String name= "Akil";
-Ssytem.out.println(name);
-name = name+ "is a goodboy";
-System.out.println(name); here concatend and new object is created!!\
-
-StringBuilder sb = new StringBuilder("Hello");
-sb.append("workd"); // here no new object is created we are jsut modify existing
+      StringBuilder sb = new StringBuilder("Hello");
+      sb.append("workd"); // here no new object is created we are jsut modify existing
 
 
-----------------------------------------------------------------------------------
- 1.why pointer is not used in java
+------------------------------------
+ 25.why pointer is not used in java
  
- we know jvm is responsbile for memory allocation in java, to stop direct access to memory in java pointer is discourged
- and they are unsafe
+       we know jvm is responsbile for memory allocation in java,
+      to stop direct access to memory in java pointer is discourged
+       and they are unsafe
  
- 2.what is jit compiler?
+ 26.what is jit compiler?
 
 ---------concluseion------------
-so jdk is for developer to create java applications
-jre is for used to run java application
-------------
- from --scr code to (jdk for conversion) --byte code
- from --byte code to (jvm for conversion (insidee jvm we have[jit compiler and interpreter])) --machine code
+      so jdk is for developer to create java applications
+      jre is for used to run java application
+      
+       from --scr code to (jdk for conversion) --byte code
+       from --byte code to (jvm for conversion (insidee jvm we have[jit compiler and interpreter])) --machine code
+      
+      jdk--java development kit that provide all the tools required to
+       develop,complile and run the java app
+       jdk we have
+       compiler - 
+       debugger
+       jre - bunch of libraries
+      
+      jvm- java virtual machine
+       key component - memory management = allo/deallo memory for the applcation
+       -garbage collection = automatically  cleans up unused memory
+       -security = 
 
-jdk--java development kit that provide all the tools required to
- develop,complile and run the java app
- jdk we have
- compiler - 
- debugger
- jre - bunch of libraries
+27.what are access modifier?
 
-jvm- java virtual machine
- key component - memory management = allo/deallo memory for the applcation
- -garbage collection = automatically  cleans up unused memory
- -security = 
+     a. public - if a class, method or variable is public is can be access anywhere
+     b. private - elements is accessible within the class 
+     c. protected- accessible within same package and by sub class
+               use this when you want to give access to the sub class, even they are ins
+                  differnet package
+      d.default - when nothing is specifed java applies default
+            no modifier when you want to limit access to class within the same package
+            but keep members hidden from classes in other package
 
-
-what are access modifier?
-
-public if a class, method or variable is public is can be access anywhere
-private - elements is accessible within the class 
-protected- accessible within same package and by sub class
-         use this when you want to give access to the sub class, even they are ins
-differnet package
-default - when nothing is specifed java applies default
-      no modifier when you want to limit access to class within the same package
-but keep members hidden from classes in other package
-
-
+ 28.what is marker interface?
  
- 3.what is marker interface?
- 
- an interface which has no data member and member fucntions 
-simply an empty interface eg serializable , cloneable etc
-then why dont we have it, means it tells the compiler that someting to do with it
-particular thing to do to for jdk and compiler
+       an interface which has no data member and member fucntions 
+      simply an empty interface eg serializable , cloneable etc
+      then why dont we have it, means it tells the compiler that someting to do with it
+      particular thing to do to for jdk and compiler
 
  hint ctrl shift t
  public interfcae Cloneable{
  }
 
-4. can we override private or static method in java??
+28. can we override private or static method in java??
 
-we cannot overrid privat method- we can only create another private methid
-with same name in the child class
+      we cannot overrid private method- we can only create another private method
+      with same name in the child class 
+If you define a method in a subclass with the same signature as a private method in the superclass, 
+it's considered a completely new method in the subclass.
 
-for static method if you override then it will hide the supercalss method
-known as method hidding...
+      no u cannot ovveride static method
+      for static method if you override then it will hide the supercalss method
+      known as method hidding...
 
-5. Does finally alwas execute in java?
-
-not in the following case
-1. "System.exit()" function  when we cally it explicitally
-2. system crash
-
-6. what method does object class have?
-
-clone()
-equals()
-finalize()
-hashcode() return hascode value for the oject
-getClass()
-
-7.what is singleton class in java? how can we make a class singleton??
- only one instance is created at any givenn time in one JVM
-
-
-public class Animal{
-private static Animal single_instance = null;
-
-private Animal(){
+eg
+class Animal{
+      public static void sound(){
+                  "woff-woof";
+      }
+}
+class Dog extends Animal{
+public static void sound(){
+                  "whooo";
+      }
+}
+public class Main{
+      public static void main(String[] args){
+            Animal .sound(); //woff-wooff
+            Dog.sound(); //whoo
+      }
 }
 
-public static Animal getIntance(){
- if(single_instance ==null)
-   single_instance = new Animal();
-}
- return single_insatnce;
-}
+29. Does finally always execute in java?
 
-1st make sure make your constructo as private to make sure nobody can create any
-then to create one oject, we have to crearte one
+      not in the following case
+      jvm can teminatin when we used 
+      1. "System.exit()" function  when we call it explicitally
+      2. system crash
 
-2nd,  public static Animal single_instance= null;
+      try{
+            System.out.println("inside a");
+            System.exit(0);// this will terminate the jvm
+      }finally{
+            System.out.println("not get printed")
+      }
 
-3rd we have to create a static block for the same which will return the same class oject
+30. what method does object class have?
 
------
+      clone()
+      equals()
+      finalize()
+      hashcode() return hascode value for the oject
+      getClass()
+-----------------------------------------------------------------------
+31.what is singleton class in java? how can we make a class singleton??
+      
+      1st make sure make your Contructor as private to make sure nobody can create any
+      then to create one oject, we have to crearte one      
+      2nd,  public static Animal single_instance= null;      
+      3rd we have to create a static block for the same which will return the same class oject
+           
+only one instance is created at any givenn time in one JVM
+EG:
+            public class Animal{
+      // Step 2: Create a private static instance of the class
+            private static Animal single_instance = null;
+      // Step 1: Make the constructor private
+            private Animal(){
+            }
+       // Step 3: Provide a public static method to get the instance
+            public static Animal getIntance(){
+             if(single_instance ==null)
+               single_instance = new Animal();
+                  }
+             return single_insatnce;
+            }
+-------------------------------------------------
+32.is java is pass by value or pass by reference??
 
-is java is pass by value or pass by reference??
-
-pass by value-- sending memory address of the value
-pass by reference-- reather than passing real memory address, 
-                     it send the copy in another mem location
+java is pass by value
+      pass by value-- sending memory address of the value
+      pass by reference-- reather than passing real memory address, 
+                           it send the copy in another mem location
 
