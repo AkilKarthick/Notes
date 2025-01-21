@@ -180,65 +180,63 @@ Queue<String> students = new LinkedList<>();
 System.out.println("current" students.poll)
 System.out.println("next" students.peack)
 
+10.describe checked and unchekced exception?
 
-------------------------------------------------------------------------
-describe checked and unchekced exception?
+      Exception in java - are issues that arise during progm executino which distrupt the normal
+                          flow of the application
+      types of exception
+      
+      a.checked exception - some predefined declared in java libraries eg arrayoutofIndex expceiton etc...
+            that must be handled at compile time, as they represent predicitabe issues
+      b.unchecked exception - it is not officlay declared in java libraries
+            occurs at run time, dosen't require explicit handling,often arising from
+            logical errors or unexpceted conditions
 
-Exception in java - are issues that arise during progm executino which distrupt the normal
-flow of the application
-types of exception
+11.how do you create a custom Exception in java?
 
-a.checked exception - some predefined declared in java libraries eg arrayoutofIndex expceiton etc...
-      that must be handled at compile time, as they represent predicitabe issues
-b.unchecked exception - it is not officlay declared in java libraries
-      occurs at run time, dosen't require explicit handling,often arising from
-      logical errors or unexpceted conditions
-
-how do you create a custom Exception in java?
-
-class InvalidAgeException extends Exception{
-      public InvalidAgeException(String message){
-            super(message);
+      class InvalidAgeException extends Exception{
+            public InvalidAgeException(String message){
+                  super(message);
+            }
       }
-}
-public class A{
-   public static void checkAge(int age) throws InvalidAgeException{
-         if(age<15 || age > 30 ) throw new
-         invalidAgeException(age + "is not allowed sorry!")
-         else System.out.println("alway wlcm")
-   }
-}
-public static void main(String[] args){
-   try{
-      checkAge(10);
-   }catch(invalidAgeException e)
-      e.printStackTrace();
-}
+      public class A{
+         public static void checkAge(int age) throws InvalidAgeException{
+               if(age<15 || age > 30 ) throw new
+               invalidAgeException(age + "is not allowed sorry!")
+               else System.out.println("alway wlcm")
+         }
+      }
+      public static void main(String[] args){
+         try{
+            checkAge(10);
+         }catch(invalidAgeException e)
+            e.printStackTrace();
+      }
 
-explain try catch and finally block?
+12.explain try catch and finally block?
    try block- the code that might throws an arror is kept inside the try block
    catch block- for handling the exceptions
    finally block- it executes regardless whateve happn in try-catch it execute anyways
 
-20.describe == and .equlas() in java?
+13.describe == and .equlas() in java?
 
-   string a = new String("hello"); //point to a memory location
-   String b = new String("hello"); //point to a memory location
-   System.out.println(a==b); //false
-even thought the content is same but a and b point to differnt-
-      -memory location so techincally it's different
-      System.out.println(a.equals(b));
-
-but for other primitive data types
-   int a=10;
-   int b=10;
-   system.out.println(a==b); it is true 
-
-so Equality operator (==)
-   check two refernce variable point to the same memory location
-
-for .equals()
-   it will check if two objects have the same data. specific for strings
+         string a = new String("hello"); //point to a memory location
+         String b = new String("hello"); //point to a memory location
+         System.out.println(a==b); //false
+      even thought the content is same but a and b point to differnt-
+            -memory location so techincally it's different
+            System.out.println(a.equals(b));
+      
+      but for other primitive data types
+         int a=10;
+         int b=10;
+         system.out.println(a==b); it is true 
+      
+      so Equality operator (==)
+         check two refernce variable point to the same memory location
+      
+      for .equals()
+         it will check if two objects have the same data. specific for strings
 
 21.Describe java memory model and how memory is allocated?
 
