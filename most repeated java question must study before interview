@@ -65,19 +65,22 @@ types
 
 7.how is method overloading is different from method overriding?
 
-a.method overloading -
-   same method name, different parameters, determined at compile time
-b.method overriding-
-   same methodname, and same parameters but implmented in subclass, runtime determination.
+        come's under polymorphism oops concept
+      a.method overloading -
+             creating multiple methods with the same name 
+             but different parameters within a class.determined at compile time
+      b.method overriding-
+         same methodname, and same parameters but implmented in subclass, runtime determination.
+         subclasses providing their own implementation of inherited methods from the parent class
 
-epalin the different between final & finally keyword?
+8.Explain the different between final & finally keyword?
 
 final--keyword
    in variable- once assigned their value cannot be changed
    in method- which cannot be overriden by sub class
    in class- cannot be subclassed
 
-finally ?
+finally ? // whatever happen this finally block will executed
 eg 
          try{
             int sum = 10/0;
@@ -86,14 +89,51 @@ eg
             e.printStackTrace();
          }finally{
          System.out.println("this will be executed regardless")
-         } // whatever happen this finally block will executed
+         }
 
-what are java collections and why are they importatnt?
 
-list-
-set-
-map-
-queue-
+9.what are java collections and why are they importatnt?
+
+----java collections----------------
+to store the data in more efficient way
+it is a framework procide several types of colletions
+data structures. They are used to store, manipulate and retrieve aggregate data.
+
+Advantages 
+      can grow or shrink dynamically
+      built in algorith for sorting & searching
+      addition and deletion of evelemt in a given position is easier
+below interface's
+      List- Ordered collection that allows duplicate elements.
+            Access elements by their index   //ArrayList, LinkedList etc
+      Set - Unordered collection 
+            that does not allow duplicate elements. //HashSet, LinkedHashSet, TreeSet
+      Map- stored key-value and each key should be uniquec
+           //HashMap, LinkedHashMap, TreeMap, Hashtable
+      Queue- ordered collection that follows fifo or priority based ordering principle
+
+----------------------choose the right option-----------
+
+      ArrayList: efficietn for Random access
+                  Use for fast access to elements by index. 
+                  time consueing bcz of bit shiffiting
+      LinkedList: Use for frequent insertions and deletions.
+                  no shifting is required bcz of dobule linked implentation
+      Vector: for synchronized and thread safe
+                  
+
+      HashSet: Use for fast membership testing (checking if an element exists).
+               stored in a hashtable, no order is maintained
+                  it accept null values
+      TreeSet: Use for storing elements in a sorted order.
+      LinkedHasSet: for natural order
+
+      HashMap: Use for fast key-value lookups.
+      LinkedHashMap: Use for maintaining insertion order of elements.
+      TreeMap: Use for storing elements in a sorted order based on keys.
+
+hashtable: if we used multiple thread ie synchronized better to used hash table
+-----------------------------------------------------------
 
    List<Integer> student = new ArrayList<>();
    student.add(1);
@@ -139,11 +179,8 @@ Queue<String> students = new LinkedList<>();
    student.add("d");
 System.out.println("current" students.poll)
 System.out.println("next" students.peack)
-----java collections------------------------------------------------------------------
-List- that allows duplicate value
-Set - doesn't allow duplicate value
-Map- stored key value and each key should be unique
-Queue- ordered collection that follows fifo or priority based ordering
+
+
 ------------------------------------------------------------------------
 describe checked and unchekced exception?
 
