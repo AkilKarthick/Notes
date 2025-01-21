@@ -1,65 +1,69 @@
 
-what is java main() method?
-when we execute our java pgm the jvm will looks for main method to begin 
-and only one main metho
-public static void main(String[] args)
+1.what is java main() method?
+      when we execute our java pgm the jvm will looks for main method to begin 
+      and only one main metho
+      public static void main(String[] args)
+      
+      a. String[] args
+         a parameter passes command line argument into java applcation
+      extracting values from the command line in string format ie
+       String[] args = {"1","2"}; these stored in args[0], args[1]
+      later be stored in args array
 
-a. String[] args
-   a parameter passes command line argument into java applcation
-extracting values from the command line in string format ie
- String[] args = {"1","2"}; these stored in args[0], args[1]
-later be stored in args array
+2. static keyword? in main method?
 
-b. static keyword? in main method?
+   to make it as globally access across the class     
+        a. static variable - a public access eg publlic summing pool
+        b. static method - are like shared serverice eg secuity gurad 
+                        any body can access
 
-to make it as globally access across the class
+3.what is abstract class in java?
 
-static variable - a public access eg publlic summing pool
-static method - are like shared serverice eg secuity gurad 
-               any body can access
-
-what is abstract class in java?
-
-            abstract class shape {
+            
+abstract class shape {
               public abstrat void draw();
               public void erase   // a concrete method ie non abstract method
                System.out.println("a"); 
-              }
+               }
             }
             if a subc/ child clas inhert  the shape class
             class circle extends Shape{
-            // the abstract method must be defined here 
+   // the abstract method must be defined here 
                @Override
                public void draw(){
                    System.out.println(drawing a cirvle);
                }
       }
-what is an interface?
+4.what is an interface?
 
    Here every method is by default abstract method
    interface are used to solve the problem of multiple inhertance in java
    multipel inheritace is not possible in java so interface takes place
+   variables in an interface are public, static, and final by default
 
-what is package in java?
+5.what is package in java?
 
-buit in package - predefined classes and interccae like java.util etc 
-user defined package - to keet our poject structured & manageble
-             to  organized the code 
+a.buit in package - predefined classes and interface like java.util etc 
+b.user defined package - to keet our poject structured & manageble
+                         to  organized the code 
 
-what is the used of this keyword in java?
+5.what is the used of this keyword in java?
 
-to refer the curretn instance
-also used to call another constructro within the same class
+a.Accessing instance variables:
+   to refer the current instance (When a local variable within a method has the same name as an instance variable)
+b.this to call another constructor from within a constructor
+also used to call another constructor within the same class
 
-constructor in java?
-when you want to initializes the value that are declared in the class
-it doesn't have a return type 
-always named as the class name
+6.constructor in java?
+      when you want to initializes the value that are declared in the class
+      it doesn't have a return type & always named as the class name
+      automatically called when an object is created using the "new" keyword
+     
 types
-default  construcotr
-parameterized constructor
+      a.default  construcotr eg: 0 for numeric types, null for objects
+      b.parameterized constructor
 
-how is method overloading is different from method overriding?
+7.how is method overloading is different from method overriding?
 
 a.method overloading -
    same method name, different parameters, determined at compile time
