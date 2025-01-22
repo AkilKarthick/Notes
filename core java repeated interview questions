@@ -579,3 +579,26 @@ java is pass by value
       pass by reference-- reather than passing real memory address, 
                            it send the copy in another mem location
 
+TCS interview questions
+33.Explain the concept of object cloning and how it is used in Java?
+
+for EG" 
+class person implements Cloneable{
+      int age;
+      String name;
+
+@override
+protected object clone() throws CloneNotFoundException{
+      return super.clone();
+}
+}
+public class Main{
+      public static void main(String[] args){
+            try{
+                  person p1 = new person(21,"xxx");
+                  person p2 = (person)p1.clone()
+            }catch(CloneNotFoundException e)
+                  e.printStackTrace();
+      }
+}
+
