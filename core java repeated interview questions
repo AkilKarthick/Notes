@@ -582,6 +582,13 @@ java is pass by value
 TCS interview questions
 33.Explain the concept of object cloning and how it is used in Java?
 
+shallow copy: by default clone method did shallow copy
+      just copy the object field as they are
+      if obj contain reference to other obj only ref are copied not the actu obj
+
+Deep Copy:
+      actual objcet are also copied 
+      you need to overrrid clone() method and manually clone the referenced obj
 for EG" 
 class person implements Cloneable{
       int age;
@@ -602,3 +609,56 @@ public class Main{
       }
 }
 
+34.What is the difference between an abstract class and an interface in Java?
+
+abstract class 
+      can have both abstract and concret method
+      support single inheritance, a class can inherit only one abstract class
+      can have final, non final, non sttic variable
+
+eg:
+abstract class Animal{
+      abstract void makeSound();
+      void eat(){
+            System.out.println("eating");
+      }
+
+}
+interface:
+      have only abstract method until java7
+      after java 8 can also have default and static method
+      from java 9 can have private method as well
+      we need to used defualt keyword 
+      variable by default: static and final
+      access modifier public by default
+ EG:
+      interface vehicle{
+            void start();
+            default void stop(){
+                    Ssytem.out.println("stopped");
+            }
+      }
+35.What is a deadlock, and how do you avoid it?
+????
+
+36.What is the difference between an object-oriented programming language and 
+an object-based programming language?
+
+oops: java c++ c# then python 
+object based pL : java script have built in object & class
+
+37.How do you implement a binary search in Java?>
+binary search algorith for finding an item form a sorted list of items
+
+      public class BinarySearch {
+            public static void main(String[] args){
+            int[] array={1,2,3,4,5};
+            int target = 10;
+            int result = Arrays.binarySearch(array,target);
+      
+            if(result <0){
+                  Ssytem.out.println("element not found");
+            }else
+                  System.out.println("foud");
+            }
+      }
