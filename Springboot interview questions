@@ -358,6 +358,14 @@ public void updateUser(Long userID, String email){
     user.setEmail(email);
     userRepository.save(user)
 }
+
+how can you implemetn security in a springboot applicaton?
+
+Expalain the role of the spring boot dev tools?
+
+need to add spring-boot-devtools in pom.xml file
+when you change any thing no need to restart it automatiicaly did it
+
 --------------------------------------------------------------------------------------------------------------------
 1.What is Spring Boot?
   Spring Boot is built on top of the Spring framework to create stand-alone 
