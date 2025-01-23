@@ -40,6 +40,23 @@ springboot:
         we don;t need to write any xml configuration, only few annotation are 
     required to do the configurations
 
+4.WHAT IS SPRING ACTUATOR?
+
+    a set of monitor tool to monitor the springboot app Health.
+    there are variuos endpoints such as health,metrics,info and more
+how do you enable actuator endpoints?
+    spring-boot-starter-actuator: dependencies in pom.xml file
+    endpoints enabled by default
+commonly used actuators:
+    /actuator/health: provide health of app
+    /actuator/metrics: exposed app metrics
+    /actuator/info: cutsom app inform
+    /actuator/env: show prope from the appli env
+how can we secure actuator endpoints in springboot?
+    are sennsitve by default. if not secure then anyone can access it
+    requred appropriate security configuration
+    by authentication & authorization setting in app configuration files
+
 4. WHAT DOES THE -- @SpringBootApplication --annoation do internally?
 
 @SpringBootApplication
@@ -63,17 +80,29 @@ it is  a combinatino of 3 annotations
     3.CONFIGURATION: used to configure the bean and
                     -- packages -- in the class path
 -----------------------------
-6.WHAT ARE SPRINGBOOT STARTERS?
+5.WHAT ARE SPRINGBOOT STARTERS?
+
+    when you include this starter in you applicaion. it inculded commonly used
+    libraries and frm in to a single depeendcny, refduce boiler plate code
+    it contains auto configuration support
+
+commonly used springboot starters?
+    Springboot-starter-web : include RESTful service
+    sprinboot-starter-data-jpa: include spring data jpa & hibernate
+    springboot-starter-security: for security
+    Springboot-starter-test: eg junit or mockito
+
 6. what is springboot dependecny management?
-it will configure automatically without specifying the version
-for any of that dependencies.
+    it will configure automatically without specifying the version
+    for any of that dependencies.
 
 7.it is possible to change of the embedded tomcat server in springboot?
-    yes we can, change the server.port= properties in app.prop files
+    yes we can, change the server.port= 
+    properties in app.prop files
 
 8. what is spring initializer?
-to create a initial springboot prject structure, and provide a
-maven on graddle file to build your code. setting up our project from scratch
+    to create a initial springboot prject structure, and provide a
+    maven on graddle file to build your code. setting up our project from scratch
 
 9. how do you secure a springboot application?
     use @EnableWebSecurity
