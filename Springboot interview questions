@@ -2,20 +2,30 @@
 
     a java based spring fm used for rapid appli development to build standalone
     microservice. it has extrea support of auto configuration and embedded app
-    server like tomcat, jetty etc.
+    server like tomcat, jetty etc. it provides a various dependcy that help
+    to integrateed desired library in the project very easliy by just adding in 
+    pom.xml.
 
 2.DIFFFERENCE BTWN SPRING AND SPRINGBOOT?
+
  Spring:
-a. a wevpplication fm baed on java
-b.provide tools and libraries to create customized web application
-c.spring is more complex thatn springboot
-d.takes an unopionated view
+    a comprehensive fm for building java application. featureslike
+    dependcy injection, aop, transcation management etc
+    configuration through xml file or annotations
+    deveopers need to manuall manage dependice in pom file
+    a. a webpplication fm baed on java
+    b.provide tools and libraries to create customized web application
+    c.spring is more complex thatn springboot
+    d.takes an unopionated view
 -------------------
 springboot:
-a.a module of spring
-b.used to create a spring app project which can just run/eecute
-c.is less comples that spring
-d.takes an optinated view of a platofrm
+    extenstion of the spring fm it reduce the amount of boiler plate configuration
+    provide autoconfi setup the appplicatino based on dependc presnti n class path
+    include "starter" dependencies that bundle commonly used lib& frm 
+    a.a module of spring 
+    b.used to create a spring app project which can just run/eecute
+    c.is less comples that spring
+    d.takes an optinated view of a platofrm
 
 3.FEATURE OF SPRINGBOOT?
   autoconfiguration - 
@@ -23,7 +33,7 @@ d.takes an optinated view of a platofrm
                             making setup easier
   cli - you can create sprgin app using command line
   actuator - to monitor and manage your applications
-  Embeded Servers - like tomacet and many more no need to install any other server
+  Embeded Servers - like tomacet, jetty or undertow and many more no need to install any other server
 advantage of using springboot:
     we don;t need to write any xml configuration, only few annotation are 
 required to do the configurations
