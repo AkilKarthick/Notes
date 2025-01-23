@@ -128,7 +128,27 @@ how do you define a spring bean in a springboot application?
         using annotation like @Component, @Service @Repository
     or by using the @Bean annotaion in a configuraion class
 
+-------the above are not checked--
+
+
+
+
 14. what is the use of @RestController annotaion in springboot?
+    
+    RestController is the specializedd version os @Controller class
+    used to build restfull web service
+    combination of 
+    @Controller :
+    @ResposeBody :
+    indicates that the methods in the class return the response body 
+DIFFERENCE BETWEEN @CONTROLLER & @RESTcONTROLER
+@Controller:
+    to mark a class as spring mvc controller
+    responsible for handling incoming HTTP requests & process them
+@RestController:
+    a specialized version of@Controller for building restful web serv
+    handle http request and return json or xml 
+this have the @ResponseBody annot automatically applied to themd
 
     @Controller- that handle web request and return view names
         it is the combination of @Controller & @ResponseBody
@@ -143,8 +163,74 @@ how do you define a spring bean in a springboot application?
     configurations for imporved experince
 
 15. what is spring data jpa?
+comes under data access layer
+provide cutom queries @Query annoation
+builtin paginatino & sorting
+
+    add> spring-boot-starter_data-jpa in pom.xml file
+    define an entity that maps to database table
+    create a Respository interface that extend JpaReposotiry<entityname,primaydatatype>
+     we can define custom query method here
+    cerate a service to use resposityr  do @Autowired 
+    create a Controller to handle HTTP requests
+
+    for working with relation database & interacting with db and reduce boiler plate
+    code required for common db operions like CRUD and querying database
          java persistence api- it helps you create repositories that handle CRUD
     Operations automaticlaly.
+
+How do you define  a database connection in springboot?
+in application.properties or yml file
+#database configurations
+    spring.datasource.url=
+    spring.datasource.username
+    spring.datasource.passowrd
+    spring.datasource.driver-classname=com.mysql.cj.jdbc.Driver
+
+how can you handle exception in springboot application?
+
+Centralized exception handling with @ControllerAdvice annotation
+you can create a global exception handler classs that catch exception
+thrown by any controler in your application.
+use @ExpcetionHandler methods within it to handle different types of exceptioons
+Custom exception class with @ResponseStatus
+
+For EG:
+1. first create a Custom Exception:
+
+eg public class ResourceNotFoundException extends RuntimeException{
+    public ResourceNotFoundException(String message){
+        super(message)
+    }
+}
+
+create a controller:
+
+@RestController
+@RequestMapping("/api")
+public class MyController{
+
+    @GetMapping("/resource/{id}")
+    public ResponseEntity<String> getResource(2PathVariable String id){
+            if("1".equals(id)){
+                    return ResponsEntity.ok("found");
+            }else{
+                throw new ResourceNotFoundException("not found" + id);
+            }
+    } 
+}
+-----this controller throw exception
+Handler Exception globally: using @ControllerAdvice & @ExceptionHandler to handle
+
+@ControllerAdvice
+public class GlobalException{t
+    
+    @ExceptionHandler
+    public ResponseEntity<String> handlResourNOtfoundException(ResourceNotFoundException ex){
+        return new ResonseEntity<>(ex.getMessage().HttpStatu.NOt_Found);
+    }
+}
+
 
 
 
