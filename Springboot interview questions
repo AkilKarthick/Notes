@@ -286,8 +286,78 @@ public class Myapp{
     }
 }
 
+23. How can you impement cachingin a springboot application?
+            make your app faster, to remember things that already 
+            done by your applicaiton
+steps to implement caching:
 
+    1.Spring-boot-starter-cache in pom.xml file
+    2.@EnableCaching in main class wwhich activate caching
 
+    3. use cache annotations:
+    @Cacheable: method lvel to cache theri results
+                stored in cache
+    @CachePut: updates the cache with the result of the method
+    @CacheEvict: remove data from the cache used for deleting outdated or unused
+
+add: 
+Spring.cache.cache-name=
+spring.cache.caffeline.
+
+24. what is the purpose os the @Scheduled Annotations?
+
+    executed for a regular interval of time
+    including fixed delay using cron expressions
+    a complex scheduling pattern like every day at 6pm.
+
+also do @EnableScheduling annotation on your configuration class
+
+    public class SchduleTask{
+        @Scheduled(fixedRate = 3000)
+        publiv void reprotCurrentTime(){
+            System.out.println("currenttime is"+ System.currentTimeMillis());
+        }
+    }
+
+27. how can you enable cross orgin request in a spring boot application?
+
+    enable cross orgin request in a springboot applicaiton is essential
+for allowing web applicaton hosted on  a diffeernt domains to interact with
+your server. this can be achied using spring security
+and @Crossorgin annotaiton in method leverl or class level
+for endpoints
+
+@RestController
+public class test{
+       @CrossOrigin(origins = "http://localhost:3000")
+        @GetMapping("/data")
+        public String example(){
+            return "cross orgin reuerqt";
+        }
+}
+it allows request from http://localhost:3000 to access the /data endpoiont
+simple frontend application (e.g., using React or Angular) that makes an 
+HTTP request to your Spring Boot backend. If CORS is configured correctly,
+the browser will allow the request.
+
+concept of Spring Boot Actuator metrics?
+to monitor & manage your applicaton
+gather various metics about your applciaon run time behaviour and health
+
+what is the purpose of @Transactional annotation?
+
+    here by marking this method as @Transcation anno
+    make sure either both the name and email are updated or neither 
+    if something goes wrong, it pretned this never happend
+    rolling back the transcation , where no changes are saved
+
+@Transcation
+public void updateUser(Long userID, String email){
+    User user = userReposityr.findById(userID);
+    user.setName(name);
+    user.setEmail(email);
+    userRepository.save(user)
+}
 --------------------------------------------------------------------------------------------------------------------
 1.What is Spring Boot?
   Spring Boot is built on top of the Spring framework to create stand-alone 
