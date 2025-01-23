@@ -28,29 +28,41 @@ springboot:
     d.takes an optinated view of a platofrm
 
 3.FEATURE OF SPRINGBOOT?
-  autoconfiguration - 
-  springboot starter pom - project object model a dependency management 
-                            making setup easier
-  cli - you can create sprgin app using command line
-  actuator - to monitor and manage your applications
-  Embeded Servers - like tomacet, jetty or undertow and many more no need to install any other server
-advantage of using springboot:
-    we don;t need to write any xml configuration, only few annotation are 
-required to do the configurations
+      a.autoconfiguration - 
+      springboot starter pom - project object model a dependency management 
+                                making setup easier
+      b.cli - you can create sprgin app using command line
+      c.actuator - to monitor and manage your applications
+                    have a variety of built in endpoints- such as 
+        health metrices,evnri properties and more
+      d.Embeded Servers - like tomacet, jetty or undertow and many more no need to install any other server
+    advantage of using springboot:
+        we don;t need to write any xml configuration, only few annotation are 
+    required to do the configurations
 
--------------------
+4. WHAT DOES THE -- @SpringBootApplication --annoation do internally?
 
-5. WHAT DOES THE -- @SpringBootApplication --annoation do internally?
+@SpringBootApplication
+public class Myapplication{
+        public static void main(String[] args){
+                springApplication.run(MyApplication.class,args)
+        }
+}
 
 it is  a combinatino of 3 annotations
-@configuration,@EnableAutoConfiguration & @ComponentScan
-    1.EnableAutoConfiguration: configure beans in the class path & scan the dependencies
+@configuration
+@EnableAutoConfiguration & 
+@ComponentScan
+    1.EnableAutoConfiguration: autotic configure your spring app based on dependcies
+                                presentin in the class path
+                            configure beans in the class path & scan the dependencies
                             acccording to the application need.
-    2.ComponentScan: this scan the components(@Service, @Component etc) inthe
+    2.ComponentScan: automatically detect and register beans
+                        this scan the components(@Service, @Component etc) inthe
                         package of annotated class and it's sublclass
     3.CONFIGURATION: used to configure the bean and
                     -- packages -- in the class path
-
+-----------------------------
 6.WHAT ARE SPRINGBOOT STARTERS?
 6. what is springboot dependecny management?
 it will configure automatically without specifying the version
