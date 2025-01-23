@@ -74,12 +74,19 @@ it is  a combinatino of 3 annotations
                                 presentin in the class path
                             configure beans in the class path & scan the dependencies
                             acccording to the application need.
-    2.ComponentScan: automatically detect and register beans
+    2.ComponentScan:  the need for manual bean registariotn is no needed
+                    automatically detect and register beans
                         this scan the components(@Service, @Component etc) inthe
                         package of annotated class and it's sublclass
     3.CONFIGURATION: used to configure the bean and
                     -- packages -- in the class path
 -----------------------------
+
+@ComponentScan: spring will scan the specified package for class's annotated
+with @service,@repo or @controller thenn registed as bean in springapplicaton context
+@ComponentScan(basePackage ="com.examp.demo")
+
+
 5.WHAT ARE SPRINGBOOT STARTERS?
 
     when you include this starter in you applicaion. it inculded commonly used
@@ -95,6 +102,18 @@ commonly used springboot starters?
 6. what is springboot dependecny management?
     it will configure automatically without specifying the version
     for any of that dependencies.
+
+6.concept of Dependency injection in springboot?
+    follows ioc principle
+we can do a filed injection,setter injectino & construcot injection
+@Autowired
+
+for example
+a service class required repo clas to access db
+instead of instntiating the repo clas inside service class, 
+springboot inject this depencny through the annotation @Autowired
+
+ anothery way is to used @Inject
 
 7.it is possible to change of the embedded tomcat server in springboot?
     yes we can, change the server.port= 
@@ -187,13 +206,13 @@ in application.properties or yml file
     spring.datasource.passowrd
     spring.datasource.driver-classname=com.mysql.cj.jdbc.Driver
 
-how can you handle exception in springboot application?
+How can you handle exception in springboot application?
 
-Centralized exception handling with @ControllerAdvice annotation
-you can create a global exception handler classs that catch exception
-thrown by any controler in your application.
-use @ExpcetionHandler methods within it to handle different types of exceptioons
-Custom exception class with @ResponseStatus
+    Centralized exception handling with @ControllerAdvice annotation
+    you can create a global exception handler classs that catch exception
+    thrown by any controler in your application.
+    use @ExpcetionHandler methods within it to handle different types of exceptioons
+    Custom exception class with @ResponseStatus
 
 For EG:
 1. first create a Custom Exception:
@@ -231,6 +250,41 @@ public class GlobalException{t
     }
 }
 
+22. explain the concept of Profile in springboot?
+        you can have differnet confi for dev, tesing, production etc
+        to make it available only in certain environments 
+        for actvating profile:
+        setting an evn variable before staring your applciaton
+        use JVM system property 
+        specigy in your applicaton.properites or yml file 
+        with spring.profile.active
+
+@Service
+@Profile("dev")
+public class DevService{
+    public String getMesg(){
+        return "devplnt "
+    }
+}
+@Service
+@Profile("prod")
+public class prodService{
+    public String getMesg(){
+        return "prod "
+    }
+}
+-activate profiles using||  spring.profiles.active=dev
+
+or set the active profile in main class of springbooot application
+
+@SpringBootApplication
+public class Myapp{
+    public static void main(String[] args){
+        SpringApplication app = new SpringApplication(Myapp.class);
+//      app.setAdditinLProfile("dev");
+        app.run(args);
+    }
+}
 
 
 
