@@ -1,1 +1,84 @@
 java8-feature theory notes
+
+what is java 8?
+an advanced version of traditional java programming language and platform
+launced on 2014, it is develper friedndly
+
+1.what is lambda expression? 
+  it is a type of function without a name called anonymous function
+  thye can be only applied to single abstract method or functioninterface
+  it is a functional programming, less boiler placte code
+  before lambda sorting and similar operation in java often required implemetation of comparaotr interface 
+
+syntax: (parameters) -> expression
+
+Eg:
+    @FunctionalInterface
+    interface MathOperation{
+      int operation(int a, int b);
+    }
+//without lambda exprression
+    public class LambdaExample{
+      public static void main(String[] args){
+        MathOperation addition= new MathOperation(){
+            @Override
+            public int operation(int a, int b){
+                return a + b;
+            }
+        };
+          System.out.println("addition" + 
+                        addition.operation(1,2));
+      }
+    }
+
+//with lambda expression
+
+ public class LambdaExample{
+      public static void main(String[] args){
+        MathOperation addition= (a,b) -> (a+b);
+          System.out.println("addition" + 
+                        addition.operation(1,2));
+      }
+    }
+------------------------------------------------------
+eg2:
+public class LambdaExample{
+    public static void main(String[] args){}{
+          ArrayList<Integer> li = new ArrayList<>();
+          li.add(1);
+          li.add(2);
+          li.add(3);
+          //using lambda expression
+          li.forEach((n)-> System.out::println(n));
+    }
+}
+----------------------------------
+what is the purpose of Stream API?
+to process collections of data in a functional & declarative way
+a pipeline of operations is introduced through which one can fileter,map,sort
+and reduce data without changing the orginal collection.
+
+what is default method?
+we can add new functionalites/method to interface without breaking existing
+implmentation.
+
+what is optinal class represent?
+to avoid NUllpointer exception 
+
+what is functinal interface?
+lambda expression are used to define functiona interface. it is an interface with
+single abstract method. eg Runnable interface is FI with sinle method run().
+
+importance of stream api
+
+how does new date and tima api work
+
+role of nashorn in java8
+
+method reference in java8
+
+use of ForEach in java8
+
+difference between Map & FlatMap?
+
+how is parallel stream different from stream?
