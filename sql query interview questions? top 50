@@ -1,3 +1,11 @@
 sql query interview questions? top 50
 
 1. How to find the scond Highest salary of an employee?
+
+EmpNo|sal
+1      5000
+2      4000
+3      3000
+
+select max(sal) form emp
+where sal not in (select max(sal) from emp)
