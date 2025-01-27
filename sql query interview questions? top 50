@@ -9,3 +9,6 @@ EmpNo|sal
 
 select max(sal) form emp
 where sal not in (select max(sal) from emp)
+
+select max(sal) form emp
+where sal < (select max(sal) from emp)
