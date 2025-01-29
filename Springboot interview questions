@@ -396,6 +396,7 @@ d.Actuator –
 
 e.Embedded Servers – 
     Spring Boot contains embedded servers like Tomcat and Jetty 
+    no need to setup/configure dispacher serverlet ...
     for quick application run. No need of external servers.
 
 3.Advantages of using springboot?
@@ -424,3 +425,11 @@ Feature   --   Spring  --  Spring Boot
 Ease of use --  More complex --  Easier
 Production readiness -- Less production-ready -- More production-ready
 Scalability --Less scalable --More scalable
+--------------------
+
+Top 10 interview question 
+
+1.how springboot autoconfiguration works internally?
+2.difference btwn spring, spring mvc & springboot?
+3.ico & dependncy injection ?
+4.thr spring bean lif cycle in action?
