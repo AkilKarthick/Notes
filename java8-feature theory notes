@@ -1,14 +1,31 @@
 java8-feature theory notes
 
-what is java 8?
-an advanced version of traditional java programming language and platform
-launced on 2014, it is develper friedndly
+1.what is java 8?
+  an advanced version of traditional java programming language 
+  and platform launced on 2014, it is develper friedndly
+  it is a function programming which is enabled by lambda expre
+  to create a concise code(line of code should be lessl)
 
-1.what is lambda expression? 
+2. Features in java 8?
+  lambda expression, stream API, default method in the interface.
+  static method, fuctional interface, Optinal, method reference
+  Date API
+
+Advantage of using it?
+  compact code(less boiler plate code)
+  more readable & reusable code
+  more testable code
+  parallel code
+
+---------------------------  
+3.what is lambda expression? 
   it is a type of function without a name called anonymous function
+(without name, return type & access modifier)
   thye can be only applied to single abstract method or functioninterface
   it is a functional programming, less boiler placte code
-  before lambda sorting and similar operation in java often required implemetation of comparaotr interface 
+foreg:
+  before lambda sorting and similar operation in java often 
+required implemetation of comparaotr interface 
 
 syntax: (parameters) -> expression
 
@@ -42,16 +59,45 @@ Eg:
     }
 ------------------------------------------------------
 eg2:
-public class LambdaExample{
-    public static void main(String[] args){}{
-          ArrayList<Integer> li = new ArrayList<>();
-          li.add(1);
-          li.add(2);
-          li.add(3);
-          //using lambda expression
-          li.forEach((n)-> System.out::println(n));
+    public class LambdaExample{
+        public static void main(String[] args){}{
+              ArrayList<Integer> li = new ArrayList<>();
+              li.add(1);
+              li.add(2);
+              li.add(3);
+              //using lambda expression
+              li.forEach((n)-> System.out::println(n));
+        }
     }
+
+another example:
+--normal 
+public void add(int a, int b){
+    System.out.println(a+b);
 }
+using lambda
+(a,b)->System.out.println(a+b);
+----------------------------
+3.can we create our own functional interface?
+    1.create an interface
+    2.annotate that with @FunctionalInterface
+    3.Define exactly one Abstract method
+    4.there is no restriction on num of static & default metho in interfaCE
+also java expectlily know that if we put one abstract in interface
+then it condier that as a functional interfce
+
+4.what are default method?
+
+adding new method to the interface without affecting the implementing
+class. 
+interface animal{
+  void legs();
+  default void eye(){
+    syso("two eye")
+  }
+}
+also we can ovveride defaault method & provide own implementation
+
 ----------------------------------
 what is the purpose of Stream API?
 to process collections of data in a functional & declarative way
