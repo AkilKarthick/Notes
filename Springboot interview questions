@@ -126,6 +126,14 @@ springboot inject this depencny through the annotation @Autowired
 9. how do you secure a springboot application?
     use @EnableWebSecurity
     using spring security. add spring-boot-starter-sercuurity dependncy
+
+    this dependeny provides the foundteation component of securing your
+application. Features provide by this are
+Authenticaion, autohrization & security configurations
+
+jwt: for creating and verifiying json web tokens
+features: token creation, token validation & claims handlings
+
     and configure security settings using websecurity configure adapter.
 
 10. what is starter dependencies?
