@@ -662,3 +662,57 @@ binary search algorith for finding an item form a sorted list of items
                   System.out.println("foud");
             }
       }
+
+----Design pattern in java----
+
+i.Singleton Design pattern in java 
+
+31.what is singleton class in java? how can we make a class singleton??
+      
+      when we need one object to control things in the whole system
+      1st make sure make your Contructor as private to make sure nobody can create any
+      then to create one oject, we have to crearte one      
+      2nd,  public static Animal single_instance= null;      
+      3rd we have to create a static block for the same which will return the same class oject
+           
+only one instance is created at any givenn time in one JVM
+EG:
+            public class Animal{
+      // Step 2: Create a private static instance of the class
+            private static Animal single_instance = null;
+      // Step 1: Make the constructor private
+                 so no other class can instantiate it
+            private Animal(){
+            }
+       // Step 3: Provide a public static method that returns the
+                  instance of the class
+            public static Animal getIntance(){
+             if(single_instance ==null)
+               single_instance = new Animal();
+                  }
+             return single_insatnce;
+            }
+---------
+32. Factory method design pattern in java?
+
+ it is an creational design pattern-
+      this provide an interface/abstract class-
+      -for creating object in a superclass. but allows subclasses to 
+alter the type of objects that will be created.
+this pattern promotes loose coupling by eliminationg the need to 
+bind applicaton-specific classes into the code.
+      step1: create an abstract/interface
+      step2: create concrete class exteinding the above clas
+      step3: create factory class/ client class
+            to generate objects of concre class 
+
+33. what is observer design pattern in java?
+
+It is a behavioural design pattern  that defines one to many
+dependncy between objects.
+when one obj change it's state all its dependent(observer) are updated
+automatically.
+
+
+
+
