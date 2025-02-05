@@ -712,7 +712,7 @@ It is a behavioural design pattern  that defines one to many
 dependncy between objects.
 when one obj change it's state all its dependent(observer) are updated
 automatically.
-
+--------------------------
 
 
 
