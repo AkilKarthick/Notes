@@ -720,10 +720,10 @@ automatically.
 responsible for create object/controls the creations of objects
 
 a.Prototype Pattern:
-used when we have to make copy/Clone from existig object.
+used when we have to make copy/clone from existig object.
 
 for Eg; hint: how you can do clone of an object
-             for a private instance variabel alos consider a situation
+             for a private instance variable alos consider a situation
 where you have 100 of inst variable how come your clone object know which are all
 need to worrie about what are client need to  leaved and copied?
 
@@ -790,5 +790,132 @@ public class Main {
             Student cloneObj = (Student) obj.clone();
       }
 }
+-------------------------------------------------
+SINGLETON PATTERN
+      it is used when we have to create only 1 instance of the class.
+four ways to achieve this.
+      1.eager initialization
+      2.lazy 
+      3. Synchronized Method & 
+      4.Double Locking (used in the industry)
 
+1. you have to restrict the creation of object
+creating the constructr as private
+2.expose one method which other class can call it
+ie static method- so call it thorugh class name
 
+Eager initialization: simply called load time initialization!!
+            public class DBConnection {
+            //eager initializtino in the instance variable as static
+            and eagerly insitilized it!!
+            //when the class will load this static obj get also intitilized
+            
+                  private static DBConnection conObject = new DBConnection();
+            //creating the constructr as private
+                  private DBConnection(){
+                  }
+            //this method ruturn makure sure only one obj is created
+                  private static DBConnection getInstance(){
+                        return conObject;
+                  }
+            }
+            public class main {
+                  public static void main(String[] args){
+                  DBConnection connObject = DBConnection.getInstance();
+                  }
+            }
+
+2.Lazy initialization:
+
+public class DBConnection {
+      private static DBConnection conObject = null;      
+      private DBConnection(){
+      }
+      public static DBConection getInstance(){
+            if(conObject == null){
+                  conObject = new DBConnection();
+            }
+            return conObject;
+      }
+}
+what if 2 thread comes simulatencoly so both will find conObject is null!!!
+so two object is created so there is a problem in lazy initialization
+
+3.Synchronized Method:
+
+public class DBConnection {
+      private static DBConnection conObject = null;      
+      private DBConnection(){
+      }
+// Synchronized will put a lock
+wait for one thread to create new object next !!!
+     Synchronized public static DBConection getInstance(){
+            if(conObject == null){
+                  conObject = new DBConnection();
+            }
+            return conObject;
+      }
+}
+problem in synchronized is first time it will put a lock
+then next time. do the rest
+
+d.Double Locking: 
+
+public class DBConnection {
+      private static DBConnection conObject = null;      
+      private DBConnection(){
+      }
+
+      public static DBConection getInstance(){
+//two time check things
+//
+            if(conObject == null){
+//puting a lock
+                  Synchronized(DBConnection.class){
+                  if(conObject == null){
+                        conObject = new DBConnection();
+                  }
+            }
+            return conObject;
+      }
+}
+-----
+FACTORY PATTERN:
+used when all object creation and it's business logic we need to
+keep at one place.
+
+For EG:
+
+public interface Shape {
+      public void computerArea();
+}
+
+public class Square implements Shape{
+      @Override
+      public void computeArea(){
+            System.out.println("Compute square area")
+      }
+}
+
+public class Circle implements Shape{
+      @Override
+      public void computeArea(){
+            System.out.println("Compute Circle area")
+      }
+}
+
+public class ShapeInstanceFactory {
+      public Shape getShapeInstance(String value){
+
+      if(value.equals("Circle")){
+            return new Circle();
+      }
+      else if(value.equals("Square")){
+            return new Square();
+      }
+      else if(value.equals("Rectangle")){
+            return new Rectange();
+      }
+      return null;
+      }
+}
