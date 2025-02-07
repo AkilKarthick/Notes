@@ -663,7 +663,7 @@ binary search algorith for finding an item form a sorted list of items
             }
       }
 
-----Design pattern in java----
+----Design pattern in java---- there are around 23 design pattern
 
 i.Singleton Design pattern in java 
 
@@ -714,5 +714,77 @@ when one obj change it's state all its dependent(observer) are updated
 automatically.
 --------------------------
 
+2/7/2024
+
+1.CREATIONAL DESIGN PATTERN :
+responsible for create object/controls the creations of objects
+
+a.Prototype Pattern:
+used when we have to make copy/Clone from existig object.
+for Eg; hint: how you can do clone of an object
+             for a private instance variabel alos consider a situation
+where you have 100 of inst variable how come your clone object know which are all
+need to be leaved and copied?
+
+public class Students{
+      int age;
+      private int rollNumber;
+      String name;
+
+      Student(){
+      }
+Student(int age, int rollNumber, String name){
+      this.age = age;
+      this.rollNumber = rollNumber;
+      this.name= name;
+`  }
+}
+public class Main {
+      public static void main(String[] args){
+//orginal object
+      Student obj = new Student(20,112,"akil");
+//creating clone of object 
+      Student cloneObj = new Student();
+      cloneObj.name = obj.name;
+      cloneObj.age = obj.age;
+// the problem is rollNumber is private 
+      cloneObj.rollNumber = obj.rollNumber; 
+      }
+}
+
+solution: 
+
+create one prototype <<Interface>> clone() & all the class implement
+the interface & implement clone() method.
+
+EG: 
+public interface Prototype {
+      Prototype clone();
+}
+
+public class Students implements Prototype{
+
+      int age;
+      private int rollNumber;
+      String name;
+
+      Student(){
+      }
+Student(int age, int rollNumber, String name){
+      this.age = age;
+      this.rollNumber = rollNumber;
+      this.name= name;
+`  }
+
+@Override
+public Prototype clone() {
+      return new Student(age,rollNumber,name);
+}
+
+public class Main {
+      public static void main(String[] args){
+            Student obj = new Student(20, 75, "Ram")
+      }
+}
 
 
