@@ -721,10 +721,11 @@ responsible for create object/controls the creations of objects
 
 a.Prototype Pattern:
 used when we have to make copy/Clone from existig object.
+
 for Eg; hint: how you can do clone of an object
              for a private instance variabel alos consider a situation
 where you have 100 of inst variable how come your clone object know which are all
-need to be leaved and copied?
+need to worrie about what are client need to  leaved and copied?
 
 public class Students{
       int age;
@@ -778,12 +779,15 @@ Student(int age, int rollNumber, String name){
 
 @Override
 public Prototype clone() {
+//create a new student obj with all my properties!!
       return new Student(age,rollNumber,name);
 }
 
 public class Main {
       public static void main(String[] args){
-            Student obj = new Student(20, 75, "Ram")
+            Student obj = new Student(20, 75, "Ram");
+//now cloning!
+            Student cloneObj = (Student) obj.clone();
       }
 }
 
