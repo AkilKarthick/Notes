@@ -767,11 +767,11 @@ EG:
 1.CREATIONAL DESIGN PATTERN :
 responsible for create object/controls the creations of objects
 
-a.Prototype Pattern:
-used when we have to make copy/clone from existig object.
+A.PROTOTYPE PATTERN:
+      used when we have to make copy/clone from existig object.
 
 for Eg; hint: how you can do clone of an object
-             for a private instance variable alos consider a situation
+             for a private instance variable also consider a situation
 where you have 100 of inst variable how come your clone object know which are all
 need to worrie about what are client need to  leaved and copied?
 
@@ -839,7 +839,7 @@ public class Main {
       }
 }
 -------------------------------------------------
-SINGLETON PATTERN
+2.SINGLETON PATTERN
       it is used when we have to create only 1 instance of the class.
 four ways to achieve this.
       1.eager initialization
@@ -848,9 +848,9 @@ four ways to achieve this.
       4.Double Locking (used in the industry)
 
 1. you have to restrict the creation of object
-creating the constructr as private
+   creating the constructr as private
 2.expose one method which other class can call it
-ie static method- so call it thorugh class name
+  ie static method- so call it thorugh class name
 
 Eager initialization: simply called load time initialization!!
             public class DBConnection {
@@ -928,9 +928,10 @@ public class DBConnection {
       }
 }
 -------------------------------
-FACTORY PATTERN:
+      FACTORY PATTERN:
+
 used when all object creation and it's business logic we need to
-keep at one place.
+keep it  at one place.
 
 For EG:
 
@@ -951,10 +952,11 @@ public class Circle implements Shape{
             System.out.println("Compute Circle area")
       }
 }
-
+//if in furture any change is required i can modfy here itslef
+ie for only one class for change
 public class ShapeInstanceFactory {
       public Shape getShapeInstance(String value){
-
+//responsible for creating the object
       if(value.equals("Circle")){
             return new Circle();
       }
@@ -966,4 +968,126 @@ public class ShapeInstanceFactory {
       }
       return null;
       }
+}
+
+public class Main {
+      public static void main(String[] args){
+            ShapeInstanceFactory factoryObj = new ShapeInstanceFactory();
+            Shape circleObj = factoryObj.getShapeInstance("Circle");
+            circleObj.computeArea();
+      }
+}
+
+-------------------------------
+     ABSTRACT FACTORY PATTERN:
+
+it is a factory or factory.
+eg differennt variety of 
+      car> ecnonmy car1|ecnonmy car2|ecnonmy car3
+           luxury car1| luxury car2 | luxury car3
+
+for EG:
+
+public interface Car{
+      public int getTopSpeed();
+}
+//abstract factory
+public interface AbstractFacory{
+      public Car getInstance(int price);
+}
+public class EcnonmicCar1 implements Car{
+      @Override
+      pubilc int getTopSpeed(){
+      return 100;
+      }
+}
+public class EcnonmicCar2 implements Car{
+      @Override
+      pubilc int getTopSpeed(){
+      return 150;
+      }
+}
+ public class Luxurycar01 implements Car{
+      @Override
+      pubilc int getTopSpeed(){
+      return 150;
+      }
+}
+public class Luxurycar02 implements Car{
+      @Override
+      pubilc int getTopSpeed(){
+      return 250;
+      }
+}
+
+//created two factory class
+
+public class EconomicCarFactory implements AbstractFacory{
+      @Override
+      public Car getInstance(int price){
+      if(price <=300000){
+            return new EconomicCar1();
+      }else if(price <=300000){
+            return new EconomicCar1();
+      }
+      return null;
+      }
+}
+
+public class LuxuryCarFactory implements AbstractFacory{
+      @Override
+      public Car getInstance(int price){
+      if(price <=300000){
+            return new EconomicCar1();
+      }else if(price <=300000){
+            return new EconomicCar1();
+      }
+      return null;
+      }
+}
+
+//returning economic or luxury factory 
+public class AbstractFactoryProducer {
+      public AbstractFacory getFactoryInstance(String value){
+      if(value.equals("Economic")){
+            return new EcnonoicCarFactory();
+      }else if(value.equals("Economic")){
+            return new EcnonoicCarFactory();
+      }return null;
+}
+
+public clas Main {
+      public static void main(String args[]){
+      AbstractFactoryProducer afpob = new AbstractFactoryProducer();
+      AbstractFactory afo = afpob.getFactoryInstance("Premium");
+      car carObj = abstractFactory.getInstance(5000);
+      System.out.pritln(carObj.getTopSpeed());
+      }
+}
+
+-------------------------------
+   BUILDER PATTERN:
+When you want to create Object step by step
+
+public class Student{
+      int rollno;
+      int age;
+      String name;
+      String fathername;
+      //constructo
+      //toString
+}
+this has the implementation of all the steps
+public abstract class StudentBuilder{
+      int rollno;
+      int age;
+      String name;
+      String fathername;
+set the properties
+abstract public StudentBuilder setSubject();
+public Student build() {
+      return new Student(Builder this);
+}
+}
+from the builder it will create the final product
 }
