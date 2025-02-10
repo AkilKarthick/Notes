@@ -761,28 +761,7 @@ EG:
                   }
              return single_insatnce;
             }
----------
-32. Factory method design pattern in java?
-
- it is an creational design pattern-
-      this provide an interface/abstract class-
-      -for creating object in a superclass. but allows subclasses to 
-alter the type of objects that will be created.
-this pattern promotes loose coupling by eliminationg the need to 
-bind applicaton-specific classes into the code.
-      step1: create an abstract/interface
-      step2: create concrete class exteinding the above clas
-      step3: create factory class/ client class
-            to generate objects of concre class 
-
-33. what is observer design pattern in java?
-
-It is a behavioural design pattern  that defines one to many
-dependncy between objects.
-when one obj change it's state all its dependent(observer) are updated
-automatically.
---------------------------
-
+-------------------------------------------------------------
 2/7/2024
 
 1.CREATIONAL DESIGN PATTERN :
@@ -948,7 +927,7 @@ public class DBConnection {
             return conObject;
       }
 }
------
+-------------------------------
 FACTORY PATTERN:
 used when all object creation and it's business logic we need to
 keep at one place.
