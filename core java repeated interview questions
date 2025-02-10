@@ -212,6 +212,10 @@ System.out.println("next" students.peack)
          }catch(invalidAgeException e)
             e.printStackTrace();
       }
+THREAD interview questions:::
+
+
+
 
 12.explain try catch and finally block?
    try block- the code that might throws an arror is kept inside the try block
@@ -608,6 +612,71 @@ public class Main{
                   e.printStackTrace();
       }
 }
+
+Threads? in Java
+
+Extending a thread class or by implementing the runnable interface
+
+class MyThread extends Thread {
+    public void run() {
+        // Code to be executed by the thread }}
+MyThread thread = new MyThread();
+thread.start();
+
+or by implementing Runnable interface!!
+
+class MyRunnable implements Runnable{
+      Public void run(){
+      //code to be 
+      }
+}
+Thread t = new Thread(new MyRunnable());
+t.start();
+
+Synchronization!!
+      when multiple thread access shared resources. synchorniztion in
+      necessarry to prevent data inconsitency 
+      to ensure only one thread can access a resource at a time.
+
+--LifeCycle of thread?--
+new> runnable> running> (blocked/waiting/time waiting) > terminated
+
+start() method: moves the thread from new state to runnable
+sleep() method: Temporarly pass the thread, moving it to timed waiting
+wait() method: moves the thread to waiting until another thread calls
+                  notify() or notifyAll()
+ notify() or notifyAll(): wakes up the single or all
+                        threads that are waiting on the object monitors
+join(): waits for the thread to die, moving it to the waiting state
+
+NEW state: 
+      when it is created but not yet started
+Thread th = new Thread();
+
+RUNNABLLE state: 
+      after start() method is called the Thread moves to the runnable state
+      it is ready to run and waiting for the cpu time.
+th.start();
+
+RUNNING state:
+      when the thread schedler select the thread, it moves to the
+      running state and starts executing its run() method
+public void run(){
+//code to be executed by the thread
+}
+BLOCKED/WAITING :
+      when it is waiting for a resource or another thread to perform
+      a particular action
+      BLOCKED:waiting for monitor lock
+      WAITING:for another thread to perform a specific actions
+
+synchronized (object){
+      object.wait();//waiting state
+}
+TERMINATED state:
+once completed the execution it is explicitly terminated
+
+
 
 34.What is the difference between an abstract class and an interface in Java?
 
