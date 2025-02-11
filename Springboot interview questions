@@ -89,12 +89,13 @@ with @service,@repo or @controller thenn registed as bean in springapplicaton co
 
 5.WHAT ARE SPRINGBOOT STARTERS?
 
+    it is a convinent dependency descriptiors
     when you include this starter in you applicaion. it inculded commonly used
     libraries and frm in to a single depeendcny, refduce boiler plate code
     it contains auto configuration support
 
 commonly used springboot starters?
-    Springboot-starter-web : include RESTful service
+    Springboot-starter-web : include RESTful api's service
     sprinboot-starter-data-jpa: include spring data jpa & hibernate
     springboot-starter-security: for security
     Springboot-starter-test: eg junit or mockito
@@ -102,6 +103,32 @@ commonly used springboot starters?
 6. what is springboot dependecny management?
     it will configure automatically without specifying the version
     for any of that dependencies.
+
+5.Explain the purpose of @Autowired annotation?
+
+to do automatic wiring if one class need bean of other class
+wile creating the bean of UserService  we need userRepo bean so @Autowired will
+create a bean and injected in the user service
+
+public class UserRepository{
+    //implementation
+}
+@Service
+public class UserService{
+    @Autowired
+    private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository)
+        this.userRepository=userRepository;
+}
+
+and while using spring you need to use
+
+@Configuration
+@ComponentScan(basePackages = "com.exmaple")
+public class AppConfig{
+    //config class with componenet scanning to enable @Autowired
+}
 
 6.concept of Dependency injection in springboot?
     follows ioc principle
@@ -371,8 +398,27 @@ how can you implemetn security in a springboot applicaton?
 
 Expalain the role of the spring boot dev tools?
 
+Automatic restart 
+livereload support
 need to add spring-boot-devtools in pom.xml file
 when you change any thing no need to restart it automatiicaly did it
+
+how does springboot support the development of RESTful web services?
+
+springboot use springmvc to build restful services
+Embedded container: where you sprinboot app has contairner's like tomacat/jetty
+RequestMapping: get/post/put/delete
+content negoitation: based on the produces & consumes attritubes
+                    the content that will be passed be either be xml or json
+Request & Response Handling: 
+@RequestBody: json will be bind to the request
+@ResponseEntity: response will be send back to the client
+
+flow:::
+postman(any client) -> Controller -> Service ->Repository ->Database
+                    
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 1.What is Spring Boot?
