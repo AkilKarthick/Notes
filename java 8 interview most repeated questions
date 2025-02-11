@@ -167,7 +167,10 @@ List<String> s1 = Arrays.asList("dev","qa"."supp","infra");
 String conc = s1.stream().collect(Collector.joining(""))
 System.out.println(conc);  //devqasuppinfra 
 
+
+
 8.remove dupliate elements from a list of string?
+
 	List<String> s1 = Arrays.asList("dev","dev","qa"."supp","infra");
 	s1.stream().distinct().forEach(System.out::println);
 9.given a list of objects, writh pgm to sort the object based on a specific
