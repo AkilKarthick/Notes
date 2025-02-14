@@ -1,4 +1,19 @@
 java 8 ALL Stream Opertaion
 filer, map, flatmap, sorted, limit, skip, peek & disntinct
-  
+
+1.what is filetr Operation?
+
+to process the elements of a stream and return only those that meed a
+specified condtion
+
+public class filterStringExample{
+  public static void main(String[] args){
+    //list of strings
+    List<String> names = Arrays.asList("alice","bob","charlie","done");
+    List<String> namesGreatethan3 = names.stream()
+                                          .filter(s->s.lenth()>3)
+                                          .collect(Collectors.toList());
+  System.out.println(namesGreatethan3);
+  }
+}
   
