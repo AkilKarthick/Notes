@@ -15,5 +15,27 @@ public class filterStringExample{
                                           .collect(Collectors.toList());
   System.out.println(namesGreatethan3);
   }
+
+2. we have an employee class
+
+class Employee{
+  String name;
+  int age;
+//constructor & to stringmethod
+}
+public class EmployeeFilterExample{
+  public static void main(String[] args){
+    List<Employee> employess = Arrays.asList(
+        new Employee("alice",11),
+        new Employee("ak",141)
+        new Employee("adsf",2)
+    );
+
+//filter employee older than 30
+List<Employee> empllist=employess.stream().filter(emp->emp.age >10).
+collect(Collectors.toList());
+System.out.println(empllist);
+  }
+}
 }
   
