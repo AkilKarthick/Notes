@@ -38,7 +38,55 @@ System.out.println(empllist);
   }
 }
 }
-MAP Operation:
+MAP Operation: 
+To Transform each elements in a Stream into another object or value.
 
+public class MapIntergerExample{
+  public static void main(String[] args){
+    List<Integer> numbers = Arrays.asList(1,2,3,4,5);
+    //multiple each number by 2 using map
+     List<Integer> s1=  numbers.stream()
+                                .map(s->s*2).collect(Collectors.toList)
+      System.out.println(s1);
+  }
+}
 
+2.extract employee name?
+
+class Employee{
+  String name;
+  int age;
+//constructor & to stringmethod
+}
+public class EmployeeExample{
+  public static void main(String[] args){
+    List<Employee> employess = Arrays.asList(
+        new Employee("alice",11),
+        new Employee("ak",141)
+        new Employee("adsf",2)
+    );
+//extract name of the employee using map
+employess.stream().map(emp->emp.name)
+          .collect(Collectors.toList).forEach(System.out.println)
+
+--------
+flatMap Operation
+is java 8 is used to flatten a stream of collections int0 a single stream.
+it is particulary useful when dealing with nested collections
+
+pgm1: flatten the list of fruits?
+
+public class FlattenFruitsExample{
+  public static void main(String[] args){
+      List<LIst<String>> fruits = Arrays.asList(
+          Arrays.asList("app","dev","qa"),
+          Arrays.asList("app1","dev2","qa1"),
+          Arrays.asList("app2","dev3","qa4"),
+      );
+      // flatten the list of lists into a single list of fruits
+        fruits.stream().flatMap(List::stream).collect(Collectors.toList())
+  }
+}
+
+pgm2: find all the fruits names that start with A from list of list?
   
