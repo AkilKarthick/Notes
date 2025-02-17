@@ -154,6 +154,107 @@ public class SortedExample{
       System.out.println(sortedList);//natural order
   }
 }
+---------------
+Limit Operation: used to truncate a stream to contain atmost n elements
+useful only when you want to process only a subset of a stream
+
+pgm1: get the first 3 elements using limit:
+
+public class LimitIntegerExample{
+  public static void main(String[] args){
+      List<Integer> numbers = Arrays.asList(10,20,30,40,50);
+      //get the first 3 elements using limit
+      List<Integer> threenumer = numbers.stream()
+                                        .limit(3)
+                                        .collect(Collectors.toList());
+      System.out.println(threenumbers);
+  }
+}
+
+Skip Operations:
+to skip the first n elements of a stream and process the remaining elemts
+
+pgm1: skip the first 3 elements
+pgm2: filter even numbers and skip the first2
+
+public class skipexample{
+  public static void main(String[] args){
+      List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+//skip the first 3 elements
+      List<Integer> fewmber =numbers
+                                .stream()
+                                .skip(3)
+                                .collect(Collectors.toList());
+      System.out.println(fewmber);
+
+//filter even number and skip the first2
+
+List<Integer> fewmber =numbers.stream()
+                              .filter(s->s%2==0)
+                              .skip(3) 
+                              .collect(Collectors.toList());
+      System.out.println(fewmber);
+  }
+}
+-----------------
+Distinct Operation: filter out duplicate elements from a stream
+
+pgm1: removing duplicate Strings
+pgm2: remove duplicate person from list
+
+public class distincteg{
+  public static void main(String[] args){  
+      List<String> dup = Arrays.asList("akil","akil","karthick");
+      List<String> distinct =dup.stream().distinct().collect(Collectors.toList());
+      System.out.pritln(distinct);
+    }
+}
+
+pgm2:
+
+class Employee{
+  String name;
+  int age;
+//constructor & to stringmethod
+}
+public class EmployeeExample{
+  public static void main(String[] args){
+    List<Employee> employess = Arrays.asList(
+        new Employee("alice",11),
+        new Employee("karthick",31)
+        new Employee("akil",11)
+    );
+List<Employee> uniqueemployee = employess.stream().distinct().collect(Collector.toList())
+  System.out.println(uniqueemployee);
+}
+}
+//to remove duplicate for a CUSTOM OBJECT 
+you need to override
+hashcode() and equal() method
+
+------------------
+peek() Operations:
+for debugging or perfroming a non terminal operation on each elemens
+as it flow through the stream
+
+pgm1: debuggin the stream with peek
+
+public class peakexample{
+  public static void main(String[] args){
+      List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+//debuggig the stream with peak
+
+          List<Interger> mulitpliedby2=numbers.stream().peek(n->System.out.println("orgin"+n))
+          .map(n->n*2).peak(n->System.out.println("after map "+n))
+          .collect(Collector.toList());
+System.out.println(mulitpliedby2);
+----
+output:
+orginal 1
+after map 2
+orginal 4
+after map 8-
+...
 
 
   
