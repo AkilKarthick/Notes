@@ -1,7 +1,7 @@
 java 8 ALL Stream Opertaion
 filer, map, flatmap, sorted, limit, skip, peek & disntinct
 
-1.what is filetr Operation?
+1.what is filter Operation?
 
 to process the elements of a stream and return only those that meed a
 specified condtion
@@ -38,8 +38,11 @@ System.out.println(empllist);
   }
 }
 }
+-------------
 MAP Operation: 
 To Transform each elements in a Stream into another object or value.
+
+
 
 public class MapIntergerExample{
   public static void main(String[] args){
@@ -69,24 +72,88 @@ public class EmployeeExample{
 employess.stream().map(emp->emp.name)
           .collect(Collectors.toList).forEach(System.out.println)
 
---------
-flatMap Operation
+----------------
+flatMap Operation:
 is java 8 is used to flatten a stream of collections int0 a single stream.
 it is particulary useful when dealing with nested collections
 
 pgm1: flatten the list of fruits?
 
-public class FlattenFruitsExample{
+          public class FlattenFruitsExample{
+            public static void main(String[] args){
+                List<LIst<String>> fruits = Arrays.asList(
+                    Arrays.asList("app","dev","qa"),
+                    Arrays.asList("app1","dev2","qa1"),
+                    Arrays.asList("app2","dev3","qa4"),
+                );
+                // flatten the list of lists into a single list of fruits
+                  fruits.stream()
+                        .flatMap(List::stream).collect(Collectors.toList())
+          
+          //or
+          
+                  fruits.stream()
+                        .flatMap(list -> list.stream()).collect(Collectors.toList())
+            }
+          }
+
+pgm2: find all the fruits names that start with A from list of list?
+
+        public class FlattenFruitsExample{
+          public static void main(String[] args){
+                //list of lists of frutis
+              List<List<String>> fruits = Arrays.asList(
+                Arrays.asList("apple","orrange","banana"),
+                Arrays.asList("grapes","ineapple","Mango"),
+                Arrays.asList("peach","plum","aprict") 
+              );
+        //flatten the list of 
+              List<String>  allFruits =fruits.stream().flatmap(List::stream).collect(Collectors.toList)
+              System.out.println(allFruits);
+        
+        //flatten and filter fruits starTING WITH "a"
+              List<String> fruits =fruits.stream()
+                                          .flatmap(List::stream)
+                                          .filter(s->s.startwith('A'))
+                                          .collect(Collectors.toList());
+            System.out.println("fruits starting with a" + fruits);
+          }
+        }
+----------------
+Sorted Operation:
+the sorted() method in java 8 is a part of the stream API 
+used to sort the elements.
+
+pgm1: sort numbers in natural order(acsending)?
+
+public class SortedExample{
   public static void main(String[] args){
-      List<LIst<String>> fruits = Arrays.asList(
-          Arrays.asList("app","dev","qa"),
-          Arrays.asList("app1","dev2","qa1"),
-          Arrays.asList("app2","dev3","qa4"),
-      );
-      // flatten the list of lists into a single list of fruits
-        fruits.stream().flatMap(List::stream).collect(Collectors.toList())
+      //list of integer
+      List<Integer> numbers = Arrays.asList(3,6,4,7,4,7,2);
+      List<Integer> sortedNo =numbers.stream()
+                                     .sorted()
+                                      .collect(Collectors.toList());
+      System.out.println(sortedNo);//natural order
   }
 }
 
-pgm2: find all the fruits names that start with A from list of list?
+2.Sort names in reverse order?
+
+public class SortedExample{
+  public static void main(String[] args){
+      //list of integer
+      List<String> names = Arrays.asList("akil","karthick","amma");
+//sorted names in reverse order 
+//for acceding order   : sorted((a,b)->a.compareTo(b))
+//desceding order      : sorted((a,b)->b.compareTo(a))
+
+     List<String> sortedList = names.stream()
+                                    .sorted((a,b)->b.compareTo(a))
+                                    .collect(Collectors.ToList());
+      
+      System.out.println(sortedList);//natural order
+  }
+}
+
+
   
