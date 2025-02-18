@@ -1,5 +1,8 @@
 java8-feature theory notes
 
+From Java SE 9 on-wards, we can write private and private static methods 
+too in an interface using ‘private’ keyword.
+
 1.what is java 8?
   an advanced version of traditional java programming language 
   and platform launced on 2014, it is develper friedndly
