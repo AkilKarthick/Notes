@@ -256,5 +256,69 @@ orginal 4
 after map 8-
 ...
 
+Terminal operations:::
 
-  
+1.ForEach()
+
+List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+numbers.stream().forEach(System.out::println);
+
+2.collect()
+
+List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+numbgreatethan10 = numbers.stream(),filter(num->num > 10).collect(Collectors.toList());
+
+3.reduce()
+
+a.find sum of all numbers in a list?
+
+List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+Int sum=numbers.stream().reduce(0,Integer::sum);
+System.out.println(sum);
+
+4.count()
+count the number of String with lenght greate than 3
+
+List<String> words = Arrays.asList("akil","karthick","dum");
+xLong count= words.stream().filter(wor->wor.lenth()>3).count()
+
+5.findFirst() 
+
+a.find firts number greaater than 10 in a list?
+
+List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+Optional<Integer> no = numbers.stream().filter(num->num>10).findFirst();
+no.ifpresent(num->num.System.out.println("fitst no>10 is" + no));
+
+6.allMatch() -- predicate(true or false)
+
+a.check if all number in a list is even
+
+List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+boolean allEven = numbers.stream().allMatch(num-> num %2 == 0);
+
+7.anyMatch() -- if any one number is greater than 50 it return true
+
+check if all numbers in a list is greater than 50?
+
+List<Integer> numbers = Arrays.asList(1,4,6,7,8,4,6);
+boolean isGreaterthan50 = numbers.stream().anyMatch(num-> num > 50);
+
+8.nonMatch() -- 
+
+a.check if no string in a list Starts with "Z".
+
+List<String> words = Arrays.asList("akil","karthick","dum");
+boolean noNameStartswithz = words.stream().noneMatch(namee -> name.startsWith("Z"));
+
+9.toArray() 
+
+converting a list of String to an array
+
+List<String> words = Arrays.asList("akil","karthick","dum");
+String[] namesArray = words.stream().toArray(String[] :: new);
+System.out.println(Arrays.toString(namesArray))
+
+
+
+
