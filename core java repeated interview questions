@@ -64,6 +64,31 @@ abstract class shape {
                    System.out.println(drawing a cirvle);
                }
       }
+---------------------interview qustions about abstract class??
+a. can a abstract class have a constructo?
+      yes, we can have but
+      Although you cannot instantiate an abstract class directly,
+      its constructor can be called when a subclass is instantiated.
+
+b.can a abstract class implement an interface?
+      yes abstract class can implements an interface
+ If the abstract class does not provide implementations 
+for all the interface methods, it remains abstract and must be
+extended by a subclass that provides the remaining method implementations12.
+
+d.Can an abstract class have static methods?
+      yes
+
+c.What happens if a subclass does not implement all abstract methods of its superclass?
+
+If a subclass does not implement all the abstract methods of its 
+superclass, the subclass must be declared as abstract. 
+This means that the subclass itself cannot be instantiated and
+must be extended by another class that provides implementations 
+for the remaining abstract methods.
+---------------------
+
+
 ------------------------
 4.what is an interface?
 
