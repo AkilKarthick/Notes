@@ -86,15 +86,12 @@ superclass, the subclass must be declared as abstract.
 This means that the subclass itself cannot be instantiated and
 must be extended by another class that provides implementations 
 for the remaining abstract methods.
----------------------
-
 
 ------------------------
 4.what is an interface?
 
    Here every method is by default abstract method
    interface are used to solve the problem of multiple inhertance in java
-   multipel inheritace is not possible in java so interface takes place
    variables in an interface are public, static, and final by default
 
 5.what is package in java?
