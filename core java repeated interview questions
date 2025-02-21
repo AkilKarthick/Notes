@@ -1,23 +1,53 @@
 
 1.what is java main() method?
       when we execute our java pgm the jvm will looks for main method to begin 
-      and only one main metho
+      and only one main method
       public static void main(String[] args)
       
       a. String[] args
-         a parameter passes command line argument into java applcation
-      extracting values from the command line in string format ie
+         a parameter extracting values from the command line in string format
        String[] args = {"1","2"}; these stored in args[0], args[1]
       later be stored in args array
-
+----------------------------------
 2. static keyword? in main method?
+      to make it as globally access across the class     
+       
+A. static variable - a public access eg publlic summing pool
+a.class level variable, shared among all the instance of the class
+there is only one copy of static variable in memory regardlerss of how
+many object of the class are created.
+b.can be accessed without creating an instance of the object
 
-   to make it as globally access across the class     
-        a. static variable - a public access eg publlic summing pool
-        b. static method - are like shared serverice eg secuity gurad 
+        B. static method - are like shared serverice eg secuity gurad 
                         any body can access
+They can be called using the class name directly.
 
+for EG:
+
+                  public class MathUtils{
+                        //static method
+                        public static int addition(int a, int b){
+                              return a+b;
+                        }
+                  //non static method
+                        public int multiplicaiton(int a, int b){
+                              return a*b;
+                        }
+                        public static void main(String[] args){
+                        //calling static
+                        mathUtils.addition(1,2);
+                        //calling non static
+                        mathUtils m = new MathUtils();
+                        m.multiplication(1,3);
+                        }
+                  }
+--------------------------------
 3.what is abstract class in java?
+
+class are declared using the "abstract" keyword
+abstract method contain abstract method ie method without body/implementaiton
+implemented by subclass
+they can alos have concrete methods (method with a body)
 
             
 abstract class shape {
@@ -34,6 +64,7 @@ abstract class shape {
                    System.out.println(drawing a cirvle);
                }
       }
+------------------------
 4.what is an interface?
 
    Here every method is by default abstract method
