@@ -211,14 +211,18 @@ class child extends Parent{
       }
 }
 public class Main {
-      public static vid 
+      public static void main(String[} args){
+            Parent parent = new Parent();
+            Parent child =  new Parent();
+      parent.display(); // static methoid in parent class
+      child.display(); //static methid in parent class (method hidding)
+if we call uhsing class name means 
+//static method in child class return
+      }
 }
 }
-
-
-
 ----------------------------------------------------------
-8.Explain the different between final & finally keyword?
+8.Explain the different between final & finally keyword? and finalize() method?
 
 final--keyword
    in variable- once assigned their value cannot be changed
@@ -226,6 +230,8 @@ final--keyword
    in class- cannot be subclassed
 
 finally ? // whatever happen this finally block will executed
+we can use finally without catch block
+
 eg 
          try{
             int sum = 10/0;
@@ -235,8 +241,11 @@ eg
          }finally{
          System.out.println("this will be executed regardless")
          }
+c. finalize() : a method called by garbage collector before an 
+object is destroyed. used to perform clean up operations
+before the object is garbaged collected
 
-
+-------------------------------------------------------
 9.what are java collections and why are they importatnt?
 
 ----java collections----------------
