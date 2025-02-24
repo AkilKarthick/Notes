@@ -41,6 +41,12 @@ for EG:
                         m.multiplication(1,3);
                         }
                   }
+d.Static class at class level??
+      A class can be made static only if it is a nested class.
+      We cannot declare a top-level class with a static modifier but can declare nested classes as static.
+      Such types of classes are called Nested static classes
+
+
 --------------------------------
 3.what is abstract class in java?
 
