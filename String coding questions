@@ -1,1 +1,19 @@
-String coding questions
+String coding questions| top 10 series
+
+1. pgm to reverse a stirng?
+//with String method
+
+String str1= "Akil";
+String reversedString = new StringBuilder(str1).reverse().toString();
+System.out.println(reversedString);
+
+//without built in method
+
+String str = "Akilkarthick";
+char[] chars = str.toCharArray();
+String reversed="";
+
+for(int i = chars.lenght -1; i>=0; i---){
+  reversed += chars[i];
+}
+System.out.println("reversed string is" +reversed);
