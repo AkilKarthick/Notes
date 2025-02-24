@@ -1,0 +1,38 @@
+Springboot Scheduling 
+
+@EnableScheduling - in main class of your application
+@Schedule() -  method level
+we have
+  cron()-- cron expression
+            @Scheduled(cron = "* * * * * *")
+    *--second (0-59)
+    *  minuter(0-59)
+    *  hour (0-23)
+    *  day of month(1-31)
+    *  month(1-12)
+    * day of the week(0-7)
+
+, comma = specify multiple values eg (0,15,30,45 * * * * *)
+          runs 0 15, 45 seconds 
+- dash = specify range  eg  10-23 * * * * * * 
+/ slash = specify increment eg */5 * * * * runs every 5 second
+? 
+L
+W
+#
+we cron expression generator online
+  zone()
+  intitalDelay()   --- 
+                  wait for some second it start first processing
+                  @Scheduled(initialDelay=100000, fixedRate = 50000)
+  
+  fixedRate()      -- @Scheduled(fixedRate = 50000) //5 second delay
+method exection got overlapped right
+  fixedRateString()
+  fixedDelay()    @Scheduled(fixedDelay = 50000) //5 second delay
+                  no overlap 
+  first excetion -->fixedelap--> execute-->fixedelap--> execute
+  fixedDealyString()
+
+
+Dynamic scheduling::
