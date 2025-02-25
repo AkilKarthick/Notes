@@ -1,25 +1,40 @@
 String coding questions| top 10 series
 
+------------------------------------------------------
+2.reverse a string?
+3.check if a string a palindrome?
+4.to count vowels and consonants in a string?
+5.find the first non-repeated character in a string?
+6.to check if two strins are anagrams?
+7.to remove all whitespaces from a string?
+8.to count the occurence of a character in a string?
+9.to check if a string contains another string?
+10.to find the maximum occuring character in a string?
+11.to find the length of a string without using a function?
+----------------------------------------
+ANSWERS
+----------------------------------------
 1. pgm to reverse a stirng?
-//with String method
-
-String str1= "Akil";
-String reversedString = new StringBuilder(str1).reverse().toString();
-System.out.println(reversedString);
+          //with String method
+          
+          String str1= "Akil";
+          String reversedString = new StringBuilder(str1).reverse().toString();
+          System.out.println(reversedString);
 
 or reverse each word in String
 
-String str2 = "Hello Akil";
-String[] strArr = str2.split(" ");
-List<String> result =Arrays.stream(strArr).map(word-> new StringBuilder(word).reverse().toString().collect(Collectors.toList()));
-System.out.println(result);
+        String str2 = "Hello Akil";
+        String[] strArr = str2.split(" ");
+        List<String> result =Arrays.stream(strArr).map(word-> new StringBuilder(word).reverse().toString().collect(Collectors.toList()));
+        System.out.println(result);
 
-//
-String str = "Akilkarthick";
-char[] chars = str.toCharArray();
-String reversed="";
+// WIHTOUT INBUILT FUCTION
 
-for(int i = chars.lenght -1; i>=0; i---){
-  reversed += chars[i];
-}
-System.out.println("reversed string is" +reversed);
+        String str = "Akilkarthick";
+        char[] chars = str.toCharArray();
+        String reversed="";
+        
+        for(int i = chars.lenght -1; i>=0; i---){
+          reversed += chars[i];
+        }
+        System.out.println("reversed string is" +reversed);
