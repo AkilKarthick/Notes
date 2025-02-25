@@ -7,8 +7,14 @@ String str1= "Akil";
 String reversedString = new StringBuilder(str1).reverse().toString();
 System.out.println(reversedString);
 
-//without built in method
+or reverse each word in String
 
+String str2 = "Hello Akil";
+String[] strArr = str2.split(" ");
+List<String> result =Arrays.stream(strArr).map(word-> new StringBuilder(word).reverse().toString().collect(Collectors.toList()));
+System.out.println(result);
+
+//
 String str = "Akilkarthick";
 char[] chars = str.toCharArray();
 String reversed="";
