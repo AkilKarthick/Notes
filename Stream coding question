@@ -1,0 +1,10 @@
+1. using java 8 return a list containing only even numbers from a list of integers
+2. find the maximum value in a list of integer
+3. sort a list of integer, ascending order?
+4. count the element in a list that are greater than 5
+5. retrieve all distinct element from a list
+6. skip the first 2 element of a list and return the rest
+7. convert a list of integers to a seet to remove duplicate
+8. group elements by a specific property such as age
+9. reduce a list of Integer to theri sum
+10. convert all string in a list to uppercase
