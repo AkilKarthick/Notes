@@ -30,11 +30,80 @@ or reverse each word in String
 
 // WIHTOUT INBUILT FUCTION
 
-        String str = "Akilkarthick";
+        String str = "Akil";
         char[] chars = str.toCharArray();
         String reversed="";
         
-        for(int i = chars.lenght -1; i>=0; i---){
+        for(int i = chars.lenght() -1; i>=0; i---){
           reversed += chars[i];
         }
         System.out.println("reversed string is" +reversed);
+
+2. check if a string a palindrome?
+
+public class PalindromeChecker{
+          public static void main(String[] args){
+          String str = "madam";
+          String reversed = new StringBuilder(str).reverse.toString();
+
+          if(str.equals(reversed)){
+          System.out.println(str + "give string is palindrom");
+          }else{
+          System.out.println(str + "give string is not a palindrom");
+          }
+     }
+}
+
+//without built in method
+
+STring str = "madam";
+boolean isPalindrome = true;
+int lenght = str.lenght();
+
+for(int i =0; i<lenght/2; i++){
+          if(str.charAt(i) != str.charAt(length -i -1)){
+          isPalindrome = false;
+          break;
+          }
+}
+if(isPalindrome){
+          System.out.println("give string is palindrom");
+}else{
+          System.out.println("give string is palindrom");
+}
+
+-------------------------------------------------------
+3.count vowels and consonants in string?
+
+public class countVowelsConsonantswithmethod{
+          public static void main(String[] args){
+          String str = "JavaTechCommunity";
+          int vowels =0, consonants =0;
+
+          for(Char ch: str.toCharArray()){
+          if("aeiou".indexOf(ch) != -1){
+                    Vowels++;
+          }else if (ch >='a' && ch <= 'z'){
+                    consonants++;
+          }
+          System.out.println("Vowels"+vowels);
+          System.out.println("consonants"+consonants);
+          }
+          }
+}
+
+// using java 8 
+
+public class countVowelsConsonantswithmethod{
+          public static void main(String[] args){
+          String str = "hello akil karthick";
+String sstr = str.toLowerCase();
+long vowels = sstr.chars()
+                         .filter(ch -> "aeiou".indexOf(ch) != -1)
+                         .count();
+ long consonants = sstr.chars()
+                             .filter(ch -> ch >= 'a' && ch <= 'z' && "aeiou".indexOf(ch) == -1)
+                             .count();
+       
+}
+          }
