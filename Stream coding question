@@ -4,7 +4,49 @@
 4. count the element in a list that are greater than 5
 5. retrieve all distinct element from a list
 6. skip the first 2 element of a list and return the rest
-7. convert a list of integers to a seet to remove duplicate
+7. convert a list of integers to a Set to remove duplicate
 8. group elements by a specific property such as age
 9. reduce a list of Integer to theri sum
 10. convert all string in a list to uppercase
+------------------------------------
+
+using java 8 return a list containing only even numbers from a list of integers
+
+List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8);
+numbers.stream().filter(num->num/2==0).collect(Collectors.toList);
+
+2. max & min ?
+
+Optionl<Integer> MaxNumber = numbers.stream()
+                                    .max(Comparator.naturalOrder());
+
+Optional<Integer> MinNumber = numbers.stream()
+                                    .min(Comparator.naturalOrder());
+
+3. sort a list of String, ascending order?
+
+List<String> words = Arrays.asList("lk","Akil","z","d");
+LIst<String> sortedList = words.stream().sorted().collect(Collectors.toList());
+
+4.5. retrieve all distinct element from a list
+
+numbers02.stream().distinct().forEach(System.out::println));
+
+5.skip frist 2 element 
+
+numbers02.stream().skip(2).forEach(System.out::println);
+
+7. convert alist of integer to set 
+List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,7);
+Set<Integer> numberSetremoveDuplicate = new HashSet<>(numbers);
+
+8.group elements by a specific property such as age
+
+perople.stream().collect(Collectors.groupingBy(Person::getAge));
+
+9.reduce a list of Integer to their sum?
+number.stream().reduce(0,Integer::sum).collect(Collectors.toList)
+
+10.convertint to uppercae
+List<String> uppercasedwords = words2.stream().map(s->s.toUpperCase()).collect(Collectors.toList());
+
