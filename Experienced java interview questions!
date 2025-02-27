@@ -70,6 +70,36 @@ b.can you override static method in java?
       no static method cannot be overriden, we can hide the method
 known as method hidding, cannot be overridden by hidden 
 
+why java doesn't support operator overloading?
+
+to avoid poetntail issue that can arise from it;s misuse and to 
+maintain simplicity
+??
+
+why is String immutable in java?
+
+a.String are used to store sensitive information like pws,username,urls
+b.synchronization and consurrency: immutable objects are thread safe
+their state canot be changed after creation, they can be shared
+freely btwn threads without synchronization. this make String safe 
+to use in muli thread environments
+Stringppol to store string literals, 
 
 
+eg:
+public class Test{
+            public static void main(String[] args){
+            String str ="Hello";
+            Runnable task = ()-> {System.out.println(str)};
+Thread t1 = new Thread(task);
+Thread t2 = new Trhead(task);
+t.start();
+t2.start();
+            }
+}
+multiple thread can read the same string object simultanesouly without
+any risk of data corruption or inconsisteny.
+both Thread can safelly read the Str varilable
+without any synchroniztion bcz String is immutale and threadsafe
 
+8.what is String Tokenizer?
