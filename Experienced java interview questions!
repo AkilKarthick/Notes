@@ -65,3 +65,11 @@ class D implements classB, classC //
   }
     }
 }
+
+b.can you override static method in java?
+      no static method cannot be overriden, we can hide the method
+known as method hidding, cannot be overridden by hidden 
+
+
+
+
