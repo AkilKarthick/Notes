@@ -1,0 +1,67 @@
+Experienced java interview questions!
+
+1. which version of java you are using?
+java8
+
+2.how to create thread safe singleton class in java using double checked locking?
+
+a.volatile keyword ensures visibility of changes to variable acrsss thread
+            private static volatile Singelton instance;
+to ensure multiple thread handles the instance varible correctly
+when it is beig initialized to the singleton instance.
+
+b.private construcot to prevent instantitation
+
+c.double checking locking
+  1.first if(instance == null) performed without locking
+  2.check inside synchronized block ensures that only one thread
+  initialize the instance variable.
+
+eg:
+
+public class Singelton {
+   private static volatile Singelton instance;
+    public Singleton(){
+    }
+    public static Singelton getInstance() {
+        if(instance == null){
+          //first check no locking
+        synchronized(Singelton.class){
+          if(instance == null){
+              instance = new Singleton();
+          }
+        }
+        }
+      return instance;
+    }
+}
+
+when the varilable is marked as volatile, cjhanges made to the variable by 
+one thread are immiediatly visible to other threads
+volatile also ensures that the varlues of the variable is always fetced
+from the main memory and not from the thread local cahce
+
+3.why multiple inheritance is not supported in java?
+
+root cause is diamond problem
+when a class inherit form two class it create diamond provlem
+lead to ambiguity , it got confused which method to use
+
+eg: class A{
+  void display(){
+  }
+    class B extends A{
+    void display(){
+    }
+    class C extends A{
+    void display(){}  
+    }
+  //if java allowed multiple inheritnace
+  class D extends B,C{
+    // which display() method should D inhertis??
+
+so we go for interface 
+class D implements classB, classC //
+  }
+    }
+}
