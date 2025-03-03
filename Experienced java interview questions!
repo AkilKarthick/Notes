@@ -140,6 +140,80 @@ String reversedStrig= new StringBuilder(st1).reverse().toString();
 System.out.println("reversedStrig");
 
 11.different way to create a String objects?
+            using String literals, String str = "akil";
+            using the new keyword,  String str = new String("ai");
+            using String.valueOf(),  String str = String.valueOf(123);
 
+12. how to concateneat multiple Strings efficiently in java?
+
+            using StringBuilder: it is mutable
+            
+            StringBuilder sb = new StringBuilder();
+            sb.append("hello");
+            sb.append("he");
+            String result = sb.toString();
+            //prinn that and see
+
+using concat() method st1.concat(st2);
+
+            String rsult = String.join(",","hello","java");
+            concatenate Strings with a delmiters
+
+using java8:
+
+            String result = stream.of("hello","ad","adsf").collect(Collectors.joining(","));
+            //output hello,ad,adsf 
+
+13.why is Char[] is preferred over String to store passwords?
+
+14. difference between String builder and String buffer?
+
+String buffer : it is synchronized, it is thread safe
+                        mulitple thread can access a Stringbuffer boject
+                        without causing data inconsitency
+String builder: not thread safe
+
+15. what happend if your serializable class contains a non serializable member? how do you fix it?
+it will throw an notserrializableException
+
+if your serializable class contains non serializvle memeber
+will result in exception 
+
+serializtion means convertion of oebject to bytestream
+transient used like jvm can ignor this file while serializing
+
+16. what are the new features introduced in java8?
+
+Method references provide a way to refer to methods without invoking them.
+new date and time api
+optional class
+lambda expresion
+stream api
+default and static method in interface
+functional interface
+
+17. what is metaspace in java8?
+
+it replaced the old permenatn generation (permGen)
+memory space
+manageing class and metadata's
+
+20 when should you use parallel stream in java 8?
+
+for large data sets , for cpu intensive operation
+to improve performacen as well
+List<Integer> numbers = Arrays.asList(1,23,4,5,5,6,6);
+numbers.parallelStream().mapToInt(Integer::intvalue).sum()
+
+21.have you used paralle stream()?
+
+yes i have like for an data processing applicaiton tha need to 
+handle large datasets efficeilty. by leveraging paralle stream
+we are able to improve the performace of our data aggeration
+tasks
+eg: for a large lsit of transcation to calcluate 
+we use paralle stream we were able to distribute the workload
+acorss multiple cpu cores which reduce the processing time
+consdierably
 
 
