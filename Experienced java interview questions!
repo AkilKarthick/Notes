@@ -103,3 +103,43 @@ both Thread can safelly read the Str varilable
 without any synchroniztion bcz String is immutale and threadsafe
 
 8.what is String Tokenizer?
+
+            a class that allows to break your string into tokens
+            tokesn are smaller string or character that are separated by delimieters
+            
+            StringTokenizer str= new StringTokenizer("this is a demo");
+            while(str.hasMoreTokens()){
+                        System.out.println(str.nextToken());
+            }
+            
+            we can use String.split() for an alternative 
+
+9.what is String constant pool in java?
+            a specil memory area within the heap that store string literals
+            when a string literl is created jvm check the pool to see if an 
+            idnetiacal string already exist or not . if it does the reference
+            to the existing string is returned instrea of creating a new object
+            
+            eg
+            String str1="Hello";
+            String str2 = "Hello"; 
+            These literals are automatically placed in the String constant pool
+            
+            String str3 = new String("Hello");
+            are not stoed in pool by defulat bcz we are using new keyword
+            str3 will reference a new object in the heap, not the pool.
+            
+            String str4 = new String("Hello").intern();
+            can manually add strings to the pool using the intern() method
+
+
+10. pgm to reverse a String?
+
+String st1 = "Akil";
+String reversedStrig= new StringBuilder(st1).reverse().toString();
+System.out.println("reversedStrig");
+
+11.different way to create a String objects?
+
+
+
