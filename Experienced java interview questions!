@@ -216,4 +216,12 @@ we use paralle stream we were able to distribute the workload
 acorss multiple cpu cores which reduce the processing time
 consdierably
 
+22.
+how does lambda expression relate to functional interface
+ instead of creation  an anonmyous class we can use a lambda
+to implement the single abstract method 
+
+funcation interface like one abstract method
+ex runnavble, comparator and predicate etc
+
 
