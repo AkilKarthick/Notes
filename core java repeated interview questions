@@ -278,9 +278,19 @@ below interface's
                   Use for fast access to elements by index. 
                   time consueing bcz of bit shiffiting
       LinkedList: Use for frequent insertions and deletions.
-                  no shifting is required bcz of dobule linked implentation
+                  no shifting is required bcz of dobule linked implentation      
+            for frequent acess and random access linked list is not so 
+            suitable
+            
       Vector: for synchronized and thread safe
-                  
+             when we need a thread safe collection
+            it is synchronzed to ensure that one can access at atime      
+            slower than array list
+            multiple thread case vector is more suitable
+vectors are bit outdated now
+
+            
+            
 
       HashSet: Use for fast membership testing (checking if an element exists).
                stored in a hashtable, no order is maintained
@@ -339,6 +349,17 @@ Queue<String> students = new LinkedList<>();
    student.add("d");
 System.out.println("current" students.poll)
 System.out.println("next" students.peack)
+
+comparator and comparable?
+
+The Comparator interface in Java is used to define a custom comparison logic for objects. It allows you to create multiple ways to compare objects, which is particularly useful when you need to sort objects in different ways.
+impement compaarator interface and override comparator method 
+
+Comparable interface in Java is used to define the natural ordering of objects of a class. It imposes a total ordering on the objects of each class that implements it. This ordering is referred to as the class’s natural ordering, and the class’s compareTo method is referred to as its natural comparison method1
+implements Comparable & @Override
+    public int compareTo
+returns a negative integer, zero, or a positive integer
+
 
 10.describe checked and unchekced exception?
 
