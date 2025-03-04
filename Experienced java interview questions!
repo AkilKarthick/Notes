@@ -221,6 +221,10 @@ how does lambda expression relate to functional interface
  instead of creation  an anonmyous class we can use a lambda
 to implement the single abstract method 
 
+Lambda expressions in Java, introduced in Java SE 8, represent instances of functional interfaces 
+(interfaces with a single abstract method). They provide a concise way to express instances of 
+single-method interfaces using a block of code.
+
 funcation interface like one abstract method
 ex runnavble, comparator and predicate etc
 
