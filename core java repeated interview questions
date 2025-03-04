@@ -192,10 +192,14 @@ public class Dog extends Animal{
       a.method overloading -
              creating multiple methods with the same name 
              but different parameters within a class.determined at compile time
+            return type may be differtn      
+            cmpile time polymorphism
+            
       b.method overriding-
          same methodname, and same parameters but implmented in subclass, runtime determination.
          subclasses providing their own implementation of inherited methods from the parent class
-
+            return type must be same
+            run time polymorphism
 
 a.method overriding: specific implementation of a method already
       defined in its superclass . same name, return type and parameter list
