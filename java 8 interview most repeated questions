@@ -11,6 +11,12 @@ List : an interface have stack,
 Stream :
 method referencing :
 
+reverse each word in the string list
+
+List<String> reversedword =words.stream()
+				.map(s->new StringBuilder(s)
+				.reverse().toString())
+				.collect(Collectors.toList());
 
 
 2. given a list of integer, find the total number of elements present in the list??
