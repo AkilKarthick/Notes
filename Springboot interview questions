@@ -58,6 +58,8 @@ how can we secure actuator endpoints in springboot?
     by authentication & authorization setting in app configuration files
 
 4. WHAT DOES THE -- @SpringBootApplication --annoation do internally?
+Aclass level annotation
+it also trigger auto confi and componenet scanning 
 
 @SpringBootApplication
 public class Myapplication{
@@ -71,14 +73,21 @@ it is  a combinatino of 3 annotations
 @EnableAutoConfiguration & 
 @ComponentScan
     1.EnableAutoConfiguration: autotic configure your spring app based on dependcies
+            based upon the jar and files inthe class path 
                                 presentin in the class path
                             configure beans in the class path & scan the dependencies
                             acccording to the application need.
-    2.ComponentScan:  the need for manual bean registariotn is no needed
+eg: it will automatically create and register beans based on both the included jars
+files in the class path
+
+    2.ComponentScan: sscaning the packages for beans
+                        the need for manual bean registariotn is no needed
                     automatically detect and register beans
                         this scan the components(@Service, @Component etc) inthe
                         package of annotated class and it's sublclass
     3.CONFIGURATION: used to configure the bean and
+        used to indicate that our class has @Bean defininot method
+    this tell spring container that there are beans need to deal with runtime
                     -- packages -- in the class path
 -----------------------------
 
