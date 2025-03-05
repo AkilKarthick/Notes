@@ -8,3 +8,9 @@ we are using java and more particularly java 8
 in front end side they are suing angular
 not a full fledged guy
 experience on SQL mysql mongodb
+
+200 OK: Represents a successful request and is considered the ideal status code for a normal, functioning web page. 
+404 Not Found: Indicates that the server could not locate the requested resource or page. 
+401 Unauthorized: Means the client lacks valid credentials to access the requested data. 
+403 Forbidden: Shows that the client does not have permission to access the requested resource even with valid credentials. 
+500 Internal Server Error: Indicates an unexpected error occurred on the server side. 
