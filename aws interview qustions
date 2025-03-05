@@ -1,0 +1,15 @@
+Amazon EC2 (Elastic Compute Cloud): Virtual servers in the cloud.
+Amazon S3 (Simple Storage Service): Scalable storage in the cloud.
+Amazon RDS (Relational Database Service): Managed relational database service.
+AWS Lambda: Serverless compute service.
+Amazon VPC (Virtual Private Cloud): Isolated cloud resources.
+Amazon CloudFront: Content delivery network (CDN).
+Amazon DynamoDB: NoSQL database service.
+Amazon SNS (Simple Notification Service): Messaging service for application-to-application and application-to-person communication.
+Amazon SQS (Simple Queue Service): Managed message queuing service.
+AWS IAM (Identity and Access Management): Securely manage access to AWS services and resources.
+Amazon CloudWatch: Monitoring and observability service.
+AWS Elastic Beanstalk: Easy-to-use service for deploying and scaling web applications.
+Amazon Route 53: Scalable DNS and domain name registration.
+AWS CloudFormation: Infrastructure as code (IaC) service.
+AWS ECS (Elastic Container Service): Container orchestration service.
