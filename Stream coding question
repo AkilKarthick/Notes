@@ -45,6 +45,10 @@ Set<Integer> numberSetremoveDuplicate = new HashSet<>(numbers);
 perople.stream().collect(Collectors.groupingBy(Person::getAge));
 
 9.reduce a list of Integer to their sum?
+
+or
+number.stream().mapToInt(num->num).sum()
+
 number.stream().reduce(0,Integer::sum).collect(Collectors.toList)
 
 10.convertint to uppercae
