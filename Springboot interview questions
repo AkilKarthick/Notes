@@ -1,6 +1,27 @@
 what is @Qualifier and @Primay annoatation ?
-agile methoddology??
+    @Qualifier is used to specify which bean should be injected when 
+    there are multiple beans of the same type.
+    
+    @Primary is used to give a bean preference when multiple beans of the same type 
+    are available. If no @Qualifier is specified, Spring will use the @Primary bean.
 
+agile methoddology??
+    way of managing projects by breaking them down into smaller, 
+    manageable parts called sprints.
+
+Instead of delivering the entire project at once, Agile delivers work in small, incremental steps. Each step is called a sprint, usually lasting 1-4 weeks.
+Flexibility: Agile allows teams to adapt to changes quickly. If something isn’t working, it can be adjusted in the next sprint.
+Collaboration: Agile emphasizes teamwork and communication. Teams work closely with each other and with stakeholders to ensure the project meets everyone’s needs.
+Continuous Improvement: After each sprint, teams review what went well and what can be improved, making adjustments for the next sprint.
+
+flow of springboot applcation
+------------------------------------------------------------------
+client made http request-> controller receive and call service layer
+service layer -> process the business logice and interact with repo layer
+repository layer -> perform database opertaion
+service layer return the processed data to the controller
+controller send the response back to the client
+------------------------------------------
 
 1. WHAT IS SPRINGBOOT? YOUR UNDERSTANDING?
 
@@ -185,7 +206,7 @@ features: token creation, token validation & claims handlings
 
     springboot has a main class which starts up the springappplicationcontext
 
-12. latest version of springboot is 2.6.0 java 15 onwards it support and much more
+12. latest version of springboot is 3.4.3 it support jdk 17 and the  latest version
 
 13. spring bean?
         it is an object that is managed by the spring ioc (inversion of control)
@@ -194,11 +215,6 @@ features: token creation, token validation & claims handlings
 how do you define a spring bean in a springboot application?
         using annotation like @Component, @Service @Repository
     or by using the @Bean annotaion in a configuraion class
-
--------the above are not checked--
-
-
-
 
 14. what is the use of @RestController annotaion in springboot?
     
