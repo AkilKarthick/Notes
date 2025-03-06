@@ -303,6 +303,10 @@ vectors are bit outdated now
       LinkedHasSet: for natural order
 
       HashMap: Use for fast key-value lookups.
+                  hashmap acceps one null in key and n number of null in value
+                  is not synchronized internally and hence it is not thread safe
+      concureentHashMap - is internally synchronized & hence it is thread safe
+                        dosen;t allow a single null values
       LinkedHashMap: Use for maintaining insertion order of elements.
       TreeMap: Use for storing elements in a sorted order based on keys.
 
