@@ -240,15 +240,43 @@ this have the @ResponseBody annot automatically applied to themd
 23. what is @RequestMapping used for?
     used to map web requesrt to specific handler method in a controller
 
+
+24 @RequestParam?
+this willl retrive or extrract valure form the url which are key-value pair 
+
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @GetMapping("/greet")
+    public String greet(@RequestParam String name) {
+        return "Hello, " + name + "!";
+    }
+}
+
+here if you make a request to /api/greet?name=John, the name parameter
+will be extracted from the URL and passed to the greet method.
+--------------
+@RequestParam extreacint query parameter form theurl path
+@PathVariable? extracrting valur form url path
+--------------------
+@GetMapping("/users/{id}")
+    public String getUserById(@PathVariable String id) {
+        return "User ID: " + id;
+    }
+
+if you make a request to /api/users/123, the id parameter
+will be extracted from the URL and passed to the getUserById method.
+
 24. use of SpringbootDev tools>
 
     provide fearures to make development faster, automatic restart, live reloads & 
     configurations for imporved experince
 
 15. what is spring data jpa?
-comes under data access layer
-provide cutom queries @Query annoation
-builtin paginatino & sorting
+        comes under data access layer
+        provide cutom queries @Query annoation
+        builtin paginatino & sorting
 
     add> spring-boot-starter_data-jpa in pom.xml file
     define an entity that maps to database table
@@ -269,6 +297,11 @@ in application.properties or yml file
     spring.datasource.username
     spring.datasource.passowrd
     spring.datasource.driver-classname=com.mysql.cj.jdbc.Driver
+
+why we are using ResponseEntity<>?
+
+it allows to control entiry http response like status code 
+setting up http status code
 
 How can you handle exception in springboot application?
 
