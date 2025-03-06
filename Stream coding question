@@ -9,6 +9,10 @@
 9. reduce a list of Integer to theri sum
 10. convert all string in a list to uppercase
 ------------------------------------
+//occurence of each word
+List<String> stringsss = Arrays.asList("apple","apple","banana","cherry");
+Map<String,Long> s=stringsss.stream()
+                            .collect(Collectors.groupingBy(e->e, Collectors.counting()));
 
 using java 8 return a list containing only even numbers from a list of integers
 
