@@ -1,0 +1,50 @@
+kafka lex content self notes:
+
+need of kafka:
+suitable for real time data streaming and analysis
+provide a simple way to manage the real time data
+support high throughput where millions of logs can be read/write
+in a short time
+provide complete soln to collect,store and consume any numb
+of logs from different mach/applciaon
+
+eg: webstire activity tracking, messaging, log aggregation &
+metrics management
+-------------
+Introduction to kafka:
+publish subscribe mode (pub-sub model)
+
+1.producer -- Application/process generating the messages continuously
+2.message broker -- server that store all the msg published by producer
+3.Topic -- category of message stored together
+4.consumer -- application or process that subscrive to specific topic
+              and consume the message.
+flow::
+producer -> (publish msg) -> messageBroker[topic1 topic2] -> consumer
+                                                        ^  |  
+                                                        |__|
+producer applicaiton generating continuous message can publish them 
+to kafka cluster which in turn gets consumed by consumer applcaion
+for data analysis based on business requirement.
+zookeper is a synchronized tool- used in distributed cluster.
+          it maintains complete metadata of kafka cluster
+-----------------------
+
+offset - kafka cluster stores stream of msg , every msg is identified by 
+         " unique ID".
+Topic - set of msg are grouped by category 
+Partitino - every kafka topic is partiioned and distriburted across the 
+            broker/serfvers in cluster 
+  Each partition is a sequence of immutable (not editable) messages
+  wherein new messages are appended to it as and when they arrive
+Leader - main copy of a particular partion 
+followers - replics 
+partition are log file which store msg that are published
+Replication factor - num of backup copies for each partion
+
+producers get the reqruied metadata from zookeper that tells to which
+leader partition the msg reqruied to be published
+
+producer then
+
+
