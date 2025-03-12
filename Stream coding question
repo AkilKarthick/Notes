@@ -57,4 +57,77 @@ number.stream().reduce(0,Integer::sum).collect(Collectors.toList)
 
 10.convertint to uppercae
 List<String> uppercasedwords = words2.stream().map(s->s.toUpperCase()).collect(Collectors.toList());
+---Array coding interview questions--
+//find missing number in an array using stream API?
+//boxed()- convert int to Integer.
+int[] arr ={2,3,4,5};
+List<Integer> list1 = Arrays.stream(arr).filter(i->i>0).sorted().distinct().boxed().collect(Collectors.toList());
+int missingNumber = IntStream.rangeClosed(1, list.size()+1).filter(i->!list.contains(i)).findFirst().orElse(1);
+System.out.println("missing number:" + missingNumber)
+
+//find nth largest element from array using stream api//
+public static void main(String[] args){
+int[] arr ={4,7,3,9,13};
+System.out.println(getNthlargestElement(arr,3));
+
+private static int getNthlargestElement(int[] arr,int n){
+
+ List<Integer> list = Arrays.stream(arr)
+                            .boxed()
+                            .sorted(Comparator.reverseOrder())
+                            .collect(Collector.toList());
+ return list.get(n-1);
+}
+}
+//find duplicate element in array using stream api:
+
+int[] arr = {2,3,5,7,8,5,3}
+Map<Integer,Long> dupElements = Arrays.stream(arr)
+                                      .boxed()
+                                      .collect(Collectors.groupingBy(e->e,Collectors.counting()));
+List<Integer> list = map.entrySet().stream().filter(e->e.getValue()>1).map(e->e.getKey()).collect(Collectors.toList());
+list.forEach(e->System.out.println("duplicate element:" +e));
+
+//find the largest/smallest element in array using stream api:
+int[] arr = {1,4,7,8,5,10};
+int minValue = Arrays.stream(arr).min().orElseThrow(()-> new IllegalArgumenentException("Empty array"));
+System.out.println("Min val:"+minValue);
+int maxValue = Arrays.stream(arr).max().orElseThrow(()->new ILlegalArgumentException("Empty array"));
+System.out.println("Max val:"+maxValue);
+
+int min = arr[0];
+int max = arr[0];
+for(int i=1;i<arr.length;i++){
+  if(arr[i]>max){
+    max = arr[i];
+  }
+  if(arr[i]<min){
+    min = arr[i]
+  }
+}
+System.out.println("MIN:"+min+"\t max vale:"+max);
+//move all zero to end of array using stream api
+
+int[] arr = {1,0,4,0,5,0};
+int[] nonZeroElementArr = Arrays.stream(arr)
+                                .filter(i->i>0).distinct().toArray();
+long zeroCount = Arrays.stream(arr)
+                        .filter(i->i==0)
+                        .count();
+int[] arr01 = IntStream.concat(Arrays.stream(nonZeroElementArr),Arrays.stream(new int[(int)ZeroCount])).toArray();
+System.out.println(arr01);
+
+
+
+
+
+
+
+
+
+
+
+
+//move all zero to end of Array using stream api.
+
 
