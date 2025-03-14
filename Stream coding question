@@ -116,18 +116,34 @@ long zeroCount = Arrays.stream(arr)
                         .count();
 int[] arr01 = IntStream.concat(Arrays.stream(nonZeroElementArr),Arrays.stream(new int[(int)ZeroCount])).toArray();
 System.out.println(arr01);
-
-
-
-
-
-
-
-
-
-
-
-
 //move all zero to end of Array using stream api.
+
+//count the occurence of each character in string
+
+String str = "occurence";
+Map<Character,Long> s =str.chars()
+                          .mapToObj(c->(char)c.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
+ characterCount.forEach((character, count) ->
+s.forEach(System.out::println);
+mapToObj return empty stream
+
+//remove duplicate character from string
+
+String dupString = "Occurence of Each string here";
+dupString.chars().mapToObj(c->(char)c).collect(Collectors.toSet()).forEach(system.out::println);
+//remove all duplicate character from string
+dupString=
+
+
+
+
+
+
+
+
+
+
+
+
 
 
