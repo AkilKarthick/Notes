@@ -134,6 +134,32 @@ dupString.chars().mapToObj(c->(char)c).collect(Collectors.toSet()).forEach(syste
 //remove all duplicate character from string
 dupString=
 
+//find the third highest salary from list of employee
+
+list<Employee> employees = Arrays.asList(
+                new Employee("lk",25,40000,1),
+new Employee("akil",25,50000,1),
+new Employee("karthick",25,60000,1),
+new Employee("kootyn",25,70000,2)
+)
+
+List<Department> department = Arrays.asList(
+  new Department(1,"it"),
+new Department(2,"Sales"),
+new Department(3,"HR"),
+)
+
+//how to find employee with 3rd highest salary from list of employee?
+
+Employe edetails = employees.stream()
+                            .sorted(Comparator.comparingInt(Employee::getSalary)
+                            .reversed()
+                            .skip(2)
+                            .findFirst()
+                            .get();
+
+
+
 
 
 
