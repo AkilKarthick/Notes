@@ -160,6 +160,17 @@ Employe edetails = employees.stream()
 
 Arrays.stream(arr).
 
+Long count = Arrays.stream(arr).filter(si->si==0).count();
+	       int[] resultArray =    IntStream.concat(Arrays.stream(nonZeroElementArray), Arrays.stream(new int[(int)count])).toArray();
+
+int[] nonZeroElementArray = Arrays.stream(arr)
+	        	  .filter(i -> i!=0).sorted().toArray();
+
+//rotate an array using k position using stream api
+
+int[] arr = {1,2,3,4,5,6,7,8,9};
+int k
+
 
 
 
