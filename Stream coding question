@@ -148,7 +148,6 @@ List<Department> department = Arrays.asList(
 new Department(2,"Sales"),
 new Department(3,"HR"),
 )
-
 //how to find employee with 3rd highest salary from list of employee?
 
 Employe edetails = employees.stream()
@@ -157,9 +156,9 @@ Employe edetails = employees.stream()
                             .skip(2)
                             .findFirst()
                             .get();
+//move all the zeros to the end of array and maitain
 
-
-
+Arrays.stream(arr).
 
 
 
