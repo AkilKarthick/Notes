@@ -88,7 +88,8 @@ Map<Integer,Long> dupElements = Arrays.stream(arr)
 List<Integer> list = map.entrySet().stream().filter(e->e.getValue()>1).map(e->e.getKey()).collect(Collectors.toList());
 list.forEach(e->System.out.println("duplicate element:" +e));
 
-//find the largest/smallest element in array using stream api:
+//find the largest/smallest element in
+array using stream api:
 int[] arr = {1,4,7,8,5,10};
 int minValue = Arrays.stream(arr).min().orElseThrow(()-> new IllegalArgumenentException("Empty array"));
 System.out.println("Min val:"+minValue);
