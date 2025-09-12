@@ -1,0 +1,244 @@
+List → ArrayList, LinkedList, Vector, Stack
+
+Set → HashSet, LinkedHashSet, TreeSet
+
+Queue → PriorityQueue, Deque
+
+Map → HashMap, LinkedHashMap, TreeMap, Hashtable, ConcurrentHashMap
+
+
+
+
+Hashtable: Synchronized, no null key or value, legacy.?
+
+1.ArrayList vs LinkedList
+
+ArrayList: Backed by array, fast random access, slow inserts/removals in middle.
+
+LinkedList: Doubly linked list, fast inserts/removals, slow random access.
+
+2.HashSet vs TreeSet
+HashSet: Unordered, uses hashCode(), faster.
+
+TreeSet: Sorted order, uses Comparable/Comparator, slower.
+
+Comparable vs Comparator
+
+Iterator vs ListIterator
+Iterator: Traverses forward only.
+
+ListIterator: Bi-directional and allows modification.
+
+
+
+
+
+
+
+
+
+
+
+The Java Collections Framework is a set of interfaces and classe
+designed for storing and managing groups of objects efficiently in Java applications.
+
+major interfaces are List, Set, Map, and Queue
+
+List: Ordered, allows duplicate
+Set: Unordered, unique elements
+Map: Key-value pairs with unique keys
+Queue: FIFO structure for tasks
+
+The framework allows standardized manipulation, sorting, and searching 
+------------------------
+
+
+1.list interface: 
+
+Represents an ordered collection; 
+duplicates allowed; elements accessed by index
+Maintains insertion order, allows duplicates and nulls, provides index-based access
+
+
+List<String> li = new ArrayList<>();
+        li.add("Java");
+        li.add("Python");
+        li.add("DSA");
+        li.add("C++");
+
+System.out.println("Elements of List:");
+for(String s : li){
+	System.out.println(s);
+}
+
+// Access by index
+System.out.println("Element at Index 1: " + li.get(1));
+// Update value
+li.set(1, "JavaScript");
+
+// Remove by value
+li.remove("C++")
+
+}}
+-----------------------
+a.ArrayList
+
+ Dynamic (resizable) array implementation of list interface, internally using array
+ fast random access, slower insertion/removal except at end.
+
+        List<String> animals = new ArrayList<>();
+        animals.add("Lion");
+        animals.add("Tiger");
+        animals.add("Cat");
+        animals.add("Dog");
+
+        System.out.println(animals);
+        animals.add(2, "Elephant");                   // Add at position
+        System.out.println(animals);
+    }
+-------------------------------
+
+b.LinkedList
+Doubly-linked list implementation; elements (nodes) linked using pointers for easy insertions/removals.
+good for frequent inserts/removes, slower random access
+
+
+ List<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        System.out.println("List: " + numbers);
+
+ // Access by index
+numbers.get(2);
+ // Find index of element
+numbers.indexOf(2);
+
+// Remove by index
+.remove(1);
+
+====================
+
+2.set interface
+
+that allows only unique elements no duplicates and generally no order is maintained
+class are
+ 
+HashSet - unordered. allows one null based up on hashtable
+TreeSet - here order in sorted
+LinkedHashSet  - insertion order is maintained 
+
+----------
+
+a.HashSet::
+
+unordered, fast, allows one null, based on hash table
+
+set<String> hs = new HashSet<>();
+hs.add("apple");
+hs.add("samsung");
+hs.add("apple"); //duplicate ignored 
+System.out.println(hashSet); // order also not guaranted [Banana, Apple] 
+When quick lookup and uniqueness matter, order does not
+-------------
+
+b.TreeSet
+
+sorted set, stores elements in asceeinding order using binary search tree
+
+Set<Integer> ts = new TreeSet<>();
+ts.add(3);
+ts.add(2);
+ts.add(1);
+System.out.println(treeSet); // Output: [1, 2, 3]
+
+when you want automatic sorting of set elements
+
+---------------
+
+c. LinkedHashSet
+
+maintain  insertion order, internnaly use linked hashet with hashtable
+allows null one time
+
+Set<String> lhs = new LinkedHashSet<>();
+lhs.add("one");
+lhs.add("two");
+lhs.add("three); //output 
+
+// Output: [One, Two, Three]
+
+==============================
+
+Map interface:
+
+collection of key-value pair in java
+each key is being unique
+
+method like put(), get(), remove(), containsKey(), containsValue(), size(), clear()
+
+HashMap - unordered map, fst access via hash codes
+TreeMap
+LinkedHashMap
+
+---------
+
+a.HashMap
+
+allows one null key and multiple null values
+order of entries is not guaranteed, may change at any time
+Constant time (O(1)) for basic operations.
+
+Map<String, Integer> hashMap = new HashMap<>();
+hashMap.put("A", 1);
+hashMap.put("B", 2);
+hashMap.put("A", 3); // Value for "A" is updated to 3
+System.out.println(hashMap); // Output: {A=3, B=2}
+
+b.linked hashmap
+
+map with predictable insertion order
+
+Map<String, Integer> linkedHashMap = new LinkedHashMap<>();
+linkedHashMap.put("X", 10);
+linkedHashMap.put("Y", 20);
+linkedHashMap.put("Z", 30);
+System.out.println(linkedHashMap); // Output: {X=10, Y=20, Z=30}
+
+maintain the order in which the key is inserted
+allows one num and multiple null values
+still fast (0(1))
+use when order matters
+
+c.TreeMap
+
+map with sorted natural order
+
+Map<Integer, String> treeMap = new TreeMap<>();
+treeMap.put(3, "Three");
+treeMap.put(1, "One");
+treeMap.put(2, "Two");
+System.out.println(treeMap); // Output: {1=One, 2=Two, 3=Three}
+
+key are sorted (o(log n)) operation
+does not allow null key (but allows multiple null values)
+use when sorted access to keys is needed
+
+==========================
+
+queue interface
+
+orders elemnets in Firstinfirstout manner
+commn operation add(0, offer(), poll(), remove () peak(), element()
+
+queue : insertion at tail and remove from head
+dequer : behaviour allowing adding/removing elements at both end
+
+
+
+
+List	ArrayList, LinkedList
+Set	HashSet, TreeSet, LinkedHashSet	
+Queue/Deque	LinkedList, ArrayDeque, PriorityQueue	
+Map	HashMap, TreeMap, LinkedHashMap
