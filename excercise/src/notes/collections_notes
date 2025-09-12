@@ -238,7 +238,7 @@ dequer : behaviour allowing adding/removing elements at both end
 
 
 
-List	ArrayList, LinkedList
+List	ArrayList, LinkedList	
 Set	HashSet, TreeSet, LinkedHashSet	
 Queue/Deque	LinkedList, ArrayDeque, PriorityQueue	
 Map	HashMap, TreeMap, LinkedHashMap

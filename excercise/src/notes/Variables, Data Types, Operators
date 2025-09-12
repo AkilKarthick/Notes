@@ -1,0 +1,118 @@
+java notes day1
+
+Java Basics: Variables, Data Types, Operators
+--------------------------------------------
+
+
+1.variables:
+
+data values are stored in  a memory location 
+
+variables are container that store data values- these could be numbers text or other data's
+
+
+types of variables;
+
+1.local (declared inside method)
+2.instance (declared inside a class but outside methods)
+3.static (declared with the static keyword inside a class)
+
+
+example of declaration:
+
+int age = 25;
+string name = "akil";
+
+-------------------------------------------------------
+2.Data Types:
+
+means what kind of data a variable can hold 
+
+1.primitive = bsilfdcb 
+
+ byte
+ short
+ int
+ long 
+ float 
+ double
+ char
+  Boolean
+
+2.no primitive : String , Arrays, Classes
+
+eg:
+
+int num = 5; (whole number)
+float price = 3.99f; (decimal number)
+char initialLetter = 'A'; (charater)
+Boolean isOpen = true; (true or false)
+
+--------------------------------------------------------
+
+
+3.Operators in java:
+
+let you perform operations on variables & values
+
+arithmetic (+, -, *, /, %)
+Assignment (=, +=, -=, etc.)
+Relational (==, !=, <, >, <=, >=)
+Logical (&&, ||, !)
+
+Ternary (? :), 
+Bitwise (&, |, ^)
+ Shift (<<, >>)
+
+
+public classs javaBascisExample {
+	
+	public static void main(String[] args){
+	
+// Variables and Data Types
+        int age = 25;               // integer variable
+        float price = 19.99f;       // decimal type float
+        char grade = 'A';           // single character
+        boolean isStudent = true;   // boolean value
+        String name = "John";       // non-primitive String
+
+        // Print variable values
+        System.out.println("name :" + name);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Grade: " + grade);
+        System.out.println("Price: " + price);
+        System.out.println("Is Student: " + isStudent);
+
+        // Operators
+        int x = 10;
+        int y = 3;
+        
+        int a =20, b= 3;
+        
+        System.out.println((a/b));
+
+        System.out.println("Arithmetic Operators:");
+        System.out.println("x + y = " + (x + y));  // Addition
+        System.out.println("x - y = " + (x - y));  // Subtraction
+        System.out.println("x * y = " + (x * y));  // Multiplication
+        System.out.println("x / y = " + (x / y));  // Division (integer division) quotiet
+        System.out.println("x % y = " + (x % y));  // Modulus (remainder)
+
+        System.out.println("Relational Operators:");
+        System.out.println("x > y: " + (x > y));   // Greater than
+        System.out.println("x == y: " + (x == y)); // Equal to
+        System.out.println("x != y: " + (x != y)); // Not equal
+
+        System.out.println("Logical Operators:");
+        boolean result = (x > 5) && (y < 5);
+        System.out.println("(x > 5) && (y < 5): " + result);
+        System.out.println("!(x > 5): " + (!(x > 5)));
+
+        // Assignment operators
+        x += 5;  // x = x + 5
+        System.out.println("After x += 5, x = " + x);
+
+
+
+}
