@@ -1,0 +1,77 @@
+Java Basics: Control Statements (if, switch, loops)
+
+
+if
+if-else
+if-elseif-else
+switch statement
+
+
+
+eg:
+
+1.
+if(age >= 18){
+system.out.println("adult");
+}
+
+2.
+if(age >= 50){
+   system.out.println("pass");
+}else {
+	system.out.println("fail");
+}
+
+3.switch
+
+
+int day=3;
+switch(day) {
+	
+case 1: System.out.println("monday");
+	break;
+case 2: System.out.println("tues");
+	break;
+case 3: System.out.println("wedb");
+	break;	
+default: 
+	System.out.println("weekends");
+}
+
+------
+
+for loop
+while loop
+do while loop
+
+
+
+
+eg1: for loop
+
+for (int i=1; i<=5 ; i++) {
+	System.out.println(i)
+	}
+
+
+eg2: while loop,  repeats while condition is true
+
+
+int i=0;
+while (i<5){
+	System.out.println(i);
+	i++;
+	}
+
+
+eg3: execute block once then repeat while condtion is true
+
+
+int i =0;
+do {
+	System.out.println(i);
+	i++;
+}while (i<5);
+
+break;   exist the current loop or switch statement immediately
+continue;  skips the current iteration of the loop and move to the next iteration

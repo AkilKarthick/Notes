@@ -1,0 +1,167 @@
+String:
+
+Immutable sequence of characters
+Once created, the value cannot be changed.
+Any change creates a new String object
+
+
+
+------------------------------------------------------------------------------------
+1.Why is String immutable in Java? What are the advantages and disadvantages of String immutability?
+
+Strings are immutable in Java to provide security, thread-safety, and performance optimization via String pooling. Immutability ensures that once a String is created, it cannot be changed, which prevents unpredictable behavior when shared across threads. 
+
+Advantages include safe sharing, and use in security-sensitive operations. 
+
+The main disadvantage is the creation of multiple String objects when modifying Strings, which can lead to higher memory usage unless StringBuilder or StringBuffer is used.
+
+--------------------------------------------------------------------------------------
+2. How does the Java String pool work? What is the difference between new String("abc") and "abc"?
+
+The String pool is a special memory area that stores literals
+When a String literal like "abc" is created, it's placed in the pool
+If another literal "abc" is declared, the JVM reuses the existing reference
+
+String s = "abc";
+String s1 = "abc"; //he JVM reuses the existing reference
+
+String s3 = new String("abc");
+new String("abc") creates a new String object in heap memory every time,regardless of the pool
+
+if, new String("abc") == "abc"  == return false// because they refer to different objects
+but 
+"abc" == "abc"  // returns true as both reference the same pooled object.
+
+------------------------------
+3.Can you explain the difference between equals() and == when comparing two String objects?
+
+== : check if two reference point to the exact same object in memory
+equals() method : compares the content or sequence of characters in the String
+
+
+------------------------
+How does String interning work? When to use intern()? Pitfalls?
+
+String s1 = new String("hello");
+String s2 = "hello";
+System.out.println(s1 == s2);               // false, different objects
+System.out.println(s1.intern() == s2);      // true, both refer to pool object
+
+Use intern() when many duplicate Strings are created dynamically during runtime, and you want to save memory by reusing common string instances.
+Overusing intern() can increase the size of the String pool and cause longer garbage collection pauses
+
+-----------------
+
+How to efficiently reverse a String in Java
+
+String original = "Hello";
+String reversed = new StringBuilder(original).reverse().toString();
+System.out.println(reversed);  // Output: "olleH"
+
+Using char array and swapping>?
+
+public static String reverseString(String str) {
+    char[] chars = str.toCharArray();
+    int left = 0, right = chars.length - 1;
+    while (left < right) {
+        char temp = chars[left];
+        chars[left] = chars[right];
+        chars[right] = temp;
+        left++;
+        right--;
+    }
+    return new String(chars);
+}
+
+
+--------------
+
+how to swap two strings using java
+
+public class SwapStrings {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+
+        System.out.println("Before swap:");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+
+        // Swapping using a temporary variable
+        String temp = str1;
+        str1 = str2;
+        str2 = temp;
+
+        System.out.println("After swap:");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+    }
+}
+-------------------------
+wapping two strings in Java without using a temporary variable ?
+
+
+public class SwapStringsWithoutTemp {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+
+        // Swapping without a temporary variable
+
+        str1 = str1 + str2;  // str1 now holds "HelloWorld"
+        str2 = str1.substring(0, str1.length() - str2.length()); // str2 gets "Hello"
+        str1 = str1.substring(str2.length());  // str1 gets "World"
+
+        System.out.println("After swap:");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+    }
+}
+-----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------
+StringBuffer:
+
+Mutable sequence of characters,
+thread-safe due to synchronization,
+but slower.
+Suitable for multi-threaded environments.
+
+StringBuilder:
+
+Mutable sequence of characters,
+not thread-safe 
+but faster than StringBuffer. 
+Best for single-threaded environments.
+
+
+for EG:
+
+String s= "hello";
+
+s = s + "word";  //this will create a new String object;
+
+//StringBuffer
+
+StringBuffer sb = new StringBuffer("hello");
+sb.append("workl"); //this  will modifyies orginal object
+
+// StringBuilder example (mutable, not thread-safe)
+StringBuilder sbd = new StringBuilder("Hello");
+sbd.append(" World"); // modifies original object

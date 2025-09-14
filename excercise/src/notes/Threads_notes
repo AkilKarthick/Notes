@@ -1,0 +1,148 @@
+Thread:
+
+a lightweight process/units called thread
+Thread allow different part of a programs to execute simulatenously
+
+
+
+
+
+creating a thread in java is by exteinding Thread class or by implementing Runnable interface
+
+Thread class -- Extend Thread when no other class inheritance is needed
+Runnable interface --Implement Runnable when the class already extends another class (preferred).
+
+start(): Starts thread execution; calls run() in a new thread.
+
+run(): Contains the code executed by the thread.
+
+sleep(ms): Makes the thread pause for specified milliseconds.
+
+join(): Waits for a thread to finish execution before continuing.
+
+interrupt(): Interrupts the currently executing thread.
+
+isAlive(): Checks if thread is alive or dead.
+
+
+
+eg1:
+
+class Mythread extends Thread{
+	public void run(){
+	System.out.println("Thread Started Running...");
+	}
+}
+
+public class Demo {
+	public static void main(string[] args){
+	MyThread t1 = new Mythread();
+	t1.start(); //start() will internally call run() method
+	}
+}
+
+implementing runnable interface
+
+
+class MyRunnable implements Runnable{
+	public void run(){
+	System.out.println("Thread Started Running...");
+	}
+
+}
+
+public class Demo {
+	public static void main(string[] args){
+
+//creating an instance of the class MyRunnable
+	MyRunnable mr = new MyRunnable();
+	Thread t1 = new thread(mr);
+
+	t1.start(); //start() will internally call run() method
+	}
+}
+============================================================
+
+multiple Thread:
+
+running multiple thread simultaneously to perform different task at the same time
+which improve performance and cpu utilizations,  each thread run independently but shares the same memory space
+
+
+class MyThread extends Thread {
+    String task;
+
+    MyThread(String task) {
+        this.task = task;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(task + " : " + i);
+            try {
+                Thread.sleep(1000); // Pause for 1 second
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+public class MultiThreadDemo {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread("Cut the ticket");
+        MyThread t2 = new MyThread("Show your seat number");
+        
+        t1.start(); // Start first thread
+        t2.start(); // Start second thread
+    }
+}
+
+output:
+Cut the ticket : 1
+Show your seat number : 1
+Cut the ticket : 2
+Show your seat number : 2
+...
+Cut the ticket : 5
+Show your seat number : 5
+
+
+Two threads (t1 and t2) run concurrently.
+
+Each prints its respective task with a delay of 1 second.
+
+Threads run independently, so their output interleaves, showing multitasking.
+
+
+---------------------------------
+
+what is synchronization
+
+it ensure only one thread executes a critical method/section at a time
+
+how to avoid deadlock
+
+using trylock()
+
+
+what is thread pool?
+
+manage a fixed number of reusable threads to execute task concuretnly, reducing overhead of thread creation and destruction
+
+
+wait() // relase lock and wait for notification
+sleep() // doesn't release any lock and pause the thread for a specific time
+
+start() multiple times means IllegalThreadStateException  throws
+
+hwo thread communicate with each other ?
+
+through inter- thread communication method wait(), notify(), and notifyall() using inside synchronized blokc to coordinate execution
+
+What is a daemon thread and how to create one?
+A daemon thread is a background thread that does not prevent JVM from exiting when only daemon threads remain. Use setDaemon(true) before starting the thread.
+
+
+
+

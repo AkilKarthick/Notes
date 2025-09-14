@@ -1,0 +1,47 @@
+java OOPS basics:
+
+class: it is like a blueprint or template for creating an objects with properties andmethods
+
+objects: instance of the calss representing real world entities
+
+1.encapsulation: hiding internal data and providing access thorugh methods eg: getter & setters
+
+2.inheritance: mechanism to create new classes from existing one, enabling code reuse
+
+3.polymorphism: ability to take many forms, method behave differently based on object type
+
+4.abstraction: hiding complex details & shows only necessary parts to the users
+
+----------
+
+
+encapsulation: 
+
+keep data safe by restricting access with private fields
+getter and setter
+
+inheritance:
+ a subclass inherits fields and methods from  superclass
+promote code reuse
+
+types of inheritance;
+
+single, multilevel, hierarchical
+
+a hierarchical inheritance means multiple subclasses inherit from a single superclass. The superclass provides common properties and methods, and each subclass extends or overrides them for specialization.
+
+
+polymorphism: ability to behave differently based on the object type
+
+compile time (overloading) - same method name with different parameters
+run time (overriding) - a subclass provide its own implementation of a method
+
+Abstraction: hides complex implementation details via abstract class or interface exposing only relevant functionalities
+
+
+aggregation- once class has a reference to another HAS A RELationship
+
+composition-  stronger from of aggregation where the contained obj can't exist independently
+
+
+
