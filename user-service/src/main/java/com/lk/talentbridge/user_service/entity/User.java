@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+//@NoArgsConstructor
 @Entity
 @Table(name = "users")
-@Data
+//@Data
 public class User {
 
     @Id
