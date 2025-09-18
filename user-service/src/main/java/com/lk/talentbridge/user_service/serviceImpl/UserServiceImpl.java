@@ -13,9 +13,13 @@ import com.lk.talentbridge.user_service.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private UserRepository userRepository;
+//	@Autowired
+	private final UserRepository userRepository;
 
+	@Autowired
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository= userRepository;
+	}
 	
 	@Override
 	public User registerUser(User user) {
