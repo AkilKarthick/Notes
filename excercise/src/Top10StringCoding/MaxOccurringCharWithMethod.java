@@ -28,8 +28,6 @@ public class MaxOccurringCharWithMethod {
 				System.out.println("max occuring character: " + maxChar + " is " + maxCount + " times");
 				
 			}
-		}
-		
+		}	
 	}
-
 }
