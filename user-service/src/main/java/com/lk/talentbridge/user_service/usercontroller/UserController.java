@@ -34,8 +34,13 @@ public class UserController {
 	
 	private static final Logger log = (Logger) LoggerFactory.getLogger(UserController.class);
 	
+//	@Autowired
+	private final UserService userService;
+	
 	@Autowired
-	private UserService userService;
+	public UserController(UserService userService) {
+		this.userService=userService;
+	}
 
 	//Register a new user
 	@PostMapping("/register")
