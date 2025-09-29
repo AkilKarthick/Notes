@@ -82,8 +82,8 @@ public class CompleteExceptionExample {
 
 defining your own exception class by extending the base 
 
-	Exception class  at compile time it is checked
-	RuntimeException at run time it is chekced | so unchekced exception
+	Ex-c-eption class  == at compile time -- checked
+	Run-timeException == at run time it is chekced | so unchekced exception
 
 
 // Define the custom exception by extending Exception (checked exception)

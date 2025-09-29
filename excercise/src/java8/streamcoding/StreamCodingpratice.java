@@ -33,9 +33,9 @@ public class StreamCodingpratice {
 		System.out.println(squ);
 		
 		// 4.sum of numbers using reduce
-		
-		int sum = l1.stream().reduce(0, (a,b) -> a+b);
-		System.out.println(sum);
+		List<Integer> l4 = Arrays.asList(1,2,3);
+		Integer sum = l4.stream().reduce(0,(a,b) -> a+b);
+		System.out.println("sum of a & b is : "+sum);
 		
 		//maxnumber in s laist
 		

@@ -18,6 +18,17 @@ public class swithcDemo2 {
 				}
 		 */
 	
+		/* Only acts as a statement to control flow.
+		 * Needs explicit " breaks " to prevent fall-through errors
+		 * Assignment is done manually inside each case
+		 * 
+		 */
+		
+		
+		/*
+		 * Switch can be used as an expression, directly returning a value
+		 * No fall-through; arrow syntax is concise, break/yield can be used for values
+		 */
 
 		String cardType = "business"; 
         int creditScore = switch (cardType) {

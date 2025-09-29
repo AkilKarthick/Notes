@@ -1,5 +1,6 @@
 package java8.streamcoding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -24,7 +25,7 @@ public class AdvancedStreamCodingQuestions {
 		List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8);
 		
 		Map<Boolean, List<Integer>> partitioned = numbers.stream()
-			    .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+			    										 .collect(Collectors.partitioningBy(n -> n % 2 == 0));
 
 			System.out.println(partitioned);
 			
@@ -32,7 +33,7 @@ public class AdvancedStreamCodingQuestions {
 			
 			List<String> fruits = Arrays.asList("bana","app","ora");
 			Map<Integer, List<String>> groupedByLength = fruits.stream()
-				    .collect(Collectors.groupingBy(s -> s.length()));
+				    											.collect(Collectors.groupingBy(s -> s.length()));
 //groupingBy(String::length))
 				System.out.println(groupedByLength);
 				//
@@ -45,7 +46,19 @@ public class AdvancedStreamCodingQuestions {
 
 					System.out.println(result);  // Output: [Banana, Apple, Orange]
 
+					//here counted the each word letter occurenec
+//					ArrayList<String> empList = new ArrayList<>(Arrays.asList("Ajay","Sachin","Kamal","Swati","Ajay","Rahul","Amit")) ;
+//					Map<Object, List<String>> empDetails = empList.stream().collect(Collectors.groupingBy(s->s.length()));
+//					System.out.println(empDetails);
 				
+
+					ArrayList<String> empList = new ArrayList<>(Arrays.asList("Ajay","Sachin","Kamal","Swati","Ajay","Rahul","Amit"));
+
+					Map<String, Long> empDetails = empList.stream()
+													.collect(Collectors.groupingBy(s -> s, Collectors.counting()));
+
+					System.out.println("Employee");
+					empDetails.forEach((name, count) -> System.out.println(name + "-" + count));
 
 	}
 

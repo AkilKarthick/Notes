@@ -1,0 +1,182 @@
+MultiThread interview questions
+
+
+1.What is Multithreading in Java?
+
+	allows a pgm to run multiple threads simultaneousely with in single process
+	helps perform multiple task in paralle,leading o better cpu utilization and faster program execution
+	Thread - smallaest unit of exection or a light weight sub process
+
+MulitpThread - allows multiple thread to run concurrently. sharing the same memory but executing independently
+
+life cycle of thread
+
+	new - thread is created but not yet started
+	runnable - thread is ready to run and waiting for cpu scheduling
+	Running - thread is actually executing its task
+	waiting - Thread waits for another thread action like notification
+	Timed waiting - thread wait for a specific period eg thread.sleep(1000)
+	Terminated - thread finish execution & stopped
+
+
+---------------------------------------------------------------------
+2. what is synchronization in java and synchronized key word in java?
+
+
+synchronization in java ensure that only one thread can access a shared resource at a time
+preventing errors due to concurrent modification
+
+	Synchronization in Java is a mechanism to control the access of multiple threads to shared resources or 
+	critical sections of code, ensuring that only one thread can execute a synchronized block or method at a time.
+	This prevents race conditions and data inconsistency when multiple threads try to modify shared data concurrently.
+
+
+	Synchronized keyword: 
+marks method or block to make them thread safe -by allowing only one thread to execute them at once
+
+When a thread enters a synchronized method/block, it acquires a lock (monitor) on the object, and
+other threads must wait until the lock is released.
+
+for eg:
+
+in this eg: two or more thread calling increment() or getCount() shared methods 
+one at a time to avoid erros inconsisten values
+
+When a thread enters a synchronized method/block, it acquires a lock (monitor) on the object, and other threads must wait until the lock is released.
+
+It ensures mutual exclusion and thread-safe access to shared resources
+
+			class Counter {
+			    private int count = 0;
+			
+			    public synchronized void increment() {
+			        count++;
+			    }
+			
+			    public synchronized int getCount() {
+			        return count;
+			    }
+			}
+-------------------------------
+difference between wait() & sleep()?
+
+	wait() - is used to pause a thread unitl another thread notifies it,
+			 and it releasese the lock so other thread can access the synchronized block
+	sleep() - pause the current thread for a fixed time bt keeps holding any lock it has
+	
+EG::
+	synchronized (obj) {
+	    obj.wait();  // waits and releases lock
+	}
+	
+	Thread.sleep(1000);  // sleeps but keeps lock
+----------------------------------------------------
+
+what is volatile keyword?
+
+	if we use this on a variable means. any read & write happedn to that variable is always
+	done directly from main memory not from thread local cpu cachce. 
+	
+	this ensure that changes made by one thread to the variable are immediately visible to all other threads
+	volatile can only be applied to variables, not methods or classes
+	Declaring a variable as volatile guarantees visibility of changes across threads
+
+Without volatile, different threads may have cached copies of the variable, leading to inconsistent or stale value
+
+
+	public class Example {
+	    private volatile boolean flag = false;
+	
+	    public void setFlagTrue() {
+	        flag = true;  // Changes visible immediately to other threads
+	    }
+	
+	    public boolean checkFlag() {
+	        return flag;  // Always reads current value from main memory
+	    }
+	}
+---------------------------------
+
+what is thread local?
+
+	variables are typically declared as private & static fields
+	it provide each thread to have its own copy of a variable preventing conflicts
+	it is like giving each thread its own workspace where they can store and modify variables indpendntly
+	
+--------------------------------------------------
+what is deadlock in java? and how can te be avoided?
+
+	a situation in multithread where two or more threads are blocked forever.
+	each waiting for a lock held by the other threads, this cause the thread to wait forever, like freze or 
+	hand can happedn , none of the threads can proceed.
+
+how to avoid means
+
+	keep synchronized block only for lock critical sections
+	use trylock() with timeoout. allows thread to get lock or backoff instead of waiting forever
+	avoid nestedlocks
+--------------------------------
+
+Thread
+
+	extends Thread class
+	create thread object and call start() method
+	
+	class MyThread extends Thread {
+	    public void run() {
+	        System.out.println("Thread running");
+	    }
+	}
+	MyThread t = new MyThread();
+	t.start();
+
+
+
+Runnable
+
+Using Runnable is more flexible, allowing your class to extend another class as well, and lets multiple threads share the same task instance
+
+	implements Runnaable interface
+	multiple interface can possible right so more flexible
+	need to override run() method
+	create Runnable instance, pass to thread constructor then start it
+
+
+		class MyRunnable implements Runnable {
+		    public void run() {
+		        System.out.println("Runnable running");
+		    }
+		}
+		Thread t = new Thread(new MyRunnable());
+		t.start();
+----------------------------------------------
+difference between Runnable & callable ?
+
+	Runnable and Callable are two interfaces in Java used for defining tasks that can be executed by threads
+	
+	runnable
+	
+	Represents a task that can be run by a thread but does not return a result.
+	Has a single method run() which contains the code to execute.
+	Can’t throw checked exceptions.
+	Used when you want to run code asynchronously but don’t need any result back.
+	
+	Callable
+	
+	Represents a task that can be run by a thread and returns a result.
+	call() which returns a result and can throw checked exceptions.
+	Used when you want to run code asynchronously and need a result or can handle exceptions.
+
+
+---------------------------------------------
+synchronized method and synchoronzed block diffference?
+
+Synchronized method locks the whole method for one thread at a time. This is simple but may cause performance overhead if only part of the method is critical.
+
+Synchronized block lets you lock just a piece of code inside a method, improving performance by reducing the locked area and allowing other threads to execute non-critical code concurrently.
+
+
+
+
+
+

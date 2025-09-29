@@ -11,12 +11,13 @@ public class strings {
 		StringBuilder rev =s.reverse();
 		
 		if(rev.equals(s)) {
-			System.out.println(" string a is  palindrome");
+			System.out.println(" string a is  palindrome: " + s.capacity() + rev.capacity());
 		}else {
 			System.out.println("String is not a palindrom");
 		}
 		
 
+		
 	}
 
 }

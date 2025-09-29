@@ -79,7 +79,7 @@ Overusing intern() can increase the size of the String pool and cause longer gar
 	Suitable for multi-threaded environments.
 	
 -----------------
-	StringBuilder:             hint i: as per alphavet
+	StringBuilder:             hint i: as per alphabet 2nd
 ------------------
 	Mutable sequence of characters,
 	not thread-safe 
