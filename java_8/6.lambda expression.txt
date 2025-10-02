@@ -1,0 +1,56 @@
+lambda expression:
+
+a concise way to represent an anonymous function 
+(a function without function name) 
+that can be passed as an arugument to methods or
+ used for functional style programming
+
+
+hints:
+
+A lambda expression is an anonymous function that provides a clear and concise way to implement the abstract method of a functional interface
+
+An interface with exactly one abstract method. Lambda expressions can only be used to implement functional interfaces.
+
+They reduce boilerplate code by eliminating the need for anonymous inner classes
+
+
+
+
+syntax
+(parameters) -> expression
+
+it simplifies code by allowing single method interface(functional interface) to be implemented directly, without creating a separate class
+
+eg:
+
+sigle parameter:
+
+(x) -> x * x
+
+multiple parameter:
+
+(a,b) -> a +b
+
+Block expression:
+
+(x,y) -> {
+	int sum = x + y;
+	return sum;
+	}
+
+
+list iteration:
+
+List<string> list = Arrays.asList("a","b","c");
+list.forEach(item ->System.out.println(item) )
+
+=========================
+Functional Interfaces::
+
+interface Operation{
+	int process(int a, int b);
+	}
+
+Operation addition = (a,b) -> a +b;
+System.out.println(addition.process(1,2);

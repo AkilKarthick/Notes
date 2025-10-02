@@ -1,0 +1,80 @@
+Java 8: Optional Class | Date and Time API | method referencing
+
+--------------
+Optional class
+--------------
+
+to handle null values and avoid nullPointerException
+to avoid null checks 
+like whether an object which may or may not contain a null value
+
+
+for EG:
+eg1;
+
+
+with Optinal :
+
+String name = getUserName();
+Optional<String> name = Optional.ofNullable(getUserName());
+    name.map(String::toUpperCase)
+    	.ifPresentOrElse( System.out::println, 
+)
+    );
+
+
+============================================================
+EG2::
+
+Optional<String> optionavalue = Optional.ofNullable(null);
+
+// Check if value is present
+        if (optionalValue.isPresent()) {
+            System.out.println(optionalValue.get());
+        } else {
+            System.out.println("Value is not present");
+        }
+
+// Or provide a default value
+        String value = optionalValue.orElse("Default value");
+        System.out.println(value);
+
+// or throw exception if absent
+        // optionalValue.orElseThrow(() -> new IllegalStateException("Value not present"));
+    }
+
+
+------------------
+method referencing
+------------------
+
+A shorthand syntax for lambda expressions that call a method.
+
+Static method reference: ClassName::staticMethod
+Instance method reference of a particular object: instance::instanceMethod
+Intance method reference of an arbitrary object of a type: ClassName::instanceMethod
+Constructor reference: ClassName::new
+
+for Eg:
+
+// Using lambda
+        Arrays.sort(names, (s1, s2) -> s1.compareToIgnoreCase(s2));
+
+// Using method reference (instance method of arbitrary object)
+        Arrays.sort(names, String::compareToIgnoreCase);
+
+----------------
+date & time api
+----------------
+Introduced in Java 8 to replace older java.util.Date and Calendar.
+Provides immutable and thread-safe date-time types.
+
+for EG:
+
+LocalDate date = LocalDate.now();
+LocalTime time = LocalTime.now();
+LocalDateTime dateTime = LocalDateTime.now()
+
+
+
+

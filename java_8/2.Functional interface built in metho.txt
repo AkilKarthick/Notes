@@ -1,0 +1,47 @@
+Functional interface built in methods
+
+Consumer -Accepts one input, returns nothing
+predicate -Accepts one input, returns boolean
+Function -Accepts one input, returns a result
+Supplier -No input, returns a result
+BiConsumer -Accepts two inputs, no output
+Bipredicate -Accepts two inputs, returns boolean
+etc
+
+
+// Consumer example
+        Consumer<String> print = s -> System.out.println(s);
+        print.accept("Hello Consumer!");
+
+// Predicate example
+        Predicate<Integer> isPositive = n -> n > 0;
+        System.out.println(isPositive.test(5));  // true
+
+        // Function example
+        Function<String, Integer> length = s -> s.length();
+        System.out.println(length.apply("Java8"));  // 5
+
+        // Supplier example
+        Supplier<Double> randomValue = () -> Math.random();
+        System.out.println(randomValue.get());
+
+        // UnaryOperator example
+        UnaryOperator<Integer> square = x -> x * x;
+        System.out.println(square.apply(6));  // 36
+
+        // BinaryOperator example
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        System.out.println(add.apply(4, 7));  // 11
+
+        // BiConsumer example
+        BiConsumer<String, Integer> printKV = (k,v) -> System.out.println(k + ": " + v);
+        printKV.accept("Age", 30);
+
+        // BiPredicate example
+        BiPredicate<String, String> equalsIgnoreCase = (s1, s2) -> s1.equalsIgnoreCase(s2);
+        System.out.println(equalsIgnoreCase.test("hello", "HELLO"));  // true
+
+        // BiFunction example
+        BiFunction<Integer, Integer, String> concatSum = (a, b) -> "Sum: " + (a+b);
+        System.out.println(concatSum.apply(10, 20));  // Sum: 30
+    }
