@@ -1,3 +1,64 @@
+
+---------------------------------------------------------
+|                     Client Request                     |
+---------------------------------------------------------
+              |
+              v
+---------------------------------------------------------
+|                 DispatcherServlet                      |
+| - Receives the HTTP request                            |
+| - Consults HandlerMapping to find Controller           |
+---------------------------------------------------------
+              |
+              v
+---------------------------------------------------------
+|             Security Filter Chain                      |
+| - Invokes Spring Security Filters                      |
+|   (Authentication, Authorization)                     |
+| - Checks if user is authenticated                      |
+| - Redirects to Login if not authenticated              |
+---------------------------------------------------------
+              |
+              v
+---------------------------------------------------------
+|                 Controller Layer                       |
+| - Executes business logic                              |
+| - Calls Service Layer and DAO                          |
+---------------------------------------------------------
+              |
+              v
+---------------------------------------------------------
+|               Service & Data Access                    |
+| - Interacts with Database                              |
+---------------------------------------------------------
+              |
+              v
+---------------------------------------------------------
+|               Generates Response                       |
+---------------------------------------------------------
+              |
+              v
+---------------------------------------------------------
+|              DispatcherServlet Sends                   |
+|                  Response to Client                    |
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 spring security means giving 
 
 in springboot security means /providing/giving authentication & authorization
@@ -116,5 +177,6 @@ to prevent from session fixation attack
 7.Cors configuration  cross orgin resource sharing
 --------------------------------------------------
 we can do enable/disable this for controlling front end request 
+
 
 
