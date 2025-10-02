@@ -44,21 +44,6 @@
 ---------------------------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 spring security means giving 
 
 in springboot security means /providing/giving authentication & authorization
@@ -177,6 +162,7 @@ to prevent from session fixation attack
 7.Cors configuration  cross orgin resource sharing
 --------------------------------------------------
 we can do enable/disable this for controlling front end request 
+
 
 
 
