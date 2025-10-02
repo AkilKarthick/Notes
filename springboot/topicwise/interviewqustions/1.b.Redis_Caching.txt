@@ -1,0 +1,59 @@
+Redis-backed caching in Spring Boot, 
+
+offering fast retrieval for frequently accessed data and better scalability
+
+
+add the Redis Dependency in pom.xml file
+this inclue Spring Data Redis support and Redis client dependencies
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+
+
+
+hint: if you want to customize maximum size of cache memory means
+	Redis server configuration itself do some change on redis.conf file
+	Managed by Redis server config (
+
+step2: configure redish in app.pro
+
+spring.cache.type=redis
+spring.data.redis.host=localhost
+spring.data.redis.port=6379
+
+based on the reish server setup
+
+step3: Enable Caching and Configure RedisCacheManager in Spring Boot Application
+
+@EnbleCaching
+@Configuration
+public class RedisConfig{
+
+@Bean
+    public RedisCacheManager cacheManager(RedisConnectionFactory red
+.entryTtl(Duration.ofMinutes(10))  
+// sets the cache expiration time to 10 minutes
+
+//configu redish cache manager
+//like cache till 10minutes
+// then build it using builder method
+
+return RedisCacheManager.biilder().build();
+}
+
+step4: using @Cacheble annotation on  service class
+
+@Service
+public class BookService {
+
+    @Cacheable(value = "books", key = "#isbn")
+    public Book getBookByIsbn(String isbn) {
+        simulateSlowService();
+        return new Book(isbn, "Some Book Title");
+    }
+
+Running Redis Server
+Ensure Redis server is running locally (default port 6379) or configure a remote Redis server accordingly.
+

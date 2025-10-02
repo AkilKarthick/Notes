@@ -1,0 +1,41 @@
+logging:: it is essential for tracking the 
+		application behaviour, 
+		debugging issue
+		monitoring performance, 
+it will provide historical record of system activites and errors which help developers understanding root cause
+
+
+
+Helps troubleshoot and debug errors by providing detailed runtime information
+
+how to enable logging in springboot application:
+
+springboot comes with inbuilt logging support "SLF4J API"  and logback
+
+step1: "spring-boot-starter-web" this dependencies include logging by default so no extra is 	needed
+
+step2: on application.properties file
+
+logging.level.root=INFO
+logging.level.com.example.demo=DEBUG
+
+sets the global log level to INFO and the package com.example.demo to DEBUG to provide more detailed logs during development
+
+Create logger variable like
+
+@RestController
+public class HelloController {
+
+//creatin variable
+private static final Logger logger = LoggerFactory.getLogger(classname.class)
+
+ @GetMapping("/")
+    public String hello() {
+
+        logger.debug("Debug level log");
+        logger.info("Info level log");
+        logger.warn("Warn level log");
+        logger.error("Error level log");
+
+        return "Hello Logging";
+    }

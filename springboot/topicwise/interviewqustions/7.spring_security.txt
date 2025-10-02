@@ -1,0 +1,120 @@
+spring security means giving 
+
+in springboot security means /providing/giving authentication & authorization
+to intergerate this you need to follow these steps
+
+1. add spring security starter dependency in pom.xml file
+
+by default it will generate username & password by spring itself
+you can customize this on application.properties file or define it on config files
+
+hardcoded::
+
+spring.security.user.name = xxxx
+spring.security.user.password = xxxx
+
+
+
+2. create one security config class & annotated with @EnableSecurity
+you can put some security rules on configure methods like
+
+login protection
+URL public or not
+password encoding how to handle this
+role based authorization,
+custom login page
+csrf protection enable or disable 
+control security policy as well
+
+----------------
+
+CSRF token :: cross site request forgery
+
+by default csrf filter got applied
+
+for each post request, one unique hidden token got vefied then only request accepted
+so bcz of this legitimate site la iurunthu request coming nu confirm panum
+a powerfull security layer to prevent form csrf attacks
+
+so http request -get 
+		-post critical
+		-put critical
+		-delete critical methods will do some changes on server right
+
+for ciritcal method by default CSRF token is enabled
+
+
+client(postman/angular/react) __request____> server
+in server:
+frontend controller || dispatcher servlet 
+for EG:
+
+[f1] <--> [f2] <--> [fn]
+
+one of the chain is CSRF
+username password authentication filter
+authorization filter etc
+
+-------------------
+2.security filter chain
+----------------------
+
+f1,f2...fn
+
+session ID = we get once authencitated like client --> server __> client
+
+incoming http request will go via security filter chain 
+it will inspect received request from client 
+do security checks then only send it to controller via dispatcher controller
+
+-------------------------------------------
+we can customize those security filter chain
+--------------------------------------------
+
+we need to override SecurityFilterChain bean
+we ca control the sequence by this bean
+
+
+create on configuration class
+
+@Configuration
+public SecurityConfiguration  {
+
+@Bean //indicate during applicait.context running time itself you get object for this
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+	return http.build();
+	} 
+   }
+
+------------------------
+3.Bcrpt Password Encoder
+-------------------------
+
+it is an algorithm to encrypt the password
+it will hash the plaintext pwd 
+so that brute force attack won't hack our password
+
+------------------------
+4. Method level security
+------------------------
+
+we can use @PreAuthorize, @PostAuthorize 
+to do security check for our controller methods
+
+--------------------
+5.MFA authentication
+--------------------
+
+---------------------
+6.Session management
+---------------------
+
+to prevent from session fixation attack
+
+--------------------------------------------------
+7.Cors configuration  cross orgin resource sharing
+--------------------------------------------------
+we can do enable/disable this for controlling front end request 
+
+

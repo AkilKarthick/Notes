@@ -1,0 +1,16 @@
+How Java Converts Map<String, Object> to JSON
+
+Spring Boot has Jackson processor on the classpath by default,
+ it automatically handles:
+
+a.Serialization of Java objects to JSON
+
+b.Deserialization of JSON to Java objects (like with @RequestBody)
+
+
+
+
+Spring Boot uses Jackson, a powerful JSON processor, to automatically convert Java objects (like your Map) into JSON when returning a response from a controller.
+
+Spring uses Jackson to serialize the map.
+

@@ -1,0 +1,175 @@
+springboot advanced interview
+
+
+1. what is springboot starter
+2.difference between sprinboot & spring
+3.what is IOC container in spring?
+4.why application.properties file is used why not yml file?
+
+1.how does springboot autoconfiruation work?
+
+2. how do profile work in springboot @profile usercase
+4.what is @Transcational and its benefits?
+5. how do you write a global exception handler in springboot?
+6. difference between application.properties & application.yml?
+7. what is the user of CommandLineRunner & ApplicationRunner ?
+8. how does the Embedded server tomcat work in springboot
+9. how do you overrid default auto configurations
+10. how do you handle circular dependencies in springboot?
+11.what is the role of @onfiguration & @Bean
+-------------------------------------------------------------------------------------
+
+
+1. what is springboot starter
+
+convenient starter dependency that inclues all the necessary libraries 
+
+for eG:
+
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+includes Spring MVC, Tomcat, and Jackson for web apps. It simplifies dependency management by bundling common libraries
+
+--------------------------------------------
+2. Difference between Spring Boot & Spring
+
+Spring requires manual config
+Spring app needs deploying WAR on server
+
+You deploy the WAR file by copying it to the server's webapps directory
+ or deploying it via the server's admin console
+
+Spring Boot does auto-config and embedded server
+Spring Boot app runs main() as standalone jar with embedded Tomcat
+
+------------------------------------------------
+3.what is IOC container in spring?
+
+it will manage object creation and life cycle of objects
+
+-----------------------------------------------------
+2. how do profile work in springboot @profile usercase
+
+imageinr you wanna a different datasourc config for dev & prod environment
+
+@Profile("dev")  means only beans matching with active prfile will be instantiated by spring
+
+you need to activate profile 
+
+add 
+
+spring.profiles.active =dev  || on application.properites file
+ 
+so at run tiem dev profile is avtive, spring only create beans for that
+so easy switching betwwn beans without code changes
+
+
+
+if we have different databases in different environments then we can create separate properties files
+application-local.properties
+application-dev.properties
+------------------------------------
+
+4.what is @Transcational and its benefits?
+
+automatic transcation management: no need for explicit begin, commit & rollback code 
+
+for eg:
+@Service
+public class UserService {
+  @Autowired
+  private UserRepository userRepository;
+
+  @Transactional
+  public void registerUser(User user) {
+    // If any exception occurs here, transaction will rollback automatically
+    userRepository.save(user);
+    // additional related database operations can be done here
+  }
+}
+In this example, when registerUser() is called, Spring opens a database transaction.
+
+If no exceptions occur, the changes are committed.
+If a runtime exception (like RuntimeException) is thrown inside this method, Spring rolls back all database changes made during this method
+
+-----------------------------------------------------------------------------
+5. how do you write a global exception handler in springboot?
+
+
+@ControllerAdvice - to mark the class as globel exception handler
+@ExceptionHandler - to specify which exceptions to handle
+
+This centralizes exception handling and avoids duplicate try-catch blocks in each controller
+
+eg:
+
+@ControllerAdvice
+public class GlobalException{
+	
+// Handle specific exception
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {
+        return new ResponseEntity<>("Resource not found: " + ex.getMessage(), 	HttpStatus.NOT_FOUND);
+    }
+Any ResourceNotFoundException thrown anywhere in your controllers will be caught by the first handler, returning a 404 response with a message
+
+-------------------------------------------------------
+8. how does the Embedded server tomcat work in springboot?
+
+
+When you include spring-boot-starter-web in your project, it transitively includes spring-boot-starter-tomcat which contains the embedded Tomcat libraries
+
+Spring Boot's auto-configuration discovers Tomcat on the classpath and automatically creates a TomcatServletWebServerFactory
+
+Routes incoming HTTP requests to Spring MVC controllers.
+
+server.port=9090
+
+----------------------------
+what is the role of @onfiguration & @Bean
+
+
+@Confirguration - mark a java class as source of beans & 
+@Bean - declare indivifual beans in config class
+
+
+--------------------------------
+
+9. how do you overrid default auto configurations
+
+Spring Boot auto-configuration automatically configures beans based on the dependencies present. To override or disable the default behavior:
+
+Exclude specific auto-configurations:
+Use exclude attribute in @SpringBootApplication to disable unwanted auto-configuration classes.
+
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+public class MyApplication {}
+
+Define your own bean:
+Provide a bean of the same type as the auto-configured bean. Spring Boot will use your custom bean instead of the default one.
+
+Use @Primary annotation:
+If multiple beans of the same type exist, mark your custom bean as @Primary to give it preference.
+Exclude auto-config classes, provide custom beans, use @Primary
+
+----------------------------------------------------------
+10. how do you handle circular dependencies in springboot?
+
+Circular dependencies occur when two or more beans depend on each other directly or indirectly.
+
+Handling circular dependencies:
+
+Use @Lazy annotation:
+Mark one of the beans as @Lazy to delay its initialization until it's actually needed.
+
+@Component
+public class A {
+    private final B b;
+
+    public A(@Lazy B b) { this.b = b; }
+}
+

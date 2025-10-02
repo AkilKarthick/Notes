@@ -1,0 +1,119 @@
+REST APIs
+client sends an http request, the controller handles it, interacting with you businesss logic present on service layer and sends a response back
+
+wee need to use -spring boot starter web- 
+dependice on pom.xml file to use all facilities provided for rest api development
+
+
+use @RestController on class leverl to make rest controller
+while serilaize the response object to json
+
+eg: @GetMapping("/path")  to define endpoints
+
+return java objects from your controller method, spring boot converts these to JSON automatically
+
+eg
+
+@RestController
+pubic class GreetingController{
+	
+@GetMapping("/greeting"){
+public Greeting greeting(@RequestParam (defaultValue = "world")String name)	{
+	return new Greeting("hello" + name);
+	}
+	}
+	
+----------------------------------------------------------------------------------------
+
+Annotations:
+-------------
+@RequestBody tells Spring: “Take the HTTP request body, convert it to this Java object, and pass it to this method parameter.”
+
+1.@RestController
+to mark a class a REST controller
+combination of @controller & @responseBody annotation
+automatically serialize return object to json or xml response
+
+2.@RequestMapping("/api")
+
+maps http request to handler method. can be usedin class or method level
+we provide the base URL for all the method /api
+
+
+3.@GetMapping  or @RequestMappig(method = RequestMethod.GET)
+@PostMapping
+@PutMapping
+@DeleteMapping
+@PatchMapping - partial update via http pattch
+
+ @RequestBody annotation maps the HttpRequest body to a transfer or domain object,
+ enabling automatic deserialization of the inbound HttpRequest body onto a Java object.
+
+4.@RequestParam - binds HTTP query parameter or form data to method parameters
+
+5.@PathVariable - binds URI template variables(in the url path) to method parameter
+
+6.@ResponseBody - indicate that the return value of the method should be used as the response body  if you use @Controller means no need to use this
+
+7.@ResponseStatus - sets the HTTP status code for the response(204 for delete)
+
+8.@CrossOrgin - enable cros cross orgin reouse sharing on controller or method level
+		on specified endpoint
+----------------------------------------------------
+
+
+eg for all the above annotations
+
+// Mark the class as a REST controller
+@RestController
+
+// Map all URLs under "/api"
+@RequestMapping("/api")
+public class ApiController {
+
+// Maps GET requests for /api/greet?name=User
+    @GetMapping("/greet")
+    public String greet(@RequestParam(defaultValue = "World") String name) {
+        return "Hello, " + name;
+    }
+
+--------------------------
+
+// Create new product
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productService.saveProduct(product);
+    }
+
+@RequestBody::
+Deserialization of JSON: When a client (like a frontend app or Postman) sends a POST request with JSON data, @RequestBody tells Spring to convert that JSON into a Java object—in this case, a Product.
+
+
+Let’s say the client sends this JSON:
+
+json
+{
+  "name": "Gaming Mouse",
+  "price": 1499.99
+}
+With @RequestBody, Spring will automatically convert this into:
+
+java
+Product product = new Product("Gaming Mouse", 1499.99);
+
+Then productService.saveProduct(product) can persist it however you’ve defined.
+
+
+so what is ResoonseEntity used?
+
+a powerfull helper class in springfm, that represne the entire HTTP response including
+
+HTTP status code (like 200 OK, 400 Bad Request)
+HTTP headers (like Content-Type)
+Response body (usually JSON or XML content)
+
+
+You can specify exact HTTP status codes for each API response, instead of relying on default behaviors.
+You can define the body, or send no content (204 No Content), depending on the requirement.
+In exception handlers, ResponseEntity lets you send error messages and status codes clearly to clients.
+

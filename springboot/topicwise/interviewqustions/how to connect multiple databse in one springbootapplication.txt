@@ -1,0 +1,54 @@
+how to connect to multiple database to a single sprinboot application
+
+
+1.add the right dependency in pom.xml file
+
+sprinboot-started-data-jpa && mysql_connector-j
+
+
+2.add configuration in application.properties file
+
+spring.datasource.primary.url=
+spring.datasource.username=
+		password=
+spring.datasource.driver-class-name= com.mysql.jdvc.driver
+
+
+spring.datasource.secondary.url=
+spring.datasource.username=
+		password=
+spring.datasource.driver-class-name= com.mysql.jdvc.driver
+
+if to connect another DB means you have to configure datasource as well
+
+@Configuration
+public class Datasourcecongi {
+
+// configure two beans one for each database,
+
+hint: if you don't specify which one to use in qualifier means it take default one ie primary annotated one
+
+@Primary  // it marks the default primay data src
+@Bean
+@Configurationproperties (prefix = "spring.datasource.primary")
+
+public DataSource primaryDataSource( {
+	return DataSourceBuilder.create().build();
+	}
+
+@Bean
+@Configurationproperties (prefix = "spring.datasource.secondary")
+
+public DataSource primaryDataSource( {
+	return DataSourceBuilder.create().build();
+	}
+
+}
+
+
+finally it to use this datasources in service or repository you have to use
+@Qualifier annotation
+
+@Autowired
+@Qualifier("secondaryDataSource") //nean name
+private ds ds;

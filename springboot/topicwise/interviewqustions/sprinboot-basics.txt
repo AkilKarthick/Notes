@@ -1,0 +1,31 @@
+
+
+
+annotation;
+
+it is a metadata used in spring boot to simplify configuration, dependency injection and request handling, reducing the need for XML based configuration.
+
+eg
+
+@SpringBootApplication
+
+the main annotation for a spring boot app, it combines 
+
+@configuration     Marks a class as a source of bean definitions
+@enableAutoConfiguration  auto configures bean based on class path dependencies
+			Automatically configures Spring beans based on the project's dependencies.
+@ComponentScan 
+
+Instructs Spring to scan for components (beans) in specified packages.
+ sacn the package & sub packages for spring components
+
+
+------AUTO CONFIGURATION--------------------------------------------------------------
+
+
+this feature automatically configure beans and settings based on class path dependencies
+no need of manual setup
+
+@EnableAutoCongfiguration - trigger this, it helps avoid complex xml setups 
+
+Auto-configuration attempts to automatically configure your Spring application by examining the libraries (jars) on your classpath

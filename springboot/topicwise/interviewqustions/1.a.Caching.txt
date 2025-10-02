@@ -1,0 +1,84 @@
+fast retrieval for frequently accessed data and better scalability
+
+
+add @EnableCaching on main class along with @springbootapplicaitno
+add a cache provider dependency {redish or Ehcache} Ehcache, Caffeine, Redis
+but by default springboot uses a simple in memory caching
+
+annotation likes
+
+@Cacheable : to cache the result of a method/ skipped execution if cached
+@CahceEvit : to clear single or all cache entries, useful when you needs to remve cached 	     data to avoid stale(outdated data) data
+@CachePut  : to update cache entries without skipping method execution
+
+@Caching:  It allows combining multiple cache operations declaratively on one method.
+
+
+
+@Caching(
+        put = { @CachePut(value = "books", key = "#book.isbn") },
+        evict = { @CacheEvict(value = "booksList", allEntries = true) }
+    )
+    public Book updateBook(Book book) {
+        // update book in DB here
+        return book;
+    }
+
+for EG:
+
+@SpringBootApplication
+@EnableCaching
+public class CacheDemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(CacheDemoApplication.class, args);
+    }
+}
+
+---------------
+on service class
+----------------
+
+@Service
+public class BookService {
+
+    @Cacheable("books", key = '#idbn')        //   cache the book name by isbn        
+    public String getBookNameByIsbn(String isbn) {
+        simulateSlowService();
+        return "Some book name" + isbn;
+    }
+
+When getBookNameByIsbn() is invoked, the result is cached in the "books" cache.
+Subsequent calls with the same isbn return cached data immediately, skipping the delay
+
+in the application.properties
+
+spring.cache.caffeine.spec=maximumSize=500,expireAfterAccess=10m
+
+
+if you use caffeine cache provider means add the above, this will
+configure a caffeine cache with a maximum size of 500 items and expiration 10minures after last success
+
+
+
+// Update the cached book name when updating the book data
+    @CachePut(value = "books", key = "#isbn")
+    public String updateBookName(String isbn, String newName) {
+        return newName;
+    }
+
+
+// Clear cache entry when deleting the book
+    @CacheEvict(value = "books", key = "#isbn")
+    public void deleteBook(String isbn) {
+        // perform delete operation
+    }
+
+
+=-===
+getBookByIsbn: Caches book names keyed by ISBN.
+
+updateBookName: Always executes and updates the cache with the new value for the given ISBN.
+
+deleteBook: Removes the cached entry for the given ISBN when a book is deleted
+
+-=-=-=-=-=-=-=-=-=-=-=-

@@ -1,0 +1,45 @@
+Actuator
+
+to monitory and manage endpoints to springboot appplicaiton
+make it easier to observe, manage & trouble shoot production system with minimal configuration
+
+featureus: 
+
+provide prod ready endpoints to monitory metrices, healthcheck , environmentds,thread dump
+support http and jmx interface to access monitoring data
+common endpoints are
+
+/actuator/health
+actuator/metirices
+/actuator/info:
+/actuator/env
+/actuator/loggers
+
+
+we need to add this dependency no pom.xml file | springboot starter actuator
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+
+on application.properties fileadd these
+
+management.endpoints.web.exposure.include=health,metrics,info
+management.endpoint.health.show-details=always
+
+or  : to enable all endpoints
+
+management.endpoints.web.exposure.include=*
+
+alos endpoint can be further seured using spring seurity settings, restricted access to sensitve informatino
+
+also for montiroing intergrtion:
+
+we can integerate springboot actuator with exernal monitorng tool like
+prometheours or graana via micoeer provide real time dashboar visulaiztion
+
+You can create a custom health check by defining a bean
+
+http://localhost:8080/actuator/health  

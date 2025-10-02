@@ -1,0 +1,82 @@
+
+Step 1: Add Spring Security Dependency
+
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+
+Step 2: Create Security Configuration
+
+//this approach fetch from application.prop file
+	
+//	@Value("${app.security.user.name}")
+//    private String userName;
+//
+//    @Value("${app.security.user.password}")
+//    private String userPassword;
+
+Create a class SecurityConfig
+
+@Configuration
+@Bean
+	public PasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
+	
+	// withDefaultPasswordEncoder() with proper, secure password encoding (BCrypt).
+	//Your passwords stored in memory or DB will be hashed, improving security
+	@Bean
+	public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+	    List<UserDetails> users = new ArrayList<>();
+
+	    UserDetails user1 = User.withUsername("adminakil")
+	        .password(passwordEncoder.encode("123"))  // encode the plaintext password with the encoder.
+	        .roles("USER")
+	        .build();
+
+	    users.add(user1);
+
+	    return new InMemoryUserDetailsManager(users);
+	}also
+
+/*
+	 * disable CSRF for testing
+	 * require authentic for any HTTP reqst
+	 * Basic authentication, which prompts user for username & password
+	 * builds a SecurityFilterChain
+	 * that contains all the security filters configured to apply to incoming requests
+	 */
+	
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http
+		.csrf(csrf -> csrf.disable())  //disable csrf for testing
+		.authorizeHttpRequests( auth -> auth.anyRequest().authenticated()
+				).httpBasic(Customizer.withDefaults());
+		return http.build();
+It builds a SecurityFilterChain 
+that contains all the security filters configured to apply to incoming requests.
+
+
+Step 3: Run your Spring Boot app and test
+Access any API endpoint (e.g., GET /api/products)
+
+Browser/Postman will prompt for username and password.
+
+Use user/password or admin/admin123 as credentials
+
+step4:
+Restrict API access based on roles
+
+.authorizeHttpRequests(auth -> auth
+    .requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN")
+    .anyRequest().hasRole("USER")
+)
+
+his setup secures all APIs via Basic Authentication with two in-memory users
+
+
+
+

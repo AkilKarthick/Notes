@@ -1,0 +1,43 @@
+springboot introduction
+
+it is a java framework,that simplifies building proudion ready applications
+
+provides auto-configurations to setup componenets automaticall based upon dependeicies
+
+applicaions are standalone with embedded server like tomact 
+no external server setup is needed
+
+springboot support microserice architecture and is highly customzable
+
+comes with producion ready feature like healthhekcsmetricies and monitorings
+
+eliminate boiler plate code and xml configuration , letting devepers focus on business logics
+
+
+
+1.optionated - means has some default like embedded tomcat default web container
+2.Customizable - though it has some default , but easily customizable at any time during your 
+		development time
+		if your prefer jetty you can change that, on pom file
+
+
+Springboot 2 features
+
+require java 8, support java 9 as well
+spring boot require spring 5 as a baseline
+jetty is 9.4 ad tomcat is 8.5
+
+
+lates version of sprinboot is 3.5.6
+
+------------------Eveloping the sprinboot applicaiton
+
+implement service layer with spring core
+repository layer with spring data jpa
+web layer with spring mvc
+log the error message using logback
+perform unit testing with junit and Mockito
+load environment specific configuration using profiles
+secure application using spring security
+build rest web servce and consume it
+monitor the health of applicaitn using Acturaotors

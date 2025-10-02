@@ -1,0 +1,33 @@
+PAGINATION & SORTING
+--------------------
+suppose we have a dashboard of million of records if you load the page then everything lags right, bcz you are trying to fetch all the records at once And that's not scalable
+
+----------
+Pagination: 
+----------
+it's the technique of breaking large data sets into smaller, manageable chunks or pages
+instead of sending 10,000 rows you sending 20 at a time
+
+
+springboot already has a inbuilt interface called Pageable interface
+
+Pageable pageable = PageRequest.of(pageNo, pageSize);
+
+then use this in your JPA query
+
+public List<Employee> getAllEmp(Pageable pageable){
+
+	return employeeRepository.findAll(pageable);
+}
+
+-------
+Sorting
+-------
+want to sort the data ?
+just use spring sort class
+
+Sort sort = Sort.by("name").ascending();
+
+now add this sort object into pageable 
+
+Pageable pageable = PageRequest.of(pageNo, pageSize.sort);
