@@ -1,0 +1,62 @@
+Memory management interview questions
+
+
+explain java memory management?
+what is garbase collection in java? and its types?
+what is finalize() method?
+statck vs heap memeory allocation
+how to handle out of memmroy Exception?
+
+
+---------------------------------
+1.explain java memory management?
+
+the process by which jvm automatically alloates memeory to objects and deallocate memory that is no longe used, heping to prevent memory leaks and optimize usage
+
+heap memory - exists as long jvm run, & a shared run time area where all the java obj & arrays are allocated & managed by garbage collecto
+Exists during application runtime
+
+
+stack memory: each thread has its own stack storing local variibl, method call & refernce, it is a short lived & automatically grow and shrink during method execution
+Lifespan tied to method execution
+
+
+------------------------------------------------------
+
+
+2.what is garbase collection in java? and its types?
+
+gc is a automatic memory mnangement process, by which JVM idneifies and remove objects that are no longer reachable 
+freeing heap memory for reuse
+
+types of garbage collection:
+
+Minor GC: check where new objects areallocated it run frequently and fast
+
+major GC: where long lived objects are stored, it is less frequently but more time consuming
+
+full GC: combination of minor and major GC, cleaning the Entire heap 
+
+
+---------------------
+3.finalize() method
+
+it is depreciated in newer java version with try-with-resou and explicit cleanup methods are there
+
+protected method() in the object class invoked by the gb collectors before object destruction
+
+
+------------------------------
+
+how to handle out of memory Exception?
+
+occurs when JVM heap or stack memory is exhausted and cannot allocate more objects
+how to handnel this
+
+Analyze heap usage and leaks using profiling tools
+Optimize code to release references to unused objects.
+Avoid creating large unnecessary objects or collections
+Use proper data structures and caching strategies
+Ensure external resources are closed properly  lie fil stream close
+
+

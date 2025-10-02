@@ -1,0 +1,57 @@
+what is clonable?
+
+it is a markter interface without any method()
+when a class implements Clonable interface, it indicates that object of that class can 
+be cloned safely using clone() methods
+
+
+If a class does not implement Cloneable and you call clone(), it throws a || CloneNotSupportedException ||
+
+clone() :: perform object copying 
+
+The clone() method itself is defined in the Object class, not in the Cloneable interface
+
+
+
+----------
+deep copy :
+----------
+
+create a new object and copies all fields, ensuring that changes made to one object don't affect the other
+
+new memory is allocated each object has its own independent reference
+
+for EG:
+
+// Deep copy clone implementation
+    protected Object clone() throws CloneNotSupportedException {
+        Employee cloned = (Employee) super.clone();
+        cloned.dept = (Department) dept.clone(); // cloning inner object
+        return cloned;
+
+
+
+  Employee e1 = new Employee(100, d1);
+  Employee e2 = (Employee) e1.clone();
+
+-------------
+Shallow copy:
+-------------
+
+it refers to copying the reference of an object, not actual object, so changes made to one reference affect the other
+
+no new memory is allocated, both reference point to the same memory location
+
+for EG:
+class Student implements Cloneable {
+
+//default shallow clone
+public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+
+
+
+Student s1 = new Student(1, "John");
+Student s2 = (Student) s1.clone(); // cloning s1 to s2

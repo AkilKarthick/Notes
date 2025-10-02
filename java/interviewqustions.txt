@@ -1,0 +1,174 @@
+
+-----------------------
+2. what is fail fast iteration and how to handle it?
+
+List<String> list = new ArrayList<>(List.of("A", "B", "C"));
+Iterator<String> iterator = list.iterator();
+
+while (iterator.hasNext()) {
+    String value = iterator.next();
+    // Modifying the collection directly during iteration
+    if (value.equals("B")) {
+        list.add("D");  // This triggers ConcurrentModificationException
+    }
+}
+
+
+for a normal collection when you try to add elementes during iteration will throw concurrentmodificaion exception 
+Alternatively use thread safe collections lke concureenthashmap won't throw you expceotin
+whose iterators are thread safe 
+
+------------------
+
+final & finally & finalize()?
+
+
+final
+
+A final variable cannot be changed once assigned.
+A final method cannot be overridden in subclasses.
+A final class cannot be extended (no subclassing)
+
+final int x = 10;
+// x = 20; // Error: cannot change a final variable
+
+final class A {} // Cannot extend class A
+
+class B {
+    final void show() {}
+    // Subclasses cannot override show()
+}
+
+finally:
+The finally block is used in exception handling.
+Placed after a try-catch block
+
+try {
+    // risky code
+} catch(Exception e) {
+    // exception handling
+} finally {
+    // always executed
+}
+
+finalize()::
+
+Cleanup before object destruction
+Called by the garbage collector before destroying an object
+ 
+protected void finalize() {
+    // cleanup code
+}
+----------------------------
+autoboxing & autounboxing
+
+ automatic conversion of a primitive type to its corresponding wrapper class object by the Java compiler
+
+int a = 10;
+Integer obj = a; // autoboxing: int to Integer
+
+Useful when working with collections that can only store objects
+
+Autounboxing
+
+Autounboxing (commonly called "unboxing") is the reverse process: automatic conversion of a wrapper class object to its corresponding primitive type
+
+
+List<Integer> list = new ArrayList<>();
+list.add(5); // autoboxing: int 5 to Integer object
+list.add(10);
+
+int sum = list.get(0) + list.get(1); // unboxing: Integer objects to int
+System.out.println("Sum: " + sum); // Output: Sum: 15
+
+-----------------------------------------------
+what is clonable? deep clone vs shallow clones?
+
+
+clonable is a marker interface without any methods()
+when a class implements Clonable, it indicates that objects of this class can be cloned safely using clone() method.
+
+If a class does not implement Cloneable and you call clone(), it throws a CloneNotSupportedException
+
+
+clone() method that performs the object copying is actually defined in the Object class, not in Cloneablclone() method that performs the object copying is actually defined in the Object class, not in Cloneable
+ie native method
+
+
+
+1.shallow copy: Copies primitive fields and references
+
+clone() creates a shallow copy: fields like int and String (immutable) are copied
+Both original and clone share referenced objects
+
+class Student implements Cloneable {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); // calls Object's clone, shallow copy
+    }
+}
+
+public class TestClone {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Student s1 = new Student(1, "John");
+        Student s2 = (Student) s1.clone(); // cloning s1 to s2
+
+        System.out.println(s1.id + " " + s1.name); // 1 John
+        System.out.println(s2.id + " " + s2.name); // 1 John
+
+        s2.name = "Alex";
+        System.out.println(s1.name); // John (s1 not affected)
+    }
+}
+
+Deep copy: Copies primitives and creates new copies of objects referenced inside fields
+
+Deep copy requires manual override of clone()
+explicitly clone referenced objects inside the class.
+Original and clone have independent referenced objects
+
+eg:
+
+class Department implements Cloneable {
+    String name;
+    Department(String name) { this.name = name; }
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+
+class Employee implements Cloneable {
+    int id;
+    Department dept;
+    Employee(int id, Department dept) {
+        this.id = id;
+        this.dept = dept;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Employee cloned = (Employee) super.clone();
+        // Deep cloning: cloning referenced object explicitly
+        cloned.dept = (Department) dept.clone();
+        return cloned;
+
+public class TestDeepClone {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Department d1 = new Department("HR");
+        Employee e1 = new Employee(100, d1);
+        Employee e2 = (Employee) e1.clone();
+
+        e2.dept.name = "Finance";
+
+        System.out.println(e1.dept.name); // HR (unchanged)
+        System.out.println(e2.dept.name); // Finance
+  
+
+

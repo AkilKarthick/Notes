@@ -1,0 +1,191 @@
+
+1.equals() method 
+
+check whether two objects have the same content values (logically euqality)
+
+hashcode() method
+
+provide a numverical value that help hash based collection quickly locate objects,
+equal objects must have the same hash code
+
+if two objects are equals by euqla() they musht have the same hashcode()
+
+
+-------------------------------
+2.internal working of hashMap()??
+
+
+hashmap stores each (key-value) in an arrays where each position  is called a "bucket".
+
+  1.when a key-value pair is added using put()
+  2.java calculate a hash-value from the key using hashcode() method which determine the bucket index for storage. 
+  3.if the bucket is empty (key-value) is placed
+     3a.if it is not empty HashMap scan the list/tree in that bucket
+  4.if multiple keys have the same hash index(collision) , hashmap puts them in a linkedlist or tree , if too many collisions)  inside the bucket
+
+when retrieving, hashmap uses the key's hashcode() to find the bucket and serch for the exact key using equals() method
+
+----------------------------------------
+3.what happens when hashmap() collision?
+
+HashMap() solves collsion by keeping a list of all items in the same bucket , and compares each item during retrieval using equal() method
+
+this way, hashmap never loses data , even if two or more keys have the same hash and bucket index
+
+If there are many entries in one bucket during searching(put/get)
+java 8+ changes the structr inside the bucket from linkedlist to balanced tree to keep lookup fast (olog(n)) instead of O(n)
+
+-------------------
+
+ 4.what is loadfactor in hashmap?
+
+
+load factor: in hashmap it will decide when to resize the internal array
+the default value is .75 means 75% of the bucket is filled with entries, the hashmap will resize to reduce collsion and keep operation fast & to maintain the efficient performance
+higher load factor saves memory but slow the perofmance due to more collsion
+
+---------------------------------------------------------
+
+5.difference between hashmap() , treemap, linkedhashmap()?
+
+HashMap is fastest but does not maintain any order.
+key- accept one null | value - accept multiple null 
+performance = time complexity o of one | O(1) average time for get/put
+hashmap intenal structer= hash table
+
+TreeMap keeps keys sorted but slower due to tree structure.
+key- accept no null | value - accept multiple null
+performance = O(log n)  time for get/put
+
+
+LinkedHashMap maintains insertion order with little performance overhead over HashMap
+key- accept one null | value - accept multiple null
+performance = O(1)  time for get/put
+internal structer= hashtable + double linked list
+
+ConcurrentHashMap
+
+no order is maintained
+Thread-safe (synchronized internally)
+slower than hashMap due to thread safety
+does not allow null in key-value pairs
+used in concurrent/multithreaded context
+segment locking & fine granularity locking internally from java  8
+ avoids ConcurrentModificationException during iteration, but slightly slower due to locking mechanisms.
+
+-------------------------------------------
+how you can convert hashmap into arrayslist?
+
+
+using keyset()
+
+HashMap<String, Integer> map = new HashMap<>();
+map.put("A", 1);
+map.put("B", 2);
+map.put("C", 3);
+
+ArrayList<String> keysList = new ArrayList<>(map.keySet());
+System.out.println("Keys: " + keysList);
+
+
+using value() method
+
+ArrayList<Integer> valuesList = new ArrayList<>(map.values());
+System.out.println("Values: " + valuesList);
+
+
+using entrySet() method : to get key-value pairs as a set then convert to Arraylist
+
+ArrayList<Map.Entry<String, Integer>> entriesList = new ArrayList<>(map.entrySet());
+for (Map.Entry<String, Integer> entry : entriesList) {
+    System.out.println(entry.getKey() + " = " + entry.getValue());
+}
+----------------------------------------
+
+difference between comparable & comparator
+
+hint & shortcuts
+compareable = compareTo() -compare myself
+comparator = compare() - compare others
+
+comparable: when a class want to define its own natural order using compareTo() method
+ natural/default
+implements Inside the class itself
+
+comparator: allows custom sorting logic outside the class using compare() method
+custom or multiple sorting orders
+impements Outside the class, separate class or lambda
+
+
+========================================================================
+ArrayList 
+
+uses a dynamic array to store elements. 
+It allows fast access by index       (O(1) time for get operations),
+but adding or removing elements, especially in the middle, can be slow because it may require shifting elements.
+
+Frequent access, less modification
+
+LinkedList
+ uses a doubly linked list structure where each element (node) contains data and links to the next and previous nodes. 
+It allows fast insertions and deletions (O(1) time if node reference is available), but accessing elements by index is slower (O(n) time) since it requires traversing the list.
+
+Frequent insertions/deletions
+
+-----------------------------------
+2.hashmap & hashtable
+
+
+hashtable 
+
+Hashtable is synchronized
+(thread-safe) by default, meaning only one thread can access it at a time
+
+Hashtable does not allow any null key or null value; attempting to use null in Hashtable throws a NullPointerException.
+
+
+HashMap :
+
+HashMap is not synchronized, so it is not thread-safe without external synchronization.
+HashMap allows one null key and multiple null values
+-----------------------------------
+3. hashtable & concurentHashmap
+
+Both are thread-safe, but ConcurrentHashMap provides better concurrency
+
+Hashtable :
+uses a single lock for the entire map (object-level lock). Only one thread can access the map at a time, causing contention and slower performance
+
+
+
+
+ :
+
+it doesn't allow null keys
+
+uses bucket-level locks (segments), allowing multiple threads to read and write concurrently without locking the whole map. This is called segment locking or finer-grained locking, improving concurrency and performance.
+
+ConcurrentHashMap is generally much faster than Hashtable in multi-threaded scenarios due to its segmented locking
+------------------------------------------------
+
+
+ConcurrentHashMap in Java is a thread-safe implementation of the Map interface designed for concurrent access by multiple threads without locking the entire map. It allows many threads to read and write data simultaneously while maintaining high performance.
+
+enabling high concurrency with better throughput compared to older synchronized maps like Hashtable
+
+--------------------------------
+ difference between Vector & Arrayslist
+
+VEctor: synchronized(thread safe)
+slower due to synchronization
+double the size when full
+for traversal use enumeration & iterator
+suitable for multithread environment
+
+ArrayList
+
+not synchronized
+fster due to no syn
+increased 50 % when full
+user iterator only for travesing
+best for single threaded env 

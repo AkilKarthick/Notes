@@ -1,0 +1,37 @@
+append()
+
+insert()
+
+replace()
+
+delete(start, end)
+
+deleteCharAt(index)
+
+reverse()
+
+setLength(int newlength)
+
+charAt(index)
+
+toString()
+
+capacity()
+
+ensureCapactiy(int minimumCapacity)
+
+------------------------detailed notes
+
+Method                                   |  Description                                             |  Since Java Version
+-----------------------------------------+----------------------------------------------------------+--------------------
+append(...)                              |  Appends data (string, char, int, etc.) to the builder.  |  - (all versions)  
+insert(int offset, ...)                  |  Inserts data at the specified position.                 |  -                 
+replace(int start, int end, String str)  |  Replaces characters in specified range with a string.   |  -                 
+delete(int start, int end)               |  Deletes characters within the range.                    |  -                 
+deleteCharAt(int index)                  |  Deletes a character at specified position.              |  -                 
+reverse()                                |  Reverses the sequence of characters.                    |  -                 
+setLength(int newLength)                 |  Changes the length of the builder (truncates or pads).  |  -                 
+charAt(int index)                        |  Returns character at the index.                         |  -                 
+toString()                               |  Converts builder content to String.                     |  -                 
+capacity()                               |  Returns the current capacity of the builder.            |  -                 
+ensureCapacity(int minimumCapacity)      |  Increases capacity if less than minimum specified.      |  -                 

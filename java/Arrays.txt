@@ -1,0 +1,51 @@
+Arrays
+
+it is a data structre that store multiple values of the same type in a single variable
+it allows storeing primitive or objects in contiguous memory location, accessed by zero base indexing, once created the size of the array is fixed.
+
+
+
+int[] arr;
+int[] arr = {1,2,3};
+accessing elements using index
+arrays can be single or multi dimensinola
+array elements have defaule values if not initialized explicitly
+o for number and null for objects
+
+public class arryaeg {
+
+	public static void main(String[] args){
+	
+	int[] numbers = {1,2,4};
+	for (int i=0; i< numbers.length(); i++);
+		System.out.println(numbers[is]);	
+	}
+}
+
+Arrays of objects
+
+class Students{
+	int id;
+	string name;
+	
+	Students(int id, String name){
+	this.id = id;
+	this.name= name;
+	}	
+	
+}
+
+public class example{
+	public static void main(string[] args){
+	Student[] s = new Studnets[3];
+	s[0] = new Student(1,"akil");
+
+s[1] = new Student(1,"akil");
+
+s[2] = new Student(1,"akil");
+
+for(int i=0; i<s.length(); i++){
+	System.out.println("ID: " +s[i].id);
+	}
+	}	
+}

@@ -1,0 +1,77 @@
+java all version
+
+length() 
+
+charAt(int index)
+
+substring(int beginindex)
+substring(int beging. int end)
+
+equals(object obj)
+equalsIgnoreCase(String another)
+
+contains(CharSequcen s)
+
+startsWith(String prefix)
+endsWith(String suffix)
+
+indexOf()
+lastIndexof()
+
+replace()
+repace(target,replacement)
+
+toLoweCase()
+toUpperCase()
+
+trim()
+
+split(String regex)
+
+-------------------------java 11---------------------------------
+
+isBlank()
+
+lines()
+
+repeat(int count)
+
+strip()
+stripLeading()
+stripTraililng()
+
+------------------------java 12---------------------------------
+
+indent(int n) 
+------------------------java 15------------------------------------
+
+formatted(object...args) 
+
+
+
+
+detailed
+
+
+
+Method                                                                                      |  Description                                                           |  Since Java Version
+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+--------------------
+length()                                                                                    |  Returns the length of the string.                                     |  - (all versions)  
+charAt(int index)                                                                           |  Returns the character at the specified index.                         |  -                 
+substring(int beginIndex)/substring(int begin, int end)                                     |  Extracts substring from string.                                       |  -                 
+equals(Object obj)                                                                          |  Checks if string is equal to another object.                          |  -                 
+equalsIgnoreCase(String another)                                                            |  Compares strings ignoring case.                                       |  -                 
+contains(CharSequence s)                                                                    |  Checks if string contains the specified sequence.                     |  -                 
+startsWith(String prefix)/endsWith(String suffix)                                           |  Checks if string starts or ends with given substring.                 |  -                 
+indexOf(char/cs)/lastIndexOf(char)                                                          |  Finds first/last occurrence of char or substring.                     |  -                 
+replace(char oldChar, char newChar)/replace(CharSequence target, CharSequence replacement)  |  Replaces characters or substrings in string.                          |  -                 
+toLowerCase()/toUpperCase()                                                                 |  Converts string to lower/upper case.                                  |  -                 
+trim()                                                                                      |  Removes leading and trailing whitespace.                              |  -                 
+split(String regex)                                                                         |  Splits string around matches of given regex.                          |  -                 
+isBlank()                                                                                   |  Checks if string is empty or only whitespace.                         |  Java 11           
+lines()                                                                                     |  Returns a Stream of lines extracted from the string.                  |  Java 11           
+repeat(int count)                                                                           |  Repeats the string specified number of times.                         |  Java 11           
+strip(),stripLeading(),stripTrailing()                                                      |  Unicode-aware whitespace removal.                                     |  Java 11           
+formatted(Object... args)                                                                   |  Formats string using specified arguments (likeString.format).         |  Java 15           
+indent(int n)                                                                               |  Adds or removes indentation from each line; accepts negative values.  |  Java 12           
+

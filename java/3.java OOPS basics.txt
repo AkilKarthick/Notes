@@ -1,0 +1,76 @@
+java OOPS basics:
+
+class: it is like a blueprint or template for creating an objects with properties andmethods
+
+objects: instance of the calss representing real world entities
+
+	1.encapsulation: hiding internal data and providing access thorugh methods eg: getter & setters
+	
+	2.inheritance: mechanism to create new classes from existing one, enabling code reuse
+	
+	3.polymorphism: ability to take many forms, method behave differently based on object type
+	
+	4.abstraction: hiding complex details & shows only necessary parts to the users
+============================================================================================
+
+s
+A.encapsulation: 
+
+	keep data safe by restricting access with private fields
+	getter and setter
+	t protects data by making class variables private and controlling access with public getter and setter methods.
+	encapsulation ensures critical shipment details such as package weight, destination address, 
+	and delivery status are protected from unintended changes
+
+public class ShipmentPackage {
+    // Private fields - hidden from external access
+    private String packageId;
+    private double weight;       // in kilograms
+    private String destination;
+
+ // Getter and setter for packageId
+
+----------------------------------------------------------
+B.inheritance:
+	 a subclass inherits fields and methods from  superclass
+	promote code reuse
+
+types of inheritance;
+
+	 single, :: class inhert from super class
+	 multilevel,:: class inhert from subclass whihch itslef inhert from parent class
+	 hierarchical ::multiple subclasses inhert from a single super classes
+	 multiple inheritance using interface :: class implements multile interfaces to inhert varuious behaviours
+
+a hierarchical inheritance means multiple subclasses inherit from a single superclass. The superclass provides common properties and methods, and each subclass extends or overrides them for specialization.
+
+--------------
+C.polymorphism: ability to behave differently based on the object type
+
+	a.compile time (overloading) - same method name with different parameters
+
+		in example i can say like calulatingCost(int weight) || calculatingcost(int weight, dimesnsion) so same method with different arguments within same class
+		method overloading helped in developing flexible shipment cost calculators that could take various parameter combinations like weight, dimensions, urgency, or discounts, all under the same method name calculateCost()
+
+	b.run time (overriding) - a subclass provide its own implementation of a method
+
+		parent class shipemtnSerice
+		having processShipment() method generic method
+
+		presented on below sub classes with @Override
+		AirShipmentservivce| gorundshipmentsevice & internationsshipment serice 
+
+		We had a base ShipmentService class that defined processShipment(), and subclasses for air, ground, and international shipments overrode this method to apply specialized business rules
+----------------------------
+
+
+Abstraction: hides complex implementation details via abstract class 
+			or interface exposing only relevant functionalities
+
+
+aggregation- once class has a reference to another HAS A RELationship
+
+composition-  stronger from of aggregation where the contained obj can't exist independently
+
+
+

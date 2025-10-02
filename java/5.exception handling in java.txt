@@ -1,0 +1,122 @@
+exception handling in java
+
+
+to manage runtime errors & ensuring the normal flow of the application is maintained
+
+Key Concepts
+
+	try block: Contains code that might throw an exception.
+	catch block: Handles the exception thrown in the try block. 
+				Each catch specifies the type of exception it can handle.
+	throw keyword: Used to explicitly throw an exception.
+	throws keyword: Declares exceptions a method might throw.
+	finally block: Code inside finally executes after try and catch, regardless of exception occurrence, often used for cleanup.
+
+-----------------------------------------------------------------------------------------
+
+try {
+   int result = 10 / 0; // ArithmeticException
+} catch (ArithmeticException e) {
+   System.out.println("Error: Division by zero is not allowed!");
+} finally {
+   System.out.println("This block always executes.");
+}
+-------------------------------------------------------------------------------------------
+
+
+import java.io.*;
+
+public class CompleteExceptionExample {
+
+    // Method declares that it throws IOException and ArithmeticException
+    
+    public static void readAndDivide(String fileName) throws IOException, ArithmeticException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        
+        try {
+            String line = reader.readLine();
+            if (line == null) {
+                // Explicitly throw a custom exception if file is empty
+                
+                throw new IOException("File is empty");
+            }
+            int number = Integer.parseInt(line);
+            if (number == 0) {
+            
+                // Explicitly throw ArithmeticException using throw keyword
+                throw new ArithmeticException("Cannot divide by zero");
+            }
+
+            int result = 100 / number;
+            System.out.println("Result: " + result);
+
+        } finally {
+            // finally block for cleanup, executed whether exception occurs or not
+            System.out.println("Closing the file reader");
+            reader.close();
+        }
+    }
+    
+    public static void main(String[] args) {
+        String fileName = "input.txt";
+
+        try {
+            // Calling method that throws exceptions, hence needs to be handled here
+            
+            readAndDivide(fileName);
+        } catch (IOException e) {
+            System.err.println("IOException caught: " + e.getMessage());
+        } catch (ArithmeticException e) {
+            System.err.println("ArithmeticException caught: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("NumberFormatException caught: Invalid number format");
+        } catch (Exception e) {
+            System.err.println("Other Exception caught: " + e.getMessage());
+        } finally {
+            System.out.println("Program execution completed.");
+        }
+    }
+}
+
+------------creating a custom exception----------------------------------------------------
+
+defining your own exception class by extending the base 
+
+	Ex-c-eption class  == at compile time -- checked
+	Run-timeException == at run time it is chekced | so unchekced exception
+
+
+// Define the custom exception by extending Exception (checked exception)
+
+		class MyCustomException extends Exception {
+		    public MyCustomException(String message) {
+		        super(message);  // Call the superclass constructor to set the error message
+		    }
+		}
+
+
+public class CustomExceptionDemo {
+    // Method that throws the custom exception if input is negative
+    public static void validateNumber(int num) throws MyCustomException {
+    
+    
+        if (num < 0) {
+        
+            throw new MyCustomException("Number cannot be negative");
+        }
+        System.out.println("Number is valid: " + num);
+    }
+    
+    public static void main(String[] args) {
+        try {
+            validateNumber(-5);
+        } catch (MyCustomException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        } finally {
+            System.out.println("Finished checking number");
+        }
+    }
+}
+
+
+

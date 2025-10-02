@@ -1,0 +1,103 @@
+String:
+
+Immutable sequence of characters
+Once created, the value cannot be changed.
+Any change creates a new String object
+
+
+
+------------------------------------------------------------------------------------
+1.Why is String immutable in Java? What are the advantages and disadvantages of String immutability?
+
+	Ensures security by avoiding unintended changes (important for sensitive data like passwords).
+	Provides thread safety since immutable objects can be shared across threads without synchronization
+	Guarantees consistent hash code behavior for use in collections like HashMap.
+
+--------------------------------------------------------------------------------------
+2. How does the Java String pool work? What is the difference between new String("abc") and "abc"?
+
+					The String pool is a special memory area that stores literals
+					When a String literal like "abc" is created, it's placed in the pool
+					If another literal "abc" is declared, the JVM reuses the existing reference
+				
+				String s = "abc";
+				String s1 = "abc"; //he JVM reuses the existing reference
+				
+				String s3 = new String("abc");
+				new String("abc") creates a new String object in heap memory every time,regardless of the pool
+				
+				if, new String("abc") == "abc"  == return false// because they refer to different objects
+				but 
+				"abc" == "abc"  // returns true as both reference the same pooled object.
+--------------------------------------------------------------------------------------
+
+if a string created as literl String s1 = "akil"; //jvm check ths string pool first
+If the literal already exists in the pool, JVM reuses the reference to that instance instead of creating a new one.
+If not, JVM creates a new String object in the pool and stores its reference
+
+this will save memory right!
+
+when a string created using new keyword ?
+
+new String("Hello"); // a new object is crearted in the heap regardless of the pool
+String objects created with new can be added to the pool using the .intern() method,
+ which returns the pooled reference.
+
+
+-------------------------------------------------------------------------------------------
+3.Can you explain the difference between equals() and == when comparing two String objects?
+
+== : check if two reference point to the exact same object in memory
+equals() method : compares the content or sequence of characters in the String
+
+
+------------------------
+How does String interning work? When to use intern()? Pitfalls?
+
+String s1 = new String("hello");
+String s2 = "hello";
+
+
+this (==) will check the reference 
+.equlas() chek the content
+
+
+System.out.println(s1 == s2);               // false, different objects
+System.out.println(s1.intern() == s2);      // true, both refer to pool object
+
+Use intern() when many duplicate Strings are created dynamically during runtime, and you want to save memory by reusing common string instances.
+Overusing intern() can increase the size of the String pool and cause longer garbage collection pauses
+
+--------------------
+	StringBuffer:           hint f:: first so
+--------------------
+
+
+	Mutable sequence of characters,
+	thread-safe due to synchronization,
+	but slower.
+	Suitable for multi-threaded environments.
+	
+-----------------
+	StringBuilder:             hint i: as per alphabet 2nd
+------------------
+	Mutable sequence of characters,
+	not thread-safe 
+	but faster than StringBuffer. 
+	Best for single-threaded environments.
+
+
+for EG:
+
+String s= "hello";
+
+s = s + "word";  //this will create a new String object;
+
+//StringBuffer
+
+	StringBuffer sb = new StringBuffer("hello");
+	sb.append("workl"); //this  will modifyies orginal object
+
+// StringBuilder example (mutable, not thread-safe)
+	StringBuilder sbd = new StringBuilder("Hello");
+	sbd.append(" World"); // modifies original object
