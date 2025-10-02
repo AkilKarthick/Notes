@@ -1,0 +1,23 @@
+create a static memeber hold only one instance of singleton
+create a private construcot to avoid external instntiation
+use a metohd to create singleton instance
+
+	public class Singleton {
+	    // Static member holds only one instance of Singleton
+	    private static Singleton instance;
+	
+	    // Private constructor avoids external instantiation
+	    private Singleton() {
+	        // Initialization code here
+	    }
+	
+	    // Static factory method to get the singleton instance
+	    public static Singleton getInstance() {
+	        if (instance == null) {
+	            instance = new Singleton();
+	        }
+	        return instance;
+	    }
+	}
+This pattern helps in resource management like caching, logging, or database connection
+ pooling by centralizing the instance control and providing global access efficiently.

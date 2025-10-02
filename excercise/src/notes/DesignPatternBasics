@@ -1,0 +1,12 @@
+singleton
+
+ensure only one instance of a class is created & provide a global access
+
+factory pattern:
+Creates objects for you, hiding complex logic and allowing easy changes.
+
+Observer Pattern
+What it does: One subject tells many listeners about changes.
+
+Strategy Pattern
+What it does: Choose one of many algorithms at runtime.

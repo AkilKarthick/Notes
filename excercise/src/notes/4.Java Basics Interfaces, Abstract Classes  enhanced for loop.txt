@@ -1,0 +1,54 @@
+Java Basics: Interfaces, Abstract Classes | enhanced for loop
+
+
+INTERFACES
+
+An interface defines a contract of abstract methods (no implementation) that implementing classes must provide.
+
+It supports multiple inheritance for types 
+(a class can implement multiple interfaces).
+
+From Java 8+,
+ interfaces can have default and static methods with concrete implementations
+
+from java 9
+
+private method also we can implemented 
+
+
+
+---------------
+ABSTRACT CLASSES
+
+An abstract class can have abstract (unimplemented) methods
+as well as concrete (implemented) methods.
+
+It cannot be instantiated directly; subclasses must provide implementations for abstract methods.
+
+
+for eg::
+
+// Abstract class
+abstract class Animal {
+    // Abstract method (does not have a body)
+    public abstract void sound();
+
+    // Regular method
+    public void sleep() {
+        System.out.println("Sleeping");
+    }
+
+--------------------------------
+Enhanced For Loop (For-Each Loop)
+
+iterating through collections and arrays simpler and safer.
+for EG:
+
+int[] numbers = {1, 2, 3};
+for (int n : numbers) {
+    System.out.println(n);
+}
+List<String> names = List.of("Alice", "Bob");
+for (String name : names) {
+    System.out.println(name);
+}

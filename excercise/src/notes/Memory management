@@ -1,0 +1,76 @@
+Memory management interview questions
+
+	1.explain java memory management?
+	2.what is garbase collection in java? and its types?
+	3.what is finalize() method?
+	4.statck vs heap memeory allocation
+	5.how to handle out of memmroy Exception?
+
+
+---------------------------------
+1.explain java memory management?
+---------------------------------
+
+	the process by which jvm automatically allocates memory to objects and deallocate memory that is no longer used,
+	helping to prevent memory leaks and optimize usage
+
+heap memory - exists as long jvm run, & a shared run time area where all the java obj & arrays are allocated & managed by garbage collecto
+			  exists during application runtime
+				Stores all objects and class instances
+				Allocation & Deallocation: Managed by programmer, freed by Garbage Collector
+				lifetim:Objects live until no references remain
+				Shared among all threads
+			
+stack memory: each thread has its own stack storing local variibl, method call & refernce, it is a short lived & automatically grow and shrink during method execution
+			Lifespan tied to method execution
+			Stores method call frames && local variables
+			Allocation & Deallocation:	Automatic, follows method call LIFO order
+			Lifetime:Exist only during method execution
+			Each thread has its own stack
+			
+			
+for EG::
+		public class MemoryExample {
+		    public static void main(String[] args) {
+		        int x = 10;               // Stored in stack (primitive variable)
+		        Student s = new Student(); // Reference stored in stack, object in heap
+		        s.name = "Alice";
+		    }
+		}
+		
+		class Student {
+		    String name;                 // Stored in heap as part of object
+		}
+
+----------------------------------------------------
+2.what is garbage collection in java? and its types?
+
+	gc is a automatic memory mnangement process, by which JVM idneifies and remove objects that are no longer reachable 
+	freeing heap memory for reuse
+	
+types of garbage collection:
+	Minor GC: check where new objects areallocated it run frequently and fast
+	major GC: where long lived objects are stored, it is less frequently but more time consuming
+	full GC: combination of minor and major GC, cleaning the Entire heap 
+
+
+-------------------------------------------------------------------
+3.finalize() method  : invoked during the time of object destruction
+
+	it is depreciated in newer java version with -try-with-resou-
+	and explicit cleanup methods are there
+	protected method() in the object class invoked by the gb collectors before object destruction
+
+--------------------------------------
+how to handle out of memory Exception?
+
+	occurs when JVM -heap or stack memory- is exhausted and cannot allocate more objects
+	how to handle this means
+
+	Analyze heap usage and leaks using profiling tools
+	Optimize code to release references to unused objects.
+	Avoid creating large unnecessary objects or collections
+	Use proper data structures and caching strategies
+	Ensure external resources are closed properly  lie fil stream close
+
+

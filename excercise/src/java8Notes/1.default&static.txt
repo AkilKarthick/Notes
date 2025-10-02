@@ -1,0 +1,67 @@
+in java 8 interfaces can have both default() with default keyword and static() method with static keyword
+
+default method
+
+default keyword
+overridable: yes(in implementing class)
+access: on object/instance or class
+
+
+classes implementing the infaces are not forced to override default method
+
+interface TestInterface {
+    void square(int a); // abstract method
+
+    default void show() {
+        System.out.println("Default Method Executed");
+    }
+}
+
+class TestClass implements TestInterface {
+    public void square(int a) {
+        System.out.println(a * a);
+    }
+
+    public static void main(String args[]) {
+        TestClass d = new TestClass();
+        d.square(4);
+        d.show(); // Calls default method
+    }
+}
+
+output: 
+
+16
+Default Method Executed
+
+-------------------------------------
+
+Static method:
+
+using static keyword and only be called on interface itself not on instance
+implementing class cannot be override static methods
+
+keyw0rd:static
+overridable: no(only in interface)
+access: only via interface name
+
+
+
+interface MyData {
+
+    default void print(String str) {
+        if (!isNull(str))
+            System.out.println("MyData Print::" + str);
+    }
+
+    static boolean isNull(String str) {
+        return str == null || "".equals(str);
+    }
+}
+
+class MyDataImpl implements MyData {
+    public static void main(String args[]) {
+        MyData.isNull("abc"); // Call static method directly on interface
+    }
+}
+

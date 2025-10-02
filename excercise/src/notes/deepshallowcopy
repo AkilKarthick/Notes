@@ -1,0 +1,9 @@
+deep copy
+
+	create a new object and copies all fields, ensuring that changes made to one object don't affect the other
+	new memory is allocated each object has its own independent reference
+
+Shallow copy:
+
+	it refers to copying the reference of an object, not actual object, so changes made to one reference affect the other
+	no new memory is allocated, both reference point to the same memory locationdeep copy

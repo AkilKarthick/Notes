@@ -1,0 +1,53 @@
+package excercise;
+
+
+
+public class javaBascisExample {
+
+	public static void main(String[] args) {
+		
+		// Variables and Data Types
+        int age = 25;               // integer variable
+        float price = 19.99f;       // decimal type float
+        char grade = 'A';           // single character
+        boolean isStudent = true;   // boolean value
+        String name = "John";       // non-primitive String
+
+        // Print variable values
+        System.out.println("name :" + name);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Grade: " + grade);
+        System.out.println("Price: " + price);
+        System.out.println("Is Student: " + isStudent);
+
+        // Operators
+        int x = 10;
+        int y = 3;
+        
+        int a =20, b= 3;
+        
+        System.out.println((a/b));
+
+        System.out.println("Arithmetic Operators:");
+        System.out.println("x + y = " + (x + y));  // Addition
+        System.out.println("x - y = " + (x - y));  // Subtraction
+        System.out.println("x * y = " + (x * y));  // Multiplication
+        System.out.println("x / y = " + (x / y));  // Division (integer division) quotiet
+        System.out.println("x % y = " + (x % y));  // Modulus (remainder)
+
+        System.out.println("Relational Operators:");
+        System.out.println("x > y: " + (x > y));   // Greater than
+        System.out.println("x == y: " + (x == y)); // Equal to
+        System.out.println("x != y: " + (x != y)); // Not equal
+
+        System.out.println("Logical Operators:");
+        boolean result = (x > 5) && (y < 5);
+        System.out.println("(x > 5) && (y < 5): " + result);
+        System.out.println("!(x > 5): " + (!(x > 5)));
+
+        // Assignment operators
+        x += 5;  // x = x + 5
+        System.out.println("After x += 5, x = " + x);
+    }
+}

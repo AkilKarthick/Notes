@@ -1,0 +1,23 @@
+ Iterator is an interface used to iterate over a collection
+a standard way to traverse collections
+
+
+
+public class IteratorExample {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String fruit = iterator.next();
+            System.out.println(fruit);
+        }
+    }
+}
+
+hasPervious()  - to reversour order traversing
+pervious() -move the cursor backwordk like return previous elements
+previousIndex() -

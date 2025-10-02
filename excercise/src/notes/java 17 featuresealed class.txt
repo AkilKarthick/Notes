@@ -1,0 +1,41 @@
+what are sealed class in java 17 expalain basic for better understanding with eample
+
+
+sealed class:
+
+declared with sealed keyword
+
+the permits clause list all classes allowed to directly inhert from sealed class
+
+Any attempt to extend the sealed class from a non-permitted class will result in a compile-time error.
+
+Permitted subclasses must themselves declare whether they are sealed, non-sealed, or final.
+
+
+public sealed class User permits AdminUser, GuestUser, RegisteredUser {
+    String username;
+    public User(String username) { this.username = username; }
+    public String getUsername() { return username; }
+}
+
+public final class AdminUser extends User {
+    public AdminUser(String username) { super(username); }
+    public void accessAdminPanel() {
+        System.out.println(username + " is accessing the admin panel.");
+    }
+}
+
+public final class GuestUser extends User {
+    public GuestUser() { super("Guest"); }
+    public void browseCatalog() {
+        System.out.println("Browsing as guest.");
+    }
+}
+
+public final class RegisteredUser extends User {
+    public RegisteredUser(String username) { super(username); }
+    public void viewProfile() {
+        System.out.println("Viewing profile of " + username);
+    }
+}
+

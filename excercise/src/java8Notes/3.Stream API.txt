@@ -1,0 +1,106 @@
+Stream API:
+used to process collections in a functional style using lambda expression
+it allow paraller processing too
+
+stream do not store data but process data frm collection,arrays etc
+it enables chaining operation like (filetring,mapping sorting)
+
+stream can be sequential or paralle for concurrency
+operation are either intemeidate or terminal
+
+
+Listt<String> l1 = Arrays.asList("lk","a");
+
+//from collection
+Stream<String> stream1 = l1.stream();
+
+//from array
+
+Stream<string> stream2 = Arryas.stream(new String[] {"a","b"});
+
+//from values
+Stream<Ineger> stream3 = Stream.of(1,2,3,45);
+
+Stream<Integer> stream4 = Stream.iterate(1, n->n+1).limit(5);
+stream4.forEach(System.out::println);
+
+-------------
+
+//filter a stream startinw with ''j
+
+list.stream().filters(s->s.startswith("j")).forEach(system.out.println)
+
+========================
+
+Intermediate Operations (lazy, return streams):
+
+Intermediate operations build the processing pipeline and return a new Stream for further processing. They are lazy, so no actual processing happens until a terminal operation is called.
+
+shortcut: fmsdls
+
+filter(): Filter elements
+
+map(): Transform elements
+
+sorted(): Sort elements
+
+distinct(): Remove duplicates
+
+limit(): Limit size
+
+skip(): Skip first n elements
+
+----------------
+
+Terminal Operations (trigger processing, return result):
+Terminal operations are the last in the pipeline and trigger the execution of all accumulated intermediate operations to produce a final result
+
+shortcut: fcrcaf
+
+forEach(): Consume elements
+
+collect(): Accumulate results (toList, toSet)
+
+reduce(): Combine elements  eg: doing sum of all elements 
+
+count(): Number of elements
+
+anyMatch(), allMatch(), noneMatch(): Predicate checks
+
+findFirst(), findAny(): Optional first/any match
+
+==========
+
+Parallel Streams:
+
+parallelStream() to enable parallel processing
+Efficient utilization of multiple CPU cores for big data
+
+List<String> names = Arrays.asList("John", "Jane", "Mark", "Diana");
+
+List<String> result = names.stream()
+    .filter(name -> name.startsWith("J"))
+    .map(String::toUpperCase)
+    .sorted()
+    .limit(2)
+    .collect(Collectors.toList());
+
+System.out.println(result);  // Output: [JANE, JOHN]
+===========================================
+
+
+What is the difference between map() and flatMap()?
+
+map() - transform each elemet to exactly  one elememtn
+flatmap()- flattens nested streams into single stream
+flatMap then merges these individual streams into one stream of integers
+
+How does parallel stream work?
+
+Parallel streams use multiple threads from a ForkJoinPool to process data concurrently for better performance on large datasets.
+
+What are short-circuiting operations?
+
+Operations like anyMatch(), allMatch(), noneMatch(), findFirst(), and findAny() which may stop processing early.
+
+
