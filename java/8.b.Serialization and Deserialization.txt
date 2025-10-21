@@ -1,17 +1,18 @@
 Serialization 
-
+-------------
 process of converting an object into a byte stream to save it to a file, 
 send over a network, or store in memory
 
 
 Deserialization:
-
+---------------
 the reverse process where the byte stream is converted back into a copy of the original object
 
-
+--------
 for EG:
+---------
+// Class must implement Serializable interface- to allow serialization
 
-// Class must implement Serializable to allow serialization
 class Demo implements Serializable
 
 step2:
@@ -93,4 +94,5 @@ public class SerializationExample {
         }
     }
 }
+
 
