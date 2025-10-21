@@ -1,0 +1,13 @@
+JDBC
+
+step1:need to load the driver
+  class.forName("org.hsqldb.hjdbcDriver");
+
+Step2: connect to the database
+  
+try(Connection conn = DriverManager.getConnection("JDBC:]hsqlDdb:hsql://locahost/","sa",""))
+
+step3: createStatement()
+
+step4: send sql statement to the database
+stmt.execute(sql)
