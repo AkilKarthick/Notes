@@ -1,9 +1,9 @@
 JDBC
 
-step1:need to load the driver
-  class.forName("org.hsqldb.hjdbcDriver");
+step1:need to load the database driver in jdbc
+  class.forName("org.hsqldb.hjdbcDriver"); //regsitering the driver
 
-Step2: connect to the database
+Step2: connect to the database or establise a connectio with database
   
 try(Connection conn = DriverManager.getConnection("JDBC:]hsqlDdb:hsql://locahost/","sa",""))
 
