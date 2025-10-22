@@ -5,10 +5,53 @@ annotations
 @SupressWarning()- instruct the compiler to supress warnings that are generated
   while the program executes
 
-@SafeVarargs - to avoid compiler warnings about unsafe operations on variable length argumenets
-              unchecked or unsafe operations
-              cannot be used on overriding methods lead to unsafe operarions
-              applies only to static final or private methods and constructor 
-               No compiler "unsafe operation" warning because of @SafeVarargs
+@SafeVarargs - to make sure that this method or constructor does not perform 
+  unsafe operations on its varargs (can be applied on methods/constructor that cannot be overridden).
+
+@functional interface - to indicate this interface as a func interface
+
+@Documented - indicate that the specified annotation should by documneted using the javadoc  tool
+
+@Target - marks an annotation to restrict what kind of java elements the annoation can be applied to
+if the target type is not defined, the annotation can be used for any elements
+
+@Inherited - caused the subclass to inhert the annotation from the superclass
+
+@Retention - specifies the level up to which the annotation will be available
+
+@Repeatable - indicate that the marked annotation can be applied more that once to the
+same declaration or type use.
+--------------------------
+CREATING CUSTOM ANNOTATION
+--------------------------
+
+1.created by using -@Interface- followed by the annotation name.
+2.can have elements that look like methods, but they do not have an implemetation
 
 
+paccess_specifier] @Interface <annotation_name>
+{
+  datatype <methodname>() [default default-value];
+}
+
+for eg:
+
+//this annotation will be availble during run time
+
+@Retention(RetentionPolicy.RUNTIME) //this anno will availble during run time
+@interface CustomAnnotation {
+  int value() default 31;// default value of value =31
+}
+
+public class AnnotationDemo{
+
+public static void main(String[] args){
+  AnnotationDemo.display();
+}
+
+public static void display() {
+
+//return all annotation present on the annotationdemo class
+Annotation[] a = new AnnotationDemo().getClass().getAnnotation();
+System.out.println(a[0]); //  @pkg5.customannotation(31) printed
+}
