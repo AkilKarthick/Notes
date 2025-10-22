@@ -1,1 +1,20 @@
 File System
+
+1. byte stream:
+
+to read & write a byte of data at a time
+InputStream & OutputStream classes availble in java.io
+
+eg1:
+OutputStream outFile = new FileOutputStream("greeting.txt");
+String data = "stay positive good life ahead";
+//convert String to byte array
+
+byte barray[] = data.getBytes();
+//write bytes into the file with overloaded method which takes a byte array
+
+outFile.write(bArray);
+
+
+
+
