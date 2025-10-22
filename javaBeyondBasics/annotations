@@ -1,9 +1,9 @@
 annotations
 
-@Overrid
+@Override - specifie that method is meant to overrida method from a superclass
 
-@SupressWarning()  - to rell the compiler to ignore specifi warnings for a particular part of your code
-                   used on methods, classes, fields, parameter, constructor, or variables too
+@SupressWarning()- instruct the compiler to supress warnings that are generated
+  while the program executes
 
 @SafeVarargs - to avoid compiler warnings about unsafe operations on variable length argumenets
               unchecked or unsafe operations
