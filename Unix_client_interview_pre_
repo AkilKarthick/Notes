@@ -1,0 +1,364 @@
+Unix_client_interview_pre_
+
+
+focusing on UNIX shell scripting, database queries, Linux commands, and ITIL process concepts, in the context of backend development and system operation interviews.
+
+
+1.shell script example to connect to a MySQL database and extract data from a table
+
+
+step1: assign the db username and password to -variable- in the script for easy management
+
+MYSQL_USER =
+MYSQL_PASSWORD =
+MYSQL_DB = your database name
+
+
+step2: query also saved as a variable
+
+QUERY="SELECT * FROM your_table;" # Your SQL query
+
+
+STE3: run using MySQL cli -tool
+the script uses MySQL to connect to the db using the credentials and execute your query
+
+we can save the result on output.txt filr for further use
+
+----------example----------
+
+
+MYSQL_USER="your_user"          # MySQL username
+MYSQL_PASSWORD="your_password"  # MySQL password
+MYSQL_DB="your_database"        # Database name
+QUERY="SELECT * FROM your_table;" # Your SQL query
+
+#how toconnect and run query , save result to a file?
+
+MySQL -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DB" -e "$QUERY" > output.txt
+
+-u specifies username
+-p specifies password (no space after -p)
+$MYSQL_DB - the database to connect
+-e to execute the query
+
+step4:
+
+how to run this script---
+
+save the above code to extract.sh
+-----------------------------------------ADDITIONAL CONTECT TO COVER ----------------
+
+2.Error Handling in Shell Script | for trouble shoortin & automation in real projects
+--------------------------------
+
+#!/bin/bash
+MYSQL_USER="your_user"
+MYSQL_PASSWORD="your_password"
+MYSQL_DB="your_database"
+QUERY="SELECT * FROM your_table;"
+
+mysql -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DB" -e "$QUERY" > output.txt
+
+additionally add these:
+	add error checks to report if the query or connection fails.
+
+-----------------------------------
+if[ $? -ne 0]; then 
+	echo "db extraction failed"
+else 
+	echo "extraction successfull"
+fi
+------------------------------------
+
+$?  - a special variable in bash script, that store the exit status(return code ) of the last command run
+
+how it works:
+if the prvious command ran successfully, $? is zero 
+if it is failed, 1 or another error codes
+
+-ne   means "not equal" 
+here  [$? -ne 0] this expression is used to evalut a condtion in shell script
+	check the last command result not equal to zero
+if prvious command fails then it is tru	
+
+then ..else..fi
+
+echo - prints the text to the terminal
+
+fi : this end the if block , actually it is "if" spelled backward
+
+------------------------------------------------------------------------------------
+
+additional topics 
+
+3.Secure Credential Management
+4.Scheduling Script with Cron
+5. Formatting Output as CSV
+6.Handling Large Datasets (Streaming/Pagination)
+7. Reusable Script with Arguments
+
+-------
+This workflow is commonly used for sending automated reports, alerts, or extracted data via email from a Linux system.
+
+email using a shell script
+
+cat output.txt | mail -s "MYSQL QUERY RESULT" receiptant@gmail.com
+
+mail is the utility for sending email from Linux
+-s subject
+the body is taken from the piped content (cat output.txt | ...)
+
+we can install this on 
+-----------------------
+sudo apt install mailtuils - ubuntu/Debian
+sudo yum install mail (rhel and centOS)
+
+
+for EG:
+
+#!/bin/bash
+MYSQL_USER="your_user"
+MYSQL_PASSWORD="your_password"
+MYSQL_DB="your_database"
+QUERY="SELECT * FROM your_table;"
+
+mysql -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DB" -e "$QUERY" > output.txt
+
+if [ $? -ne 0 ]; then
+  echo "Database extraction failed!" | mail -s "DB Extract Error" recipient@example.com
+else
+  cat output.txt | mail -s "MySQL Query Results" recipient@example.com
+fi
+
+
+-------------------------------------------------------------------------
+
+3.CRON - a built in Linux service that run task automatically this is a backend automation tasks
+
+* * * * * command_to_run
+- - - - -
+| | | | |
+| | | | +----- Day of the week (0-7) (Sunday=0 or 7)
+| | | +------- Month (1-12)
+| | +--------- Day of the month (1-31)
+| +----------- Hour (0-23)
++------------- Minute (0-59)
+
+-------
+Step 1: Make Sure Your Script Is Executable
+
+chmod +x /path/to/your/script.sh
+
+Step 2: Edit Your Crontab & Open cron’s editing screen:
+
+crontab -e
+
+Step 3: Add a Schedule Line:
+
+0 2 * * *  /path/to/your/script.sh
+min| hours| day| month |every day of week
+
+Step 4: Save and Exit
+The job is now scheduled; cron will handle the job according to your timetable
+
+
+hint:
+Check your scheduled jobs any time with:
+crontab -l
+For testing, set an early time, like every 5 minutes:
+*/5 * * * * /path/to/script.sh
+----------------------------
+
+how to find and delete 5gb+ files:	This approach is commonly used by Linux sysadmins to manage large files and reclaim disk space,
+
+-----------------------------------
+
+find /path/to/search -type f -size +5G
+
+/path/to/search – replace with the directory you want to search (use / for whole system, but be careful!).
+-type f – restricts search to files (not directories).
+-size +5G – finds files greater than 5 gigabytes
+
+find /u/home/to/ -type f -size +5g 
+
+ste2: delete those files
+
+-exec rm-f {} \;
+
+-------------------------------------
+Archieving files:
+-----------------
+most common tool used in Linux for archiving are tar and zip
+Archiving is essential for backups, transferring multiple files as one package, and reducing disk usage.
+
+1.Using tar to Archive Files:
+
+tar -cvzf  archieve_name.tar.gz /path/to/folderorfiles
+
+tar — the archiving tool.
+-c — create a new archive.
+-v — verbose, shows progress.
+-z — compress using gzip.
+-f archive-name.tar.gz — name of the output archive.
+
+/path/to/folder-or-files — files or folders you want to archive.
+
+
+Extracting the Archive
+To unzip and extract files:
+
+
+tar -xvzf mydata.tar.gz
+
+-x extracts from archive,
+
+using zip and unzip:
+
+zip -r archive-name.zip /path/to/foleorfolder
+
+-r is recursive for folder
+
+unzip archiver-name.zip
+----------------------------------------------------
+
+how will you remove directories and sub directories?
+
+rm -r dir1_name2
+
+-r : recursive, it delte the entire directores incuding all files and subfolder insdies
+
+2.rm -rf directory_name
+-f stand for forec> this command deletes even write-protected file and not ask for confirmation
+
+3.remove multiple directories
+
+rm -rf dire1 dire2 dire3
+
+Double-check the directory name!
+This action is permanent. Files and folders will not go to a trash/recycle bin.
+
+
+
+4. Remove Only Contents (NOT the Directory Itself)
+This deletes everything inside, but leaves the parent directory
+
+rm -rf directory_name/*
+
+
+-----------------------------------
+how will you list file by size
+
+list file by size
+
+ls -lhs
+
+-l long format
+-h human readable file  (kb,gb,mb)
+-s sort file by size, largest to small
+
+ls -lhsr
+
+-r reverse the sorting order
+
+Recursively List by Size (Including Subdirectories)
+
+ls -lhsR
+
+-R recurse, also list sub folders
+
+ls -laSh
+
+-a: includes hidden files (files beginning with .)
+
+
+Formore control, use find and ls together:
+
+text
+find /path/to/search -type f -exec ls -lh {} + | sort -k5,5 -hr
+This finds files and pipes them to ls -lh, then sorts by size.​
+
+These commands are used frequently to locate large files and manage disk space in Linux. Ask if you want to filter by file extension or get only the top N files by size!​
+
+-----------------
+
+In a shell script, the total number of parameters (arguments) passed to the script is stored in the special variable $#.
+
+
+#!/bin/bash
+
+echo "Number of parameters passed: $#"
+
+Give it execute permission:
+chmod +x count_params.sh
+
+Run with any number of arguments:
+./count_params.sh arg1 arg2 arg3
+--------------------------
+awk reads the input file line by line.
+
+NR is the built-in awk variable that holds the current line number (starting from 1).
+
+Using modulo operator % with 2, we check if the line number is odd or even.
+
+NR % 2 == 1 means odd lines.
+
+NR % 2 == 0 means even lines.
+
+Each matched line is printed to the corresponding output file
+
+awk 'NR % 2 == 1' file.txt > odd_lines.txt
+awk 'NR % 2 == 0' file.txt > even_lines.txt
+
+
+
+The output will be:
+Number of parameters passed: 3
+
+-------------------------------------------------
+Check if File Exists in /tmp Directory in details
+
+standard and safe way to check file existence in Linux shell scripts before performing operations like reading, writing, or deleting files
+
+1.-f checks if the file exists and is a regular file (not a directory or special file).
+2.-e checks if the file or directory exists regardless of type.
+
+if [ -f /tmp/file.txt ]; then
+  echo "file.txt exists"
+else
+  echo "file.txt does not exist"
+fi
+
+3.. Quick One-liner
+
+[ -f /tmp/file.txt ] && echo "file exists" || echo "file does not exist"
+
+-------------------------------------------------------------------------------------------
+To check disk space in Linux?
+
+to monitor and analyze disk space usage efficiently.
+
+1. Using df - Disk Free Space
+df reports file system disk space usage, showing total, used, and available space.
+df	Disk free/used space by filesystem	df -h
+du	Disk usage of directory or files	du -sh /var/log
+
+Basic Command:
+
+text
+df -h
+-h: human-readable format (shows sizes in KB, MB, GB, etc.)
+This shows all mounted filesystems 
+
+
+2.du -sh .
+
+-s: summarizes the total size
+
+3. Checking Specific Mount or Path
+To check space on a specific directory or mount point:
+
+df -h /home
+
+
+
+
