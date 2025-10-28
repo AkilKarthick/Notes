@@ -1,6 +1,3 @@
-Unix_client_interview_pre_
-
-
 focusing on UNIX shell scripting, database queries, Linux commands, and ITIL process concepts, in the context of backend development and system operation interviews.
 
 
@@ -271,10 +268,11 @@ ls -laSh
 -a: includes hidden files (files beginning with .)
 
 
-Formore control, use find and ls together:
+For more control, use find and ls together:
 
-text
+
 find /path/to/search -type f -exec ls -lh {} + | sort -k5,5 -hr
+
 This finds files and pipes them to ls -lh, then sorts by size.​
 
 These commands are used frequently to locate large files and manage disk space in Linux. Ask if you want to filter by file extension or get only the top N files by size!​
@@ -358,6 +356,45 @@ This shows all mounted filesystems
 To check space on a specific directory or mount point:
 
 df -h /home
+
+
+--------------------------------
+select emp_id, concat_ws('|', emp_id,emp_id) as grouepd from employee 
+
+------
+
+what is hard link
+A hard link in Linux is a direct reference to the same physical file data (inode) on disk. It essentially creates another name for an existing file, meaning both names point to the same data.
+
+Key Points about Hard Links
+A hard link shares the same inode number as the original file.
+
+If one file name is deleted, the other still accesses the same data.
+
+Changes made to one file are reflected in all its hard links.
+
+Hard links cannot link to directories (for safety reasons).
+
+Hard links cannot span across different file systems or partitions.
+# Create a normal file
+echo "Hello Linux" > file1.txt
+
+# Create a hard link to file1.txt
+ln file1.txt file2.txt
+
+# Check inode numbers
+ls -li
+
+123456 -rw-r--r-- 2 user user 12 Oct 27  file1.txt
+123456 -rw-r--r-- 2 user user 12 Oct 27  file2.txt
+Both file1.txt and file2.txt have the same inode number (123456) — proof that they point to the same physical data.
+
+Behavior
+If you modify file1.txt, the changes appear in file2.txt.
+
+If you delete file1.txt, file2.txt still contains the data.
+
+The file is only truly deleted when all hard links to its inode are removed.
 
 
 
