@@ -1,0 +1,53 @@
+
+AUTOMATION
+===========
+
+
+I had integrated ServiceNow’s REST API using Spring Boot’s RestTemplate, 
+applied Basic Auth for authentication, and pulled incident data dynamically.
+ I parsed the JSON response into Java objects, filtered them based on SLA and priority, and generated automated reports. This was further linked with TCO Notification service to send email alerts to stakeholders every week
+
+Created Spring Boot schedulers for weekly health checks across Dev, QA, Stage environments.
+Generated weekly health reports including SLA metrics.
+Integrated ServiceNow API to fetch incident data and include in automated reports
+
+
+-----------------------------------------------------------------
+if they ask about TCO notification internal implementation of jar
+------------------------------------------------------------------
+
+For automated notifications in the MOM project, we used a pre-built library/jar (TCO Notification) provided by our team, which handled sending emails or alerts.
+
+My responsibility was to prepare the notification content and trigger the service. I created a TCONotificationVO object, set the template key, added properties like environment, SLA metrics, campaign details, and timestamp, and then invoked the sendEventNotification method of the service. The library took care of the actual delivery, so I could focus on business logic, report content, and automation.
+
+You instantiate and configure a TcoNotificationVO (Value Object) with all the necessary details—recipient list, subject, body arguments, template keys, and any other metadata. This VO acts as a carrier for all information needed to render and deliver the email.
+
+Internal Logic: When the service method (like sendEventNotification) is invoked, the jar processes this VO
+=====================================================
+Development Contributions: in MOM & Vista Application
+=====================================================
+
+enhanced REST APIs in Spring Boot to fetch campaign and asset data from Vista → MOM
+mplemented business logic in service layer 
+
+(e.g., validating campaign dates, regions, vendor rules, assigning default values)
+Persisted campaign data into MySQL using Spring Data JPA
+
+Added extra fields in campaign mapping (priority, budget code, target audience, campaign type).
+
+Created modular, reusable code components for schedulers, reporting, and notifications.
+
+========
+outcome from my work in this project is 
+========
+Reduced manual effort for health check reporting and incident tracking through automation
+
+Production support
+
+curretmonthtickets 
+getAvailableSDLCTickets
+getOldOpenTickets
+getcurrentWeekTickets
+
+Ensured smooth execution of marketing campaigns globally and in the US by proper asset mapping and notification
+
