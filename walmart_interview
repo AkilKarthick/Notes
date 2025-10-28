@@ -1,0 +1,13 @@
+Walmart Tech Mod Transportation Project – Summary  {Wal-Mart stores}
+
+Participated in the migration of transportation applications from Red Hat Enterprise Linux (RHEL) to Ubuntu as part of Walmart’s internal cloud modernization effort.
+
+Worked with Linux and Java technology stack, focusing on ensuring environment-specific configurations and secure file transfers between systems via SFTP.
+
+Tested and validated JAR/WAR components to ensure compatibility with both RHEL and Ubuntu environments.
+
+Used One-Ops for provisioning cloud environments, managing build deployments, and handling production change requests in a controlled way.
+
+Developed and maintained configuration scripts, automated health checks, and environment monitoring tools using Java and control tower automation frameworks.
+
+Assisted in post-migration validation, including sign-off documentation and production readiness checks. Collaborated closely with cross-functional teams to monitor applications post-migration, troubleshoot issues
