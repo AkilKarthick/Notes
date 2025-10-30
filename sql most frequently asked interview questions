@@ -1,0 +1,459 @@
+sql most frequently asked interview questions
+
+
+1. how to find the third highest salary ?
+
+CREATE TABLE employee_test
+(
+	emp_id INT,
+	emp_name VARCHAR(100),
+	emp_salary Decimal(10,2)  //10 digits a d 2 for fractional part
+
+);
+
+INSERT INTO employee_test(emp_id, emp_name, emp_salary) 
+VALUES (1,'akil',3000)
+INSERT INTO employee_test(emp_id, emp_name, emp_salary) 
+VALUES (2,'larthick',4000)
+INSERT INTO employee_test(emp_id, emp_name, emp_salary) 
+VALUES (3,'ajoth',5000)
+INSERT INTO employee_test(emp_id, emp_name, emp_salary) 
+VALUES (4,'vijay',6000)
+-------------------------------------------------------
+
+select DISTINT(emp_salary)
+FROM employee_test
+ORDER BY emp_salary DESC LIMIT 0,1 // 0 START INTDEX 1 - IS NO OF RWO TO FETCH
+
+or
+
+2ND HIGHEST SALARY
+
+select MAX(emp_salary) FROM employee_test
+WHERE emp_salary < (select MAX(emp_salary) FROM employee_test)
+
+or 
+
+select max(emp_salary) from employee_test
+where emp_salary not in (select max(sal) from employee_test)
+
+---------------------------------
+2. what are index and how to create an index in sql?
+
+it is an database object, which help in retrieving records quickly and more efficiently
+index can be created on both tables and views,
+by declaring a -column- as an index within a table or view
+then the user can access those recoreds quickly by executing the index. 
+index with more than one column care called clustered index
+
+syntzc:
+=======
+CREATE INDEX INDEX_NAME
+ON TABLE_NAME(COL1, COL2)
+
+to drop:
+
+DROP INDEX index_name ON TABLE_Nme
+
+HOW IT WORKS?
+==============
+behind the scene, uselayy do a full table scan if we need to retrieve a particaulr data
+on index is a data structre, that store the value of certain specific colun of a table and helps us avoid a full table scan
+
+B-tree datastruce interannly used for index 
+it is time effiecnt for lookups and deletion and insertion
+data that storeed inside of a Btree can be sorted
+
+index refers to the pointer which will find the rest of the informations
+
+DISADVANTAGE OF INDEX:
+-----------------------
+it take additional space, so larger the table the bigger the index
+every time you performed add.delet or update operaion the same operation will need to be perfomed on the index as well
+
+
+
+3.if we drop a table  does it also drop related objects like constraints, index, coln, default view and store procedure?
+
+yes sql server drop all related objects which existi  inside a table like constrain, index colum detaul ect
+but dropping a table will not drop views and sorted procedure as they exists outside the table.
+
+
+
+--------------
+
+1.show patien_id and firstname from patients table
+where their firt-Name starts and end with 's' & is atleast 6 character long?
+
+select patient_id, first_name
+from patients
+where LEN(first_name) >=6
+AND LOWER(first_name) LIKE 'S%s'
+
+or
+
+ AND LOWER(first_name) LIKE 's%'  -- starts with 's'
+  AND LOWER(first_name) LIKE '%s'; -- ends with 's'
+
+my example
+
+select emp_name from employee 
+where length(emp_name) >=11 and emp_name LIKE 'a%'
+
+----------
+2. 
+
+select *
+from admission a
+inner join patients p 
+on p.patient_id = a.patient_id
+where a.diagnosis = 'dementia'
+
+
+-------------
+3. ordr by list by length of each name and then by alphabetically
+
+select fname
+from patients
+order by length(fname), fname 
+
+----------------
+
+4.
+
+select 
+
+CASE WHEN gender = 'm' THEN patient_id ELSE null END as male_count
+
+5.
+
+select fnama, lastname, allergies
+from patient
+where allergies in('penicli','mrphin')
+order by allergies, firstname, lastnmae
+
+
+
+
+-----------------
+GROUP BY - is ued to segregate data based on logical organized way
+
+2. disply highest payed employee in each department?
+
+select max(sal), deptNo
+from emp
+group by deptNo
+
+note: 
+
+you cannot fetch other fields rather than aggregated field along with grouped field
+
+
+----------------------------------------
+3, how to display alternative records in sql
+
+select * from employee
+where mod(emp_id,1)=0  --divisible by 1
+
+select * from employee
+WHERE mod(emp_id,2)=1   --even number divisible by 2 ==0
+
+or
+select * from employee
+where mod(emp_id,2) !=0  -- not equal to 0 meandodd || equal means odd
+
+-------------------------
+4. find duplicated values and its frequency of a column?
+
+select distinct(emp_name), count(*) AS count_0f_emp from employee
+group by emp_name
+having count(*) >1
+
+-------------------------------
+5.pattern matching like operator
+
+select *
+from employee
+where emp_name not like '%r%'
+
+like '%a'
+like 'a%'
+
+EXACTLY 4 LETTERS?
+
+like '____'
+like '_l%'
+
+
+exactly 2 L means?  
+
+like '%LL%'
+
+like 'j%s'
+
+
+--------
+6.display n th row in sql
+
+
+
+
+7.--------------
+
+union clause::
+
+used to combine the result set of two or more select queries & 
+unique values are displayed
+
+union all::
+
+union remove duplicate values while comparing where
+union-all allows duplicate values while combining
+
+
+8--------------
+joins
+
+1.inner join: common elemtns betwnn different table is returned
+
+merging multiple tables based one euqlity condition data
+we must have a common column in both the tables with the same data type
+
+select * from 
+emp e dep d
+where e.deptno = d.depno and loc ='chicago'
+
+or
+
+select * 
+from tableA a inner join on  tableB b
+where a.id =b.id and loc='chichago'
+
+9--------------
+
+self join- comparing itself
+
+for eg:
+
+display employee details who are getting more salay then their manager salay
+here salary column is single one
+
+select e1.name "employee", e2.name = "manager", e2.sal,e2.hiredate
+from emp e1, emp e2
+where e1.mgr = e2.empno AND e1.hiredate<e2.hiredate;
+
+10. ------
+LEFT JOIN
+
+display all rows from left side table, & matching value from right side table
+null values in place of non matching rows in other table
+
+11.-------
+RIGHT JOIN
+
+all the rows fro right side along with matching values rows from left side table
+null values in place of non matching rows in other table
+
+12.------
+full join
+
+union operation of inner join left & right join
+retirn all matching records
+
+13.------
+cross join
+
+each and every row in one table is added to all the rows in another table
+
+
+
+15------
+first n rows or last n rows in sql'
+
+
+rownum - will assign a sequential number for each row 
+
+1. display first & last row of the table?
+
+
+select * from (select rowname r, ename,sal from emp)
+where r=1 OR r = (select count(*) from emp)
+
+or
+
+(select * from employee
+order by emp_id asc limit 1 )
+union all
+(select * from employee
+order by emp_id desc limit 1)
+
+
+2. display last two rows of the table? 
+
+select * from employee
+order by emp_id desc limit 2;
+
+
+
+select * from emp where rownum < =(select count(*) -2 from emp)
+
+
+
+------
+normal form
+
+ruleno:1
+atomic rules: each column of table should contain atomic values
+the column call must not contain multiple values
+
+ruleno:2
+intermixing of different values
+for eg: in date COLUM all values should be data not string type this is intermixin of data
+
+
+rule3: unique column names
+
+name name wrond f-name L-name is recommended
+
+rule 4: ordering of data doesn't matter
+
+Eliminationg the multivalued attribute by introduscing a composite key
+
+66|akil|p1,p1  (multi valued )
+
+is 
+
+rolNo|name|phoneNo
+-------------------
+66|akil|p1
+66|akil|p2   introduced composite key here
+
+
+multivalued attributes in one table at single valued attribute in another table, and add primay key attribute of the orginal table to each newly formed tables
+
+introduce n sepeate columns for n multi values
+
+
+
+21
+exist
+
+SELECT columns
+FROM table1
+WHERE EXISTS (subquery);
+
+here the main query returns rows only if the subquery produces at least one matching row.
+
+
+------------------------------------------------------------------------------------------
+perplexity top coding sql questions
+
+1. How to find duplicate records in a table?
+
+select emp_name, count(*) as duplicate_count from employee
+group by emp_name
+having count(*) >1
+
+
+2.--2How to get the nth highest salary? offset = n-1 if 2nd hightest na 
+
+select * from employee
+order by emp_salary desc
+limit 1 offset 2
+
+
+--3.How to find common records between two tables? (INTERSECT)
+
+select * from sample1
+INTERSECT
+select * from sample2
+
+
+4-What is the difference between EXISTS and IN? 
+
+Used to check for existence without caring about the actual data returned by the subquery.
+
+IN 
+Tests whether a value matches any value in a list or subquery.
+
+
+
+5. How to use IF EXISTS in MySQL?
+
+DROP table if exists table_name;
+
+6.What is the use of SELECT 1 in subqueries?
+
+8.How to retrieve first and last rows from a table?
+
+(select * from employee order by emp_id desc limit 1)
+union all
+(select * from employee order by emp_id asc limit 1)
+
+9. How to insert multiple rows in one query?
+
+create table student(
+stdID int not null,
+studetname varchar(50) not null 
+ )
+
+Insert into student(stdID,studetname) values 
+(1,'akil'), 
+(2,'karthick'), 
+(3,'vijya');
+
+
+10 what is you have to add new column on exitin student?
+
+alter table student
+add column studetnaddress varchar(100)
+
+11.then how to update the newly create column ?
+
+update student SET studentaddress ='xyzr' where stdID =1
+
+you can't update all row  in single stich, one by one need to exute 
+
+or else
+
+--This efficiently updates multiple rows in one go.---------------
+For updating multiple rows in one query, use the CASE expression inside UPDATE
+
+update student
+set studentaddress = case stdID
+ when 1 then 'xy1' 
+ when 2 then 'qwe'
+ELSE studentaddress
+END
+where stdID in (1,2)
+
+
+------------------------
+to assign ranking values to rows based on a specified order.
+RANK()
+DENSE_RANK()
+
+SELECT name, salary,
+       RANK() OVER (ORDER BY salary DESC) AS rank
+FROM employees;
+
+name	salary	rank
+Raj	90000	1
+Meena	85000	2
+John	85000	2
+Alex	75000	4
+
+DENSE_RANK():
+
+SELECT name, salary,
+       DENSE_RANK() OVER (ORDER BY salary DESC) AS dense_rank
+FROM employees;
+
+name	salary	dense_rank
+Raj	90000	1
+Meena	85000	2
+John	85000	2
+Alex	75000	3
+
+
+ 
