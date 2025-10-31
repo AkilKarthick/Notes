@@ -1,0 +1,24 @@
+1. to remove a singl file
+rm filename.txt
+
+2.delet multiple files
+
+rm file1.txt file2.txt
+
+3 interacgive deletion it ask permsion before deleting 
+
+rm -i filename.txt
+it will ask confirmation y or no
+
+4. force deletion
+rm -f filename.txt
+
+5.Recursive deletion (including sub directioea ad content)
+rm -r *
+
+6. ro remove a file nam being with -dash you can speicfy a double dash --
+before file name
+
+rm -- -file.txt
+
+rm
