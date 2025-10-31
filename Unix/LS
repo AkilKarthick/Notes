@@ -1,0 +1,34 @@
+ls - list the files and directories
+
+1. open the last edited file using ls -t
+
+ls -t | head -1
+
+2. display one file per line & detailed information about the files
+  ls -l
+
+3.display in human redable formata
+  ls -lh
+
+4.for directory information
+  ls -ld /etc
+here -l means long listing files
+    -d means directories
+
+5. order file based on last modified time using 
+  ls -lt
+
+6. ls -ltr  means in 
+  -l = shows detailed info like size, permission and modification time
+  -t = sort file by last modified time 
+  -r = reversed the order (oldest first)
+
+7. for hidden files 
+ls -a
+
+8.ls -A   (show hidde files but one the '.' current directory & '..' parent directory)
+
+9.display files recursilbely means| including subdirecties and thier content
+
+ls -R /ecct/apt
+
