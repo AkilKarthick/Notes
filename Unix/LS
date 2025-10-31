@@ -26,6 +26,12 @@ here -l means long listing files
 7. for hidden files 
 ls -a
 
+8 . display the inode number
+ls -i
+
+9.to disply auser id and group id 
+ls -n ~/kv
+
 8.ls -A   (show hidde files but one the '.' current directory & '..' parent directory)
 
 9.display files recursilbely means| including subdirecties and thier content
