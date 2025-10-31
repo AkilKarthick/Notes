@@ -25,3 +25,39 @@ find /path/direct -perm 664
 
 find . -type d
 
+7. search text within multile files use find command
+
+find ./ -type f -name "*.txt" -exec grep 'sampleword' {} \;
+
+8. find file by when they were modified using find command in linux
+
+find /path/to/dir -mtime -7
+
+9. find large files over 100mb
+
+find ./ -type f -size +100M
+
+10. find files modified in the last 24 hrs
+
+find ~ -type f -mtime -1
+
+~ represnt home directory
+-type f = look only files
+-mtime refer to modifcaiton time of file
+-1 means less than 1 day ago
+
+11. find and delete temporary files
+
+sudo find /tmp -type f -name "*.tmp" -exec rm{} \;
+
+13. use grep to find files based on content using find command
+
+find . -type f -exec grep -1 "pattern" {} \;
+
+find .: initiate the search from the current directory (.)
+-exec grep -1 "pattern" {} \;
+  execute the grep command on the found file {} 
+-1 ensure that only the name of the files containing the pattern are displayed
+
+
+
