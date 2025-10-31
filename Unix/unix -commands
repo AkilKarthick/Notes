@@ -1,0 +1,25 @@
+process management commands:
+
+ps 
+ps aux = show all the process running detailed informatino
+ps -ef =
+pgre =  list the process based on the name
+kill = kill pid - terminate the process with specified process id
+pkill = terminate the process with processid
+kill -9 = forcefully kill a process, terminate the process
+Top = system process and their resource usage 
+
+grep------------------------------------------------------------
+
+grep -i (grep -i "hello" file) = this igrnore case sensitve
+grep -v = this will invert the match
+grep -r or grep -R = recursively search directories for matching pattern
+grep -l = print name of file containg matches
+grep -n = display line number alongside matching lines
+greop -w = disply whole rather than partial matches
+grep -c = coun the numbe of matching line instead of displaying
+grep -e = specify multiple patterns to search for
+grep -A = display the line after the mathcing line
+grep -B = disply the line before the matching line
+grep -C = disply the lines both before and after matchingline
+re
