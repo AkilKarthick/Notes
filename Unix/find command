@@ -1,0 +1,27 @@
+1. how to find a file in linux
+
+find /path/direc -name "file.txt"
+
+2. how to find a spcific file  using pattern
+
+find /path/direc -name *.txt
+
+3. how to find and confrim deletion using find ?
+
+find ./path.dire -name filename.txt -exec rm -i {} \;
+
+-exec option execute the rm command 
+-i flag for prompt for confirmation
+
+4. serch an empty file and destination using find
+
+find /patth/dir -empty
+
+5. search file using specific permission
+
+find /path/direct -perm 664
+
+6. display repository hierarch 
+
+find . -type d
+
