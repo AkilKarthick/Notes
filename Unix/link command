@@ -1,0 +1,35 @@
+
+create link between files that can be either hard link or soft link
+
+link= is like a short cut to access a file
+type 
+1.soft link or symbolic link
+2. hard link
+
+har link contain same inode value
+ln [orgnal filename] [link name]
+
+soft linek caontain seperate inode value
+ls -s [orginal filename] [link name]
+
+-------------------
+
+ln command used to creat link fro file in linux
+1st form: 
+  ln program.py linkfile.py
+  ls -liahr
+
+2nd form: creating in a directoy
+
+  ln program.py test_dir/
+
+3rd from
+
+  ln -t test_directory/ example.txt
+
+most useful option for ln command are
+
+ls -v 
+-v verbose which helps you know which file is linked to which file
+basically it print the name of each linked file
+
