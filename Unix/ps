@@ -1,0 +1,31 @@
+ps - to list the running process in linux
+
+1. show the process fot all users
+ps
+  | pid | tty - terminal type the user loggedinto | tiem | cmd
+
+2. list all process on the entier system, complete overview
+
+ps -A or ps -e
+
+3.list process not assiciated with terminal
+  ps -a
+
+4.view process by process ID
+ps p proceeid
+ps -p process_id
+ps --pid process_id
+
+5. tto list the running process in linux
+TOP
+
+alternative we have 
+htop - much visually appealing than traditional top command
+
+---
+6. to find the process-id in linux
+
+pgre [option] pattern
+
+pgrep systemd  // this wil lis the process with the specified name
+
