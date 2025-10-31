@@ -1,0 +1,27 @@
+cp source_file destination_file
+
+5.copy a file in linxu using -p option
+
+cp -p [src] [dest] yo must be a root ruser to do this
+
+6.copy a file using '*' option
+using wildcar * , it represnt anything 
+  cp *.txt [destination dirct or file]
+
+
+1.copy a thre files to a directory new
+
+  cp file1.txt file2.txt file2.txt new/
+
+2. copying a directories ?
+
+  cp -R src_directory Destination_Directori
+-R resucrseivly copying 
+
+3. copy a file in linux usin -i option
+
+cp -i [srcfile] [destin_file]
+
+4. forcefully copy
+
+cp -f [src] [dst]
