@@ -1,18 +1,15 @@
 in java 8 interfaces can have both default() with default keyword and static() method with static keyword
 
-default method
+1.default method : usefuld to include new features in an interface without altering the implementation that exist for the interface
+'default ' keyword & it is 'overridable: yes(in implementing class)
+default impelemntation which can be redefined.
 
-default keyword
-overridable: yes(in implementing class)
-access: on object/instance or class
-
-
-classes implementing the infaces are not forced to override default method
+classes implementing the interface are not forced to override default method
 
 interface TestInterface {
-    void square(int a); // abstract method
+    void square(int a); // abstract method must be overriden by all the class to provide implementation.
 
-    default void show() {
+    default void show() {  // 
         System.out.println("Default Method Executed");
     }
 }
@@ -34,9 +31,19 @@ output:
 16
 Default Method Executed
 
--------------------------------------
+issues facing during method overloading
 
+when a class implements two or more interface that provdie a default impelemntation for a method with same names and signature, java compiler cannot determine which default impelementation to use, this ambigiuty result in compilation error
+
+we can resolce this 
+1. just override the detaul method provid specific implementation to resolve ambiguity
+2, explicitly invoke a specific default method, like using super() keyword
+
+-------------------------------------
 Static method:
+--------------
+just like static method of a class belong to class itslef right
+here too stati method belong to interface itself & not to any instance of implementing class
 
 using static keyword and only be called on interface itself not on instance
 implementing class cannot be override static methods
@@ -44,7 +51,9 @@ implementing class cannot be override static methods
 keyw0rd:static
 overridable: no(only in interface)
 access: only via interface name
+best example is :
 
+arralyList.sort(Comparator.naturalOrder()); //here in comparator interfface, we have stqatic method naturalOrder so 
 
 
 interface MyData {
@@ -64,4 +73,5 @@ class MyDataImpl implements MyData {
         MyData.isNull("abc"); // Call static method directly on interface
     }
 }
+
 
