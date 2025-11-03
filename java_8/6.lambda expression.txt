@@ -1,22 +1,38 @@
 lambda expression:
 
-a concise way to represent an anonymous function 
-(a function without function name) 
-that can be passed as an arugument to methods or
- used for functional style programming
+a concise way to represent an anonymous function (a function without function name) 
+that can be passed as an arugument to methods or .used for functional style programming
 
+suppose if you have some prodct that you need to sort in asc/dec order 
+before java 8, you have to create a class for comparing the produce like below
 
+public class ProductCompareAscendingOrd implements Comparable<String> {
+@Override
+public int compare(String o1, String o2){
+	return o1.compareTO(02);
+
+here the problem is if you need to sort in descding order mean you need to crete another class for that, so bulky code and you can use annonymous class for this tht too get a certical problem with bulky syntax
+	List<String> p1 = Arrays.asList();
+p1.sort(new ProductCompareAscendingOrd);
+
+or 
+
+p1.sort(new ProductCompareAscendingOrd() {
+	public int compare(String 01,string 02)
+		return o1.compareTo(o2);
+});
+
+so using lambda is the good way to reduce the lines of code
+
+p1.sort((s1,s2) -> s1.compartTo(s2));
+or
+p1.sort((s1,s2) -> {return s2.compareTo(s1)})
 hints:
 
 A lambda expression is an anonymous function that provides a clear and concise way to implement the abstract method of a functional interface
-
 An interface with exactly one abstract method. Lambda expressions can only be used to implement functional interfaces.
-
 They reduce boilerplate code by eliminating the need for anonymous inner classes
-
-
-
-
+------
 syntax
 (parameters) -> expression
 
@@ -25,15 +41,12 @@ it simplifies code by allowing single method interface(functional interface) to 
 eg:
 
 sigle parameter:
-
 (x) -> x * x
 
 multiple parameter:
-
 (a,b) -> a +b
 
 Block expression:
-
 (x,y) -> {
 	int sum = x + y;
 	return sum;
@@ -54,3 +67,4 @@ interface Operation{
 
 Operation addition = (a,b) -> a +b;
 System.out.println(addition.process(1,2);
+
