@@ -2,6 +2,7 @@ lambda expression:
 
 a concise way to represent an anonymous function (a function without function name) 
 that can be passed as an arugument to methods or .used for functional style programming
+lambda expression provide implementaqtion logic for functional interface (interface wiht only one abstract method)
 
 suppose if you have some prodct that you need to sort in asc/dec order 
 before java 8, you have to create a class for comparing the produce like below
@@ -67,4 +68,5 @@ interface Operation{
 
 Operation addition = (a,b) -> a +b;
 System.out.println(addition.process(1,2);
+
 
