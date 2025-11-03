@@ -107,5 +107,18 @@ we have a method
 public static double computeSalary(Employee e, Function<Employee, Double> fn) {
 return fn.apploy(e);
 
+---------
+Traversing collections using lambda
+------------------------------------
+
+for(Employee e: elist){
+Sysout(e.getCountry();
+}
+
+here using lambda don t need to creaqte iteraor, loopiong throgh it and checking for more elements
+
+just
+
+elist.forEach(s->Sysout(s.getCountry()));
 
 
