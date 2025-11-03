@@ -95,4 +95,17 @@ predefined funcational interface
 ================================
 
 
+Function = we have apply() abstract method 
+	that acceps a single arguments and produces result
+Predicate = boolean test() method take single argument
+Consumer = void accpet() , accept single arguments but return no result
+Supplier = get() , denote a supplier of results
+
+for EG:
+
+we have a method 
+public static double computeSalary(Employee e, Function<Employee, Double> fn) {
+return fn.apploy(e);
+
+
 
