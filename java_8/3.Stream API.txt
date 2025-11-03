@@ -1,72 +1,66 @@
 Stream API:
+
+COLLECTION is in-memroy Datastructre where STREAM are data structre whose elements are computed only when there is a demand
+
 used to process collections in a functional style using lambda expression
 it allow paraller processing too
+and supports different data processing operations.
 
 stream do not store data but process data frm collection,arrays etc
 it enables chaining operation like (filetring,mapping sorting)
 
 stream can be sequential or paralle for concurrency
-operation are either intemeidate or terminal
+operation are either intermediate or terminal
 
 
-Listt<String> l1 = Arrays.asList("lk","a");
+List<String> l1 = Arrays.asList("lk","a");
 
-//from collection
+1.//from collection
 Stream<String> stream1 = l1.stream();
 
-//from array
+2.//from array
+String[] A = {"a","b"}
 
-Stream<string> stream2 = Arryas.stream(new String[] {"a","b"});
+Stream<string> stream2 = Arrays.stream(A);
 
-//from values
+3.//from values
 Stream<Ineger> stream3 = Stream.of(1,2,3,45);
+Stream<String> st = stream.of("ak","ka");
 
+4.//building a stream from files
+String fileName = "c:/empl.txt";
+try(Stream<String> s = Files.lines(Path.get(fileName))) {
+catch(IoException e){ e.printStackTrace();
 Stream<Integer> stream4 = Stream.iterate(1, n->n+1).limit(5);
 stream4.forEach(System.out::println);
 
--------------
-
-//filter a stream startinw with ''j
-
-list.stream().filters(s->s.startswith("j")).forEach(system.out.println)
-
-========================
-
+-----------------------
 Intermediate Operations (lazy, return streams):
-
+------------------------
+JUST RETURN ANOTHER STREAM.
 Intermediate operations build the processing pipeline and return a new Stream for further processing. They are lazy, so no actual processing happens until a terminal operation is called.
 
 shortcut: fmsdls
 
 filter(): Filter elements
-
 map(): Transform elements
-
 sorted(): Sort elements
-
 distinct(): Remove duplicates
-
 limit(): Limit size
-
 skip(): Skip first n elements
 
-----------------
-
+-------------------
 Terminal Operations (trigger processing, return result):
-Terminal operations are the last in the pipeline and trigger the execution of all accumulated intermediate operations to produce a final result
+Terminal operations are the last in the pipeline 
+trigger the execution of all accumulated intermediate operations to produce a final result
 
 shortcut: fcrcaf
 
 forEach(): Consume elements
-
 collect(): Accumulate results (toList, toSet)
-
 reduce(): Combine elements  eg: doing sum of all elements 
-
 count(): Number of elements
-
 anyMatch(), allMatch(), noneMatch(): Predicate checks
-
 findFirst(), findAny(): Optional first/any match
 
 ==========
@@ -102,5 +96,6 @@ Parallel streams use multiple threads from a ForkJoinPool to process data concur
 What are short-circuiting operations?
 
 Operations like anyMatch(), allMatch(), noneMatch(), findFirst(), and findAny() which may stop processing early.
+
 
 
