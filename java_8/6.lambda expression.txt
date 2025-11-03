@@ -62,11 +62,37 @@ list.forEach(item ->System.out.println(item) )
 =========================
 Functional Interfaces::
 
+having one abstract method, and allowded to have any number of static/default method
+lambda expression can appread only in place where functinal interface are used
+
+@FunctionalInterface
 interface Operation{
-	int process(int a, int b);
+	int process(int a, int b); // only abstract method
 	}
 
 Operation addition = (a,b) -> a +b;
 System.out.println(addition.process(1,2);
+
+
+=======================================
+method reference for lambda expression:
+
+for EG:
+
+class employee{ // empid, empname & country attributes
+	public static int compareByCountry(employee e1, employe e2){
+	   	return e1.getCountry().compareTo(e2.getCountry());
+
+//using lambda 
+empList.sort( (e1,e2)->employee.compareByCountry(e1,e2));
+
+//using method reference
+
+empList.sort(employee::compareByCountry);// easy to read maekre expression compact and easy to read
+
+
+predefined funcational interface
+================================
+
 
 
