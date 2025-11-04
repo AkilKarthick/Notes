@@ -1,1 +1,27 @@
 feign_client_notes
+
+to communicate between multiple services 
+a declarative HTTP client in spring cloud ecosystem
+it helps microservice communication with each other eaasily via rest api's
+without boiler plate code like Rest-template or webClient code
+-feign integerate with Eureka for service discovery & spring cloud balancer
+to provide a load balancered http client
+
+exmaple
+
+bookcatalog-api [controller|service|repository -db ]
+admindashboard-api [ controller| service | repo =db ]
+
+if you are using Rest-template you need to write the code  on service of
+bookcatalog-api, by calling the method of Rest-template communicate with book api
+
+but here in feign client- you create one client -interface - which will 
+behave like a feign client
+
+@FeignClient - the interface should be annotated with
+
+@FeignClient(name= microservice-name , URL =)
+
+if you are using eureka toghther means non need to give URL 
+it is enought to provide the name of the microservice 
+
