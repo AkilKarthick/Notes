@@ -9,8 +9,8 @@ to provide a load balancered http client
 
 exmaple
 
-bookcatalog-api [controller|service|repository -db ]
-admindashboard-api [ controller| service | repo =db ]
+bookcatalog-api [controller|service|repository -db ] - on 80891
+admindashboard-api [ controller| service | repo =db ] -on 8082 - feign clinet 
 
 if you are using Rest-template you need to write the code  on service of
 bookcatalog-api, by calling the method of Rest-template communicate with book api
@@ -24,4 +24,51 @@ behave like a feign client
 
 if you are using eureka toghther means non need to give URL 
 it is enought to provide the name of the microservice 
+
+bookDTO - is responsible for fetching date from client and sent it to service layer
+we use modelmapper  to do the convertion + this is converting Book dto to BookEntity
+
+--  if we are using RestTemplate -------------------------------------
+@Autowired
+RestTemplate restTemplate;
+private final String BASEURL = 'http://localhost:8080/book-api/v1/book';
+
+and on methods we use
+
+restTemplate.postForEntity()
+restTemplate.put()
+restTemplate.delete()
+---------------------------------------------------------------------
+
+but here we are using feign client:
+1. annotate the main class with 
+  @EnableFeignClient  - mandatory to make an API callc
+
+!doing this on admin
+2, create an interface , that is responsible for communication with other/ or the other rest api
+
+@FeignClient(name = 'name_of_other_microservice',url ='url of the other service whihc we want to communicate') 
+
+                    //identifying the name by checking ion the springcloud load balancer
+                     by checkingin theservice registry like consule/Eurkea cloud registry 
+public interface iBookFeignClient{
+  you can have similar method name /different of other Book-controller-api method
+
+// here we are addin the same method which presnton Book-controller-api service
+// so add URL apping that is ame as that of the service with which you want to communicate
+
+@PostMapping()
+ResponseEntity<void> addBook(@RequestBody Book book){
+
+//this means you are adding book from this Admin-panel service to other service that is going to save in DB
+
+  
+
+
+
+
+
+
+
+
 
