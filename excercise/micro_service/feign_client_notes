@@ -62,6 +62,27 @@ ResponseEntity<void> addBook(@RequestBody Book book){
 
 //this means you are adding book from this Admin-panel service to other service that is going to save in DB
 
+add all the mehod that added on the other service controller 
+the abstract method name don't need to be same , you can create your own too
+- add apporpiate annot togther too
+
+on adminServiceImpl
+
+//autowire feignClient..
+@Autowired
+private IbookFeignCleint ibookFeignClinet;
+
+@Override 
+public void addBook(Book book) {
+
+
+using this ibookFeignClinet reference you can call the abstract method of interface, 
+you don't have to provide implementation
+during the run time when an request comes in feign is responsible for creating the proxy implementation
+make an api call to other rest api's, when the response is returned
+
+
+
   
 
 
