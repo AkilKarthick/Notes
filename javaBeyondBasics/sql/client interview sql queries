@@ -4,8 +4,16 @@ from employee;
 window function - used to perform calucalution across a set of table row that
 somehow relategd to current row
 
-row_number
-rank()
+1.row_number - assign a sequential interger to row within a parition of result set
+
+select emp_id, dep_id 
+ROW_NUMBER() over(PARTION BY departiment_id ORDER BY salary) as rank
+from employees;
+
+rank(): assign a rank to each row with in parition
+but rows with equal value received the same rank
+
+
 dense_rank()
 
 lead()
