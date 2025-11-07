@@ -1,0 +1,14 @@
+my_sql_client
+
+1.what is window function in mysql?
+
+a powerfull tool, for performing calcuation across aset of  row 
+, that some how related to cureent row without grouping the result (unlike GROUP BY)
+
+1. ROW_MUMBER = 
+    
+2. RANK()
+3. DENSE_RANK() -
+4. SUM()
+5. LAG()
+6. LEAD() 
