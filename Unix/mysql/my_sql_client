@@ -5,10 +5,32 @@ my_sql_client
 a powerfull tool, for performing calcuation across aset of  row 
 , that some how related to cureent row without grouping the result (unlike GROUP BY)
 
-1. ROW_MUMBER = 
+partition by : divides the row in to parition based on a column, commonnly used in window function
+
+syntax :
+---------
+function_name() OVER 
+    ( [partion by colum_name] 
+      [order by column_name]  )
+
+1. ROW_MUMBER = assign a sequential number to rows in the result
+        for eg
+        select employee_id,department_id,salary
+        ROW_NUMBER() OVER(partion by department ORDER BY salary DESC) AS row_name
+        FROM employees;
+for eacch department employee are reanked by salary highest fiest and numbered 1,2,3..
+
+2. RANK(): asigna  rank to each row with in a paritio, 
+           but rows with equal valies received the same rank
+
+select emp_id, depart_id
+RANK() over(parition by deparment_id order by salary desc) as rank 
+from employees;
+
+simliar to row_number if two employee has same selary, they will share the same rank, and next rank will skip
+  
+3. DENSE_RANK() - but no gaps in rank number
     
-2. RANK()
-3. DENSE_RANK() -
 4. SUM()
 5. LAG()
 6. LEAD() 
