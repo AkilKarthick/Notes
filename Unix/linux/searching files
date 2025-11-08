@@ -1,0 +1,8 @@
+cat filename
+less filename = scroll inside file
+head filename
+tail -50 filename =
+tail -f applicaitn.log = live log on terminal
+grep -i "error" applcaiotn.log = search text inside logs
+
+tail -f applicaiton.log | grep -i exception
