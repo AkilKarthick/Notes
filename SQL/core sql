@@ -1,0 +1,51 @@
+create a table
+
+create table employee (
+  emp_id int primary key,
+  emp_name varchar(100),
+  dept_id int,
+  salary DECIMAL(10,2)
+);
+
+insert query:
+
+insert into employee(emp_id,emp_name,dep_id,salary) 
+values(1,'akil',1,1000.00)
+
+UPDATE & DELETE
+
+  UPDATE employee SET salary = salary+500 WHERE emp_id =1;
+  DELETE from employee where emp_id =2;
+
+JOINS:
+
+wer have two tables
+-employee(emp_id, emp_name, dept_id, salary)
+-department(dept_id, dept_name)
+
+  INNER JOIN
+
+select e.emp_id, d.dep_id
+  from employee e 
+  INNER JOIN department d
+  on e.dep_id = d.dep_id;
+
+1. find top 3 highest salary
+  select salary
+  from eployee
+  order by sal desc
+  limit 3;
+
+2. count of emp in each dep
+
+  select dep_id, count(*) as emp_count
+  from employee
+  group by depp_id
+  
+4) Find employees who earn more than department average
+
+select
+from employee e
+
+
+
