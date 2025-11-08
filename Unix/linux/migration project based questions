@@ -48,3 +48,9 @@ to ensure appliction behacviour and response time
 so my role was primarly appplication level migation and validadtions
 while linux team handled confgi/ infra setup os configruatoin etx
 
+i had updated the config file, verifed serfver version, 
+ensure correct connectivity with MySQL
+validted serviec startup via SystemCtl 
+checekd logs using grep and tail
+perfomed smoke/regression testing to confirm the applicaiton was stable after migration
+---------------------------------------------------
