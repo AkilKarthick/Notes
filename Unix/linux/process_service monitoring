@@ -1,0 +1,7 @@
+
+ps -ef = list the process
+'ps -ef = filter by process name
+top = monitor system usage
+htop = better UI monitor system usage
+kill <pid> = kill a process
+kill -9 <pid> = force kill
