@@ -104,3 +104,77 @@ Q5. Display employees in descending salary order, but if salary ties, sort by na
 
 select * from employee 
 order by salary desc, emp_name asc;
+
+
+q6.Find duplicate employee names in the table.
+
+select  emp_name, count(*) as emp_count
+from employee
+group by emp_name
+having count(*) >1
+
+Q7.delete duplicates but keep only one copy
+
+delete e1
+from employee e1 join employee e2 
+on e1.emp_name = e2.emp_name
+and e1.emp_id > e2.emp_id;
+
+I remove duplicates using a self-join. 
+I compare rows with the same name and delete the one with the higher primary key
+so that only one original entry remains.”
+
+-----------------------
+Q8: Employees who don't belong to any department
+
+select emp_name
+from employee
+where dep_id = null  //wrong bcz NULL is not compared using =.
+
+SELECT emp_id, emp_name, dept_id
+FROM employee
+WHERE dept_id IS NULL;
+
+SELECT e.emp_id, e.emp_name, e.dept_id
+FROM employee e
+LEFT JOIN department d
+       ON e.dept_id = d.dept_id
+WHERE d.dept_id IS NULL;
+--------------------------
+q9>Fetch the highest salary in each department using window functions?
+
+select emp_name, emp_id, dept_id, salary
+from ( select e.*, DENSE_RANK() OVER(PARITION BY dept_id ORDER BY salary DESC) AS rnk
+from employee e) X
+WHERE rnk =1
+
+Q10. Fetch employees who joined in the last 30 days.
+
+  select emp_name
+  from employe
+  where hiredate > CURRENT_DATE - INTERVAl 30 DAY; //wrong
+
+correct one is?
+
+  select emp_id, emp_name, dept_id, hiredate
+  from employee
+  where hiredate >= CURENT_DATE - INTERVAL 30 DAYS;
+
+
+consider you have this table!
+sales(order_id, amount, sale_date)
+
+find total sales made in june 2025 means how you solve?
+
+  select sum(amount) as total sale
+  from sales
+  where sale_date >= '2025-06-01' AND saledate < '2025-07-01'
+
+or 
+
+select 
+from sales
+where MONTH(sales_date) =6 AND YEAR(sales_date) = 2025
+
+
+
