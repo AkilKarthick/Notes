@@ -176,5 +176,37 @@ select
 from sales
 where MONTH(sales_date) =6 AND YEAR(sales_date) = 2025
 
+Q11: Nth Highest Salary
+
+select salary
+from (select salary,
+        DENSE_RANK() OVER (ORDER BY DESC) AS rnk
+where rnk = 5
+
+Q12): Self Join Logic?
+
+select e2.emp_name AS employee, e2.emp_name as manager
+from employee e1 join employee e2
+on e1.emp_id = e2.manager_id
+
+correct answer:
+SELECT e2.emp_name AS employee,
+       e1.emp_name AS manager
+FROM employee e2
+LEFT JOIN employee e1
+       ON e2.manager_id = e1.emp_id;
+
+Q13:
+
+Show departments where the number of employees is more than 5
+
+  select dep_id, count(*) as emp_count
+  from employee
+  group by dept_id
+  having count(*) >5 ;
+
+
+
+
 
 
