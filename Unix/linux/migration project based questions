@@ -24,3 +24,27 @@ i was responsible for ensuring our java, springboot service ran smoothly after m
 althoiugh we had a dedicated linux/ team maanging OS level changes.
 worked closely with them to validate application dependencies,  configuration and service behaviour on 
 the new environment
+
+I was part of the application team responsible for ensuring our Java + Spring Boot 
+services ran smoothly after the migration. Although we had a dedicated Linux/Infrastructure
+team managing OS-level changes, I worked closely with them to validate application 
+dependencies, configurations, and service behavior on the new environment.
+
+
+1. validated java version & ensured compatibility 
+like updated JAVA-HOME environment variables
+2.configured and verified our application server (apache)
+a. like server starup and log path
+3.moved application configuration files
+a. .prop file for springboot
+4. coordinated database connectivity: verified mysql connection string. ports, security configs
+5. handled serice star.stop and validation
+  used systemCTL statuc, systemctl restart 
+6.log analysis for troubleshoortin
+used grep, tail-f to review appp log and fix issues
+7. performance & functional testing after migration
+to ensure appliction behacviour and response time
+
+so my role was primarly appplication level migation and validadtions
+while linux team handled confgi/ infra setup os configruatoin etx
+
