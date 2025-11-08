@@ -1,0 +1,11 @@
+using systemctl for service management
+-----------------------
+systemctl statuc apache2
+systemctl start apache2
+systemctl restart apache2
+systemctl stop apache2
+systemctl enable apachew
+-------------------------------
+on RHEL, service may be httpd
+on UBUNTU, service may be aoache2
+----------------------------------
