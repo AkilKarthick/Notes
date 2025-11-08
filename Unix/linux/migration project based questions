@@ -1,0 +1,26 @@
+i was working on linux based distribution
+like rhel- redhaat enterpie linux to ubuntu (liux distrubiont)
+
+why we migrated ?
+  to reduce licensing cost & improbment environment flexiblity.
+  rhel- is licenced enterprise OS, while ubunt is open src and widley used inn cloud env
+  our application stack (java/springboot/mysql) is fully compatible with Ubuntu 
+  so moving to ubnu helped reduce operation cost, simpllify pakage upgrades and 
+  align with our Devops/cloud deployemnet stategy
+
+also RHEL -require subscription licensing & Ubuntu is free and community supported
+Ubuntu APT ecoysytem is faster and easier for package management
+ubuntu is widely used in Docker & Kubernete environments
+
+i'll be responsible 
+  for installing required packages, 
+  configuring java and tomcat, moving applicaiton
+  config files,
+  validationg service start/stop using ='systemctl'
+  checking logs
+  verifying access after deployment.
+
+i was responsible for ensuring our java, springboot service ran smoothly after migration,
+althoiugh we had a dedicated linux/ team maanging OS level changes.
+worked closely with them to validate application dependencies,  configuration and service behaviour on 
+the new environment
