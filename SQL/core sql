@@ -49,3 +49,58 @@ from employee e
 
 
 
+Q1. Get highest paid employee per department.?
+    //wrond approach
+      select *, max(salary) as high_paid_emp 
+      from employee 
+      group by dep_id
+    
+    //correct 
+      select e.*
+      from employee e
+      where e.salary = (select max(salary) 
+                        from employee 
+                        where dep_id = e.dep_id
+    );
+    
+    we can use window function -modern sql::
+    
+    select emp_id, emp_name, dep_id, salary
+    from ( select e.*, RANK() OVER(parition by dep_id order by salary desc) AS rnk 
+    from employee e ) where rnk =1;
+
+----------------------------------------------------------
+Q2. Get all employees earning above overall average salary.?
+    select *
+    from employee e
+    where e.salary > (select avg(salary) from employee)
+
+-----------------------------------------------------------------
+Q3. List department-wise employee count, sort highest count first.
+
+    select dep_id, count(*) as emp_count
+    from employee e
+    group by dept_id
+    order by emp_coint desc;
+-----------------------------------------------
+Q4. Find 3rd highest salary (try without LIMIT)?
+      select * from employee
+      where sal < (select max(salary) from employee 
+      where salary < (select max(salary) from employee))
+or
+      SELECT DISTINCT salary
+      FROM employee
+      ORDER BY salary DESC
+      LIMIT 2,1;   -- 0=1st, 1=2nd, 2=3rd
+
+modern -sql
+
+  select salary
+  from ( select salary, DENSE_RANK() OVER(group by salary desc) as rnk
+  from employee) x
+where rnk =3;
+----------------------------------------------------------------------------------
+Q5. Display employees in descending salary order, but if salary ties, sort by name.
+
+select * from employee 
+order by salary desc, emp_name asc;
