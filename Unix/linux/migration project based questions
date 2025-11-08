@@ -54,3 +54,13 @@ validted serviec startup via SystemCtl
 checekd logs using grep and tail
 perfomed smoke/regression testing to confirm the applicaiton was stable after migration
 ---------------------------------------------------
+
+
+I have hands-on experience working on Linux during our RHEL to Ubuntu migration.
+I used Linux regularly for navigating directories, checking logs,
+troubleshooting Java application behavior, restarting services using systemctl,
+analyzing CPU/memory with ps/top, verifying ports with ss, and securely transferring files 
+using SFTP. I collaborated closely with the Linux admin team but handled all 
+application-level validation and debugging.
+
+
