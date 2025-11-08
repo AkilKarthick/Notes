@@ -1,0 +1,5 @@
+common in production:
+--------------------------
+  df -h = check disk space
+  du -sh = check folder sizes
+  free -h = check memory usage
