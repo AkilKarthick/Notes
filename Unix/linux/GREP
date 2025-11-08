@@ -1,0 +1,16 @@
+
+grep "error" app.log = basis seearch
+
+grep -i "error" app.log = case insensitive search
+
+grep -n "error" app.log = show the number of lines
+
+grep -r "error" app.log = search recursively inside a directory
+
+grep -v "INFO" app.log = show only lines that don't match
+
+grep -c "exception" app.log = count how manu times a pattern appear onlog
+
+Real-time error monitoring:
+  tail -f applicaiotn.log | grep -i exception
+during debugging 
