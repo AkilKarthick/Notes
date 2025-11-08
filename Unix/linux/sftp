@@ -1,3 +1,7 @@
+we used SFTP for secure file transfer btwn servers
+since both RHEL 7 UBUNTU were SSH enabled,
+we used key-based authentication so that transfer happened without entering password manually
+
 
 well be using sftp to securely transfer file btwn servers over ssh
 it encrypst both 
