@@ -1,0 +1,19 @@
+
+well be using sftp to securely transfer file btwn servers over ssh
+it encrypst both 
+data and credentials
+so is is safer the FTP
+
+we had to move applicaiton artifacts, condfig files, log files or DB dumps files from
+RHEL SERVER  to UBUNTU SERVER securely, for that we used sftp SINCE BOTH SERVER supported SSH]
+
+we'll be using SSH port 22
+Reqired either: password authentication or SSH key based authentication
+
+sftp user@hostname like sftp vn57mzw@ceru2016460
+to upload file from current server to remote server
+  put = command
+to donwloda file
+  get =command
+to exit
+  bye
