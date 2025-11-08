@@ -1,0 +1,39 @@
+find - locate & filer by condition
+
+find / -name "application.properties"
+
+find / -iname "cfg.yml" = find case sensitive
+
+find / -name "*.log" = find by extensiong
+
+find / -mmin -60 = find file modified in last 1 hour
+
+find / -type f -size +100m = find file larger than 100mb
+
+find files and delet them how?
+   find /tmp -name "*.tmp" -exec rm{} \;
+  or
+  find /tmp -name "*.tmp" -delete
+
+find file and run command on it?
+  find . -name "*.sh" -exec chmod +x {} \;
+
+hwo do you search for an error insdie log files?
+  tail -f application.log | grep -i exception
+
+how do you locate config file on linux?
+  find / -name "app.prop"
+or
+  find /opt/app/cfg -type f -name "*.yml"
+
+how will you view only error lines from log ignoring info message?
+
+tail -f app.log | grep -i error
+
+| pipeout to the next symbol
+
+grep -i error app.log | grep -iv "Info"
+  -v remove lines contaiing info
+
+
+
