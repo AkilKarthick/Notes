@@ -1,0 +1,47 @@
+window_function _modern_sql
+
+this will perform a calucluation across set of rows that related to current row
+wihout colapsoing row the way GROUP BY   does
+
+it let you look at rows while still keeping each row visible
+
+You’re standing at one window looking out at others.
+You see all rows, but you calculate something relative to your position.
+
+to avoid lot of sub queries we prefer nested subqueries
+    ---    
+
+<function_name> over (parition by <grouping> order by <ordering>)
+
+FUNCTION()	Rank, Sum, Count, etc
+PARTITION BY	How to group (like GROUP BY) but without collapsing rows
+ORDER BY	Defines order of calculation
+
+RANK()	Gives same rank for ties, skips next rank
+DENSE_RANK()	Gives same rank for ties, no gaps
+ROW_NUMBER()	Gives unique sequence number per row
+SUM() OVER	Running total
+AVG() OVER	Moving average
+---------------------------
+
+Find highest salary per department (classic interview)
+
+select emp_id, emp_name, dept_id, salary
+from ( select e.*,
+          DENSE_RANK OVER(PARTITION BY dept_id ORDER BY salary DESC) AS rnk
+  from EMPLOYEE e) x
+WHERE rnk =1;
+
+
+
+Q15
+
+Use ROW_NUMBER() to pick only one (any one) top salary employee per department.
+
+//(ROW_NUMBER doesn't handle ties; DENSE_RANK does)
+
+select emp_name, salary
+from ( select e.*, ROW_NUMBER() OVER(PARTITION BY dept_id ORDER BY salary DESC) AS r
+from employee e
+) X
+where r =1
