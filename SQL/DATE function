@@ -103,7 +103,12 @@ correct//
 select order_id, order_date, DATEDIFF(current_date, order_date) AS days_since_order
 from order
 
-Q4) Show monthly sales total (group by month).
+Q4) Show monthly sales total (group by month).?
+
+select MONTHNAME(order_date) AS MONTH_Name, sum(aount) AS total_sales
+from orders
+GROUP BY MONTH(order_date)
+ORDER BY MONTH(ORDER_DATE);
 
 
 
