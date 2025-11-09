@@ -1,0 +1,63 @@
+DATE function
+1. current_date -> only date
+2. now() -> along with date and time
+
+SELECT CURRENT_DATE;
+SELECT NOW();
+
+-----------------------
+3.DATEDIFF(date1, date2)
+
+SELECT DATEDIFF('2025-11-08', '2025-11-01');  -- 7 days
+
+for EG:
+
+Find employees who completed probation ( > 90 days )
+
+select emp_name
+from employee
+where DATEDIFF(CURRENT_DATE, join_date) > 90;
+
+3) DATE_ADD() / DATE_SUB()
+Add or subtract days, months, years.
+
+    select date_add(current_date, Interval 30 days);
+    select date_sub(current_date, interval 6 month);
+
+4) EXTRACT()
+Pulls parts of a date.
+
+    SELECT EXTRACT(YEAR FROM hiredate);
+    SELECT EXTRACT(MONTH FROM hiredate);
+    SELECT EXTRACT(DAY FROM hiredate);
+
+5) MONTHNAME() / DAYNAME()
+   Human readable names.
+
+SELECT MONTHNAME('2025-02-10'); -- February
+SELECT DAYNAME('2025-02-10');   -- Monday
+-----------------------------------------------------------------------------
+
+for EG:
+
+Q1. Employees joined in the last 30 days
+
+  select emp_name
+  from employee
+  where join_date >= current_Date - Interval 30 days;
+
+
+Q2. Employees joined this year
+
+select emp_name
+from employee
+where EXTRACT(year from join_date) = EXTRACT(year from current_date);
+
+Q3. Group employees by joining month
+
+select MonthName(join_date) as month_name, count(*)
+from employee
+GROUP BY MONTH(join_date)
+order by month(join _date)
+
+
