@@ -1,0 +1,67 @@
+employee
+-------------------------
+emp_id | emp_name | dept_id
+1      | Ravi     | 10
+2      | Kiran    | 20
+3      | Manoj    | NULL
+4      | Sita     | 30
+--------------------------
+
+department
+-------------------------
+dept_id | dept_name
+10      | HR
+20      | Finance
+40      | IT
+---------------------------
+
+a. inner join
+
+return matching row 
+Ravi   | HR
+Kiran  | Finance
+
+b. left join
+
+  select  e.emp_name, d.dep_name
+  from emploee e LEFT JOIN dpeartment d
+  where e.dept_id = d.dept+id
+
+you wan all employee, even if they have no departmenet
+Ravi   | HR
+Kiran  | Finance
+Manoj  | NULL    ← has no department
+Sita   | NULL    ← dept_id 30 doesn’t exist in department
+
+3) RIGHT JOIN (Department is right table)
+
+Returns:
+
+Matching rows
+
+Plus unmatched rows from RIGHT table (department)
+    SELECT e.emp_name, d.dept_name
+    FROM employee e
+    RIGHT JOIN department d
+    ON e.dept_id = d.dept_id;
+
+Ravi   | HR
+Kiran  | Finance
+NULL   | IT      ← dept_id 40 has no employees
+ ------------
+4) FULL JOIN
+
+Returns everything — matched + unmatched from both sides.
+MySQL does not support FULL JOIN directly, but we simulate using UNION.
+
+  SELECT e.emp_name, d.dept_name
+  FROM employee e
+  LEFT JOIN department d ON e.dept_id = d.dept_id
+    UNION
+  SELECT e.emp_name, d.dept_name
+  FROM employee e
+  RIGHT JOIN department d ON e.dept_id = d.dept_id;
+=-------------------------------=----------------------------
+
+UNION = Stacks result sets and removes duplicates.
+UNION ALL =Stacks result sets and keeps duplicates exactly as they are.
