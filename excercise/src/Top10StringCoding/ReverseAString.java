@@ -14,6 +14,22 @@ public class ReverseAString {
 			for(int i= str1.length()-1; i>=0; i--){
 			revs+ = ch[i];
 			}
+//reverse an elements //without any method
+		int[] arr ={12,23,34,45,56,67};
+		int startIndex = arr[0];
+		int endIndex = arr[0];
+//u9sing while iterationg
+		while(startIndex < endIndex){
+			int temp = arr[startIndex];
+			arr[startIndex] =  arr[endIndex];
+			arr[endIndex] = temp;
+
+			startIndex++;
+			endIndex--;
+		}
+		for(int s: arr){
+			System.out.println(s);
+		}
 		
 	}
 
