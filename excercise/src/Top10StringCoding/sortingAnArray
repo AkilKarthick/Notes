@@ -1,4 +1,8 @@
 sortingAnArray
+bubble sort
+how this work>
+keeps asking the next one are you bigger then me? if yes lets switch place 
+this contineu untill the  biggest elements slowly bubbles to end
 --------------
 
 int[] arr ={1,2,3,8,12,45};
