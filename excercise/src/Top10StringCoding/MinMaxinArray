@@ -18,4 +18,16 @@ private static void MinMaxinArray(int[] arra){
   }
   System.out.println(""+small);
   }
+or
+  int min = arr[0];
+  int max = arr[0];
+  for(int num: arra){
+  min = Math.min(min,num);
+  max = Math.min(max,num);
+}
+
+//find min max using inbuilt methods using stream
+
+int min = Arrays.stream(arr).min().getAsInt();
+int max = Arrays.stream(arr).max().getAsInt();
 }
