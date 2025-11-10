@@ -1,0 +1,13 @@
+sortingAnArray
+--------------
+
+int[] arr ={1,2,3,8,12,45};
+Arrays.sort(arr); //ascending order
+System.out.println("sorted arrays:" + arr.toString());
+
+//descending order
+Arrays.sort(arr,Collections.reverseOrder());
+
+for List:
+List<Integer> s1 = Arrays.asList(1,2,3,4,5,12);
+Collections.sort(s1,Collections.reverseOrder()); //desc
