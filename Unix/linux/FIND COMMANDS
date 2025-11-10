@@ -1,13 +1,10 @@
 find - locate & filer by condition
 
 find / -name "application.properties"
-
 find / -iname "cfg.yml" = find case sensitive
-
 find / -name "*.log" = find by extensiong
 
 find / -mmin -60 = find file modified in last 1 hour
-
 find / -type f -size +100m = find file larger than 100mb
 
 find files and delet them how?
