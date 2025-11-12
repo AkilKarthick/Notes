@@ -17,7 +17,7 @@ Arrays.stream(arr1).boxed()
 .filter(n->)dupelements.add(n).collect(Collectors.toList()));
 
 
-// REVERSE an Array
+3. REVERSE /sort/ac or des an Array whthout any inbuilt method?
 
 int[] arr = {1,2,3,4,5,6};
 int[] rev = arr[i];
@@ -38,6 +38,21 @@ start++;
 end--;
 }
 
+4. find max/min and minmum element in an array?
+
+int[] arr = {2,4,6,8,9};
+int max = arr[o];
+int min = arr[o];
+
+for(int i=0; i<arr.length;i++){
+  if(arr[i] > arr[max]){ //wrong
+  correct one is
+  if(arr[i] > max)
+   max=arr[i];
+  }
+if(arr[i] < arr[min])
+  min=arr[i];
+}
 
 
 
