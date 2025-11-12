@@ -62,5 +62,15 @@ max = Math.max(max,num);
 min = Math.min(min,num);
 }
 
+RotateArray using java 8
+
+int k=2 // rotate right side by 2
+List<Integer> list = Arrays.stream(arra).boxed().collect(Collectors.toList);
+Collections.rotate(list,k);
+
+rotate left 
+
+List<Integer> rotatedList = Stream.concate(list.subList(k,list.size()).stream, list.subList(0,k).stream()).collect(Collectors.toList());
+
 
 
