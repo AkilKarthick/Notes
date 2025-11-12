@@ -72,5 +72,14 @@ rotate left
 
 List<Integer> rotatedList = Stream.concate(list.subList(k,list.size()).stream, list.subList(0,k).stream()).collect(Collectors.toList());
 
+//frequenc of each element in an array
+		
+		Map<Integer,Long> freqmap =Arrays.stream(arr123)
+										  .boxed()
+										  .collect(Collectors.groupingBy(n->n, 
+												  Collectors.counting()));
+		
+		freqmap.forEach((num,count)->System.out.println("num :"+num +"count: " +count));
+
 
 
