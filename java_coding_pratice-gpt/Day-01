@@ -17,4 +17,27 @@ Arrays.stream(arr1).boxed()
 .filter(n->)dupelements.add(n).collect(Collectors.toList()));
 
 
+// REVERSE an Array
+
+int[] arr = {1,2,3,4,5,6};
+int[] rev = arr[i];
+for(int i = arr.length -1; i>=0; i--){
+  rev+ = arr[i];
+}  wrong
+
+use a loop no extra class? how 
+int[] arr = {1,2,3,4,5,6};
+
+int start =0;
+int end = arr.length-1;
+while(start < end) {
+  int temp = arr[start];
+  arr[stop] = arr[end];
+  arr[end] = temp;
+start++;
+end--;
+}
+
+
+
 
