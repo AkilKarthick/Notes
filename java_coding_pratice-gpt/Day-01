@@ -81,5 +81,13 @@ List<Integer> rotatedList = Stream.concate(list.subList(k,list.size()).stream, l
 		
 		freqmap.forEach((num,count)->System.out.println("num :"+num +"count: " +count));
 
-
+//to find second smallest number using 
+		
+		int secondSmallest =Arrays.stream(arr123)
+								   .boxed()
+								   .sorted(Comparator.naturalOrder())
+								   .distinct()
+								   .skip(1)
+								   .findFirst().get();
+		System.out.println(secondSmallest);
 
