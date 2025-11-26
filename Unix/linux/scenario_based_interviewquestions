@@ -1,1 +1,55 @@
 scenario_based_interviewquestions
+
+1. find and kill the process that taking maximum memory?
+   when you server is laging and you have to find the max occupied memory?
+
+
+  ps aux  --sort=-&mem | head -n 5
+then in order to kill the process
+  sudo kill -9 processid
+  
+ 1. ps aux = this list all the process with full details
+             owner, processid, cpu and all those things
+  
+ 2. --sort=-&mem = 
+  sort the process by memory usage in descending order
+  
+ 3.head -n 5 = this will show the top 5 memory consumers
+
+
+2. we have some pipeline ran and some dployemen done & now something is broken
+so we need to audit the recent changes that were done inside the specifi directory]
+with respect to fils? 
+
+find directorypath/ -type f -mmin -120
+
+-type f = will limit the serach with in file only. ie search with respect
+to files not folder!
+
+this is helpful whiel debuggin!
+
+
+3. suppose there is a frelaneer who need access to our server for one week
+for a limited time only
+so setup permission for user only for limited period ?
+
+sudo useradd -e 2025-06-01 username1
+sudo password user123
+
+we can also do like user can change thier password one time
+
+sudo change -d 0 username1
+
+-e = expire on this mentioned date
+
+4. to check which process is occupying which port or not?
+
+sudo lsof -i :8080
+
+lsof = means list the open files
+-i 
+
+5. if you want to find which user create this cron and 
+
+crontab -u ubuntu -l
+
