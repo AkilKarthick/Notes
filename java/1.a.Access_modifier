@@ -47,3 +47,35 @@ but different package + not child
 
 Parent p = new Parent();
 p.bonus() //not allowded
+
+----
+
+handsonn
+
+class Employee {
+  private int id;
+  private String name;
+//constructor
+  Employee(int id; String name)
+  this.id = id;
+this.name= name;
+
+void work(){
+  Sytem.out.println("emp working")
+}
+}
+
+class Developer extends Employee{
+  Developer(int id, String name){
+    super(id,name);
+}
+@Override
+void work(){
+  Sytem.out.println("deveoper wrote code here")
+}
+
+public class Test{
+public static void main(String[] args){
+  Employee emp = new Developer(1,"Akil");
+  emp.work();
+}
