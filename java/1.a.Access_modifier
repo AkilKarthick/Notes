@@ -1,10 +1,13 @@
-  private - same class
+  private - same class   // you cannot make a class as private 9 only variable and methods ( but inner class can be private) 
   public - everywhere
-  protected - package & subclass
+  protected - package & subclass  // you cannot make class as protected only fields and method
   default - same package
 ------- ------- ------ ------  ------  ------  
 
 A. private access modifier exqmple 
+
+you cannot make a class as private 9 only variable and methods ( but inner class can be private) 
+why bcz it should be accessible to the JVM and other classes in the packages!
 
 class Employee
   private int sal;
