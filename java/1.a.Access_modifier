@@ -3,3 +3,44 @@
   protected - package & subclass
   default - same package
 ------- ------- ------ ------  ------  ------  
+
+A. private access modifier exqmple 
+
+class Employee
+  private int sal;
+  private void showSal() {}
+
+void test(){
+  showSalary() //allowded
+
+//not accessible outside the classs
+Employee e = new Employee();
+e.salary //compilation error
+
+----
+
+C. protected - package + child
+
+package com.company.a
+
+public class Parent {
+  protected int bounus = 20000;
+
+same packge//
+Parent p = new Parent();
+p.bounus() // allowed
+
+different package//
+
+package com.company.b
+import com.company.a
+
+class child extends Parent {
+void show() {
+  //allowded
+}
+
+but different package + not child
+
+Parent p = new Parent();
+p.bonus() //not allowded
