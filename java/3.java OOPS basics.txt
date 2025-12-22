@@ -13,7 +13,7 @@ objects: instance of the calss representing real world entities
 	4.abstraction: hiding complex details & shows only necessary parts to the users
 ============================================================================================
 
-s
+
 A.encapsulation: 
 
 	keep data safe by restricting access with private fields
@@ -71,6 +71,110 @@ Abstraction: hides complex implementation details via abstract class
 aggregation- once class has a reference to another HAS A RELationship
 
 composition-  stronger from of aggregation where the contained obj can't exist independently
+-----------
+
+what is constructor?
+ a special method that run automatically when you create an object using new keyword
+purpose:
+initialize object data
+put the object into a valid state
+
+	class Person {
+		int age;
+	
+	person(){
+		age = 20; 
+		}
+	}
+	
+	public class main{
+	public static void main(String[] args) {
+		Person p = new Person();
+		Sysout(p.age);
+	}
+
+hit:
+if you don't provide a constructor , compioler itslef provide one default one
+2. parametrized construcor:
+	
+class Person {
+		int id; // instnace variable
+	
+	person(int id){
+		this.id = id; // this.id  is instance variable & id is local variable 
+		}
+	}
+
+hint:
+
+constructor is same name as class name
+no return type
+Runs automatically
+used to intialize
+
+can constructor return a value?
+No, not even a void 
 
 
+---hint:
+most consufsing part!
 
+class Animal{
+	Animal() {
+	System.out.println("animal const")
+	}
+}
+class Dog extends Animal {
+	Dog() {
+	super(); //implict
+	System.out.println("Dog cons ")
+	}
+}
+
+Execution order:
+	anmial const
+	Dog cons     // Parent constructor always runs first
+
+
+why super() must be the first line>
+
+Parent must be initialized before child
+java enforce this rule!
+
+for EG: importane 
+
+class A {
+	A(int x){}
+
+class B extends A {
+	B() {
+	//Error 
+	}
+
+why bc implicit super construt A() is undefined
+so 
+B() {
+	super(10) 
+	}
+
+Constructor Chaining
+
+calling one const from another const using this() method
+
+class Demo{
+	Demo(){
+		this(10);
+		Sysout('no args');
+	Demo(int x) { 	//const overloading is alos possible
+		Sysout('no args');
+
+
+Constructor initialize object state
+constructor is invoked automatically during object creatieon
+parent const is called before chidl constr
+if parent has pareametrezed constructor, child must expliclty call super()
+you cannot use this() and super() together
+
+super- calls parent const
+this() - calls another construcot in same calss
+both must be first line
