@@ -1,0 +1,5 @@
+  private - same class
+  public - everywhere
+  protected - package & subclass
+  default - same package
+------- ------- ------ ------  ------  ------  
