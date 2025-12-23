@@ -1,4 +1,12 @@
 
+hashCode decides the bucket, equals decides the key
+
+Why HashMap allows one null key?
+
+✅ Answer:
+
+“Because hashCode() is not called for null; it’s stored in a special bucket.”
+
 1.equals() method 
 
 check whether two objects have the same content values (logically euqality)
@@ -189,3 +197,4 @@ fster due to no syn
 increased 50 % when full
 user iterator only for travesing
 best for single threaded env 
+
