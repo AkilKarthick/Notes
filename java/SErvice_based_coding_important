@@ -12,3 +12,10 @@
                                 .orElse(null);
 	    //“I preserve insertion order using LinkedHashMap, count characters, then pick the first one with count 1.
 		System.out.println("repeated charater is "+ result1)
+
+
+2.//I split the sentence into words, group them using a map, and count occurrences.”
+
+
+Map<String,Long>w=Arrays.stream(words.split(" ")).collect(Collectors.groupingBy(word->word,Collectors.counting()));
+		System.out.println(w); 
