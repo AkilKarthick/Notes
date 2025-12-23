@@ -1,0 +1,14 @@
+//first non repated character
+		
+		String inputchar = "ssssw";
+		
+		Character result1 =inputchar.chars()
+                                .mapToObj(c->(char)c)
+                                .collect(Collectors.groupingBy(c->c,LinkedHashMap::new,Collectors.counting()))
+                                .entrySet()
+                                .stream()
+                                .filter(e->e.getValue()==1).map(Map.Entry::getKey)
+                                .findFirst()
+                                .orElse(null);
+	    //“I preserve insertion order using LinkedHashMap, count characters, then pick the first one with count 1.
+		System.out.println("repeated charater is "+ result1)
