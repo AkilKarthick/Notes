@@ -2,15 +2,19 @@
 hashCode decides the bucket, equals decides the key
 
 Why HashMap allows one null key?
-
 ✅ Answer:
-
 “Because hashCode() is not called for null; it’s stored in a special bucket.”
 
+Why equals() and hashCode() MUST be overridden together 🔥
+❓ What happens if you don’t?
+Two objects look equal (equals() == true)
+But go into different buckets
+Result: Duplicate keys in HashMap ❌
+Correct Rule (MEMORIZE):
+If two objects are equal, they MUST have the same hashCode.
+
 1.equals() method 
-
 check whether two objects have the same content values (logically euqality)
-
 hashcode() method
 
 provide a numverical value that help hash based collection quickly locate objects,
@@ -197,4 +201,5 @@ fster due to no syn
 increased 50 % when full
 user iterator only for travesing
 best for single threaded env 
+
 
