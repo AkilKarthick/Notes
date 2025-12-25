@@ -1,20 +1,30 @@
 global exception handler
+------------------------
+
+avoid ugly stack traces & send meaninful error messages
 
 It’s a specialized component in Spring that allows you to handle exceptions
 
 When you annotate a class with @ControllerAdvice, Spring treats it as a global interceptor for controller methods.
 
-Any controller that throws a ResourceNotFoundException will be intercepted by this method.
-
 You don’t need to duplicate exception-handling logic in every controller.
+        @GetMapping("/{id}")
+        public User getUser(@PathVariable int id) {
+            if (id == 0) {
+                throw new RuntimeException("Invalid ID");
+            }
+            return userService.getUser(id);
+        }
+
 The response is automatically serialized to JSON (thanks to Jackson), and returned to the client—like Postman.
 
---------------------------------------------
-@ControllerAdvice
-public class GlobalExceptionHandler {
+EG:------------------------------------------
+        @ControllerAdvice // used for global exception handling across controllers
+        public class GlobalExceptionHandler {
+        
+            @ExceptionHandler(ResourceNotFoundException.class)
+            public ResponseEntity<Map<String, Object>> handleResourceNotFoundException(ResourceNotFoundException ex) {
+                // Build response body
+            }
+        }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleResourceNotFoundException(ResourceNotFoundException ex) {
-        // Build response body
-    }
-}
