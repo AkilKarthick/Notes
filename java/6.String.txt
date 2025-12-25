@@ -9,6 +9,10 @@ String immutability improves security, caching, and thread safety
 	Provides thread safety since immutable objects can be shared across threads without synchronization
 	Guarantees consistent -hash code behavior for use in collections like HashMap.
 
+why string is good for hashMap key?
+immutable, statble hashcode & cached hash value
+String immmutblitiy ensure hashmap key consisteny!
+
 
 2. How does the Java String pool work? What is the difference between new String("abc") and "abc"?
 
@@ -98,3 +102,12 @@ s = s + "word";  //this will create a new String object;
 	StringBuilder sbd = new StringBuilder("Hello");
 
 	sbd.append(" World"); // modifies original object
+
+---------
+
+Feature		String	StringBuilder	StringBuffer
+Mutable			❌		✅			✅
+Thread-safe		✅		❌			✅
+Performance		Slow 	Fast 		Medium
+
+
