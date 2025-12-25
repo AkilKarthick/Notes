@@ -21,6 +21,14 @@ API gateway: a single entry point for clients in microservice
 if payment service fails: order service and user service will works
 this is fault isolation
 
+microservice- confi management:
+
+why config management is needed?
+in microservice, many service & many environment ( dev, qa prod)
+so config should be either externalized or centralized!
+
+
+
 
 
 
