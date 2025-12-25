@@ -1,19 +1,15 @@
 String:
 
-Immutable sequence of characters
-Once created, the value cannot be changed.
-Any change creates a new String object
+Immutable sequence of characters. Once created, the value cannot be changed. 
+String immutability improves security, caching, and thread safety
 
-
-
-------------------------------------------------------------------------------------
 1.Why is String immutable in Java? What are the advantages and disadvantages of String immutability?
 
 	Ensures security by avoiding unintended changes (important for sensitive data like passwords).
 	Provides thread safety since immutable objects can be shared across threads without synchronization
-	Guarantees consistent hash code behavior for use in collections like HashMap.
+	Guarantees consistent -hash code behavior for use in collections like HashMap.
 
---------------------------------------------------------------------------------------
+
 2. How does the Java String pool work? What is the difference between new String("abc") and "abc"?
 
 					The String pool is a special memory area that stores literals
@@ -100,4 +96,5 @@ s = s + "word";  //this will create a new String object;
 
 // StringBuilder example (mutable, not thread-safe)
 	StringBuilder sbd = new StringBuilder("Hello");
+
 	sbd.append(" World"); // modifies original object
