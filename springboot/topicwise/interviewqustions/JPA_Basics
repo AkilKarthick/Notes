@@ -1,0 +1,21 @@
+what is jpa?
+
+a specificaion for ORM
+jPA maps java objects to databse table
+
+@Entity
+public class User {
+
+    @Id
+    private int id;
+    private String name;
+}
+
+“@GeneratedValue is used for auto-incrementing primary keys.”
+
+Repository Interface (spring data JPA)
+this is so powefrull
+no boiler plate sQL
+Built in CRUD
+it reduce boilerplate by providing ready made CRUD methods
+
