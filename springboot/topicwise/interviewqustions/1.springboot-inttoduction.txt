@@ -1,19 +1,17 @@
 springboot introduction
+a framework that simplifies spring applictioan developmenet
+why companies used it " embeded server, auto configuation, less boiler plate code
+productino ready
+
+springboot simplifies building RESTful application with minimal configurations
 
 it is a java framework,that simplifies building proudion ready applications
-
 provides auto-configurations to setup componenets automaticall based upon dependeicies
-
 applicaions are standalone with embedded server like tomact 
 no external server setup is needed
-
 springboot support microserice architecture and is highly customzable
-
 comes with producion ready feature like healthhekcsmetricies and monitorings
-
 eliminate boiler plate code and xml configuration , letting devepers focus on business logics
-
-
 
 1.optionated - means has some default like embedded tomcat default web container
 2.Customizable - though it has some default , but easily customizable at any time during your 
@@ -41,3 +39,4 @@ load environment specific configuration using profiles
 secure application using spring security
 build rest web servce and consume it
 monitor the health of applicaitn using Acturaotors
+
