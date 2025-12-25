@@ -1,0 +1,26 @@
+flow:
+
+Client
+ → Controller
+   → Service
+     → Repository
+       → Database
+
+Controller layer: Controller handles HTTP requests and responses
+    Accept request
+    Return response
+    No business logic
+
+Service Layer: container business logic
+    Business logic
+    validation
+    Transacion handling
+
+Repository Layer: Database interactino
+
+DTO Vs Entity ?
+  Entity - is for DB mapping
+  DTO - is for API data transfer
+so DTO prevents exposing internal entity structure!
+
+
