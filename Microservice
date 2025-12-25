@@ -27,6 +27,16 @@ why config management is needed?
 in microservice, many service & many environment ( dev, qa prod)
 so config should be either externalized or centralized!
 
+SERVICE DISCOVERY:
+
+what problm we face without service discovery? service has dynamic IPs, hardcoding URL
+
+what is service discovery?
+
+a Registry where services: register themselves, discover others dynamicallly
+service discovery helps services locate each other dynamically
+
+
 
 
 
