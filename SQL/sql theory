@@ -5,3 +5,31 @@ unique + not null value
 
 foreign key?
 
+
+Group by + count (very importaant)
+
+SELECET dep, count(*)
+FROM employee
+GROUP BY dep
+
+-GROUP BY is used with aggregate functions like COUNT and SUM
+
+
+what is INDEX?
+
+is a performance booster
+index improves read performacen but slow down write operations
+
+
+Transaction (Concept only)
+
+👉 A transaction ensures data consistency.
+ACID (just names, not deep):
+  Atomicity
+  Consistency
+  Isolation
+  Durability
+Interview one-liner:
+
+“Transactions ensure either all operations succeed or none.”
+
