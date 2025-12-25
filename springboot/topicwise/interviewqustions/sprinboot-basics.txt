@@ -1,5 +1,18 @@
+spring core:
 
+what is IOC? 
+inversion of control mreans spring create and manage object, not us
 
+what is dependency injection?
+
+spring injects required objects automaticaly
+this DI reduces tight coupling btwn classes
+
+Types of DI?
+
+	Construcotr injectionn ( most preferred one)
+	setter injection
+	Field injection
 
 annotation;
 
@@ -27,5 +40,6 @@ this feature automatically configure beans and settings based on class path depe
 no need of manual setup
 
 @EnableAutoCongfiguration - trigger this, it helps avoid complex xml setups 
+
 
 Auto-configuration attempts to automatically configure your Spring application by examining the libraries (jars) on your classpath
