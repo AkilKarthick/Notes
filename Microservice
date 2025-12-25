@@ -1,0 +1,27 @@
+Microservice
+
+each microerive should be doing one business job only
+for eg:
+
+User Service → user data
+Order Service → orders
+Payment Service → payments
+
+Each service owns its own database.
+
+  shared DB - tightly coupled
+  SeparateDB - independence
+Database-per-service avoids tight coupling between services
+
+API gateway: a single entry point for clients in microservice
+             || client -> api gateway -> service ||
+
+3. Failre Handling:
+
+if payment service fails: order service and user service will works
+this is fault isolation
+
+
+
+
+
