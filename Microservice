@@ -36,6 +36,15 @@ what is service discovery?
 a Registry where services: register themselves, discover others dynamicallly
 service discovery helps services locate each other dynamically
 
+what is load balancing? distribute traffic across instance to improve availbility
+
+distribute request across multpe service instances
+
+Client → LB → Service Instance 1
+              Service Instance 2
+why we need ?
+high availbility & better performance
+
 
 
 
