@@ -34,19 +34,18 @@
 
 		List<Integer> l1 = Arrays.asList(1, 2);
 		// min
-
 		var min = l1.stream().min(Integer::compareTo).orElseThrow();
-
 		int mininVal = l1.stream().min((a, b) -> a.compareTo(b)).orElseThrow();
-
 		System.out.println(min + "variable keyword is used here min");
 		System.out.println(mininVal + "min");
-
 		int max = l1.stream().max(Integer::compareTo).orElseThrow(() -> new Exception("d"));
-
 		System.out.println("max number is:" + max);
-
-		int maximum = l1.stream().max((a, b) -> a.compareTo(b)).orElseThrow();
-
+		int maximum = l1.stream().max((a, b) -> a.compareTo(b)).orElseThrow()
 		System.out.println("max number is:" + maximum);
-+
+
+//print the vowels 
+		List<Character> s=strip.chars()
+						       .mapToObj(c->(char)c)
+						       .filter(c->"aeiou".indexOf(c)!=-1)
+						       .collect(Collectors.toList());
+								System.out.println(s);
