@@ -16,6 +16,37 @@
 
 2.//I split the sentence into words, group them using a map, and count occurrences.”
 
-
-Map<String,Long>w=Arrays.stream(words.split(" ")).collect(Collectors.groupingBy(word->word,Collectors.counting()));
+	Map<String,Long>w=Arrays.stream(words.split(" ")).collect(Collectors.groupingBy(word->word,Collectors.counting()));
 		System.out.println(w); 
+
+//1. find the first non repeating characte
+		
+		String inputword = "swwiisso";	
+		String rev = new StringBuilder(inputword).reverse().toString();
+		boolean re = rev.equals(inputword);
+
+//		String inputword = "hi my name is akil akil and that is my name";
+		Map<String,Long> hgj =Arrays.stream(inputword.split(" ")).collect(Collectors.groupingBy(s->s,TreeMap::new,Collectors.counting()));
+		System.out.println("frequestn words are :" +hgj);
+
+
+//1.find max number in the list
+
+		List<Integer> l1 = Arrays.asList(1, 2);
+		// min
+
+		var min = l1.stream().min(Integer::compareTo).orElseThrow();
+
+		int mininVal = l1.stream().min((a, b) -> a.compareTo(b)).orElseThrow();
+
+		System.out.println(min + "variable keyword is used here min");
+		System.out.println(mininVal + "min");
+
+		int max = l1.stream().max(Integer::compareTo).orElseThrow(() -> new Exception("d"));
+
+		System.out.println("max number is:" + max);
+
+		int maximum = l1.stream().max((a, b) -> a.compareTo(b)).orElseThrow();
+
+		System.out.println("max number is:" + maximum);
++
