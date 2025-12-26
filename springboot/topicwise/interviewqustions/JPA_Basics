@@ -19,3 +19,51 @@ no boiler plate sQL
 Built in CRUD
 it reduce boilerplate by providing ready made CRUD methods
 
+------------------
+JPA-CASCADE TYPES
+
+what is cascade?
+
+cascade control how operation on a parent entity affects its child entities
+this will decide what happends to child entities when parent changes
+eg: save order, automatically save orderitems
+
+we should be carefule with cascadeType.REMOVE to avoid accidental deletes
+common cascade type?
+
+@OneToMany(cascade = CascadeType.ALL)
+private List<OrderItems> items;
+
+| Cascade Type | Meaning                      |
+| ------------ | ---------------------------- |
+| `PERSIST`    | Save parent → save child     |
+| `MERGE`      | Update parent → update child |
+| `REMOVE`     | Delete parent → delete child |
+| `ALL`        | Includes all above           |
+
+Orphan Remove:
+
+@OneToMany(orphanRemoval = true)
+
+If child is removed from parent list → deleted from DB
+📌 Interview line:
+“Orphan removal deletes child entities that are no longer referenced.
+
+Spring data JPA- pagination & sorting:
+-------------------------------------
+
+why pagination : large data sets = performance issue
+this improve perfomanc by fetching data in chunks
+
+PageRequest pr = PageRequest.of(0,10);
+Page<User> users = userRepository.findAll(pageRequest);
+
+Page 0-> first page
+10-record per page
+
+Sorting:
+
+sorting allows ordered retrieval of data from the db
+
+Sort sort = Sort.by("name").ascending();
+
