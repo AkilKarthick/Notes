@@ -49,3 +49,152 @@
 						       .filter(c->"aeiou".indexOf(c)!=-1)
 						       .collect(Collectors.toList());
 								System.out.println(s);
+
+
+-------------------
+
+package servicecompcoding;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class GPTCodingqns {
+
+	public static void main(String[] args) {
+	
+//special character removal?
+		String str7 = "java!";
+		
+		String remove= str7.replaceFirst("[^a-zA-Z0-9]", "");
+		System.out.println(remove);
+		
+		
+		
+//1.reversing a given string
+		
+		String str1 = "akil";
+		String rev = new StringBuilder(str1).reverse().toString();
+		
+		System.out.println("reversed string is:"+rev);
+
+		
+//2.Palindrome
+		
+		String str2 ="mada";
+		String rev1 = new StringBuilder(str2).reverse().toString();
+		
+		if(rev1.equals(str2)) {
+			System.out.println("palindrome");
+		}else
+			System.out.println("not a palindrom");
+		
+//3.count vowels
+// this won't work!!
+		String str3 = "akil";
+		
+		Set<Character> vow = Set.of('a','e','i','o','u');
+		
+		String c1 =str3.chars().filter(c->vow.contains(str3)).toString();
+		System.out.println(c1);
+		
+//or
+		
+		List<Character> vow1= str3.chars().mapToObj(c->(char)c).filter(c->"aeiou".indexOf(c)!=-1).collect(Collectors.toList());
+		System.out.println("easy way to find vowels :"+vow1);
+		
+//below this wiill work
+		List<Character> c2 =str3.chars()
+								.mapToObj(c->(char)c)
+								.filter(s->vow.contains(s))
+								.collect(Collectors.toList());
+		
+		System.out.println("vowels present on the string is:"+c2);
+		
+//Remove special character don't know?
+		
+		String str5 = "hi-hello";
+		//I use regex to replace all non-alphanumeric characters with an empty string
+		String result = str5.replaceAll("[a-zA-Z0-9]", "");
+		System.out.println(result+" : special character without ");
+		
+		
+//Collections/java 8 //removing duplicate form the list
+		List<Integer> num1 = Arrays.asList(1,2,2,3,4);
+		List<Integer> distint =num1.stream().distinct().collect(Collectors.toList());
+		System.out.println(distint);
+		
+//first non repeated character
+		
+		String str4 ="sssssiuu";
+		Character rep=str4.chars()
+			.mapToObj(c->(char)c)
+			.collect(Collectors.groupingBy(c->c,LinkedHashMap::new,Collectors.counting()))
+			.entrySet()
+			.stream()
+			.filter(s->s.getValue()==1)
+			.map(Map.Entry::getKey).findFirst().orElse(null);
+		
+		System.out.println(rep);
+		
+		
+//2.word and character frequenc  || therei is an easy way to do this
+		
+		List<Entry<Character, Long>> wordcount =str4.chars()
+													.mapToObj(c->(char)c)
+													.collect(Collectors.groupingBy(c->c,Collectors.counting()))
+													.entrySet()
+													.stream()
+													.collect(Collectors.toList());
+		System.out.println(wordcount);
+		
+//or
+
+		String str6 = "hi there i'm karthick and i'm a good boy";
+		Map<String,Long> wordcount1 =Arrays.stream(str6.split(" "))
+											.collect(Collectors.groupingBy(c->c,Collectors.counting()));
+		
+		System.out.println("alternative easy way to count each workd:" +wordcount1);
+		
+		
+//even-odd parition by 
+		List<Integer> num = Arrays.asList(1,2,3,4,5,6);
+		Map<Boolean,List<Integer>> pari=num.stream().collect(Collectors.partitioningBy(i->i%2==0));
+		System.out.println(pari);
+		
+//max & min
+		
+		Integer  max =num.stream().max((a,b)->a.compareTo(b)).get();
+		System.out.println("max num is:"+max);
+		
+		Integer min =num.stream().min(Integer::compareTo).get();
+		System.out.println("min nu is:"+min);
+		
+//second highest salary is:
+		
+		List<Integer> salarynum = Arrays.asList(1,2,3,4,5000,6000);
+		
+		Integer secondhidhgestsal =salarynum.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+		System.out.println("2nd highest sal is:" + secondhidhgestsal);
+		
+//Find the missing number in an array (Java 8)?  // hold this bit confsing!!
+		
+		
+		//need ot have an idea on how pattern is working
+		
+		int n = 4;
+
+		for (int i = 1; i <= n; i++) {
+		    for (int j = 1; j <= i; j++) {
+		        System.out.print("* ");
+		    }
+		    System.out.println();
+		}
+	}
+}
+		
