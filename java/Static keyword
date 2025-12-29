@@ -67,3 +67,28 @@ Utility methods → static
 Configuration values → static
 📌 Smart line:
 “Static is commonly used for constants and utility methods.”
+
+1. static method cannot direclty access instance variables
+static blong to class
+instance variable belong to objects
+At the time a static method runs, no object may exist
+
+class Test {
+  int x = 10;
+  static void show() {
+      System.out.println(x) ;// compile time error
+  }
+}
+
+correct way:
+
+Static method can access instance data only through an object
+class Test {
+    int x = 10;
+
+    static void show() {
+        Test obj = new Test();
+        System.out.println(obj.x); // ✅ allowed
+    }
+}
+
