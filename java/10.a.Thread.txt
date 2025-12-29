@@ -1,30 +1,21 @@
-Thread:
+Thread: a light weight process that executes a task
 
-a lightweight process/units called thread
-Thread allow different part of a programs to execute simulatenously
+	a lightweight process/units called thread & Thread allow different part of a programs to execute simulatenously
+	
+	creating a thread in java 
+	-is by extending Thread class or by implementing Runnable interface
 
+1.Thread class -- Extend Thread when no other class inheritance is needed
+2.Runnable interface --Implement Runnable when the class already extends another class (preferred). - java support only single inheritance that;s why
 
-creating a thread in java is by extending Thread class or by implementing Runnable interface
-
-Thread class -- Extend Thread when no other class inheritance is needed
-Runnable interface --Implement Runnable when the class already extends another class (preferred).
-
------------------------------------------------------------------
-
-start(): Starts thread execution; calls run() in a new thread.
-
-run(): Contains the code executed by the thread.
-
-sleep(ms): Makes the thread pause for specified milliseconds.
-
-join(): Waits for a thread to finish execution before continuing.
-
-interrupt(): Interrupts the currently executing thread.
-
-isAlive(): Checks if thread is alive or dead.
-
-------------------------------------------------------------
-
+States:
+	New
+	Runnable
+	Running
+	Waiting / Blocked
+	Terminated
+📌 Interview line:
+“A thread goes through multiple states during execution.”
 
 eg1:
 
@@ -41,7 +32,7 @@ public class Demo {
 	}
 }
 
-implementing runnable interface
+implementing runnable interface // preferred ay
 
 
 class MyRunnable implements Runnable{
@@ -61,12 +52,17 @@ public class Demo {
 	t1.start(); //start() will internally call run() method
 	}
 }
+single thread - one task at a time
 ============================================================
-
-multiple Thread:
-
+multiple Thread: 
+---------------
 running multiple thread simultaneously to perform different task at the same time
-which improve performance and cpu utilizations,  each thread run independently but shares the same memory space
+which improve performance and cpu utilizations,  
+each thread run independently but shares the same memory space
+allows concurrent execution of task to improve perfromance
+
+used when : handling multple user request, fikle processing
+interview hint : improves appplications responsiveness
 
 
 class MyThread extends Thread {
@@ -114,34 +110,42 @@ Each prints its respective task with a delay of 1 second.
 
 Threads run independently, so their output interleaves, showing multitasking.
 
-
 ---------------------------------
 what is synchronization
 
-it ensure only one thread executes a critical method/section at a time
+	it ensure only one thread executes a critical method/section at a time
+	prevents race condtion and allowoing one thread at a time
 
-how to avoid deadlock
-
-using trylock()
-
+only 1 thread at a time can enter this method!
+	synchronized void increment() {
+	    count++;
+	}
 
 what is thread pool?
 
-manage a fixed number of reusable threads to execute task concuretnly, reducing overhead of thread creation and destruction
-
-
-wait() // relase lock and wait for notification
-sleep() // doesn't release any lock and pause the thread for a specific time
-
-start() multiple times means IllegalThreadStateException  throws
+	manage a fixed number of reusable threads to execute task concuretnly, reducing overhead of thread creation and destruction
+	
+	wait() // relase lock and wait for notification
+	sleep() // doesn't release any lock and pause the thread for a specific time
+	
+	start() - create a new threa | multiple times means IllegalThreadStateException  throws
 
 hwo thread communicate with each other ?
 
-through inter- thread communication method wait(), notify(), and notifyall() using inside synchronized blokc to coordinate execution
+	through inter- thread communication method wait(), notify(), and notifyall() using inside 	synchronized blokc to coordinate execution
 
-What is a daemon thread and how to create one?
-A daemon thread is a background thread that does not prevent JVM from exiting when only daemon threads remain. Use setDaemon(true) before starting the thread.
+Thread lifecycle: / thread can go through multiple states during executions
+
+new
+Runnable
+Running
+Waiting/Blocked
+Terminated
+
+I haven’t directly created threads, but Spring Boot internally uses multithreading to handle concurrent requests, and I understand thread-safety concepts
 
 
+
+	
 
 
