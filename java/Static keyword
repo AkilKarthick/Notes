@@ -1,0 +1,69 @@
+
+
+static variable:
+
+class Employee{
+  static String company = "infosys";
+  int id;
+}
+Employee e1 = new Employee();
+Employee e2 = new Employee();
+
+System.out.println(e1.company); // Infosys
+System.out.println(e2.company); // Infosys
+
+
+only one copy of company exist
+Static vairale are shared across all objects!
+
+Static method: Static methods can be called without creating an object.
+
+class Utils {
+    static void printMsg() {
+        System.out.println("Hello");
+    }
+}
+
+we can call without object
+
+Utils.printMsg(); is possible
+
+3. STATIC BLOCK
+---------------
+
+class Test {
+    static {
+        System.out.println("Static block executed");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Main method");
+    }
+}
+
+output:
+Static block executed
+Main method
+
+used for initilaze static data  &
+loading driver
+static vlock execute once when the class is loaded
+
+Can we use static with Class?
+❌ NO
+static class Test { } // ❌ invalid
+
+but static inner class is allowded
+
+WHY main METHOD IS STATIC (🔥 INTERVIEW Q)
+public static void main(String[] args)
+📌 Best answer:
+“JVM needs to call main without creating an object, so it must be static
+
+REAL PROJECT CONTEXT (IMPRESSIVE)
+
+Constants → static final
+Utility methods → static
+Configuration values → static
+📌 Smart line:
+“Static is commonly used for constants and utility methods.”
