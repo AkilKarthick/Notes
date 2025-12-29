@@ -173,6 +173,7 @@ Synchronized method locks the whole method for one thread at a time. This is sim
 Synchronized block lets you lock just a piece of code inside a method, improving performance by reducing the locked area and allowing other threads to execute non-critical code concurrently.
 
 
+I haven’t directly created threads, but Spring Boot internally uses multithreading to handle concurrent requests, and I understand thread-safety concepts
 
 
 
