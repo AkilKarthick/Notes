@@ -112,25 +112,7 @@ ArrayList<Map.Entry<String, Integer>> entriesList = new ArrayList<>(map.entrySet
 for (Map.Entry<String, Integer> entry : entriesList) {
     System.out.println(entry.getKey() + " = " + entry.getValue());
 }
-----------------------------------------
-
-difference between comparable & comparator
-
-both are used for sorting the objects
-  compareable = compareTo() -compare myself (sorting order inside the class) define Natural order
-  comparator = compare() - compare others (sortint loging outside the class) define custome order 
-  
-  comparable: when a class want to define its own natural order using compareTo() method
-   natural/default
-  implements Inside the class itself
-  
-  comparator: allows custom sorting logic outside the class using compare() method
-  custom or multiple sorting orders
-  impements Outside the class, separate class or lambda
-
-java 8 support Comparator using lambda expression for concise sorting
-emploeList.sort(Comparator.comparing(Employee::getName))
-========================================================================
+================================
 ArrayList 
 
 uses a dynamic array to store elements. 
@@ -202,6 +184,7 @@ fster due to no syn
 increased 50 % when full
 user iterator only for travesing
 best for single threaded env 
+
 
 
 
