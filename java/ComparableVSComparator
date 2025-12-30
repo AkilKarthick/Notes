@@ -1,0 +1,50 @@
+1.difference between comparable & comparator
+
+both are used for sorting the objects
+  compareable = compareTo() -compare myself (sorting order inside the class) define Natural order
+  comparator = compare() - compare others (sortint loging outside the class) define custome order 
+  
+  comparable: when a class want to define its own natural order using compareTo() method
+   natural/default
+  implements Inside the class itself
+  
+  comparator: allows custom sorting logic outside the class using compare() method
+  custom or multiple sorting orders
+  impements Outside the class, separate class or lambda
+
+java 8 support Comparator using lambda expression for concise sorting
+emploeList.sort(Comparator.comparing(Employee::getName))
+
+in real projet, we prefer Comparator because it avoids modifying entity class and support multiple sorting requirements
+
+foreg:
+
+assume you have an Employee entity that used across the applications!
+
+class Employee {
+    int id;
+    String name;
+    double salary;
+
+    // getters & setters
+}
+modifying it can impact other modules | so adding implements Comparable is not prfered
+
+class Employee implements Comparable<Employee> {
+    public int compareTo(Employee e) {
+        return Double.compare(this.salary, e.salary);
+    }
+}
+
+if you using this means only one sorting login| entity class modified \ violates single responsiblity principle
+if you using Comparator: entity remain clean | java 8 friendly | multiple soring design | better design
+
+so Comparator keeps entity class clean and support multiple dynamic soring requirements
+such as soring by name, sal or comination using java 8 lambdas
+
+Comparaot<Employee> sortByNmae = Comparator.comparing(Employee::getName);
+Collection.sort(employeeList,sortByName);
+
+Comparator<Employee> sortBySalary = Comparator.comparing(Employee::getSalary);
+Collectios.sort(employeeList,sortyBySalary);
+
