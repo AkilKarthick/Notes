@@ -116,9 +116,9 @@ for (Map.Entry<String, Integer> entry : entriesList) {
 
 difference between comparable & comparator
 
-  hint & shortcuts
-  compareable = compareTo() -compare myself (sorting order inside the class)
-  comparator = compare() - compare others (sortint loging outside the class)
+both are used for sorting the objects
+  compareable = compareTo() -compare myself (sorting order inside the class) define Natural order
+  comparator = compare() - compare others (sortint loging outside the class) define custome order 
   
   comparable: when a class want to define its own natural order using compareTo() method
    natural/default
@@ -128,7 +128,8 @@ difference between comparable & comparator
   custom or multiple sorting orders
   impements Outside the class, separate class or lambda
 
-
+java 8 support Comparator using lambda expression for concise sorting
+emploeList.sort(Comparator.comparing(Employee::getName))
 ========================================================================
 ArrayList 
 
@@ -201,6 +202,7 @@ fster due to no syn
 increased 50 % when full
 user iterator only for travesing
 best for single threaded env 
+
 
 
 
