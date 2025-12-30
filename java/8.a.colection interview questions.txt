@@ -116,17 +116,17 @@ for (Map.Entry<String, Integer> entry : entriesList) {
 
 difference between comparable & comparator
 
-hint & shortcuts
-compareable = compareTo() -compare myself
-comparator = compare() - compare others
-
-comparable: when a class want to define its own natural order using compareTo() method
- natural/default
-implements Inside the class itself
-
-comparator: allows custom sorting logic outside the class using compare() method
-custom or multiple sorting orders
-impements Outside the class, separate class or lambda
+  hint & shortcuts
+  compareable = compareTo() -compare myself (sorting order inside the class)
+  comparator = compare() - compare others (sortint loging outside the class)
+  
+  comparable: when a class want to define its own natural order using compareTo() method
+   natural/default
+  implements Inside the class itself
+  
+  comparator: allows custom sorting logic outside the class using compare() method
+  custom or multiple sorting orders
+  impements Outside the class, separate class or lambda
 
 
 ========================================================================
@@ -201,5 +201,6 @@ fster due to no syn
 increased 50 % when full
 user iterator only for travesing
 best for single threaded env 
+
 
 
