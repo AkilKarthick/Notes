@@ -1,8 +1,15 @@
-in java 8 interfaces can have both default() with default keyword and static() method with static keyword
+in java 8 interfaces can have both default() with default keyword 
+and static() method with static keyword
 
-1.default method : usefuld to include new features in an interface without altering the implementation that exist for the interface
-'default ' keyword & it is 'overridable: yes(in implementing class)
-default impelemntation which can be redefined.
+1.default method : 
+
+
+    a.Usefull to include new features in an Interface without altering the implementation that exist         for the interface
+    b.'default ' keyword & 
+       it is 'overridable: yes(in implementing class) default impelemntation which can be redefined.
+
+in our project:
+we used default method mainly to introduce common validation logic , without breaking existing implemntations
 
 classes implementing the interface are not forced to override default method
 
@@ -73,5 +80,6 @@ class MyDataImpl implements MyData {
         MyData.isNull("abc"); // Call static method directly on interface
     }
 }
+
 
 
