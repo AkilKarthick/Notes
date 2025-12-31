@@ -1,7 +1,14 @@
+static keyword ::  belongs to class, not object
 
+🏗️ Real project usage
+we use static constants for error codes 
+and utility methods to avoid unnecessary object creation
 
+class Constants {
+    public static final String SUCCESS = "SUCCESS";
+}
 static variable:
-
+-----------------------------------
 class Employee{
   static String company = "infosys";
   int id;
@@ -11,10 +18,7 @@ Employee e2 = new Employee();
 
 System.out.println(e1.company); // Infosys
 System.out.println(e2.company); // Infosys
-
-
-only one copy of company exist
-Static vairale are shared across all objects!
+-------------------------------------------
 
 Static method: Static methods can be called without creating an object.
 
@@ -28,7 +32,7 @@ we can call without object
 
 Utils.printMsg(); is possible
 
-3. STATIC BLOCK
+3. STATIC BLOCK: used for initilaze static data  & static block execute once when the class is loaded
 ---------------
 
 class Test {
@@ -45,9 +49,6 @@ output:
 Static block executed
 Main method
 
-used for initilaze static data  &
-loading driver
-static vlock execute once when the class is loaded
 
 Can we use static with Class?
 ❌ NO
