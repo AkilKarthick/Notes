@@ -13,14 +13,17 @@ objects: instance of the calss representing real world entities
 	4.abstraction: hiding complex details & shows only necessary parts to the users
 ============================================================================================
 
+-------------🗣️ Interview-ready explanation
+A.encapsulation:  we used encapsulation to hide internal data and expose only require behavirou through getter and setter
+in our springboot services, entities are encapsulated to avoid direct field access!
+entity fiels we kept as private !
+------
 
-A.encapsulation: 
-
-	keep data safe by restricting access with private fields
+keep data safe by restricting access with private fields
 	getter and setter
-	t protects data by making class variables private and controlling access with public getter and setter methods.
-	encapsulation ensures critical shipment details such as package weight, destination address, 
-	and delivery status are protected from unintended changes
+to protects data by making class variables private and controlling access with public getter and setter methods.
+
+	encapsulation ensures critical shipment details such as package weight, destination address, and delivery status are protected from unintended changes
 
 public class ShipmentPackage {
     // Private fields - hidden from external access
@@ -31,9 +34,13 @@ public class ShipmentPackage {
  // Getter and setter for packageId
 
 ----------------------------------------------------------
-B.inheritance:
-	 a subclass inherits fields and methods from  superclass
-	promote code reuse
+
+B.inheritance: allows a class to reuse properties and method of another clas
+why it is used: code reusability , reduce duplication
+
+🏗️ Real project usage
+we use inheritance in our poject wheere common fields are maintaiend in base entity class
+and extended by all entities
 
 types of inheritance;
 
@@ -45,7 +52,24 @@ types of inheritance;
 a hierarchical inheritance means multiple subclasses inherit from a single superclass. The superclass provides common properties and methods, and each subclass extends or overrides them for specialization.
 
 --------------
-C.polymorphism: ability to behave differently based on the object type
+C.polymorphism: allows one method to behave differently based on the object type
+why it is sued : loosely coupled! thing
+
+🏗️Real project usage
+
+“In Spring, we use polymorphism when multiple service implementations exist for the same interface.”
+
+interface PaymentService {
+    void pay();
+}
+class CardPayment implements PaymentService {
+    public void pay() { }
+}
+class UpiPayment implements PaymentService {
+    public void pay() { }
+}
+
+ability to behave differently based on the object type
 
 	a.compile time (overloading) - same method name with different parameters
 
@@ -178,3 +202,4 @@ you cannot use this() and super() together
 super- calls parent const
 this() - calls another construcot in same calss
 both must be first line
+
