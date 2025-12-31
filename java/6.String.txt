@@ -9,6 +9,14 @@ String immutability improves security, caching, and thread safety
 	Provides thread safety since immutable objects can be shared across threads without synchronization
 	Guarantees consistent -hash code behavior for use in collections like HashMap.
 
+why java made String immutable?
+
+	security reason(used in DB URLS, password)
+	string pool optimization
+	HashMap key reliability
+🏗️ Real project usage
+“Strings are used as keys in HashMap and configuration properties, so immutability prevents unexpected changes.
+
 why string is good for hashMap key?
 immutable, statble hashcode & cached hash value
 String immmutblitiy ensure hashmap key consisteny!
@@ -109,5 +117,6 @@ Feature		String	StringBuilder	StringBuffer
 Mutable			❌		✅			✅
 Thread-safe		✅		❌			✅
 Performance		Slow 	Fast 		Medium
+
 
 
