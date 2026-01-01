@@ -214,3 +214,11 @@ refer to the instance of the annonymous class itself, not the enclosin class
 Final Interview-Ready Summary (Say This 🔥)
 In real projects, I use lambda expressions mainly with Streams, Comparators, and functional interfaces to write clean, readable, and maintainable code. I avoid complex logic inside lambdas and always consider readability and debugging impact.”
 
+Performance Consideration (Senior-level)
+
+	lambd are light weight
+	avoid heavy logic inside streams
+	don't misuse paralle streams blindly
+
+
+
