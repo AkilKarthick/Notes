@@ -10,7 +10,11 @@ interface Calculator {
 }
 //it can have both default & static method too
 
-Functional interface built in methods
+java 8 provide some belwo predefined functional interfaces in java.util.function package
+-----
+What inbuilt functional interfaces have you used?
+
+I’ve mainly used Predicate for filtering, Function for transformations, Consumer for processing data in forEach, and Supplier for default or lazy values, especially while working with Java 8 streams in service layers
 
 Consumer -Accepts one input, returns nothing
 predicate -Accepts one input, returns boolean
@@ -18,7 +22,7 @@ Function -Accepts one input, returns a result
 Supplier -No input, returns a result
 BiConsumer -Accepts two inputs, no output
 Bipredicate -Accepts two inputs, returns boolean
-etc
+
 
 
 // Consumer example
@@ -26,16 +30,29 @@ etc
         print.accept("Hello Consumer!");
 
 // Predicate example
-        Predicate<Integer> isPositive = n -> n > 0;
-        System.out.println(isPositive.test(5));  // true
+🏗️ Project usage : used Predicte in streams to filter data based on business conditions
 
-        // Function example
+Predicate<Integer> isPositive = n -> n > 0;
+System.out.println(isPositive.test(5));  // true
+
+// Function example
         Function<String, Integer> length = s -> s.length();
         System.out.println(length.apply("Java8"));  // 5
 
-        // Supplier example
-        Supplier<Double> randomValue = () -> Math.random();
-        System.out.println(randomValue.get());
+we use function to transform entity object into DTO's
+
+// Supplier example
+Takes no input, returns output
+🏗️ Project usage : “Supplier is used for lazy object creation and default values
+
+        Supplier<String> message = () -> "Default Value";
+        System.out.println(message.get());
+
+
+
+
+
+
 
         // UnaryOperator example
         UnaryOperator<Integer> square = x -> x * x;
@@ -58,3 +75,4 @@ etc
         System.out.println(concatSum.apply(10, 20));  // Sum: 30
 
     }
+
