@@ -126,20 +126,76 @@ elist.forEach(s->Sysout(s.getCountry()));
 -----
 🎯 Interview questions on Lambda expressions: dont expect straight frwd questions
 
-Why lambdas need functional interfaces?
-Can lambda access local variables? (effectively final)?
+1.how lambda work internally?
 
-yes but they must be effectively final (value cannot be changed after initialization)
+lambda donot create a new class file like annonymous class
+they invokedynamic and are resolved at runtime
 
-String msg = "hello";
-Runnable r =()->System.out.println(msg); //msg must be effectively final
+less memory overhead
+better performacnce
+enable JVm optimization
 
-//compilation error
 
-int threshold =5;
+
+1.Why lambdas need functional interfaces?
+
+2.Can lambda access local variables?
+
+	yes but they must be effectively final (value cannot be changed after initialization)
+	
+	String msg = "hello";
+	Runnable r =()->System.out.println(msg); //msg must be effectively final
+	
+	//compilation error 
+	
+	int threshold =5;
+	list.forEach(i->{
+			System.out.println(i>threahso);
+	})
+
+3.difference btwn Lambda VS Annonymous Inner class?
+
+this keyword:  in lambda refers to enclosing class
+			   in annonymouc casl it refer to inner class
+performnace:  lambda is beeter, annonymous inner class is slightly heaviour
+
+4. why lambda expression introuduced in java8?
+
+to support functional style programming
+reduce boiler plate code
+enable paraller & declarative processing through the stream API.
+lambda enable declarative style
+
+
+common builtin functional interface
+| Interface     | Method    | Real Project Usage   |
+| ------------- | --------- | -------------------- |
+| Predicate<T>  | test(T)   | Filtering DB results |
+| Function<T,R> | apply(T)  | DTO mapping          |
+| Consumer<T>   | accept(T) | Logging, audit       |
+| Supplier<T>   | get()     | Lazy object creation |
+
+
+Predicate<User> activeUser = u->u.isActive();
+users.stream().filter(activeUser).toList();
+
+5. can lambda through checked exception? (TRICKY ⚠️)
+
+❌ No directly
 list.forEach(i->{
-		System.out.println(i>threahso);
-})
+	throus new IOException();   ❌
+});
+
+then how to handle checked Exception?
+
+lambda wrapper for lamda function, for handling the expcetion
+an
+dont know the implementation part!!
+	wrap in runtime exception
+	use cutsom functional interface
+	handle inside lambda
+
+6. lambda & this keyword?
 
 
 
