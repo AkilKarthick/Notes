@@ -197,5 +197,20 @@ dont know the implementation part!!
 
 6. lambda & this keyword?
 
+in lambda, this refer to the instance of the enclosing class, not lambda itslef
 
+	public class LambdaThisExample {
+	    String name = "OuterClass";
+	
+	    public void testLambda() {
+	        MyPrinter printer = () -> {
+	            System.out.println(this.name); // Refers to LambdaThisExample's 'name'
+
+this is in Anonymous inner class:
+
+refer to the instance of the annonymous class itself, not the enclosin class
+------------------------------
+
+Final Interview-Ready Summary (Say This 🔥)
+In real projects, I use lambda expressions mainly with Streams, Comparators, and functional interfaces to write clean, readable, and maintainable code. I avoid complex logic inside lambdas and always consider readability and debugging impact.”
 
