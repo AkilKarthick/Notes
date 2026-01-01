@@ -124,9 +124,22 @@ just
 elist.forEach(s->Sysout(s.getCountry()));
 
 -----
-🎯 Interview questions
+🎯 Interview questions on Lambda expressions: dont expect straight frwd questions
 
 Why lambdas need functional interfaces?
-Can lambda access local variables? (effectively final)
+Can lambda access local variables? (effectively final)?
+
+yes but they must be effectively final (value cannot be changed after initialization)
+
+String msg = "hello";
+Runnable r =()->System.out.println(msg); //msg must be effectively final
+
+//compilation error
+
+int threshold =5;
+list.forEach(i->{
+		System.out.println(i>threahso);
+})
+
 
 
