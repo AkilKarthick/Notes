@@ -1,3 +1,15 @@
+Functinal interface has exactly one abstract method
+whhy java 8 introduced it :to suppor lambda expression & enanle functional programming
+
+🏗️ Project-level usage
+in our springboot services, we use functinoal interface implicitly in streams, predicate and comparator
+
+@FunctionalInterface
+interface Calculator {
+    int add(int a, int b);
+}
+//it can have both default & static method too
+
 Functional interface built in methods
 
 Consumer -Accepts one input, returns nothing
@@ -44,4 +56,5 @@ etc
         // BiFunction example
         BiFunction<Integer, Integer, String> concatSum = (a, b) -> "Sum: " + (a+b);
         System.out.println(concatSum.apply(10, 20));  // Sum: 30
+
     }
