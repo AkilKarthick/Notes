@@ -1,5 +1,7 @@
 lambda expression:
+------------------
 
+for cleaner code | better readability | less boiler plate code
 a concise way to represent an anonymous function (a function without function name) 
 that can be passed as an arugument to methods or .used for functional style programming
 lambda expression provide implementaqtion logic for functional interface (interface wiht only one abstract method)
@@ -120,5 +122,11 @@ here using lambda don t need to creaqte iteraor, loopiong throgh it and checking
 just
 
 elist.forEach(s->Sysout(s.getCountry()));
+
+-----
+🎯 Interview questions
+
+Why lambdas need functional interfaces?
+Can lambda access local variables? (effectively final)
 
 
