@@ -17,6 +17,12 @@ HTTP methods:
 	PUT-	update full resoure
 	PATCH-	partical update
 	DELTE-	remove data
+🎤 Interview line
+
+idempotency (very importnat)
+
+GET & PUT - idempotent | put is idempotent bcz repeated calls produce the same result
+POST - not idempotent
 
 🎤 Common interview trap
 PUT vs PATCH
@@ -30,7 +36,12 @@ we always return meaninful HTTP status code to make APIs
 	400- bad request
 	404- nof found
 	500 internal server error
+	🔥 409 - means duplicate record
 {still more to explore here) 
+
+REST API versioning
+
+
 
 🔥 VERY IMPORTANT implemtatio part:
 
@@ -148,6 +159,7 @@ Response body (usually JSON or XML content)
 You can specify exact HTTP status codes for each API response, instead of relying on default behaviors.
 You can define the body, or send no content (204 No Content), depending on the requirement.
 In exception handlers, ResponseEntity lets you send error messages and status codes clearly to clients.
+
 
 
 
