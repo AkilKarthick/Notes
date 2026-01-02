@@ -34,33 +34,31 @@ we always return meaninful HTTP status code to make APIs
 
 🔥 VERY IMPORTANT implemtatio part:
 
-we need to use 📌-spring boot starter web- 
-dependice on pom.xml file to use all facilities required  for rest api development
+we need to use 📌-spring boot starter web-  dependice on pom.xml file to use all facilities required  for rest api development
+ i'm able to get these features:
 
+	spring MVC and web - fro web develpment
+	embedded server ( jetty or tomcat
+	RESTful apis using lilbraties like jackson- for json processing
+	auto configurations realted components like Dispatcher serverlet, static resoure handling ec
+	springboot starter validation for input validation
 
-use @RestController on class leverl to make rest controller
+use @RestController on class level to make rest controller
 while serilaize the response object to json
+
+@RestController = @Controller + @ResponseBody
+	@Controller - return view (HTML)
+	@RestController -return JSON (REST)
+return java objects from your controller method, spring boot converts these to JSON automatically
 
 eg: @GetMapping("/path")  to define endpoints
 
-return java objects from your controller method, spring boot converts these to JSON automatically
-
-eg
-
-@RestController
-pubic class GreetingController{
-	
-@GetMapping("/greeting"){
-public Greeting greeting(@RequestParam (defaultValue = "world")String name)	{
-	return new Greeting("hello" + name);
-	}
-	}
-	
-----------------------------------------------------------------------------------------
-
-Annotations:
--------------
-@RequestBody tells Spring: “Take the HTTP request body, convert it to this Java object, and pass it to this method parameter.”
+public ResponseEntity<UserDTO> getUser(Long id){
+	UserDTO dto= userService.getUserById(id);
+	return ResonesEntity.ok(dto)
+}
+---------------------------------------------------------------------------------------
+🔹Annotations:
 
 1.@RestController
 to mark a class a REST controller
@@ -149,5 +147,6 @@ Response body (usually JSON or XML content)
 You can specify exact HTTP status codes for each API response, instead of relying on default behaviors.
 You can define the body, or send no content (204 No Content), depending on the requirement.
 In exception handlers, ResponseEntity lets you send error messages and status codes clearly to clients.
+
 
 
