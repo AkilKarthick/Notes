@@ -82,6 +82,7 @@ we provide the base URL for all the method /api
 
 4.@RequestParam - binds HTTP query parameter or form data to method parameters
 
+4.@RequestBody - used to accept JSON input
 5.@PathVariable - binds URI template variables(in the url path) to method parameter
 
 6.@ResponseBody - indicate that the return value of the method should be used as the response body  if you use @Controller means no need to use this
@@ -147,6 +148,7 @@ Response body (usually JSON or XML content)
 You can specify exact HTTP status codes for each API response, instead of relying on default behaviors.
 You can define the body, or send no content (204 No Content), depending on the requirement.
 In exception handlers, ResponseEntity lets you send error messages and status codes clearly to clients.
+
 
 
 
