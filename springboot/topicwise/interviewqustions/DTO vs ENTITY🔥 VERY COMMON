@@ -1,0 +1,7 @@
+why not expose entity directly?
+secrity risk
+tight DB coupling
+Over-fetching data
+
+🎤 Interview-ready answer
+we used DTO to contrl the data expsoed to client
