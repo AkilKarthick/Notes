@@ -1,0 +1,53 @@
+optional is a wrapper object that may or may not contain a value
+if forces you to handle 'no value' cases explicitly , instead of blindly using null
+
+old way:
+
+User userOpt = userRepo.findById(id);
+System.out.println(user.getName()); // nullPointerException Risk
+
+Optional<Users> userOpt = userRepo.findById(id);
+
+
+Optional Methods:
+
+isPresent & get()  not reccomended much
+
+if(userOpt.ifPresetn()){
+    User user = userOpt.get();
+}
+This is not preferred as it looks like old null-check style.”
+
+2. ifPresent()
+
+userOpt.ifPresent(user->System.out.println(user.getName()));
+
+used for Logging or conditional processing
+
+3.orElse() VS orElseGet()
+
+userOpt.orElse(createDefaultUser());  //always executed
+userOpt.orElseGet(()->createDefaultUser()) //executed only if emply
+
+Key difference:
+
+orElse() → eager
+orElseGet() → lazy (preferred)
+
+🗣️ Interview line: “We use orElseGet() to avoid unnecessary object creation.”
+
+orElseThrow() (MOST USED IN REST APIs 🔥)
+
+User user = userOpt.orElseThrow( ()-> new ResoureNotFoundException("User not found"));
+
+🗣️ Project usage:
+In REST APIs, we use orElseThrow() to return 404 when data is missing.
+
+❌ What NOT to do with Optional (INTERVIEW TRAP)
+
+  ❌ Don’t use Optional as class field
+  ❌ Don’t use Optional in method parameters
+
+🗣️ Say this:
+
+“Optional is mainly intended for return types.
