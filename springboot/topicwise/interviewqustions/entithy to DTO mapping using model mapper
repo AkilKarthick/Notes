@@ -1,0 +1,27 @@
+DTO - data transfer object
+
+used to tranfer daata btwn API layer (cobtrikker) and service/entity layer 
+with out exposing the ful domain model entity
+
+why DTO
+
+prevents tight coupling with database
+  expsoing entities, any database change might breat the api contract
+encapsulation of data(hide internal structure
+  entity class usually map directly to the db tables
+  
+validation and transformation
+    dto help to validate requests - @NotNull, @Size , @Email
+improved API security- direclty expsong entity might leaks sensitive DB fiels or relationshps
+
+MODELMAPPER LIBRARY:
+
+sipliefie the conversion btwn different java objects
+helps in removing repetive code to copy fiels manually
+used in springboot to convert btwn DTO's and entites for clearner, maintainable code
+
+DTO TO ENTITY (WHEN RECEIVING API REQUEST)
+ENTITY TO DTO (WHEN SENDING API RESPONSE)
+
+
+
