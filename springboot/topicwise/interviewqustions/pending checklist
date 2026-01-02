@@ -3,3 +3,15 @@ pending:
 1.You should be able to explain one REST API end-to-end from your project,
 including Optional usage ?
 
+
+❓ How do you handle “data not found”?
+
+“We use Optional with orElseThrow and return 404 status.”
+
+❓ How do you design REST APIs?
+
+“By following REST principles, using proper HTTP methods, status codes, and DTOs.”
+
+❓ Where do you use Optional in REST?
+
+“In service layer while fetching data from repositories.
