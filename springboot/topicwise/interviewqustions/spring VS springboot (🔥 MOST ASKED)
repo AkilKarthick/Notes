@@ -57,18 +57,6 @@ jetty is 9.4 ad tomcat is 8.5
 
 lates version of sprinboot is 3.5.6
 
-
-
-
-
-
-
-
-
-
-
-
-
 ------------------
 
 implement service layer with spring core
@@ -80,5 +68,11 @@ load environment specific configuration using profiles
 secure application using spring security
 build rest web servce and consume it
 monitor the health of applicaitn using Acturaotors
+
+
+❓ “How does Spring Boot know what to configure automatically?”
+
+springboot autoconfiguration works using @EnableAutoConfigurations
+it scans the classpath and applies conditional configuration bsed on availble dependencies
 
 
