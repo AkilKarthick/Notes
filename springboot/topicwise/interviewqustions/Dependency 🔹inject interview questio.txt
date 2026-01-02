@@ -39,6 +39,7 @@ public class Service {
     Makes dependencies mandatory
     Easier unit testing
     Avoids NullPointerException
+❓constructor injectino will ensure all required dependencies are availble at object creation
 
 Guarantees that the dependencies are fully initialized during object creation
 Makes the class easier to unit test, as you can create instances with mock dependencies without needing Spring context
@@ -135,6 +136,7 @@ private SomeService someService;
 
 This removes the need for external server installation and simplifies workflows
 It uses TomcatServletWebServerFactory internally to manage the embedded server lifecycle.
+
 
 
 
