@@ -1,0 +1,33 @@
+most common api version strategies
+
+✅ 1. URI Versioning (MOST USED 🔥)
+
+GET /api/v1/user/1
+GET /api/v2/user/1
+
+@RestController
+@RequestMapping("/api/v1/users")
+public class UserControllerV1{ }
+
+@RestController
+@RequestMapping("/api/v2/users")
+public class UserControllerV1{ }
+
+simple
+visbiel
+Easety to manage
+
+we mostly use URI based versioning because it's simpel and explicit
+
+✅ 2. Header Versioning (MENTION ONLY)
+
+@GetMapping(value="users",headers="API-VERSION-1")
+“Header versioning keeps URLs clean but is harder to debug.” - not recomended for production API's
+
+How do you handle breaking changes?
+“By introducing a new API version instead of modifying existing APIs.”
+
+❓ Do you deprecate old versions?
+“Yes, old versions are deprecated gradually and removed after client migration
+
+When response structure changes, we expose /v2 APIs while keeping /v1 intact for backward compatibility
