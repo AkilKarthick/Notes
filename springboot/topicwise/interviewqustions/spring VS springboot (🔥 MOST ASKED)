@@ -42,6 +42,12 @@ IOC- inversion of controll
 spring controls: object creations, dependeny manangement, life cycle
 not by us(developer)
 
+component scanning:
+springbot scan , main class package and all sub packages
+so scan automatically based on package structure.
+
+
+
 Springboot 2 features
 
 require java 8, support java 9 as well
@@ -74,4 +80,5 @@ load environment specific configuration using profiles
 secure application using spring security
 build rest web servce and consume it
 monitor the health of applicaitn using Acturaotors
+
 
