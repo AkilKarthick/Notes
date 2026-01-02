@@ -1,8 +1,41 @@
-REST APIs
-client sends an http request, the controller handles it, interacting with you businesss logic present on service layer and sends a response back
+REST APIs = Representational state transfer
+📌it is an Architectural style where:
+	data is exposedd as resoure
+	communicatio happen over hTTP request/response
+	use standart HTTP methods
 
-wee need to use -spring boot starter web- 
-dependice on pom.xml file to use all facilities provided for rest api development
+RESt api flow ( controller -> service -> repository )
+
+	client sends an http request, 
+	the controller handles it, 
+	interacting with you businesss logic present on service layer
+	and sends a response back
+
+HTTP methods:
+	GET	-	fetch data
+	POST-	create data
+	PUT-	update full resoure
+	PATCH-	partical update
+	DELTE-	remove data
+
+🎤 Common interview trap
+PUT vs PATCH
+	PUT replaces the entire resource, PATCH updates only specific fields
+
+3️⃣ HTTP STATUS CODES (🔥 VERY IMPORTANT)
+we always return meaninful HTTP status code to make APIs 
+	200- succes
+	201- created
+	204- no content
+	400- bad request
+	404- nof found
+	500 internal server error
+{still more to explore here) 
+
+🔥 VERY IMPORTANT implemtatio part:
+
+we need to use 📌-spring boot starter web- 
+dependice on pom.xml file to use all facilities required  for rest api development
 
 
 use @RestController on class leverl to make rest controller
@@ -116,4 +149,5 @@ Response body (usually JSON or XML content)
 You can specify exact HTTP status codes for each API response, instead of relying on default behaviors.
 You can define the body, or send no content (204 No Content), depending on the requirement.
 In exception handlers, ResponseEntity lets you send error messages and status codes clearly to clients.
+
 
