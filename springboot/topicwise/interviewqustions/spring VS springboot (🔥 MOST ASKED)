@@ -1,25 +1,46 @@
-springboot introduction
+springboot vs spring
+--------------------
 
-it is a java framework,that simplifies building proudion ready applications
-
-provides auto-configurations to setup componenets automaticall based upon dependeicies
-
-applicaions are standalone with embedded server like tomact 
-no external server setup is needed
-
-springboot support microserice architecture and is highly customzable
-
-comes with producion ready feature like healthhekcsmetricies and monitorings
-
-eliminate boiler plate code and xml configuration , letting devepers focus on business logics
+1.it is a java framework,that simplifies building production ready applications
 
 
+🔹🔹on spring ( here is a heavy xml confgiruations) & manual dependency setup
+2.AutoConfigurations: springboot
+	provides auto-configurations to setup componenets automatically based upon dependeicies
+springboot automatically confiure beans based on :
+	classpath dependencies
+	application.properties
+	Annotations
+for EG: if spring-boot-starter-data-jpa is present
+then: Datasoure, entity manager, transaction manager are auto configured!!
 
-1.optionated - means has some default like embedded tomcat default web container
-2.Customizable - though it has some default , but easily customizable at any time during your 
-		development time
-		if your prefer jetty you can change that, on pom file
+🎤 Interview line
+“Auto-configuration reduces boilerplate by configuring beans automatically based on dependencies.”
 
+3.Embedded Server(Tomcat)
+	applicaions are standalone with embedded server like tomact 
+	no external server configurations setup is needed
+
+4.Minimal Configurations | 5.Starter dependencies
+	springboot support microserice architecture and is highly customzable
+	comes with producion ready feature like healthhekcsmetricies and monitorings
+	eliminate boiler plate code and xml configuration , letting devepers focus on business logics
+
+5.optionated - means has some default like embedded tomcat default web container
+6.Customizable - though it has some default , but easily customizable at any time during your 
+		development time. if your prefer jetty you can change that, on pom file
+
+”
+
+🏗️ Project usage
+“We used Spring Boot to quickly develop 
+and deploy REST-based microservices without manual configuration.”
+
+3️⃣ IOC & Dependency Injection (CORE CONCEPT)
+
+IOC- inversion of controll
+spring controls: object creations, dependeny manangement, life cycle
+not by us(developer)
 
 Springboot 2 features
 
@@ -29,6 +50,18 @@ jetty is 9.4 ad tomcat is 8.5
 
 
 lates version of sprinboot is 3.5.6
+
+
+
+
+
+
+
+
+
+
+
+
 
 ------------------
 
@@ -41,3 +74,4 @@ load environment specific configuration using profiles
 secure application using spring security
 build rest web servce and consume it
 monitor the health of applicaitn using Acturaotors
+
