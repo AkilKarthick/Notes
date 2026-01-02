@@ -1,8 +1,14 @@
-Dependency inject interview questions
+🔹Dependency inject interview questions
 
+dependencies are injected, not create manually
 
+❌ Bad: UserService service = new UserServiec() ; 
+✅ Good:
+    @Service 
+    public class UserService {}
 
-
+🎤 Interview line:
+    Dependecny injections promotes loose coupling & improves testability
 
 agenda==============================================================
 1.what is constructor vs field vs setter injection? in springboot
@@ -10,28 +16,35 @@ agenda==============================================================
 3.what is @qualifier & @primay annotations
 =====================================================================
 
+1.what is constructor vs field vs setter injection? in springboot?
 
-1.what is constructor vs field vs setter injection? in springboot
-
-
-constructor injection:
+constructor injection:✅ Recommended way
 
 dependencies are passed via constructor, so the object is fully initialized when created
 it is the safest & most preferred way
 
 @Component
 public class Service {
+
     private final Repository repo;
 
     @Autowired
     public Service(Repository repo) {
-//initialize During object creation
-//Dependenci are passed explicitly throughconstructor.
-        this.repo = repo;  
+        this.repo = repo;         //initialize During object creation
+                                   //Dependenci are passed explicitly throughconstructor.
     }
-}Guarantees that the dependencies are fully initialized during object creation
+}
+
+❓Why constructor injection?
+    Makes dependencies mandatory
+    Easier unit testing
+    Avoids NullPointerException
+
+Guarantees that the dependencies are fully initialized during object creation
 Makes the class easier to unit test, as you can create instances with mock dependencies without needing Spring context
 
+🎤 Interview line
+“We prefer constructor injection as it is more testable and avoids field injection issues.”
 -------------------------------------------------------
 Field Injection: Spring injects dependencies directly into fields using reflection. It’s concise but not good for testing and hides dependencies.
 
@@ -56,7 +69,7 @@ public class Service {
     }
 }
 
----------------------p------qualifier & primary annotations-----------------------------------------------------------------
+---------------------------qualifier & primary annotations-----------------------------------
 
 @Qualifier -
 Explicitly specifies which bean to inject
@@ -122,5 +135,6 @@ private SomeService someService;
 
 This removes the need for external server installation and simplifies workflows
 It uses TomcatServletWebServerFactory internally to manage the embedded server lifecycle.
+
 
 
