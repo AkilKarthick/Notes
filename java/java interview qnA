@@ -1,22 +1,690 @@
-what is method hiding?
+Java Developer Interview Questions (Core Java , Java 8 , SpringBoot , SQL) -  Interview Experience 
 
-static method cannot be ovveridieen only hiding is possible
-if both superclass and subclass have static method with the same signature- method hiding
 
-means when a subclass defines a static method with the same name and signateur as a static method in its superclass
-it looks like a method overriding! but sinec the method are static,, its actually hiding not overrding
+Core Java
 
-2. if you add a null value to an empty set, what will be the size of the set?
+1. What is method hiding?
 
-  3. garbage collections?
-4. cacn you override a static method in interface?
-  no yuo cannot override 
+Method hiding in Java happens when a subclass defines a static method with the same name and signature as a static method in its superclass.
+It looks like method overriding, but since the methods are static, it’s actually hiding, not overriding.
+Example :
 
-  static method in interface belongs to the interface itself, not to the implenting class
-  therefore, they vannot be inherited or overrident by implemnting class
-  you can declare another static method with the same name in your class, but it will hide (not voerrid the one in the interface
-  
+class Parent {
+    static void display() {
+        System.out.println("Parent display()");
+    }
+}
 
-  
-  java coding for experienced!!
-1. given a string, find the words with maximum number of vowels
+class Child extends Parent {
+    static void display() {
+        System.out.println("Child display()");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.display(); // Output: Parent display()
+    }
+}
+
+Static methods cannot be overridden — only hidden.
+If both superclass and subclass have static methods with the same signature → method hiding.
+You can still access each version explicitly:
+
+Parent.display(); // Parent display()
+Child.display();  // Child display()
+Instance methods can override, but static ones belong to the class, not the object.
+
+Java Code Asked - Given a string, find the words with the maximum number of vowels.
+
+       "The quick brown fox jumps right over the little lazy dog."
+
+
+2.Output of this - System.out.println(Double.MIN_VALUE>0.0d); - true 
+
+
+3. If you add a null value to an empty Set, what will be the size of the set? ->  1
+
+
+4. What is Garbage Collection?
+
+In Java, Garbage Collection (GC) is the automatic process of reclaiming memory used by objects that are no longer reachable in a program.
+In simple terms: ➡️ Java automatically frees up memory by removing objects that are not being used anymore — so you don’t have to delete them manually (unlike in C/C++).
+
+⚙️ How It Works
+	1	Objects are created in the Heap memory using new.
+	2	When an object no longer has any references, it becomes eligible for garbage collection.
+	3	The Garbage Collector (GC) identifies such objects and removes them to free up memory.
+
+📦 Example
+
+class Test {
+    public static void main(String[] args) {
+        String s1 = new String("Hello");
+        String s2 = new String("World");
+        s1 = s2;   // "Hello" object is now unreferenced
+        System.gc(); // Suggest JVM to run GC
+    }
+
+    @Override
+    protected void finalize() {
+        System.out.println("Garbage collected");
+    }
+}
+Explanation:
+	•	"Hello" becomes unreachable when s1 = s2;
+	•	JVM may run GC later and clean it up.
+	•	finalize() (deprecated since Java 9) runs before an object is collected.
+
+
+5. Can you override static method in interface?
+
+👉 No, you cannot override a static method defined in an interface.
+
+💡 Why?
+	•	Static methods in interfaces belong to the interface itself, not to the implementing class.
+	•	Therefore, they cannot be inherited or overridden by the implementing class.
+You can declare another static method with the same name in your class, but it will hide (not override) the one in the interface.
+
+⚙️ Example
+
+interface MyInterface {
+    static void show() {
+        System.out.println("Static method in interface");
+    }
+}
+
+class MyClass implements MyInterface {
+    static void show() {
+        System.out.println("Static method in class");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        MyInterface.show(); // ✅ Calls interface static method
+        MyClass.show();     // ✅ Calls class static method
+    }
+}
+Output:
+
+Static method in interface
+Static method in class
+
+🧠 Explanation
+	•	MyInterface.show() → calls the interface’s static method.
+	•	MyClass.show() → calls the class’s own static method.
+	•	The method in the class does not override, it hides the one in the interface.
+
+⚠️ Important Rules
+	1	Static methods in interfaces are not inherited by implementing classes.
+	2	You can call them only using the interface name, like InterfaceName.methodName().
+	3	They cannot be overridden, only hidden (if a class defines another static method with same signature).
+	4	Interface static methods were introduced in Java 8.
+
+6. Internal Working of HashMap and what is Get() method?
+
+1. HashMap Internal Data Structure
+Inside the HashMap, there is an array of nodes (called buckets):
+
+transient Node<K,V>[] table;
+Each element of this array (each bucket) can hold one or more nodes.
+
+2. What is a Node (or Entry)?
+A Node is an internal static class that stores the key-value pair along with its hash and pointer to the next node:
+
+static class Node<K,V> implements Map.Entry<K,V> {
+    final int hash;     // precomputed hash of the key
+    final K key;        // key
+    V value;            // value
+    Node<K,V> next;     // next node in case of collision (linked list)
+}
+So internally, each entry in the map looks like:
+
+[hash | key | value | next]
+
+3. How key-value is stored (during put)
+Let’s say we do:
+
+map.put("Apple", 100);
+
+Step-by-step internal flow:
+✅ Step 1: Compute hash
+
+int hash = hash("Apple".hashCode());
+Java uses a bit-mixing function to reduce collisions.
+
+Step 2: Find bucket index
+
+index = (n - 1) & hash;
+If the array (table) size = 16, index will be between 0 and 15.
+
+Step 3: Check if bucket is empty
+	•	If empty, a new Node is created and stored directly.    table[index] = new Node<>(hash, key, value, null);
+	•	   ➡️ Memory representation:    Bucket[index] → [hash | "Apple" | 100 | null]
+	•	  
+
+Step 4: If collision occurs
+If another key’s hash also gives the same index, then we use chaining (linked list).
+Example:
+
+map.put("Peach", 200);
+If "Peach" also hashes to the same index as "Apple", HashMap stores it as:
+
+Bucket[index] → [hash | "Apple" | 100 | next] 
+                             ↓
+                 [hash | "Peach" | 200 | null]
+So both keys live in the same bucket, connected via the next pointer.
+
+ Step 5: Java 8 Optimization – Tree Nodes
+If too many elements (more than 8 by default) end up in the same bucket, the linked list is converted to a balanced Red-Black Tree for faster lookup.
+
+Linked list → TreeNode (Red-Black Tree)
+This improves lookup time from O(n) to O(log n) in that bucket.
+
+Example - HashMap<String, Integer> map = new HashMap<>();
+map.put("Apple", 10);
+map.put("Banana", 20);
+
+System.out.println(map.get("Apple")); // Output: 10
+
+
+
+
+
+7. What is Solid Principle?
+
+🧩 S — Single Responsibility Principle (SRP)
+➡️ Definition: A class should have only one reason to change, i.e., only one responsibility.
+✅ Means: Each class should do one specific job.
+🧠 Why: If one class does multiple things, a change in one functionality might break another.
+💡 Example:
+
+class Invoice {
+    void calculateTotal() { /* ... */ }
+    void saveToDatabase() { /* ... */ } // ❌ violates SRP
+}
+✅ Better Design:
+
+class Invoice {
+    void calculateTotal() { /* ... */ }
+}
+
+class InvoiceRepository {
+    void save(Invoice invoice) { /* ... */ }
+}
+Now, Invoice handles business logic, and InvoiceRepository handles persistence.
+
+🧩 O — Open/Closed Principle (OCP)
+➡️ Definition: Software entities (classes, modules, functions) should be open for extension, but closed for modification.
+✅ Means: You should be able to add new features without changing existing code.
+💡 Example:
+
+class Shape {
+    void draw() { /* ... */ }
+}
+
+class GraphicEditor {
+    void drawShape(Shape s) {
+        if (s instanceof Circle) { ... }
+        else if (s instanceof Rectangle) { ... }
+    }
+} // ❌ violates OCP
+✅ Better Design (using polymorphism):
+
+interface Shape { void draw(); }
+
+class Circle implements Shape { public void draw() { /* draw circle */ } }
+class Rectangle implements Shape { public void draw() { /* draw rectangle */ } }
+
+class GraphicEditor {
+    void drawShape(Shape shape) {
+        shape.draw();  // open for extension (add new shapes), closed for modification
+    }
+}
+
+🧩 L — Liskov Substitution Principle (LSP)
+➡️ Definition: Objects of a superclass should be replaceable with objects of subclasses without affecting correctness.
+✅ Means: Subclass should behave like its parent — no surprises!
+💡 Example (Violation):
+
+class Bird { void fly() {} }
+class Ostrich extends Bird { void fly() { throw new UnsupportedOperationException(); } } // ❌ violates LSP
+✅ Better Design:
+
+interface Bird { }
+interface FlyingBird extends Bird { void fly(); }
+
+class Sparrow implements FlyingBird { public void fly() { /* ... */ } }
+class Ostrich implements Bird { /* can't fly */ }
+
+🧩 I — Interface Segregation Principle (ISP)
+➡️ Definition: Clients should not be forced to implement interfaces they don’t use.
+✅ Means: Split large interfaces into smaller, more specific ones.
+💡 Example (Violation):
+
+interface Worker {
+    void work();
+    void eat();
+}
+
+class Robot implements Worker {
+    public void work() { /* ... */ }
+    public void eat() { /* ... */ } // ❌ Robot doesn’t eat
+}
+✅ Better Design:
+
+interface Workable { void work(); }
+interface Eatable { void eat(); }
+
+class Robot implements Workable { public void work() { /* ... */ } }
+class Human implements Workable, Eatable {
+    public void work() { /* ... */ }
+    public void eat() { /* ... */ }
+}
+
+🧩 D — Dependency Inversion Principle (DIP)
+➡️ Definition: High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).
+Means: Depend on interfaces, not concrete implementations.
+💡 Example (Violation):
+
+class MySQLDatabase {
+    void connect() { /* ... */ }
+}
+
+class Application {
+    MySQLDatabase db = new MySQLDatabase(); // ❌ tightly coupled
+}
+Better Design:
+
+interface Database {
+    void connect();
+}
+
+class MySQLDatabase implements Database {
+    public void connect() { /* ... */ }
+}
+
+class Application {
+    private Database db;
+
+    Application(Database db) { this.db = db; }
+
+    void start() {
+        db.connect();
+    }
+}
+
+
+
+
+
+Java 8 and Project Questions
+
+1. What are the new features in Java8?
+
+1. Lambda Expressions
+Lambda = anonymous function (no name, no return type declaration needed).
+✅ Before Java 8:
+
+new Thread(new Runnable() {
+    public void run() {
+        System.out.println("Hello Java 7");
+    }
+}).start();
+✅ In Java 8 (with Lambda):
+
+new Thread(() -> System.out.println("Hello Java 8")).start();
+
+
+2. Functional Interfaces
+An interface with exactly one abstract method. Used mainly with lambda expressions.
+Example:
+
+@FunctionalInterface
+interface Greeting {
+    void sayHello();
+}
+
+Greeting g = () -> System.out.println("Hello!");
+g.sayHello();
+✅ Common functional interfaces in Java 8:
+	•	Runnable
+	•	Callable
+	•	Comparator
+	•	Predicate<T>
+	•	Function<T, R>
+	•	Consumer<T>
+	•	Supplier<T>
+
+3. Stream API
+Introduced for processing collections (filtering, mapping, reducing) in a functional style.
+
+4. New Date and Time API (java.time package)
+Old classes like Date and Calendar were confusing and mutable. Java 8 introduced immutable, thread-safe APIs.
+✅ Example:
+
+LocalDate today = LocalDate.now();
+LocalDate birthday = LocalDate.of(1998, 10, 19);
+Period age = Period.between(birthday, today);
+System.out.println(age.getYears());
+✅ Key Classes:
+	•	LocalDate, LocalTime, LocalDateTime
+	•	ZonedDateTime
+	•	Period, Duration
+	•	DateTimeFormatter
+
+5. Optional Class
+Helps avoid NullPointerException.
+✅ Example:
+
+Optional<String> name = Optional.ofNullable(null);
+System.out.println(name.orElse("Default Name"));
+✅ Why: Encourages explicit handling of null values instead of runtime errors.
+🧩 7. Method References
+Shortcut for calling existing methods in lambdas.
+✅ Example:
+
+List<String> names = Arrays.asList("A", "B", "C");
+names.forEach(System.out::println);  // same as (name) -> System.out.println(name)
+✅ Types:
+	•	Reference to a static method → ClassName::staticMethod
+	•	Reference to an instance method → object::instanceMethod
+	•	Reference to a constructor → ClassName::new
+
+2. What is Method Reference?
+
+A method reference is a shortcut syntax to call a method without writing a full lambda expression.
+✅ Instead of writing:
+
+x -> System.out.println(x)
+You can write:
+
+System.out::println
+It’s like saying: “Use this existing method as the implementation.”
+
+3. What are default methods?
+
+In Java, default methods are methods defined in an interface that have a method body (implementation).
+They were introduced in Java 8 to allow interfaces to evolve without breaking the classes that implement them.
+
+Why Default Methods Were Introduced
+Before Java 8, adding a new method to an interface would break all classes implementing it, since they’d have to implement the new method too.
+Default methods solve this problem by providing a default implementation that classes can use or override if needed.
+
+4. Can you explain Intermediate Operations in Streams?
+
+In Java Streams (Java 8 and later), Intermediate Operations are the operations that transform a stream into another stream.
+They are used to process data step-by-step (filter, map, sort, etc.), and are lazy, meaning they don’t execute until a terminal operation is called (like collect(), forEach(), etc.).
+
+5. What is HTTP Status code 204?
+
+The HTTP Status Code 204 means “No Content”.
+6. Can you explain the concept of Microservices in your project?
+Microservices Architecture is an approach where a large application is divided into small, independent services, each responsible for a specific business functionality — like User Service, Order Service, Payment Service, etc.
+Each service:
+	•	Runs independently
+	•	Has its own database
+	•	Communicates with other services (usually via REST APIs or message queues)
+
+7. What is logging and which logging tool have you used?
+
+Logging means recording information about your application’s runtime behavior — such as errors, warnings, or debug information — into a log file or console.
+It helps developers to:
+	•	Debug issues
+	•	Track the flow of execution
+	•	Monitor application performance
+	•	Audit user actions
+Tools - Zipkin , Grafana , Prometheus
+
+8. Explain the authentication layer in your project?
+
+In my project, the authentication layer is responsible for verifying user identity and ensuring that only authorized users can access specific resources.
+We implemented it using Spring Security with JWT (JSON Web Token) based authentication.
+
+
+Here’s the typical flow you can describe step-by-step:
+	1	User Login Request: The user sends a POST request to /login (or /authenticate) with credentials (username and password).
+	2	Authentication Manager: Spring Security’s AuthenticationManager verifies the credentials using a UserDetailsService that loads user data from the database.
+	3	JWT Generation: If authentication is successful, a JWT token is generated using a secret key and sent back in the response header or body.
+	4	Subsequent Requests: For every protected API call, the client must send the token in the Authorization header as  Authorization: Bearer <token> 
+	5	Token Validation: A custom JWT filter intercepts each request, validates the token, and sets the SecurityContext if the token is valid.
+	6	Access Granted: The request proceeds to the controller only if the user is authenticated and has the required role.
+
+Example Technologies Used
+	•	Spring Boot 3 / Spring Security
+	•	JWT (io.jsonwebtoken / jjwt library)
+	•	BCryptPasswordEncoder for password encryption
+	•	MySQL / PostgreSQL for user storage
+
+
+
+9. How does JWT work , and what is its lifespan?
+
+JWT is a compact, URL-safe token format used to securely transmit information between a client and server. It is stateless, meaning the server does not store session info, and the token itself contains all necessary info (like user identity and roles).
+A JWT is made of three parts, separated by dots (.):
+header.payload.signature
+
+Example JWT:
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+.eyJzdWIiOiJ1c2VyMSIsInJvbGVzIjoiQURNSU4iLCJleHAiOjE2OTk5OTk5OTl9
+.dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+
+JWT Lifespan
+	•	Controlled by exp claim in the token payload (expiration time in UNIX epoch seconds).
+	•	Typical lifespans:
+	◦	Access Token: 5–60 minutes (short-lived for security)
+	◦	Refresh Token: 7–30 days (used to generate new access tokens without login)
+Example exp claim in payload:
+
+{
+  "sub": "user1",
+  "roles": "ADMIN",
+  "iat": 1699990000,
+  "exp": 1700000000
+}
+	•	iat = issued at time
+	•	exp = token expiry time
+Once expired, the server rejects the JWT. The client must use a refresh token to get a new access token.
+
+
+
+10. How does JWT works with Refresh Tokens?
+
+	1	User Login
+	◦	Client sends username & password to /login.
+	◦	Server validates credentials.
+	2	Tokens Issued
+	◦	Server generates access token (short-lived, e.g., 15 min).
+	◦	Server generates refresh token (long-lived, e.g., 7–30 days).
+	◦	Both tokens are sent to the client.
+	3	Accessing Protected APIs
+	◦	Client includes access token in Authorization header:    Authorization: Bearer <access_token>
+	◦	  
+	◦	Server validates token (signature + expiry) and grants access.
+	4	Access Token Expired
+	◦	When the access token expires, the client calls /refresh endpoint with refresh token.
+	5	Refreshing Token
+	◦	Server validates the refresh token (signature, expiry, optional DB lookup to see if it's revoked).
+	◦	If valid, server issues a new access token (and optionally a new refresh token).
+	6	Client Continues
+	◦	Client uses the new access token for subsequent API calls without asking the user to log in again.
+Tip for Interviews: You can explain it with a simple analogy:
+Access token = “hotel room key” (short-lived, used frequently) Refresh token = “front desk master key” (long-lived, can get a new room key without checking in again)
+
+11. Can you explain how you integrate 3rd party data in your project?
+
+In my project, we often needed to fetch and use external data from third-party APIs, such as payment gateways, social media data, or cloud services. We integrated this using REST APIs / SDKs while ensuring security, reliability, and scalability.
+
+🔹 2. Integration Approach
+	1	Identify API & Requirements
+	◦	Understand the API endpoints, request/response structure, rate limits, and authentication method (API key, OAuth2, JWT, etc.).
+	2	Authentication
+	◦	Most APIs require authentication.
+	▪	API key: Passed in header or query params
+	▪	OAuth2: For user-authorized data access
+	▪	JWT tokens: For signed API requests
+	3	Calling the API
+	◦	In Spring Boot, we use:
+	▪	RestTemplate (classic approach)
+	▪	WebClient (reactive, non-blocking approach)
+	◦	Example: 
+	◦	WebClient webClient = WebClient.builder()
+	◦	    .baseUrl("https://api.example.com")
+	◦	    .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + apiToken)
+	◦	    .build();
+	◦	
+	◦	String response = webClient.get()
+	◦	    .uri("/data")
+	◦	    .retrieve()
+	◦	    .bodyToMono(String.class)
+	◦	    .block();
+	◦	  
+	4	Data Mapping
+	◦	Convert API response (usually JSON) to Java objects using Jackson or Gson.
+	◦	Example:    ObjectMapper mapper = new ObjectMapper();
+	◦	ApiResponse apiResponse = mapper.readValue(response, ApiResponse.class);
+	◦	  
+	5	Business Logic Integration
+	◦	Use the mapped data in your services, e.g., enrich user profiles, calculate analytics, or display dashboards.
+	6	Error Handling & Retry
+	◦	Handle HTTP errors (4xx, 5xx) gracefully.
+	◦	Implement retry mechanisms for transient failures using Spring Retry or resilience libraries like Resilience4j.
+
+
+
+Spring Boot
+
+1. @Lazy Annotation
+
+In Spring, @Lazy is used to delay the initialization of a bean until it is actually needed, rather than creating it at application startup.
+	•	By default, Spring creates singleton beans eagerly at context startup.
+	•	Using @Lazy makes the bean lazy-initialized, meaning Spring will create it only when it is first requested.
+
+🔹 2. Why Use @Lazy?
+	1	Performance Optimization
+	◦	Reduces startup time by avoiding initialization of beans that may not be used immediately.
+	2	Circular Dependency Resolution
+	◦	Helps break circular dependencies by delaying bean creation until runtime.
+	3	Conditional Resource Usage
+	◦	Useful for heavy beans (DB connections, file handlers, or expensive services) that aren’t always needed.
+
+🔹 3. How to Use @Lazy
+A. On a Bean Definition
+
+@Configuration
+public class AppConfig {
+    @Bean
+    @Lazy
+    public HeavyService heavyService() {
+        return new HeavyService();
+    }
+}
+	•	heavyService will only be created when first injected or requested.
+B. On a Class
+
+@Service
+@Lazy
+public class HeavyService {
+    public HeavyService() {
+        System.out.println("HeavyService initialized!");
+    }
+}
+	•	The bean is lazy-initialized by Spring when first needed.
+C. On Injection Point
+
+@Service
+public class UserService {
+
+    private final HeavyService heavyService;
+
+    public UserService(@Lazy HeavyService heavyService) {
+        this.heavyService = heavyService;
+    }
+}
+	•	Here, HeavyService is injected lazily, even if it is defined as a singleton.
+Example Use Case
+Suppose you have a reporting service that generates heavy PDF reports.
+	•	Most of the time, it’s not used.
+	•	Mark it as @Lazy so Spring doesn’t load it at startup, saving memory and improving startup performance.
+
+2. @Component Annotation
+
+Tip for Interviews:
+	•	Mention that @Component is part of Spring’s core annotations, enables dependency injection, and supports loose coupling.
+	•	Also, note that specialized annotations (@Service, @Repository, @Controller) are just semantic wrappers for @Component.
+
+3. What is component scanning?
+
+Component Scanning is the process by which Spring automatically detects classes annotated with stereotypes (@Component, @Service, @Repository, @Controller) and registers them as beans in the application context.
+Without component scanning, you would need to manually declare beans in a @Configuration class using @Bean.
+
+🔹 2. How Component Scanning Works
+	1	Spring looks for the @SpringBootApplication or @ComponentScan annotation on your main class.
+	2	It scans the base package and its sub-packages for classes with Spring stereotypes.
+	3	It automatically registers those classes as beans in the IoC container.
+	4	These beans can now be injected anywhere using @Autowired.
+
+4. How to handle exception in SpringBoot?
+
+Global Exception Handler Class - @ControllerAdvice @ExceptionHandler
+
+5. What is JPA?
+JPA (Java Persistence API) is a specification in Java for managing relational data in applications.
+It provides a standard way to map Java objects (entities) to database tables and perform CRUD operations without writing complex SQL queries.
+Note: JPA is just an interface/spec, not an implementation. Popular implementations include:
+	•	Hibernate
+	•	EclipseLink
+	•	OpenJPA
+
+6. Explain about the Bean scope? (Injection Of Prototype Bean in Singleton)
+
+Singleton , Prototype, Request , Session and Global Session.
+
+7. @RequestParam
+
+	•	@RequestParam is a Spring MVC annotation used to extract query parameters from the HTTP request URL.
+	•	It binds the request parameter to a method parameter in a controller.
+
+2. Basic Usage
+Example URL:
+
+GET /users?name=MJ&age=25
+
+8. @RequestBody
+
+@RequestBody is a Spring MVC annotation used to bind the HTTP request body (usually JSON or XML) to a Java object.
+It is commonly used in POST, PUT, or PATCH requests where data is sent in the request body rather than as query parameters.
+
+9. What is path variable?
+
+@PathVariable is a Spring MVC annotation used to extract values from URI path segments and bind them to method parameters in a controller.
+Useful in REST APIs where resources are identified in the URL itself.
+
+10. What is @GeneartedValue annotation?
+
+	•	@GeneratedValue is a JPA annotation used to automatically generate values for primary key fields in an entity.
+	•	It is typically used with the @Id annotation to indicate that the database should handle generating unique IDs for entities.
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private Long id;
+
+
+
+SQL 
+
+1. You have a user table with 50 records. Write a query to retrieve 20 records starting from the 5th row. The result should include the user’s first name and last name.
+
+SELECT first_name, last_name
+FROM user
+ORDER BY id
+LIMIT 20 OFFSET 4;
+
+2. You have two tables. Write a query using Inner Join to retrieve data. You can use any example data for this.
+
+SELECT u.first_name, u.last_name, o.order_id, o.amount
+FROM users u
+INNER JOIN orders o
+ON u.user_id = o.user_id;
