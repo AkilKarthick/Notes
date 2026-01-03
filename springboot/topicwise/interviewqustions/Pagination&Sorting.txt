@@ -2,23 +2,44 @@ PAGINATION & SORTING
 --------------------
 suppose we have a dashboard of million of records if you load the page then everything lags right, bcz you are trying to fetch all the records at once And that's not scalable
 
+findAll() //loads everyting
+load huge data into memory, it slow response & high DB load
+
+with Pagination: fetch limited records, faster API and scalbe
+
 ----------
 Pagination: 
 ----------
+
+Pagination improves performance by fetching only required records instead of loading the entire dataset
+
 it's the technique of breaking large data sets into smaller, manageable chunks or pages
 instead of sending 10,000 rows you sending 20 at a time
+🔹 Pageable
 
+Defines:
+Page number
+Page size
+Sorting
 
-springboot already has a inbuilt interface called Pageable interface
+🔹 Page
 
-Pageable pageable = PageRequest.of(pageNo, pageSize);
+Contains:
+Data
+Total pages
+Total elements
+springboot already has a inbuilt interface called 🔹Pageable interface
+
+	🔹Pageable pageable = PageRequest.of(pageNo, pageSize);
 
 then use this in your JPA query
 
-public List<Employee> getAllEmp(Pageable pageable){
+	public List<Employee> getAllEmp(Pageable pageable){
+		return employeeRepository.findAll(pageable);
+	}
 
-	return employeeRepository.findAll(pageable);
-}
+🎤 Interview explanation:
+We use Pageable to control page size and avoid loading large datasets.
 
 -------
 Sorting
@@ -30,4 +51,24 @@ Sort sort = Sort.by("name").ascending();
 
 now add this sort object into pageable 
 
+🔹Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("name").ascending());
+
+multiple fields
+
+Sort sort = Sort.by("name").ascending()
+                .and(Sort.by("createdAt").descending());
+
+“Pagination works seamlessly with custom JPQL queries
+
+
+
 Pageable pageable = PageRequest.of(pageNo, pageSize.sort);
+
+REAL PROJECT PERFORMANCE OPTIMIZATION (RESUME LINK 🔥)
+❓ How did you improve performance by 25%?
+
+“By optimizing queries, adding indexes, and using pagination to reduce large data fetches.”
+This directly matches your resume
+
+Where is pagination applied?
+	Controller / Service layer
