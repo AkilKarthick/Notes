@@ -1,4 +1,8 @@
 
+EG:
+parent class having one static method 
+child class extends parent class & overrid the static method
+
 -----------------------
 2. what is fail fast iteration and how to handle it?
 
@@ -170,5 +174,6 @@ public class TestDeepClone {
         System.out.println(e1.dept.name); // HR (unchanged)
         System.out.println(e2.dept.name); // Finance
   
+
 
 
