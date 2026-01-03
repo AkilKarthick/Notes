@@ -25,15 +25,34 @@ if two objects are equals by euqla() they musht have the same hashcode()
 
 -------------------------------
 2.internal working of hashMap()??
+inside the HashMap, there is an array of nodes(called buckets)
+Each element of this array ( each bucket) can hold one or more nodes
+
+what is node:
+internal static class that store the key-value pair along with its hash and pointer to the next node
+so internally each entiry in the map looks like
+[hash | key | value | next ]
+
 
 
 hashmap stores each (key-value) in an arrays where each position  is called a "bucket".
 
-  1.when a key-value pair is added using put()
+  1.when a key-value pair is added using put() 
+      for eg: map.put("apple",100);
+
   2.java calculate a hash-value from the key using hashcode() method which determine the bucket index for storage. 
-  3.if the bucket is empty (key-value) is placed
+        int hash = hash("apple".hashCode());
+      java using bit mixing function to reduce collisions.
+
+  3.check if the bucket is empty (key-value) is placed
+  if empty , a new Node is created and sotred direclty
      3a.if it is not empty HashMap scan the list/tree in that bucket
   4.if multiple keys have the same hash index(collision) , hashmap puts them in a linkedlist or tree , if too many collisions)  inside the bucket
+
+if too many elements (mreo than 8 by default ) end up in the same bucket, the linkedlist is converted to a balanced RED black tree for fast lookup
+
+so linkedList -> tree node(red black tree) this improve lookup time from
+O(n) to O(log n) in the buckets
 
 when retrieving, hashmap uses the key's hashcode() to find the bucket and serch for the exact key using equals() method
 
@@ -184,6 +203,7 @@ fster due to no syn
 increased 50 % when full
 user iterator only for travesing
 best for single threaded env 
+
 
 
 
