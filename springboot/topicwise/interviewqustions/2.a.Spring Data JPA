@@ -1,0 +1,123 @@
+ Spring Data JPA
+
+1.@Entity -
+2.@Table(name = "tablename)
+
+this will tell hibernate to map this class to a database table
+
+
+3.  public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+PRIMAY KEY generation strategies 
+
+1.IDENTITY - DB auto increment ( we commonly use this with MySQL)
+2.SEQUENCE - DB sequence
+3.AUTO - provider decides
+
+ENTITY RELATIONSHIP (🔥 VERY IMPORTANT)
+
+one-to-one
+
+@OneToOne
+@JoinColumn(name = "profie_id")
+private Profile profile;
+
+One-to_Many (most common)
+
+ @OneToMany
+ private List<Oder> order;
+
+ManyToOne (Most used 🔥) Many-to-One is most commonly used in real projects for parent-child relationships
+
+ @ManyToOne
+ @JoinColumn(name = "user_id")
+ private User user;
+
+FETCH TYPES – LAZY vs EAGER (🔥 CRITICAL)
+
+🔹 LAZY (Default for collections)
+      Data loaded only when accessed, Better performance
+
+@OneToMany(fetch = FetchType.LAZY)
+private List<Order> orders;
+
+🔹 EAGER
+      Loads data immediately, Can cause performance issues
+
+@ManyToOne(fetch = FetchType.EAGER)
+private User user;
+
+🎯 INTERVIEW KILLER ANSWER
+“We prefer LAZY loading to avoid unnecessary DB queries and performance issues
+
+N+1 PROBLEM (VERY IMPORTANT 🔥🔥) will look into this later
+
+
+7️⃣ CASCADING (REALISTIC USE)
+
+@OneToMany(cascade = CascadeType.ALl)
+private List<Order> orders;
+
+cascade ensure child entities are persisted or deleted along with parent
+we use Cascading carefully to avoid accidental deletes
+
+ORPAHN REMOVEAL 
+@OneToMany(orphanRemoval = true)
+private List<Order> orders;
+
+if child is removed from parent collection, it is delted form db
+
+
+
+
+
+
+
+
+
+
+
+---------
+@Query annotation is used in  Spring Data JPA repo to define custom JPQL
+java persistence query language or native SQL querires from more complex databse operation
+
+place @Query on repo methods
+specify the JPQL or native query as a String arguments
+it executed when the method is called
+it support parameter binding for dynamic queries
+
+How to use @Query in a Spring Boot project
+
+Define an Entity
+
+@Entity
+public class Book {
+    @Id
+    private Long id;
+    private String title;
+    private String author;
+
+Step 2: Create Repository Interface
+
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+// JPQL query to find books by author name
+
+//method parameter is bound to the named parameter
+
+    @Query("SELECT b FROM Book b WHERE b.author = :authorName")
+    List<Book> findBooksByAuthor(@Param("authorName") String authorName);
+
+// Native SQL query to find books with title containing keyword
+
+    @Query(value = "SELECT * FROM book WHERE title LIKE %:keyword%", nativeQuery = true)
+    List<Book> findBooksByTitleKeyword(@Param("keyword") String keyword);
+}
+
+//
+
+
+The variable authorName used in the method parameter is bound to the named parameter :authorName in the JPQL query. When you call findBooksByAuthor("John"), the method passes "John" as the value of authorName, which gets injected into the query at :authorName.
