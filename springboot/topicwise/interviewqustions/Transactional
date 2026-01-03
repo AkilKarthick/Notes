@@ -1,0 +1,40 @@
+
+@Transactionl
+
+Starts a transaction
+Commits on success
+Rolls back on RuntimeException
+
+@Transactional ensures rollback if any runtime exception occur
+by default roll back happed for unchecked exception!!
+
+does it roll back for checekd exception ❓
+ ❌ No (by default)
+we need to give like this  
+✅ To rollback for checked exceptions:
+@Transactional(rollbackFor = Exceptoin.class)
+
+
+  @Autowired
+  private UserRepository userRepository;
+
+  @Transactional
+  public void registerUser(User user) {
+    // If any exception occurs here, transaction will rollback automatically
+    userRepository.save(user);
+
+a transaction is a single unit of work that must either 
+Complete fully ✅
+Or rollback completely ❌
+
+a transaction ensure data consistency by treating multiple DB operations as a single unit of work!
+
+
+2️⃣ ACID Properties (INTERVIEW LEVEL)
+ACID properties ensure reliable database transactions
+
+  Property	Meaning
+  Atomicity	All or nothing
+  Consistency	DB remains valid
+  Isolation	Transactions don’t interfere
+  Durability	Data persists after commit
