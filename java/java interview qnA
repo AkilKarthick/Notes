@@ -1,0 +1,22 @@
+what is method hiding?
+
+static method cannot be ovveridieen only hiding is possible
+if both superclass and subclass have static method with the same signature- method hiding
+
+means when a subclass defines a static method with the same name and signateur as a static method in its superclass
+it looks like a method overriding! but sinec the method are static,, its actually hiding not overrding
+
+2. if you add a null value to an empty set, what will be the size of the set?
+
+  3. garbage collections?
+4. cacn you override a static method in interface?
+  no yuo cannot override 
+
+  static method in interface belongs to the interface itself, not to the implenting class
+  therefore, they vannot be inherited or overrident by implemnting class
+  you can declare another static method with the same name in your class, but it will hide (not voerrid the one in the interface
+  
+
+  
+  java coding for experienced!!
+1. given a string, find the words with maximum number of vowels
