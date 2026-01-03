@@ -72,3 +72,27 @@ This directly matches your resume
 
 Where is pagination applied?
 	Controller / Service layer
+
+RESUME-BASED DB QUESTIONS (🔥 MUST PREPARE)
+
+These questions WILL come because they are on your resume.
+
+❓ How did you improve DB performance by 25%?
+
+“By optimizing queries, adding indexes on frequently searched columns, and implementing pagination to avoid large data fetches.”
+
+❓ What kind of queries did you optimize?
+
+“SELECT queries with joins and filters that were frequently executed.”
+
+❓ Did you use indexes?
+
+“Yes, indexes were added on columns like email and foreign keys to speed up lookups.”
+
+❓ How did you handle large datasets?
+
+“By using pagination and lazy loading to limit data retrieval.”
+
+❓ How did you handle transactions?
+
+“Using @Transactional at the service layer to ensure data consistency.
