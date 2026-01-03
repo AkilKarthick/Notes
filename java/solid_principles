@@ -1,0 +1,49 @@
+In Spring Boot, these principles are naturally applied using interfaces,
+dependency injection, and layered architecture.
+
+SOLID is a set of 5 design pinciples that help you to write 
+clearn code
+maintainable code
+scalable code
+testable code
+
+s - single responsiblity principle (SRP) 
+---------------------------------------
+
+a class should have only one reason to change
+eg: 
+❌ Bad example c;as Userservice{} 
+                   saveUser()
+                   sendEmail()  }
+                   
+✅ Good example class Userservice & class EmailSerivce
+so SRP reduce the readabiltiy & reduce impact of changes
+
+O - open and closed principe (OCP)
+----------------------------------
+
+open for extension 
+closed for modification
+
+good to use interface 
+OCP avoid modfying tested code and reduces regression risk
+
+L- liskov substituion principle (LSP)
+-------------------------------------
+to avoid unexpected run time errors
+clean inheritance hiearchy
+
+Lsp ensure polymorphsih works correclty
+
+i- interfcae segregation principle (ISP)
+----------------------------------------
+
+dont force a class to implement a method it doesn't need
+ISP avoid unnecessary implementations
+
+D- dependency inversion principle (DIP)
+---------------------------------------
+@autored
+
+
+
