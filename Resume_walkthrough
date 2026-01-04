@@ -48,4 +48,13 @@ we have monitoring and allerting setup via prometheasus adn grafana
 we have keep an eye on thse for performance metrices like throughput lateny and error rates
 
 
+why java8 and what difference btwn java 8 and 11
+
+java 8 is one of the revolutionary release in ajva history
+modren programming features
+function programming 
+
+java 11 provide long term support version that built on top of the improvem made after java 8
+http clietna pi, sever sting utlity method as well
+removed some deprecate method as well on 11 release
 
