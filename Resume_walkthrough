@@ -21,3 +21,14 @@ involed in code review, production issues analysis, deployemntn automation using
 maven git & jenkins , so these are all my responsibilties
 
 ---------------
+tiffany:
+
+this microservice develped by sprinboot,
+using rest api, we get response we process it internally  
+
+where you are using asynchronous call and thread pool
+
+where you implemented caching for frequently accesed reference data to reduce latency
+we have monitoring and allerting in space, 
+if any api fails or timeout , cirucit breaker trigger fall back logic  
+
