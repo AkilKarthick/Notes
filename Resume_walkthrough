@@ -32,3 +32,20 @@ where you implemented caching for frequently accesed reference data to reduce la
 we have monitoring and allerting in space, 
 if any api fails or timeout , cirucit breaker trigger fall back logic  
 
+
+on datase persepective we are using spring data jpa with mysql
+so sprinbtoo with microservie that allows us to scale data horizontally!!
+for logging , audict, reporting we have devleped a speare odeul for htese
+
+incase of high volume of traffic we used messaging quue kafka or rabbit mq to process transacions
+so this enuser that the downstream service are slow or temporarily
+
+how i optimized spql
+we are using spring data jpa along with mysql we have optimzed performnace through proper
+indexing & pagination & batch insert update instead of single record operations
+
+we have monitoring and allerting setup via prometheasus adn grafana
+we have keep an eye on thse for performance metrices like throughput lateny and error rates
+
+
+
