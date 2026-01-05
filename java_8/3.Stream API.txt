@@ -13,7 +13,7 @@ Stream API:
 
 we have 
     Source - list?set?array
-    intermediate operations - filter map
+    intermediate operations - filter map  | short-circuit operations: findfirst, limit, anymatchi etct
     Terminal opertaion - reduce, collectr, forEach
 -----------------------------------------
 
@@ -73,13 +73,16 @@ findFirst(), findAny(): Optional first/any match
 =================
 Parallel Streams:
 ==================
+    paralle stream are thread safe in execution! but not thread safe with respect to shared mutable data..
+    use ForkJoinpool common pool , runs on multithreads, 
+    execution in concurrent! but still code may still not be thread safe
 
     parallelStream() to enable parallel processing
     Efficient utilization of multiple CPU cores for big data
 
 List<String> names = Arrays.asList("John", "Jane", "Mark", "Diana");
 
-        List<String> result = names.stream()
+        List<String> result = names.parallelStream()
             .filter(name -> name.startsWith("J"))
             .map(String::toUpperCase)
             .sorted()
@@ -163,6 +166,7 @@ limit
 
 🧠 ONE-LINE MEMORY TRICK=
 Stream = pipeline + laziness + immutability
+
 
 
 
