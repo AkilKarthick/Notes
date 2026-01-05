@@ -1,4 +1,5 @@
 Stream API:
+    Streams provide functional-style data processing with lazy evaluation. We use them mainly for filtering, mapping, and transforming collections
 
     Stream is a pipeline to process data from a collection
     used to process collections in a functional style using lambda expression
@@ -101,6 +102,67 @@ What are short-circuiting operations?
 
 Operations like anyMatch(), allMatch(), noneMatch(), findFirst(), and findAny() which may stop processing early.
 
+🔥 Java 8 Stream – Tricky Interview Questions
+
+1️⃣ what happens if you don't use a terminal operation?
+
+    list.stream().fileter(i-{
+                System.out.println(i);
+                return i%2==0;
+    });
+    
+    no output
+
+Streams are lazy
+👉 Intermediate operations don’t execute without a terminal operation
+
+2️⃣ Peek() is used for debugging
+
+4️⃣ Can a stream be reused? ⚠️  ❌ NO  👉 Streams are single-use
+
+Stream<Integer> s = list.stream();
+s.forEach(system.out.println);
+s.forEach(system.out.println); // ❌ IllegalStateException
+
+5️⃣ What is the output?
+
+list.stream()
+    .filter(i -> {
+        System.out.println("filter " + i);
+        return i > 5;
+    })
+    .map(i -> {
+        System.out.println("map " + i);
+        return i * 2;
+    })
+    .findFirst();    //bit confusing!
+
+)
+
+7️⃣ Does filter() change the original list?
+
+❌ NO
+👉 Streams are non-mutating
+
+🔟 Are streams thread-safe?
+❌ Streams are NOT thread-safe
+
+1️⃣ What happens if you modify a list inside stream?
+    list.stream()
+        .forEach(i -> list.remove(i));
+    ❌ ConcurrentModificationException
+
+what is short circuiting?
+
+findFirst
+findAny
+anyMatch
+limit
+ 
+👉 stop stream processing early!
+
+🧠 ONE-LINE MEMORY TRICK=
+Stream = pipeline + laziness + immutability
 
 
 
