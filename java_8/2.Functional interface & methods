@@ -1,20 +1,25 @@
-Functinal interface has exactly one abstract method
-whhy java 8 introduced it :to suppor lambda expression & enanle functional programming
+Functinal interface has exactly one -abstract method
+whhy java 8 introduced it :to suppor lambda expression & enable functional programming
 
-🏗️ Project-level usage
-in our springboot services, we use functinoal interface implicitly in streams, predicate and comparator
+    @FunctionalInterface
+    interface Calculator {
+        int add(int a, int b);
+    }
+✔it can have both default method 
+✔                static method 
+✔it can have toString(), equals() all these Object class method too
 
-@FunctionalInterface
-interface Calculator {
-    int add(int a, int b);
-}
-//it can have both default & static method too
+📊 java 8 provide some below predefined functional interfaces in java.util.function package
 
-java 8 provide some belwo predefined functional interfaces in java.util.function package
------
 What inbuilt functional interfaces have you used?
 
-I’ve mainly used Predicate for filtering, Function for transformations, Consumer for processing data in forEach, and Supplier for default or lazy values, especially while working with Java 8 streams in service layers
+I’ve mainly used 
+
+1️⃣Predicate for 👉 filter() ,
+2️⃣Function for transformations 👉 map() , 
+3️⃣Consumer for processing data in 👉 forEach()
+4️⃣Supplier for default or lazy values,👉 Use case: lazy object creation
+especially while working with Java 8 streams in service layers
 
 Consumer -Accepts one input, returns nothing
 predicate -Accepts one input, returns boolean
@@ -48,12 +53,6 @@ Takes no input, returns output
         Supplier<String> message = () -> "Default Value";
         System.out.println(message.get());
 
-
-
-
-
-
-
         // UnaryOperator example
         UnaryOperator<Integer> square = x -> x * x;
         System.out.println(square.apply(6));  // 36
@@ -74,5 +73,24 @@ Takes no input, returns output
         BiFunction<Integer, Integer, String> concatSum = (a, b) -> "Sum: " + (a+b);
         System.out.println(concatSum.apply(10, 20));  // Sum: 30
 
-    }
+1️⃣Can lambda expression throw checked exception?
+❌ NO (unless interface declares it)
+
+@FunctionalInteface
+interface Task{
+    void run() throws IOException;
+}
+
+🔥 Real Spring Boot Usage (Like Your Project)
+
+List<UserDTO> dtos = users.stream()
+    .filter(user -> user.isActive())        // Predicate
+    .map(userMapper::toDto)                 // Function
+    .peek(log::info)                        // Consumer
+    .toList();
+
+Functional interfaces enable lambda expressions by enforcing a single abstract method. Java provides built-in functional interfaces like Predicate, Function, Consumer, and Supplier to support functional-style programming
+
+“Java is primarily an object-oriented language, but since Java 8 it also supports functional-style programming using lambdas, streams, and immutable data processing. In real projects, we use a hybrid approach—OOP for structure and functional style for data processing.”
+
 
