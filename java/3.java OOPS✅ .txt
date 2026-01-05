@@ -4,7 +4,9 @@ class: it is like a blueprint or template for creating an objects with propertie
 
 objects: instance of the calss representing real world entities
 
-	1.encapsulation: hiding internal data and providing access thorugh methods eg: getter & setters
+	1.encapsulation:🔥 its about hidind data + controllered access
+	hiding internal data and providing access thorugh methods
+	eg: getter & setters
 	
 	2.inheritance: mechanism to create new classes from existing one, enabling code reuse
 	
@@ -13,7 +15,7 @@ objects: instance of the calss representing real world entities
 	4.abstraction: hiding complex details & shows only necessary parts to the users
 ============================================================================================
 
--------------🗣️ Interview-ready explanation
+-🗣️ Interview-ready explanation
 A.encapsulation:  we used encapsulation to hide internal data and expose only require behavirou through getter and setter
 in our springboot services, entities are encapsulated to avoid direct field access!
 entity fiels we kept as private !
@@ -52,22 +54,23 @@ types of inheritance;
 a hierarchical inheritance means multiple subclasses inherit from a single superclass. The superclass provides common properties and methods, and each subclass extends or overrides them for specialization.
 
 --------------
-C.polymorphism: allows one method to behave differently based on the object type
+C.polymorphism: 
+allows one method to behave differently based on the object type
 why it is sued : loosely coupled! thing
 
 🏗️Real project usage
 
 “In Spring, we use polymorphism when multiple service implementations exist for the same interface.”
 
-interface PaymentService {
-    void pay();
-}
-class CardPayment implements PaymentService {
-    public void pay() { }
-}
-class UpiPayment implements PaymentService {
-    public void pay() { }
-}
+	interface PaymentService {
+	    void pay();
+	}
+	class CardPayment implements PaymentService {
+	    public void pay() { }
+	}
+	class UpiPayment implements PaymentService {
+	    public void pay() { }
+	}
 
 ability to behave differently based on the object type
 
@@ -85,6 +88,14 @@ ability to behave differently based on the object type
 		AirShipmentservivce| gorundshipmentsevice & internationsshipment serice 
 
 		We had a base ShipmentService class that defined processShipment(), and subclasses for air, ground, and international shipments overrode this method to apply specialized business rules
+
+🔥 Polymorphism Traps:
+
+1.can we overload main method?
+	yes we can,  like public static void main(int a){}
+but JVOm calls only 
+				public static void main(String[] args)
+
 ----------------------------
 
 
@@ -202,4 +213,5 @@ you cannot use this() and super() together
 super- calls parent const
 this() - calls another construcot in same calss
 both must be first line
+
 
