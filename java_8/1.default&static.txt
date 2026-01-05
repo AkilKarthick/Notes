@@ -38,15 +38,23 @@ output:
 16
 Default Method Executed
 
-issues facing during method overloading
+
+1️⃣ Can default methods be overridden? ✅ YES
+
+2️⃣ What if two interfaces have same default method? ⚠️ VERY COMMON
 
 when a class implements two or more interface that provdie a default impelemntation for a method with same names and signature, java compiler cannot determine which default impelementation to use, this ambigiuty result in compilation error
 
+    A.super.show(); // explicit resolution
 we can resolce this 
 1. just override the detaul method provid specific implementation to resolve ambiguity
 2, explicitly invoke a specific default method, like using super() keyword
 
--------------------------------------
+5️⃣ Can default methods be final? ❌ NO
+
+7️⃣ Can default methods call other default methods? ✅ YES
+
+---------------
 Static method:
 --------------
 just like static method of a class belong to class itslef right
@@ -81,5 +89,29 @@ class MyDataImpl implements MyData {
     }
 }
 
+🔥 SUPER TRICKY COMBINATION QUESTIONS
 
+1️⃣ Can default method call static method? yes 
+
+    interface A {
+        Static void log() {}
+        default void test() {
+            A.log();
+        }
+    }
+
+1️⃣ Can static method call default method?
+ ❌ NO
+
+
+when to choose which one?
+                        default     static
+Can be overridden?	    ✅ Yes	    ❌ No
+Uses object state?	    ⚠️ Indirect	❌ No
+Part of polymorphism?	✅ Yes	    ❌ No
+Inherited?	            ✅ Yes	    ❌ No
+Called via object?	    ✅ Yes	    ❌ No
+
+I use default methods when the behavior belongs to the implementing class and may vary or be overridden. 
+I use static methods when the behavior is a utility that belongs to the interface itself and should not be overridden
 
