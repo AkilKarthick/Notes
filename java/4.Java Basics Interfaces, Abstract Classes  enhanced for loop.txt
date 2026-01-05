@@ -1,7 +1,20 @@
 Java Basics: Interfaces, Abstract Classes | enhanced for loop
 
 
-INTERFACES
+📌INTERFACES
+
+✅variable present inside interface must be 
+   -public, static & final- by default
+✅interface cannot have constructor
+✅we cannot override static method from interface
+   (static method belong to interface, not class)
+✅interface can extend multple interface ✅ YES ( interface c extends A,B{} )
+✅what happpends if two interface have same defautl method?
+     compile-time error unless overriden 
+  🧩 A.super.test(); // OR B.super.test()
+
+ 🔑Multiple inheritance is possible via interfaces in Java, but when ambiguity occurs (same default method), Java forces the class to resolve it explicitly.
+ This avoids the Diamond Problem.
 
 An interface defines a contract of abstract methods (no implementation) that implementing classes must provide.
 
@@ -15,10 +28,13 @@ from java 9
 
 private method also we can implemented 
 
-
-
 ---------------
 ABSTRACT CLASSES
+
+
+how?
+Can an abstract class implement an interface without implementing methods?
+✅ YES
 
 An abstract class can have abstract (unimplemented) methods
 as well as concrete (implemented) methods.
@@ -52,3 +68,4 @@ List<String> names = List.of("Alice", "Bob");
 for (String name : names) {
     System.out.println(name);
 }
+
