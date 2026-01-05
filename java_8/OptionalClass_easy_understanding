@@ -1,38 +1,59 @@
-optional is a wrapper object that may or may not contain a value
+Optional Class
+--------------
+
+is a container object that may or may not contain a value
 if forces you to handle 'no value' cases explicitly , instead of blindly using null
+to avoid null pointer exception! 
 
-old way:
+old way: why Optional was introduced ?
 
-User userOpt = userRepo.findById(id);
-System.out.println(user.getName()); // nullPointerException Risk
+    User user = userRepo.findById(id);
+    if(user != null) {
+    System.out.println(user.getName()); } // nullPointerException Risk
 
-Optional<Users> userOpt = userRepo.findById(id);
+too many null checks
+Missed check means  -> it will through nullPointerExceptions!
 
+-Java 8 Solution ✅-
+    Optional<Users> userOpt = userRepo.findById(id);
+    userOpt.isPresent(user -> System.out.println(user.getName()));
+
+🔹 Creating Optional (VERY IMPORTANT)
+--------------------------------------
+
+    Optional<String> o1 = Optional.of("Java");      // ❌ throws NPE if null
+    Optional<String> o2 = Optional.ofNullable(null); // ✅ safe
+    Optional<String> o3 = Optional.empty();          // empty
 
 Optional Methods:
 
-isPresent & get()  not reccomended much
+❌ isPresent & get()  not reccomended much
 
-if(userOpt.ifPresetn()){
-    User user = userOpt.get();
-}
+    if(userOpt.ifPresetn()){
+        User user = userOpt.get();
+    }
 This is not preferred as it looks like old null-check style.”
 
 2. ifPresent()
 
-userOpt.ifPresent(user->System.out.println(user.getName()));
+    userOpt.ifPresent(user->System.out.println(user.getName()));
 
-used for Logging or conditional processing
+    used for Logging or conditional processing
+
+🔹 ifPresent() vs ifPresentOrElse() (Java 9+)
+
+Optional.ifPresentorElse( c->System.out.println(c),()->System.out.println("notpresent"));
+
 
 3.orElse() VS orElseGet()
 
-userOpt.orElse(createDefaultUser());  //always executed
-userOpt.orElseGet(()->createDefaultUser()) //executed only if emply
+    userOpt.orElse(createDefaultUser());  //always executed
+    userOpt.orElseGet(()->createDefaultUser()) //executed only if emply
 
 Key difference:
 
-orElse() → eager
-orElseGet() → lazy (preferred)
+    orElse() → eager
+    orElseGet() → lazy (preferred)
 
 🗣️ Interview line: “We use orElseGet() to avoid unnecessary object creation.”
 
@@ -45,9 +66,36 @@ In REST APIs, we use orElseThrow() to return 404 when data is missing.
 
 ❌ What NOT to do with Optional (INTERVIEW TRAP)
 
-  ❌ Don’t use Optional as class field
-  ❌ Don’t use Optional in method parameters
+  ❌ Don’t use Optional as class field ( 👉 Serialization & ORM issues (JPA))
+  ❌ Don’t use Optional in method parameters (👉 Makes API confusing)
 
 🗣️ Say this:
-
+can Optiona contain null? ❌ NO
 “Optional is mainly intended for return types.
+
+5️⃣ What exception does get() throw?
+👉 NoSuchElementException
+
+6️⃣ Does orElse() evaluate eagerly?
+✅ YES
+
+8️⃣ Is Optional thread-safe? ✅ YES (immutable)
+
+9️⃣ Can Optional be empty and non-null?
+✅ YES
+
+👉 Optional.empty() is a valid object
+
+
+🔥 Real Spring Boot Example
+
+Optional<User> userOpt = userRepositoru.findbyId(id);
+User user = userOpt.orElseThrow( ()-> 
+                    new ResourceNotFoundException("incident not found"));
+
+Optional is a container, introduced in java 8 to avoid null checks. it should be used mainly as a return type
+, not for fields and parameter and accessed using safe method like orElseGet() or orElseThrow()
+
+
+
+
