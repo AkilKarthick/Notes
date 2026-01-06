@@ -1,4 +1,7 @@
-  private - same class   // you cannot make a class as private 9 only variable and methods ( but inner class can be private) 
+access modifier controlls visibilties, not behaviour
+
+
+private - same class   // you cannot make a class as private 9 only variable and methods ( but inner class can be private) 
   public - everywhere
   protected - package & subclass  // you cannot make class as protected only fields and method
   default - same package
@@ -6,7 +9,8 @@
 
 A. private access modifier exqmple 
 
-you cannot make a class as private 9 only variable and methods ( but inner class can be private) 
+you cannot make a class as private  only variable and methods 
+💡( but inner class can be private) 
 why bcz it should be accessible to the JVM and other classes in the packages!
 
 class Employee
@@ -20,9 +24,17 @@ void test(){
 Employee e = new Employee();
 e.salary //compilation error
 
-----
+Project use case:
+Utility/helper methods inside a service are often private to prevent misuse and unintended overrides
+\
 
 C. protected - package + child
+------------------------------
+
+protected member be accessed outside pacakage
+✅ Yes — but only through inheritance
+❌ Not allowed via object reference:
+
 
 package com.company.a
 
@@ -76,6 +88,44 @@ void work(){
 
 public class Test{
 public static void main(String[] args){
+
   Employee emp = new Developer(1,"Akil");
   emp.work();
 }
+--------------------------
+
+7️⃣ Can constructors have access modifiers?
+
+public  - normal object creation
+private - singleton
+protected - factory pattern
+default - package control
+
+
+🔟Access modifiers vs Spring annotations (🔥 TRICKY)
+❓ Can Spring autowire private fields/methods?
+
+@Autowired
+private OrderService orderService;
+✅ YES
+why?
+spring usese reflection, not java access rules
+
+java access modifier apply at compile time, 
+spring works at run time using reflections
+
+🔟Why are entity fields usually private?
+
+@Entity
+class User{
+  private String name;
+}
+Reason:
+    encapsulation
+    Validation via setters
+    Hibernate use reflections
+
+Expose data via DTOs, not entities.
+
+
+
