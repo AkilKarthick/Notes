@@ -19,3 +19,31 @@ each service registers with eureak at startup and resolved other services dynami
 do we still need eureka in kubernetes?
 no kubenerte provides buit in DNS-Based serrvice discovery
 
+3️⃣ Circuit Breaker Pattern (VERY HOT 🔥)
+
+  to prevent cascading failures
+  tools: Resilence4j
+  
+  states:
+  closed-normal
+  Open - stop calls
+  Half open - trial calls
+  
+  scenario:
+  when notification service was down, circuit breaker opened so booking service continued
+  without delays.
+  
+  is retring always good?
+  no - retry storms can crash systems
+
+4️⃣ Saga Pattern (TRANSACTIONS)
+------------------------------
+
+problem no @Transactional across services
+
+solutions:
+choregraphy (events)
+Orchestration(central controller)
+
+Each service perform a local transaction and compensates if a step fails
+
