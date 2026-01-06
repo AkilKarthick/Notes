@@ -1,1 +1,125 @@
-hi
+MicroSercie architectural fundamentals
+
+microservice is an architeucrual style where application are decompossed into samll, independelally
+deployable services. each owning a specific businesss capability and databbase
+
+each service = separate spring boot project
+
+Tricky Question 🔥
+👉Is microservices only about splitting services?
+
+No.its about independant deployment, ownership and scalability, not just splitting code
+
+👉 Why companies still use monolith??
+
+is fine for small team and early stage products,
+& Microsercice introduce Operational complexity
+
+How do microsercice communicate?
+
+REST - Synchronoue
+Messagein(kafka/rabbitmq) - Asynchronouse
+
+we used Synchronouse REST for core flows and 
+Asynchronouse messaging for notification to avoid tight coupling
+
+why not REST everywhere?
+
+🔹cREST create tight coupling and cascading failures
+🔹Asyn improves resilence and scalability!
+
+what is Session Discovery & Routing?
+
+  tools like Netflix Eureka
+  implemntation:
+  Service register on starup
+  other service resolve dynamicaly
+  
+  we ccan avoid Eureka? kubernetes provide built in service discovery via DNS
+
+6️⃣ API Gateway (VERY IMPORTANT 🔥)
+
+tool: spring cloud gatesay
+
+Responsibilities
+
+Auth
+Routing
+Rate limiting
+Logging
+
+UI never direclty accessed services, all calls went through API gateway onlt
+can APi gateway become a single point of failure?
+yes, so we deploy it in multiple instnaces with load balaning
+
+Database per Service – WHY?
+
+to enuser loose coupling and independent schema evolution
+
+how do you join data?
+ API composition or Event Driven replication
+
+Distributed Transactions ❌
+
+Correct Pattern ; Saga Pattern
+
+Tricky Question
+Why not use @Transactional across services?
+ Because distributed transactions reduce scalability and are failure-prone.
+
+
+🔹 SECTION 5: FAULT TOLERANCE & RESILIENCE
+
+how do you handle failure?
+
+pattern: circuit breaker, retry, timeout, fallback
+
+tools: resilence4j
+
+Retry always good?
+Answer
+No. Retrying can overload a failing service (retry storm).
+
+Circuit Breaker States
+State	Meaning
+CLOSED	Normal
+OPEN	Stop calls
+HALF-OPEN	Trial calls
+
+🔹 SECTION 6: SECURITY
+
+how is scurity implemented?
+
+  JWT at api gateway
+  intenal service trust gateway
+
+why not vaiidate JWT in every service?
+  Redundatn processing and performance overhead
+
+Config & Versioning:
+
+-Centralized configuration- we have a tool: spring cloud config
+
+Tricky Question
+
+What if config server is down?
+Answer
+Services cache config locally
+
+API versioning:
+
+approaches : URI versiong & Header Versioning
+
+we followed URI versioning for backward compatibility!
+
+❓ Are microservices faster?
+
+❌ No. Network latency exists.
+
+❓ Can microservices share DB?
+
+❌ Violates independence.
+
+
+
+
