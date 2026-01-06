@@ -1,0 +1,21 @@
+what is API gateway?
+
+single entry point for all clients that routes request to backend servicces
+
+we expose only API gateway to the UI, it handled authencitacaion ,
+routing and loggin, reducing coupling with backend serrvices
+
+⚠️ Why not call microservices directly from UI?
+✅ Answer:
+It increases security risk, tight coupling, and makes client changes harder.
+
+2️⃣ Service Discovery Pattern
+
+needed for container restart, ips change dynamically
+tool: netflix eureka
+
+each service registers with eureak at startup and resolved other services dynamicaly
+
+do we still need eureka in kubernetes?
+no kubenerte provides buit in DNS-Based serrvice discovery
+
