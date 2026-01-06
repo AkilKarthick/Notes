@@ -1,25 +1,22 @@
 Thread: a light weight process that executes a task
 
-	a lightweight process/units called thread & Thread allow different part of a programs to execute simulatenously
+	a lightweight process called thread & it allow different part of a programs to execute simulatenously
 	
-	creating a thread in java 
-	-is by extending Thread class or by implementing Runnable interface
+creating a thread in java 
+	-is by extending 💡 Thread class or by implementing Runnable 💡 interface
 
 1.Thread class -- Extend Thread when no other class inheritance is needed
 2.Runnable interface --Implement Runnable when the class already extends another class (preferred). - java support only single inheritance that;s why
 
-States:
-	New
-	Runnable
-	Running
-	Waiting / Blocked
-	Terminated
-📌 Interview line:
-“A thread goes through multiple states during execution.”
+in project we always prefer Runnable or ExecturService for better design and scalability
+
+🔥Extending Thread class:
+	poor design, can't extend another class, Tight coupling
 
 eg1:
 
 class Mythread extends Thread{
+
 	public void run(){
 	System.out.println("Thread Started Running...");
 	}
@@ -32,8 +29,8 @@ public class Demo {
 	}
 }
 
-implementing runnable interface // preferred ay
-
+🔥 implementing runnable interface // preferred ay
+		Better design, Support inheritance & loose coupling
 
 class MyRunnable implements Runnable{
 	public void run(){
@@ -52,6 +49,24 @@ public class Demo {
 	t1.start(); //start() will internally call run() method
 	}
 }
+
+Thread Lifecycle (VERY IMPORTANT 🔥)
+
+states:
+
+	new
+	Runnable
+	Running
+	Waiting/Blocked
+	Terminateed
+
+
+
+
+
+
+
+
 single thread - one task at a time
 ============================================================
 multiple Thread: 
@@ -145,7 +160,17 @@ Terminated
 I haven’t directly created threads, but Spring Boot internally uses multithreading to handle concurrent requests, and I understand thread-safety concepts
 
 
+States:
+	New
+	Runnable
+	Running
+	Waiting / Blocked
+	Terminated
+📌 Interview line:
+“A thread goes through multiple states during execution.”
+
 
 	
+
 
 
