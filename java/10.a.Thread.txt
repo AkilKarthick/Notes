@@ -10,6 +10,7 @@ creating a thread in java
 
 in project we always prefer Runnable or ExecturService for better design and scalability
 
+------------------------
 🔥Extending Thread class:
 	poor design, can't extend another class, Tight coupling
 
@@ -28,7 +29,7 @@ public class Demo {
 	t1.start(); //start() will internally call run() method
 	}
 }
-
+--------------------------------------------------
 🔥 implementing runnable interface // preferred ay
 		Better design, Support inheritance & loose coupling
 
@@ -49,6 +50,85 @@ public class Demo {
 	t1.start(); //start() will internally call run() method
 	}
 }
+
+
+🔹1. can we call run() directly instead of start() ? what happend?
+
+YES you can but no new thread is created!
+
+Thread t = new Thread(()->System.out.println(""))
+
+	t.run(); // runs in main method
+	t.start();// runs in new thread
+
+🔹Interview line:
+	“Calling run() executes the task in the same thread, while start() spawns a new thread and invokes run() internally.”
+
+
+🔹.2.what happend if you call start() twice?
+	
+	Thread t = new Thread(() -> {});
+	t.start();
+	t.start(); // ❌  IllegalThreadStateException
+
+🔹bcz thread lifecyel is one time use only
+Thread are never resued - instrea we use Thread Pool (Executor Service)
+
+🔥 3. Can we override start() method?
+yes but override start() prevents JVM from creating a new thread!
+
+🔥 4. Difference between sleep() and wait()? (Very common 🔥)
+
+sleep()
+	belong to Thread class
+	lock is not released
+	no need for synchronized
+	Thread.sleep(10000); //used for delaying logic
+
+wait()
+	beling to object class
+	locked released ? yes
+	need synchronized
+	obj.wait(); // release lock
+
+🔥 5. Why wait() is inside synchronized block?  doubt
+
+🔥 6. What is Thread Deadlock? Give real example.
+	both threads wait forever!
+production fix: avoid nexted synchroniztion, timeoutlocks and lock ordering
+
+🔥 7. Difference between volatile and synchronized? (Tricky 🔥)
+
+volatitl gurantess visibility, not atomicity
+no locking
+faster
+
+Volatilt boolean flag = true;
+
+Synchronized: gurante visibility and atomicity
+locking
+slower
+
+🔥 8. Is ++ thread-safe? Why?
+
+🔥 9. Difference between Runnable and Callable? (Often tricky)
+
+Runnable
+	No return 
+	no expcetion
+	run()
+
+callable
+	return value
+	can throw checekd exception
+	call()
+
+Callable<Integer> c =()-?10;
+used in executorServices
+
+🔥 10. Can two threads call the same synchronized method?
+
+
 
 Thread Lifecycle (VERY IMPORTANT 🔥)
 
@@ -171,6 +251,7 @@ States:
 
 
 	
+
 
 
 
