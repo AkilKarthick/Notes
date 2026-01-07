@@ -11,10 +11,22 @@ creating a thread in java
 in project we always prefer Runnable or ExecturService for better design and scalability
 
 
-🔥//Runnable is a functional interface()obly one abstart method run() so 
+🔥//Runnable is a functional interface()only one abstart method run() so 
 		Thread t1 = new Thread(()->{
 			System.out.println("new");});	
 		t1.start();
+
+is equivalent to
+🔥
+	Runnable task = new Runnable();
+	@Overrid
+	public void run(){
+		Sysout("demo");
+	}
+	Thread t1 = new Thread(task)
+
+see here you didn't write a sepatate class that implements Runnable, but the lambda is the 
+Runnable implementation
 
 ------------------------
 🔥Extending Thread class:
@@ -174,6 +186,23 @@ in real project we avoid manual thread creation & prefer ExecutorService with pr
 synchronizztion, atomic variables and thread safe collections
 
 
+what join() does and why it is used?
+
+join() makes the current thread wait untill the target thread finishes
+
+t1.start();
+t2.start(); 
+
+t1.join(); //main thread wait for t1 to finish
+t2.join(); // then waits for t2 to finish
+
+system.out.println(""+c.cout);
+
+Without join():
+System.out.println(...) might run before t1 and t2 finish.
+
+With join():
+Main thread blocks until t1 and t2 complete
 
 Thread Lifecycle (VERY IMPORTANT 🔥)
 
@@ -296,6 +325,7 @@ States:
 
 
 	
+
 
 
 
