@@ -10,6 +10,12 @@ creating a thread in java
 
 in project we always prefer Runnable or ExecturService for better design and scalability
 
+
+🔥//Runnable is a functional interface()obly one abstart method run() so 
+		Thread t1 = new Thread(()->{
+			System.out.println("new");});	
+		t1.start();
+
 ------------------------
 🔥Extending Thread class:
 	poor design, can't extend another class, Tight coupling
@@ -290,6 +296,7 @@ States:
 
 
 	
+
 
 
 
