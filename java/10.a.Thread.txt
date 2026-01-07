@@ -138,6 +138,35 @@ Avoi OOM
 ExecutorService ex = Executor.newFixedThreadPool(5);
 ex.submit(()->{});
 
+🔥 11. What is Thread Starvation?
+
+Low-priority threads never get CPU
+
+🔥 12. Difference between notify() and notifyAll()? (Trap 🔥)
+
+Notify() : wake one thread & risk of dead lock
+NotifyAll(): wakes all, safer
+
+prefer NotifyAll() in complex situation
+
+🔥 13. What happens if exception occurs inside a thread?
+
+Thread dies silently & does not affect another thread
+
+
+🔥 15. Why ExecutorService is preferred over Thread?
+
+Thread resuse
+Better performance
+Resoure management
+Avoid OOM
+
+ExecutorService Ex = Executors.newFixedThreadPool(5);
+ex.submit(()->{});
+
+in real project we avoid manual thread creation & prefer ExecutorService with proper
+synchronizztion, atomic variables and thread safe collections
+
 
 
 Thread Lifecycle (VERY IMPORTANT 🔥)
@@ -261,6 +290,7 @@ States:
 
 
 	
+
 
 
 
