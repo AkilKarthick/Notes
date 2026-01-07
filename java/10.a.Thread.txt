@@ -128,6 +128,16 @@ used in executorServices
 
 🔥 10. Can two threads call the same synchronized method?
 
+🔥 15. Why ExecutorService is preferred over Thread?
+
+Thread reuse
+better performance
+Resoure management
+Avoi OOM
+
+ExecutorService ex = Executor.newFixedThreadPool(5);
+ex.submit(()->{});
+
 
 
 Thread Lifecycle (VERY IMPORTANT 🔥)
@@ -251,6 +261,7 @@ States:
 
 
 	
+
 
 
 
