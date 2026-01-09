@@ -6,8 +6,6 @@ MultiThread interview questions
 allows a pgm to run multiple threads simultaneousely with in single process
 helps perform multiple task in parallel ,leading to better CPU utilization and faster program execution
 
-
-
 a Thread - smllaest unit of exection or a light weight sub process
 
 MulitpThread - allows multiple thread to run concurrently. sharing the same memory but execyting independly
@@ -21,7 +19,6 @@ waiting - Thread waits for another thread action like notification
 Timed waiting - thread wait for a specific period eg thread.sleep(1000)
 Terminated - thread finish execution & stopped
 
-
 ---------------------------------------------------------------------
 2. what is synchronization in java and synchronized key word in java?
 
@@ -30,8 +27,6 @@ synchronization in java ensure that only one thread can access a shared resource
 preventing errors due to concurrent modification
 
 Synchronization in Java is a mechanism to control the access of multiple threads to shared resources or critical sections of code, ensuring that only one thread can execute a synchronized block or method at a time. This prevents race conditions and data inconsistency when multiple threads try to modify shared data concurrently.
-
-
 
 Synchronized keyword: marks method or block to make them thread safe -by allowing only one thread to execute them at once
 
@@ -174,6 +169,7 @@ Synchronized block lets you lock just a piece of code inside a method, improving
 
 
 I haven’t directly created threads, but Spring Boot internally uses multithreading to handle concurrent requests, and I understand thread-safety concepts
+
 
 
 
