@@ -1,0 +1,38 @@
+MultiThread demo eg1: using Thread class
+1. using Thread class:
+
+
+class MultiThread extends Thread{
+
+  private String name;
+
+  public MultiThread(String name){
+    this.name=name;
+  }
+
+@Override
+public void run(){
+    for(int i=0; i<=5; i++){
+      System.out.println(name + ":" +i);
+    try{
+        Thread.sleep(10000);s
+    }catch(InterruptedException e){}
+    }
+    }
+}
+
+}
+
+public class Main{
+  public static void main(String[] args){
+
+        MultiThread t1 = new MultiThread("thread-1");
+        MultiThread t2 = new MultiThread("thread-2");
+
+      t1.start();
+      t2.start(); //both run concurrently
+  }
+}
+--------------------------------------------------------
+
+
