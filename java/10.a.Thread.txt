@@ -324,8 +324,13 @@ States:
 “A thread goes through multiple states during execution.”
 
 
-	
+	what is Deemon Thread?
 
+A daemon thread is a background thread that does not prevent the JVM from exiting when all user threads (non-daemon threads) finish. So if you mark a thread as a daemon (by calling setDaemon(true) before starting it), it means that the thread is considered a low-priority background task. The JVM will not wait for daemon threads to finish before it exits—once all non-daemon threads are done, the JVM can shut down and the daemon threads will just stop.
+
+used for background task that should not block the application from shutting dwon
+if you have a thread that perform loggin, monioring or peridoci cleanup task in backgroun
+you don't want that thread to keep the entire appiication running if th rest of appi is done
 
 
 
