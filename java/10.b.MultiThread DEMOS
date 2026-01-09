@@ -35,4 +35,27 @@ public class Main{
 }
 --------------------------------------------------------
 
+Runnable Interface:
+-------------------
+class Task implements Runnable{
+
+@Overrid
+public void run(){
+    for(int i=1; i<=3; i++){
+    System.out.println("task in " + Thread.currentThread().getName())+":"+i); }
+}
+}
+
+public class Main{
+  public static void main(String[] args){
+      Thread t1 = new Thread(new Task(), "workder-1")
+      Thread t2 = new Thread(new Task(), "workder-2")
+      t1.start();
+      t2.start();
+  }
+}
+--------------------------------------------------------
+
+Use java ExecutorService to manage multiple threads efficiently via thread pools, avoid manual 
+Thread creation.
 
