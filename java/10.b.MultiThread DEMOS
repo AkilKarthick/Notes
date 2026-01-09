@@ -55,6 +55,39 @@ public class Main{
   }
 }
 --------------------------------------------------------
+from java 5 onwardss we have this Executor Framwork,
+this will manage thread execution
+it will help us to submit task without manually creating or controllling thread
+framework handles scheduling and execution!
+
+we have Executor interface, ExecutorService interface
+Threadpoolexecutor class & AbstractExecytorSerivce class
+
+
+Demo:
+
+class Task implement Runnable{
+  private String name;
+    public Task(String name) { this.name = name; }
+
+public void run() {
+  for(int i = 1; i <= 3; i++) {
+            System.out.println(name + ": " + i + " on " + Thread.currentThread().getName());
+            try { Thread.sleep(500); } catch(InterruptedException e) {}
+        } }}
+
+public class Main(){
+  public static void main(String[] args){
+      ExecutorService executor =Executos.newFixedThreadPool(2); // creates exactly 2 reusable worker threads
+       
+        executor.submit(new Task("Task-1")); //Thread-1 picks it up immediatel
+        executor.submit(new Task("Task-2")); //Thread-2 picks it up immediatel
+        executor.submit(new Task("Task-3"));  //  Both threads busy, so Task-3 goes to internal queue
+
+        executor.shutdown(); //prevent new tasks; await terminations
+  }
+}
+
 
 Use java ExecutorService to manage multiple threads efficiently via thread pools, avoid manual 
 Thread creation.
