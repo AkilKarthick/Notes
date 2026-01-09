@@ -9,6 +9,7 @@ private - same class   // you cannot make a class as private 9 only variable and
 
 A. private access modifier exqmple 
 
+you can overload a private method & cannot override private method
 you cannot make a class as private  only variable and methods 
 💡( but inner class can be private) 
 why bcz it should be accessible to the JVM and other classes in the packages!
