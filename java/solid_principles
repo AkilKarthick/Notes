@@ -47,3 +47,18 @@ D- dependency inversion principle (DIP)
 
 
 
+
+
+--------------
+So SOLID is an acronym for five design principles:
+
+S - Single Responsibility Principle (SRP): A class should have only one reason to change, meaning it should only have one job or responsibility. You got that right.
+
+O - Open/Closed Principle (OCP): This means software entities like classes or modules should be open for extension but closed for modification. In other words, you should be able to add new functionality without changing existing code, often by using interfaces or abstract classes.
+
+L - Liskov Substitution Principle (LSP): This principle means that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. In other words, a subclass should behave in a way that won’t surprise anyone using the superclass type.
+
+I - Interface Segregation Principle (ISP): This means that no client should be forced to depend on methods it does not use. In other words, it’s better to have many small, specific interfaces rather than a big, general-purpose one.
+
+D - Dependency Inversion Principle (DIP): This is about depending on abstractions rather than concrete classes. In other words, high-level modules should not depend on low-level modules directly; both should depend on abstractions. And yes, in Spring Boot, when you use dependency injection, like with @Autowired, you’re following this principle.
+
