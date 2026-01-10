@@ -71,7 +71,10 @@ for eg:  @Accesss(value= AccessType.PROPERTY)
 @ManuToOne
 @ManyToMany
 
-@Cascade - used to degine the cascading between two entity beans
+@Cascade - used to define the cascading between two entity beans used with mappings
+
+@PriaryKeyJoinColumn: used to define for foreign key 
+
 
 
 
