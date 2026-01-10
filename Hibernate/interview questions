@@ -93,7 +93,41 @@ Class Student{
 @ManyToOne(cascade=CascadeType.ALL)
 private Address address;
 
+Many to Many
 
+class Student{
+
+@ManyToMany(targetEntity= Degree.class, cascade ={CascadeType.ALL})
+@JoinTable(name="DegreeStudenThiredtable",
+           joinColumns={@JoinColumn(name="StudentId")},
+           inverseJoinColumns={@JoinColumn(name="certificateId")} )
+private List<Degree> degrere;
+
+that in many to many , one 3rd particular table is getting created & two extra fields are added
+join and inverer jioncolumn
+
+4. what are hibernate confirutaion file?
+
+contains database specifi configuration aand used to initalize Sessionfactor
+it's name should be hibernate.cfg.xml
+if you need to connect to SQL then create anotehr one here
+  <Hibernate-configuatrion>
+  <Sessino factor>
+  <property name> ...
+  <Sessino factor>
+  <Hibernate-configuatrion>
+
+5. what is hibernate mapping file?
+used this we can map our object with tables
+<hibernate-mapping>
+
+
+steps to crea a sample app of hibernate?
+
+create pojo
+crate mapping file
+create configuation file
+class for 
 
 
 
