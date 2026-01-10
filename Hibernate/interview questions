@@ -75,6 +75,26 @@ for eg:  @Accesss(value= AccessType.PROPERTY)
 
 @PriaryKeyJoinColumn: used to define for foreign key 
 
+4.Mappings in Hibernate?
+
+Association mapping in hibernate!
+3 typed
+
+one-to-one
+Many-to-one
+many-to-many
+
+--
+
+@OneToOne(targetEntity=CodeDecode.class)
+private CodeDecode codeDecode;
+
+Class Student{
+@ManyToOne(cascade=CascadeType.ALL)
+private Address address;
+
+
+
 
 
 
