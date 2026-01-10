@@ -1,0 +1,83 @@
+what is hibernate and why to use it?
+
+  it is an ORM tool used to map java objects and database table 
+  java /pojoobject (ORM)-> database table
+
+it is a JPA implementation hence we use JPA annotations as well as XML configuration 
+to achieve this mapping
+
+why hibernate? FM
+
+  eliminate all the boiler plate code that comes with JDBC 
+    ( so many time you wrote the same code againa and agin to don one particular transcaiton it sliminates)
+  
+  it support HQL which is object oriented
+  it provide transacion management implicitly
+    ( on jdbc we have to manage transcation management by our self )
+  hibernate throws JBDCException or HibernateExpcetion which are unchecked exception
+  so we dont need to wory about handling using try  and catch
+  Hibernate supports caching for better performance
+--------
+hint: chekced expecion on ehave to be either caught or declaed in mehod signature using throws
+where as unchecked ones is optional, cannt be handled via code, so try cantch block is not required
+--------
+
+3. what are important interface used in Hibernate?
+
+SessionFactory:  we can get the Session object from sessionfactory
+  there should be 1 sessionFactory object per Database connection ( like 1 for MySQL , 1 for Oracle)
+  this is an Instance used to retreive session object for database operations
+  we need to initialize once and can cache it to reuse it again and again
+
+Session: from session we get transaction object
+  it is used to get the physical connection with database
+  it is a factory for transaction
+  used for conneting application with persistant store like hibernate fm/db
+  provide methods for CRUD opeations
+
+Transaction: this specific single/atomic units of work
+
+so sessinofactor is the parent using this we get the session object using this we got transaction
+
+we need to build tht session facotory
+
+SessioonFactorh factory = metadata.getSessionfactoryBuilder().build();
+Session sessino = factory.openSession();
+Transaction t = session.beginTransaction();
+
+session.save(persistnaobje); //save or update or delte  soemting on this transacion
+  t.commit();
+  factory.close();
+    session.close();
+
+3. important Annotation used in Hibernate?
+
+@Entity : used with model class to specify that they are entity beans
+@Table : used with entity bean to dfne corresponding table name in database
+@Access: used to define the access type
+for eg:  @Accesss(value= AccessType.PROPERTY)
+
+@Id: used to define primary eky in the entity bean
+@EmbeddedId : used to define composite primary key in the entity bean
+( so every tiem we are not going to have a single parimary in our table
+
+@Column - field level annotation to define a column name
+
+@GeneratedValue: used for generation of primary key
+    GenerationType.ENUM (eg; IDENTITY.AUTO.ETC)
+
+@OneToOne  - 
+@OneToMany
+@ManuToOne
+@ManyToMany
+
+@Cascade - used to degine the cascading between two entity beans
+
+
+
+
+
+  
+
+
+
