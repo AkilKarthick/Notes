@@ -1,13 +1,15 @@
 String:
 
 Immutable sequence of characters. Once created, the value cannot be changed. 
-String immutability improves security, caching, and thread safety
+if we try to change it, it will craete a new object internally rather than modifying the exitig one
+String immutability improves security and thread safety
+
 
 1.Why is String immutable in Java? What are the advantages and disadvantages of String immutability?
 
-	Ensures security by avoiding unintended changes (important for sensitive data like passwords).
-	Provides thread safety since immutable objects can be shared across threads without synchronization
-	Guarantees consistent -hash code behavior for use in collections like HashMap.
+		Ensures security by avoiding unintended changes (important for sensitive data like passwords).
+		Provides thread safety since immutable objects can be shared across threads without synchronization
+		Guarantees consistent -hash code behavior for use in collections like HashMap.
 
 why java made String immutable?
 
@@ -117,6 +119,7 @@ Feature		String	StringBuilder	StringBuffer
 Mutable			❌		✅			✅
 Thread-safe		✅		❌			✅
 Performance		Slow 	Fast 		Medium
+
 
 
 
