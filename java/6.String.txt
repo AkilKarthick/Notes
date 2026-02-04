@@ -30,10 +30,10 @@ String immmutblitiy ensure hashmap key consisteny!
 					When a String literal like "abc" is created, it's placed in the pool
 					If another literal "abc" is declared, the JVM reuses the existing reference
 				
-				String s = "abc";
+				String s = "abc";  //not elligible for garbage collection
 				String s1 = "abc"; //he JVM reuses the existing reference
 				
-				String s3 = new String("abc");
+				String s3 = new String("abc"); //elligible for garbage collection
 				new String("abc") creates a new String object in heap memory every time,regardless of the pool
 				
 				if, new String("abc") == "abc"  == return false// because they refer to different objects
@@ -119,6 +119,13 @@ Feature		String	StringBuilder	StringBuffer
 Mutable			❌		✅			✅
 Thread-safe		✅		❌			✅
 Performance		Slow 	Fast 		Medium
+
+in my project
+
+we use StringBuilder - for building dynamic sql quieires and JSON string bcz it is fast and value change frequently
+String - on logging and constant messages 
+in rare cases where multi threaded safety was required, we use stringbuffer
+
 
 
 
